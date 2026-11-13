@@ -8,170 +8,199 @@
 :root{
   --bg:#070d27; --bg2:#101a4a; --card:#15215a; --card2:#1c2b73; --line:#33449a;
   --text:#f3f6ff; --muted:#b9c4f2;
-  --cyan:#4fe3ff; --yellow:#ffd24d; --green:#62f0a0; --orange:#ff9a4d; --red:#ff5d73; --pink:#ff7ab8;
+  --cyan:#4fe3ff; --yellow:#ffd24d; --green:#62f0a0; --orange:#ff9a4d; --red:#ff5d73;
   --radius:22px;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
   min-height:100vh; color:var(--text);
-  font-family:"Trebuchet MS","Segoe UI",system-ui,-apple-system,sans-serif; font-size:18px; line-height:1.45;
+  font-family:"Trebuchet MS","Segoe UI",system-ui,-apple-system,sans-serif; font-size:18px; line-height:1.4;
   background:radial-gradient(ellipse at 50% -10%, #1c2a7a 0%, var(--bg2) 35%, var(--bg) 80%) fixed;
-  overflow-x:hidden;
+  overflow-x:hidden; touch-action:manipulation;
 }
 #stars{position:fixed; inset:0; pointer-events:none; z-index:0}
-#stars i{position:absolute; width:3px; height:3px; border-radius:50%; background:#fff; opacity:.7; animation:twinkle 3s ease-in-out infinite}
+#stars i{position:absolute; border-radius:50%; background:#fff; opacity:.7; animation:twinkle 3s ease-in-out infinite}
 @keyframes twinkle{50%{opacity:.15; transform:scale(.6)}}
-main{position:relative; z-index:1; max-width:880px; margin:0 auto; padding:16px 16px 40px}
+main{position:relative; z-index:1; max-width:820px; margin:0 auto; padding:12px 16px 36px}
 [hidden]{display:none!important}
 h1,h2,h3,p{margin:0}
 a{color:var(--cyan)}
-button{font:inherit; color:inherit; cursor:pointer}
+button{font:inherit; color:inherit; cursor:pointer; touch-action:manipulation}
 :focus-visible{outline:4px solid var(--yellow); outline-offset:3px}
 
-/* Buttons */
 .btn{
-  display:inline-block; border:0; border-radius:999px; padding:16px 34px; min-height:58px;
+  display:inline-block; border:0; border-radius:999px; padding:14px 34px; min-height:56px;
   font-size:1.2rem; font-weight:800; letter-spacing:.04em; color:#1a1240;
   background:linear-gradient(180deg,#ffe27a,#ffb832); box-shadow:0 6px 0 #c98512, 0 12px 24px rgba(0,0,0,.35);
   transition:transform .12s, box-shadow .12s;
 }
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(4px); box-shadow:0 2px 0 #c98512}
+.link{background:none; border:0; color:var(--muted); text-decoration:underline; font-size:.9rem; padding:8px}
 
 /* Welcome */
-.welcome{text-align:center; padding-top:8px}
-.welcome h1{font-size:clamp(1.9rem,6vw,3rem); line-height:1.1; margin:6px 0 10px; text-shadow:0 3px 0 #0b1233}
+.welcome{text-align:center}
+.welcome h1{font-size:clamp(1.9rem,6vw,3rem); line-height:1.1; margin:4px 0 10px; text-shadow:0 3px 0 #0b1233}
 .welcome h1 span{color:var(--yellow)}
-.scene{width:min(100%,460px); margin:0 auto; display:block}
-.intro{max-width:560px; margin:0 auto 18px; color:var(--muted); font-size:1.15rem}
-.how{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:0 0 22px; padding:0; list-style:none}
-.how li{background:var(--card); border:2px solid var(--line); border-radius:16px; padding:8px 14px; font-size:.95rem}
-.how b{color:var(--yellow)}
-.float{animation:bob 3.5s ease-in-out infinite; transform-origin:center}
+.scene{width:min(100%,420px); display:block; margin:0 auto}
+.intro{max-width:540px; margin:0 auto 14px; color:var(--muted); font-size:1.1rem}
+.how{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:0 0 20px; padding:0; list-style:none}
+.how li{background:var(--card); border:2px solid var(--line); border-radius:16px; padding:8px 14px; font-size:.95rem; font-weight:700}
+.best{margin-top:12px; color:var(--yellow); font-weight:800; min-height:1.4em}
+.float{animation:bob 3.5s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-8px) rotate(2deg)}}
 .wave{animation:wave 1.2s ease-in-out infinite; transform-origin:150px 100px; transform-box:view-box}
 @keyframes wave{50%{transform:rotate(-14deg)}}
 
-/* Dashboard */
-.dash{background:linear-gradient(180deg,var(--card2),var(--card)); border:2px solid var(--line); border-radius:var(--radius); padding:14px 16px 16px; box-shadow:0 10px 30px rgba(0,0,0,.35)}
-.dash-top{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:10px}
-.dash-top .badge{width:46px; height:54px; flex:none}
-.dash-title{font-weight:800; letter-spacing:.06em; font-size:.95rem; color:var(--cyan); text-transform:uppercase}
-.dash-sub{font-size:.85rem; color:var(--muted)}
-.progress{margin-left:auto; text-align:right}
-.progress b{display:block; font-size:1.05rem}
-.dots{display:flex; gap:6px; justify-content:flex-end; margin-top:4px}
+/* HUD */
+.hud{position:sticky; top:0; z-index:5; background:linear-gradient(180deg,var(--card2),var(--card)); border:2px solid var(--line); border-radius:var(--radius); padding:10px 14px 8px; box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.hud-row{display:flex; align-items:center; gap:10px; margin-bottom:8px}
+.hud-row b{font-size:1rem}
+.dots{display:flex; gap:6px}
 .dots i{width:26px; height:10px; border-radius:6px; background:#2a3a8c}
-.dots i.done{background:var(--green)}
-.dots i.now{background:var(--yellow)}
-.meters{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
-.meter{position:relative; background:#0d1642; border-radius:16px; padding:10px 12px 12px; border:2px solid #26358a}
-.m-top{display:flex; align-items:baseline; gap:6px; flex-wrap:wrap}
-.m-name{font-weight:800; font-size:.92rem}
-.m-val{margin-left:auto; font-size:1.5rem; font-weight:900}
-.m-val small{font-size:.85rem; font-weight:700; opacity:.8}
-.bar{height:16px; background:#1d2a74; border-radius:10px; overflow:hidden; margin:6px 0 4px}
-.fill{height:100%; width:100%; border-radius:10px; background:var(--c); transition:width .8s cubic-bezier(.3,.8,.3,1), background .4s}
-.m-flag{font-size:.78rem; font-weight:800; min-height:1.1em; letter-spacing:.05em}
-.meter[data-k=o]{--c:var(--cyan)}
-.meter[data-k=p]{--c:var(--yellow)}
-.meter[data-k=r]{--c:var(--green)}
+.dots i.done{background:var(--green)} .dots i.now{background:var(--yellow)}
+.snd{margin-left:auto; background:#0d1642; border:2px solid var(--line); border-radius:12px; width:42px; height:38px; font-size:1.1rem}
+.meters,.final{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px}
+.meter{position:relative; background:#0d1642; border-radius:14px; padding:8px 10px 6px; border:2px solid #26358a}
+.m-top{display:flex; align-items:center; gap:6px}
+.m-name{font-weight:800; font-size:.8rem; line-height:1.1; flex:1}
+.m-val{font-size:1.4rem; font-weight:900; line-height:1}
+.m-val small{font-size:.75rem; opacity:.8}
+.bar{height:12px; background:#1d2a74; border-radius:8px; overflow:hidden; margin:6px 0 2px}
+.fill{height:100%; width:100%; border-radius:8px; background:var(--c); transition:width .7s cubic-bezier(.3,.8,.3,1), background .4s}
+.m-flag{font-size:.72rem; font-weight:800; min-height:1em; letter-spacing:.05em}
+.meter[data-k=o]{--c:var(--cyan)} .meter[data-k=p]{--c:var(--yellow)} .meter[data-k=r]{--c:var(--green)}
 .meter.warn{--c:var(--orange)} .meter.warn .m-flag{color:var(--orange)}
 .meter.low{--c:var(--red); border-color:var(--red)} .meter.low .m-flag{color:var(--red)}
 .meter.bump{animation:bump .5s}
-@keyframes bump{30%{transform:scale(1.05)}}
-.delta{position:absolute; right:8px; bottom:6px; font-weight:900; font-size:1.2rem; padding:2px 10px; border-radius:12px; opacity:0; pointer-events:none}
-.delta.up{background:var(--green); color:#06361b}
-.delta.down{background:var(--red); color:#3a0610}
+@keyframes bump{30%{transform:scale(1.06)}}
+.delta{position:absolute; right:6px; bottom:2px; font-weight:900; font-size:1.1rem; padding:1px 9px; border-radius:10px; opacity:0; pointer-events:none}
+.delta.up{background:var(--green); color:#06361b} .delta.down{background:var(--red); color:#3a0610}
 .delta.show{animation:pop 1.8s ease-out forwards}
-@keyframes pop{0%{opacity:0; transform:translateY(12px) scale(.6)}15%{opacity:1; transform:translateY(0) scale(1.1)}80%{opacity:1}100%{opacity:0; transform:translateY(-14px)}}
-.sim{font-size:.8rem; color:var(--muted); margin-top:10px; text-align:center}
+@keyframes pop{0%{opacity:0; transform:translateY(10px) scale(.6)}15%{opacity:1; transform:none}80%{opacity:1}100%{opacity:0; transform:translateY(-12px)}}
+.sim{font-size:.72rem; color:var(--muted); text-align:center; margin-top:4px}
 
-/* Challenge */
-.card{background:var(--card); border:2px solid var(--line); border-radius:var(--radius); padding:20px; margin-top:16px; box-shadow:0 10px 30px rgba(0,0,0,.3); animation:rise .4s ease-out}
-@keyframes rise{from{opacity:0; transform:translateY(14px)}}
-.c-head{display:flex; gap:12px; align-items:center; margin-bottom:8px}
-.c-icon{font-size:2.2rem}
-.c-kicker{font-size:.8rem; letter-spacing:.1em; color:var(--cyan); font-weight:800; text-transform:uppercase}
-.c-title{font-size:1.6rem; font-weight:900; line-height:1.1}
-.alert{margin:10px 0; padding:10px 14px; border-radius:14px; background:rgba(255,93,115,.15); border:2px dashed var(--red); font-weight:700; font-size:.98rem; animation:shake .5s}
-@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
-.c-text{font-size:1.2rem; margin:8px 0 14px}
-.choices{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+/* Guide */
+.say{display:flex; gap:12px; align-items:flex-end; margin:16px 0 12px; animation:rise .4s ease-out}
+.say svg{width:58px; height:70px; flex:none}
+.bubble{position:relative; background:#fff; color:#1a1d4d; border-radius:20px 20px 20px 6px; padding:10px 16px; font-weight:800; font-size:1.1rem}
+@keyframes rise{from{opacity:0; transform:translateY(12px)}}
+.tagline{display:inline-block; font-size:.75rem; letter-spacing:.1em; font-weight:800; color:var(--cyan); text-transform:uppercase; margin-top:6px}
+
+/* Arena */
+.arena{position:relative; height:min(48vh,320px); min-height:250px; border-radius:20px; overflow:hidden; border:3px solid var(--line); user-select:none; -webkit-user-select:none; animation:rise .4s ease-out}
+.arena.leaks{background:linear-gradient(180deg,#18235f,#0c1442)}
+.arena.storm{background:linear-gradient(180deg,#2a1450,#0a1230 70%)}
+.arena.charge{background:linear-gradient(180deg,#0b1245,#101a4a)}
+.arena svg.bg{position:absolute; inset:0; width:100%; height:100%}
+.layer{position:absolute; inset:0}
+.hudline{position:absolute; left:10px; top:8px; right:10px; display:flex; gap:10px; align-items:center; z-index:3; pointer-events:none}
+.score{background:rgba(0,0,0,.45); border-radius:12px; padding:2px 12px; font-weight:900; white-space:nowrap}
+.timer{flex:1; height:10px; border-radius:6px; background:rgba(255,255,255,.15); overflow:hidden}
+.timer i{display:block; height:100%; width:100%; background:var(--yellow)}
+.overlay{position:absolute; inset:0; z-index:4; background:rgba(7,13,39,.82); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; text-align:center; padding:16px}
+.overlay .big{font-size:1.5rem; font-weight:900}
+.overlay .btn{margin-top:8px}
+.leak{position:absolute; width:64px; height:64px; margin:-32px 0 0 -32px; border-radius:50%; border:3px solid #fff; background:rgba(79,227,255,.3); font-size:1.7rem; animation:pulse .5s infinite alternate; padding:0; z-index:2}
+@keyframes pulse{to{transform:scale(1.15)}}
+.leak.sealed{background:var(--green); animation:none; color:#06361b; font-weight:900}
+.leak.missed{background:rgba(255,93,115,.5); animation:none; opacity:.4}
+.particle{position:absolute; top:-50px; width:50px; height:50px; margin-left:-25px; border-radius:50%; border:0; padding:0; z-index:2;
+  background:radial-gradient(circle at 40% 35%,#fff,#ffd24d 40%,#ff6a00); box-shadow:0 0 16px #ff9a4d; animation:fall var(--d) linear forwards}
+@keyframes fall{to{transform:translateY(var(--h))}}
+.arena.hit{animation:flash .35s}
+@keyframes flash{50%{box-shadow:inset 0 0 0 999px rgba(255,93,115,.35)}}
+.sun{position:absolute; left:50%; top:-26px; width:100px; height:100px; margin-left:-50px; border-radius:50%; background:radial-gradient(circle,#fff6b0,#ffb832 60%,transparent 72%); z-index:1}
+.shield{position:absolute; left:50%; bottom:20px; width:200px; height:100px; margin-left:-100px; border:3px dashed var(--cyan); border-bottom:0; border-radius:100px 100px 0 0; opacity:.8}
+.chargeWrap{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; z-index:2}
+.battery{position:relative; width:min(78%,320px); height:44px; border:4px solid #fff; border-radius:12px; padding:3px}
+.battery::after{content:""; position:absolute; right:-14px; top:10px; width:8px; height:16px; background:#fff; border-radius:0 4px 4px 0}
+.battery i{display:block; height:100%; width:0; border-radius:6px; background:linear-gradient(90deg,var(--orange),var(--yellow),var(--green)); transition:width .08s}
+.chargeBtn{width:120px; height:120px; border-radius:50%; border:0; font-size:2.6rem; font-weight:900; background:radial-gradient(circle at 35% 30%,#fff3a8,#ffb832 60%,#e07a00); box-shadow:0 8px 0 #a85a00, 0 0 28px rgba(255,210,77,.5); transition:transform .05s}
+.chargeBtn:active{transform:scale(.9) translateY(4px)}
+.skipRow{text-align:right}
+
+/* Decision */
+.mini-res{display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center; background:#0d1642; border:2px solid var(--line); border-radius:16px; padding:8px 12px; font-weight:800; margin-top:14px; animation:rise .4s ease-out}
+.choices{display:grid; grid-template-columns:1fr 1fr; gap:14px; animation:rise .4s ease-out}
 .choice{
-  text-align:left; border-radius:20px; padding:16px; min-height:128px; border:3px solid #4a5fd0;
-  background:linear-gradient(180deg,#26378f,#1b2a76); display:flex; flex-direction:column; gap:10px;
+  text-align:left; border-radius:20px; padding:14px 16px; border:3px solid #4a5fd0;
+  background:linear-gradient(180deg,#26378f,#1b2a76); display:flex; flex-direction:column; gap:8px;
   transition:transform .15s, border-color .15s, opacity .3s; box-shadow:0 6px 0 #101a55;
 }
 .choice:hover:not(:disabled){transform:translateY(-3px); border-color:var(--yellow)}
 .choice:disabled{cursor:default}
-.choice.picked{border-color:var(--green); transform:none}
-.choice:disabled:not(.picked){opacity:.45}
-.opt-tag{font-weight:900; color:var(--yellow); font-size:.85rem; letter-spacing:.1em}
-.opt-label{font-size:1.15rem; font-weight:800; line-height:1.25}
+.choice.picked{border-color:var(--green)}
+.choice:disabled:not(.picked){opacity:.4}
+.opt-ico{font-size:2.2rem; line-height:1}
+.opt-label{font-size:1.1rem; font-weight:800; line-height:1.25}
 .chips{display:flex; gap:6px; flex-wrap:wrap; margin-top:auto}
 .chip{font-size:.85rem; font-weight:800; padding:3px 10px; border-radius:999px; white-space:nowrap}
 .chip.up{background:rgba(98,240,160,.18); color:var(--green); border:1.5px solid var(--green)}
 .chip.down{background:rgba(255,93,115,.18); color:#ff97a6; border:1.5px solid var(--red)}
 
 /* Feedback */
-.fb-tag{display:inline-block; font-weight:900; font-size:.85rem; padding:4px 12px; border-radius:999px; letter-spacing:.04em}
-.fb-tag.good{background:var(--green); color:#06361b}
-.fb-tag.mixed{background:var(--orange); color:#3b1c00}
-.fb-tag.bad{background:var(--red); color:#3a0610}
-.fb h3{font-size:1.3rem; margin:10px 0 6px}
-.fb .chips{margin:10px 0}
-.warnline{background:rgba(255,154,77,.14); border-left:6px solid var(--orange); padding:8px 12px; border-radius:10px; margin:10px 0; font-weight:700; font-size:1rem}
-.fact{display:flex; gap:12px; background:#0d1642; border:2px solid var(--cyan); border-radius:18px; padding:12px 14px; margin:14px 0 18px}
-.fact .fi{font-size:1.8rem}
-.fact b{display:block; color:var(--cyan); font-size:.8rem; letter-spacing:.1em}
+.card{background:var(--card); border:2px solid var(--line); border-radius:var(--radius); padding:18px; margin-top:14px; box-shadow:0 10px 30px rgba(0,0,0,.3); animation:rise .4s ease-out}
+.fb-tag{display:inline-block; font-weight:900; font-size:.85rem; padding:4px 12px; border-radius:999px}
+.fb-tag.good{background:var(--green); color:#06361b} .fb-tag.mixed{background:var(--orange); color:#3b1c00} .fb-tag.bad{background:var(--red); color:#3a0610}
+.fb p.story{font-size:1.2rem; font-weight:700; margin:10px 0}
+.warnline{background:rgba(255,154,77,.14); border-left:6px solid var(--orange); padding:6px 12px; border-radius:10px; margin:10px 0; font-weight:700; font-size:.95rem}
+.fact{display:flex; gap:12px; align-items:center; background:#0d1642; border:2px solid var(--cyan); border-radius:16px; padding:10px 14px; margin:12px 0 16px}
+.fact .fi{font-size:1.7rem}
+.fact b{display:block; color:var(--cyan); font-size:.75rem; letter-spacing:.1em}
 .fb .btn{display:block; margin:0 auto}
 
 /* Results */
 .res-head{text-align:center}
-.res-badge{font-size:3.4rem; line-height:1}
-.res-title{font-size:clamp(1.8rem,6vw,2.6rem); font-weight:900; margin:6px 0}
+.stars{font-size:2.6rem; letter-spacing:6px}
+.stars .off{filter:grayscale(1); opacity:.3}
+.res-title{font-size:clamp(1.7rem,6vw,2.5rem); font-weight:900; margin:4px 0}
 .res-title.success{color:var(--green)} .res-title.partial{color:var(--yellow)} .res-title.failure{color:var(--red)}
-.final{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:16px 0}
-.final .meter{text-align:center}
-.final .m-top{justify-content:center}
-.final .m-val{margin:0}
-.eval h3,.learn h3{font-size:1.1rem; color:var(--cyan); letter-spacing:.06em; text-transform:uppercase; margin-bottom:6px}
-.eval ul{margin:8px 0 0; padding-left:22px}
-.eval li{margin:4px 0}
-.learn{margin-top:14px; background:#0d1642; border:2px solid var(--yellow); border-radius:18px; padding:12px 16px}
-.res-actions{text-align:center; margin-top:20px}
+.final{margin:14px 0 10px}
+.picks{list-style:none; padding:0; margin:12px 0; display:grid; gap:6px}
+.picks li{background:#0d1642; border-radius:12px; padding:8px 12px; font-weight:700; font-size:.95rem}
+.learn{background:#0d1642; border:2px solid var(--yellow); border-radius:16px; padding:10px 14px; margin:12px 0; font-weight:700}
+.learn b{display:block; color:var(--yellow); font-size:.75rem; letter-spacing:.1em}
+.res-actions{text-align:center; margin-top:16px}
+details.grown{margin-top:14px; background:#0d1642; border:2px solid var(--line); border-radius:16px; padding:8px 14px; font-size:.95rem}
+details.grown summary{cursor:pointer; font-weight:800; color:var(--cyan)}
+details.grown ul{margin:8px 0 4px; padding-left:20px} details.grown li{margin:4px 0}
 
 /* NASA */
-.nasa{margin-top:22px; background:rgba(13,22,66,.8); border:2px solid var(--line); border-radius:var(--radius); padding:14px 18px; font-size:.95rem}
-.nasa h3{font-size:1rem; letter-spacing:.08em; color:var(--cyan); margin-bottom:6px}
-.nasa ul{margin:6px 0 0; padding-left:20px}
-.nasa li{margin:4px 0}
-.nasa .note{color:var(--muted); font-size:.82rem; margin-top:8px}
+.nasa{margin-top:18px; background:rgba(13,22,66,.8); border:2px solid var(--line); border-radius:var(--radius); padding:12px 16px; font-size:.92rem}
+.nasa h3{font-size:.95rem; letter-spacing:.08em; color:var(--cyan); margin-bottom:4px}
+.nasa ul{margin:4px 0 0; padding-left:20px} .nasa li{margin:3px 0}
+.nasa .note{color:var(--muted); font-size:.78rem; margin-top:6px}
+
+.confetti{position:fixed; top:-30px; font-size:1.6rem; z-index:20; pointer-events:none; animation:conf 2.6s linear forwards}
+@keyframes conf{to{transform:translateY(110vh) rotate(540deg)}}
 
 @media (max-width:620px){
   body{font-size:16px}
-  main{padding:12px 12px 32px}
+  main{padding:8px 10px 30px}
   .choices{grid-template-columns:1fr}
-  .choice{min-height:0}
-  .meters,.final{gap:8px}
-  .meter{padding:8px 8px 10px}
-  .m-name{font-size:.78rem}
-  .m-val{font-size:1.15rem; margin-left:0; width:100%}
-  .progress{margin-left:0; text-align:left; width:100%}
-  .dots{justify-content:flex-start}
+  .choice{flex-direction:row; flex-wrap:wrap; align-items:center}
+  .choice .opt-label{flex:1; min-width:55%}
+  .choice .chips{width:100%}
+  .hud{padding:8px 10px 6px}
+  .meters,.final{gap:6px}
+  .meter{padding:6px 7px 4px}
+  .m-top{flex-wrap:wrap; row-gap:2px}
+  .m-top > span[aria-hidden]{order:1}
+  .m-val{order:2; margin-left:auto; font-size:1.15rem}
+  .m-name{order:3; flex-basis:100%; font-size:.68rem}
   .btn{width:100%}
-  .card{padding:16px}
+  .say svg{width:48px; height:58px}
+  .arena{min-height:240px}
 }
 @media (prefers-reduced-motion:reduce){
-  *{animation:none!important; transition:none!important}
+  #stars i,.float,.wave,.leak{animation:none!important}
 }
 </style>
 </head>
 <body>
 
-<!-- Reusable cartoon astronaut -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <linearGradient id="visor" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b5bff"/><stop offset="1" stop-color="#0b1445"/></linearGradient>
@@ -186,7 +215,7 @@ button{font:inherit; color:inherit; cursor:pointer}
       <rect x="62" y="88" width="76" height="90" rx="28" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
       <rect x="80" y="118" width="40" height="28" rx="7" fill="#1b2a5a"/>
       <circle cx="90" cy="132" r="5" fill="#ff5d73"/><circle cx="101" cy="132" r="5" fill="#ffd24d"/><circle cx="112" cy="132" r="5" fill="#62f0a0"/>
-      <g><rect x="30" y="98" width="30" height="62" rx="15" fill="#fff" stroke="#c9d3ea" stroke-width="3" transform="rotate(14 45 100)"/><circle cx="36" cy="160" r="11" fill="#ff7a45"/></g>
+      <rect x="30" y="98" width="30" height="62" rx="15" fill="#fff" stroke="#c9d3ea" stroke-width="3" transform="rotate(14 45 100)"/><circle cx="36" cy="160" r="11" fill="#ff7a45"/>
       <g class="wave"><rect x="138" y="62" width="30" height="64" rx="15" fill="#fff" stroke="#c9d3ea" stroke-width="3" transform="rotate(-32 152 100)"/><circle cx="173" cy="62" r="11" fill="#ff7a45"/></g>
       <circle cx="100" cy="58" r="48" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
       <rect x="62" y="32" width="76" height="52" rx="24" fill="url(#visor)"/>
@@ -203,7 +232,7 @@ button{font:inherit; color:inherit; cursor:pointer}
 
 <main>
 
-<!-- 1. WELCOME -->
+<!-- WELCOME -->
 <section id="welcome" class="welcome">
   <svg class="scene" viewBox="0 0 400 270" role="img" aria-label="A friendly astronaut waving above the Moon next to a lunar base">
     <circle cx="330" cy="50" r="30" fill="url(#earthG)"/>
@@ -212,56 +241,51 @@ button{font:inherit; color:inherit; cursor:pointer}
     <circle cx="200" cy="470" r="260" fill="url(#moonG)"/>
     <ellipse cx="90" cy="236" rx="26" ry="7" fill="#aab1cc"/><ellipse cx="330" cy="244" rx="30" ry="8" fill="#aab1cc"/>
     <ellipse cx="250" cy="262" rx="18" ry="5" fill="#aab1cc"/><ellipse cx="40" cy="262" rx="14" ry="4" fill="#aab1cc"/>
-    <!-- base -->
-    <g>
-      <path d="M270 218 a42 42 0 0 1 84 0z" fill="#e9eefc" stroke="#9fb0e6" stroke-width="3"/>
-      <path d="M284 218 a28 28 0 0 1 56 0z" fill="#6db9ff" opacity=".7"/>
-      <rect x="262" y="216" width="100" height="10" rx="5" fill="#9fb0e6"/>
-      <line x1="312" y1="176" x2="312" y2="152" stroke="#9fb0e6" stroke-width="3"/><circle cx="312" cy="150" r="5" fill="#ff5d73"/>
-      <line x1="378" y1="226" x2="378" y2="204" stroke="#9fb0e6" stroke-width="3"/>
-      <rect x="360" y="188" width="36" height="18" rx="3" fill="#2b4bd6" stroke="#9fb0e6" stroke-width="2"/>
-      <path d="M372 188v18M384 188v18" stroke="#6f8cff" stroke-width="1.5"/>
-    </g>
+    <path d="M270 218 a42 42 0 0 1 84 0z" fill="#e9eefc" stroke="#9fb0e6" stroke-width="3"/>
+    <path d="M284 218 a28 28 0 0 1 56 0z" fill="#6db9ff" opacity=".7"/>
+    <rect x="262" y="216" width="100" height="10" rx="5" fill="#9fb0e6"/>
+    <line x1="312" y1="176" x2="312" y2="152" stroke="#9fb0e6" stroke-width="3"/><circle cx="312" cy="150" r="5" fill="#ff5d73"/>
+    <line x1="378" y1="226" x2="378" y2="204" stroke="#9fb0e6" stroke-width="3"/>
+    <rect x="360" y="188" width="36" height="18" rx="3" fill="#2b4bd6" stroke="#9fb0e6" stroke-width="2"/>
+    <path d="M372 188v18M384 188v18" stroke="#6f8cff" stroke-width="1.5"/>
     <g class="float"><use href="#astro" x="105" y="20" width="130" height="156"/></g>
   </svg>
   <h1>Junior Astronaut<br><span>Mission Trainer</span></h1>
   <p class="intro">Your lunar base is facing three unexpected challenges. Can you make the right decisions to protect your crew?</p>
   <ul class="how">
-    <li><b>1.</b> Read the problem</li>
-    <li><b>2.</b> Pick one of two choices</li>
-    <li><b>3.</b> See what happens &amp; learn!</li>
+    <li>⚡ Play quick games</li>
+    <li>🧠 Make smart choices</li>
+    <li>🔭 Learn space facts</li>
   </ul>
   <button class="btn" id="startBtn">START MISSION 🚀</button>
+  <p class="best" id="best"></p>
 </section>
 
-<!-- 2/3/4. GAME -->
+<!-- GAME -->
 <section id="game" hidden>
-  <div class="dash" aria-label="Mission dashboard">
-    <div class="dash-top">
-      <svg class="badge" viewBox="0 0 200 240" aria-hidden="true"><use href="#astro"/></svg>
-      <div>
-        <div class="dash-title">Mission Control</div>
-        <div class="dash-sub">Goal: keep every meter at 60 or more!</div>
-      </div>
-      <div class="progress"><b id="progressText">Challenge 1 of 3</b><div class="dots" id="dots"></div></div>
+  <div class="hud" aria-label="Mission dashboard">
+    <div class="hud-row">
+      <b id="progressText">Challenge 1 of 3</b>
+      <div class="dots" id="dots"></div>
+      <button class="snd" id="sndBtn" aria-label="Sound on or off">🔊</button>
     </div>
     <div class="meters" id="meters"></div>
-    <p class="sim">⚠ These are simulated game values — not real NASA measurements.</p>
+    <p class="sim">Simulated game values, not real NASA measurements. Goal: keep all three at 60+</p>
   </div>
-  <div id="stage" aria-live="polite"></div>
+  <div id="stage"></div>
 </section>
 
-<!-- 5. RESULTS -->
+<!-- RESULTS -->
 <section id="results" hidden></section>
 
-<aside class="nasa">
+<aside class="nasa" id="nasa">
   <h3>🔭 NASA SCIENCE</h3>
-  Want to explore real space science? Visit NASA:
+  Explore the real thing:
   <ul>
-    <li><a href="https://www.nasa.gov/artemis/" target="_blank" rel="noopener">NASA Artemis</a> – NASA's missions to return astronauts to the Moon</li>
-    <li><a href="https://kauai.ccmc.gsfc.nasa.gov/DONKI/" target="_blank" rel="noopener">NASA DONKI</a> – the Space Weather Database that tracks solar flares and storms</li>
+    <li><a href="https://www.nasa.gov/artemis/" target="_blank" rel="noopener">NASA Artemis</a>: returning astronauts to the Moon</li>
+    <li><a href="https://kauai.ccmc.gsfc.nasa.gov/DONKI/" target="_blank" rel="noopener">NASA DONKI</a>: tracks solar flares and space weather</li>
   </ul>
-  <p class="note">Game numbers are made up for fun. Real astronauts and mission controllers use many more measurements.</p>
+  <p class="note">Game numbers are made up for fun.</p>
 </aside>
 
 </main>
@@ -270,7 +294,7 @@ button{font:inherit; color:inherit; cursor:pointer}
 (function(){
   'use strict';
 
-  /* ---------- Game data ---------- */
+  /* ---------- Data ---------- */
   var RES = {
     o:{name:'Oxygen', icon:'💨'},
     p:{name:'Power', icon:'⚡'},
@@ -280,81 +304,112 @@ button{font:inherit; color:inherit; cursor:pointer}
 
   var CHALLENGES = [
     {
-      kicker:'Challenge 1 · Oxygen Emergency', title:'Oxygen Emergency', icon:'🫁',
-      text:'The oxygen system is running low! Your crew needs enough oxygen to breathe.',
-      event:{k:'o', d:-30, msg:'🚨 A leak was found in the life-support pipes! Oxygen drops by 30.'},
+      title:'Oxygen Emergency', mini:'leaks',
+      say:'Alarm! Air is leaking. Seal the leaks!',
+      eventFn:function(s){ return {k:'o', d:-(35-3*s), text:'Sealed '+s+' of 5 leaks!'}; },
+      ask:'The oxygen system is running low! Your crew needs enough oxygen to breathe.',
       options:[
-        { label:'Activate backup oxygen equipment.', fx:{o:15, p:-15}, tag:'mixed',
-          tagText:'✅ It helped… but made a new challenge',
-          result:'The backup oxygen machines hum to life and fresh air flows through the base. But they use LOTS of electricity, so your power store takes a big hit. You will need to be careful with power from now on!',
-          fact:'On the International Space Station, oxygen is made by splitting water (H₂O) into oxygen and hydrogen using electricity. Each astronaut breathes roughly 0.8 kg (almost 2 pounds) of oxygen every day!',
-          summary:'Backup oxygen kept the air fresh, but it cost a lot of power.' },
-        { label:'Turn off non-essential equipment.', fx:{o:5, p:5}, tag:'mixed',
-          tagText:'🙂 A safe choice, but only a small help',
-          result:'Games, extra lights and the hobby lab go quiet. The base uses less energy and the life-support machines have less work to do. That is safe, but oxygen is still lower than you would like.',
-          fact:'Space stations clean and recycle their air all the time. Special filters take out the carbon dioxide (CO₂) that astronauts breathe out, so the air stays safe to breathe.',
-          summary:'Switching off extra equipment saved power, but oxygen only improved a little.' }
+        { ico:'🌬️', label:'Activate backup oxygen equipment.', fx:{o:15, p:-15}, tag:'mixed', tagText:'✅ Helped, but power took a hit',
+          story:'Fresh air flows again! But the machines use lots of electricity.',
+          fact:'Space stations make oxygen by splitting water with electricity.',
+          short:'Used backup oxygen (air up, power down)' },
+        { ico:'🔌', label:'Turn off non-essential equipment.', fx:{o:5, p:5}, tag:'mixed', tagText:'🙂 Safe, but only a small help',
+          story:'Less equipment means less work for life support. Air is still low.',
+          fact:'Each astronaut breathes about 0.8 kg of oxygen every day.',
+          short:'Turned off extra equipment (small gains)' }
       ]
     },
     {
-      kicker:'Challenge 2 · Radiation Alert', title:'Radiation Alert', icon:'☀️',
-      text:'A solar activity warning has been received. Your crew needs protection from space radiation.',
-      event:null,
+      title:'Radiation Alert', mini:'storm',
+      say:'Solar storm! Block the particles!',
+      eventFn:function(b){ return {k:'r', d:-(12-Math.round(b*1.5)), text:'Blocked '+b+' of 8 particles!'}; },
+      ask:'A solar activity warning has been received. Your crew needs protection from space radiation.',
       options:[
-        { label:'Move the crew into the protected shelter.', fx:{r:15, p:-10}, tag:'good',
-          tagText:'✅ Smart safety choice',
-          result:'Everyone hurries into the shelter. Its thick walls block much of the dangerous radiation, so the crew is safer. The shelter\'s heaters and air system use some electricity, and research has to wait.',
-          fact:'The Moon has no thick atmosphere or strong magnetic field to block radiation like Earth does. Future lunar bases may use Moon dust and rock to build thick walls that shield astronauts.',
-          summary:'Moving to the shelter protected the crew, and cost some power.' },
-        { label:'Continue outdoor research.', fx:{r:-15, p:5}, tag:'bad',
-          tagText:'⚠ Risky! This made a new problem',
-          result:'The research goes on and you save energy, but the crew is out in the open while the Sun is active. Space radiation can harm the human body, so your protection is now weaker.',
-          fact:'A solar flare is a giant burst of energy from the Sun. Scientists watch the Sun with satellites and record storms in NASA\'s space weather database (DONKI) so astronauts can be warned and take shelter in time.',
-          summary:'Staying outside saved power, but the crew faced more radiation.' }
+        { ico:'🏠', label:'Move the crew into the protected shelter.', fx:{r:15, p:-10}, tag:'good', tagText:'✅ Smart and safe',
+          story:'Thick walls block radiation. The shelter uses some power.',
+          fact:'The Moon has no thick air to block radiation. Future bases may hide under piles of Moon dust.',
+          short:'Sheltered the crew (safe, costs power)' },
+        { ico:'🔬', label:'Continue outdoor research.', fx:{r:-15, p:5}, tag:'bad', tagText:'⚠ Risky! Protection dropped',
+          story:'You saved power, but the crew was out in the open during a solar storm.',
+          fact:'Solar flares are bursts of energy from the Sun. NASA tracks them so astronauts can take shelter in time.',
+          short:'Kept researching outside (risky)' }
       ]
     },
     {
-      kicker:'Challenge 3 · Power Shortage', title:'Power Shortage', icon:'🔋',
-      text:'Your lunar base is running low on electricity. You must decide how to manage the remaining energy.',
-      event:{k:'p', d:-40, msg:'🌑 The long lunar night is starting and the solar panels are in shadow! Power drops by 40.'},
+      title:'Power Shortage', mini:'charge',
+      say:'The Moon night begins! Charge the battery by hand!',
+      eventFn:function(t){ var f=Math.min(1,t/25); return {k:'p', d:-(45-Math.round(15*f)), text:'Battery charged to '+Math.round(f*100)+'%!'}; },
+      ask:'Your lunar base is running low on electricity. You must decide how to manage the remaining energy.',
       options:[
-        { label:'Activate backup batteries.', fx:{p:15}, tag:'good',
-          tagText:'✅ Strong power boost',
-          result:'The backup batteries switch on and the lights, heaters and radios stay on. Power is back up! Just remember that the batteries are now used, so there are fewer spares for the next emergency.',
-          fact:'One day on the Moon lasts about 29.5 Earth days, so the night is about two weeks long! Solar panels make no power in the dark, which is why lunar bases need batteries.',
-          summary:'Backup batteries gave a strong power boost.' },
-        { label:'Turn off non-essential systems.', fx:{p:10, o:-5}, tag:'mixed',
-          tagText:'🙂 Helped, with a small cost',
-          result:'The base saves energy by shutting systems down. But one of them was helping the air recycler, so the oxygen level dips a little. Saving power can have side effects!',
-          fact:'NASA plans to explore near the Moon\'s south pole, where some mountain peaks get sunlight almost all the time. That is a great place for solar panels to make power.',
-          summary:'Turning off systems saved power, but oxygen slipped a little.' }
+        { ico:'🔋', label:'Activate backup batteries.', fx:{p:15}, tag:'good', tagText:'✅ Big power boost',
+          story:'Lights, heaters and radios stay on. But the spare batteries are nearly used up.',
+          fact:'A Moon night lasts about 2 weeks. Bases need batteries when the Sun is gone.',
+          short:'Used backup batteries (big power boost)' },
+        { ico:'💡', label:'Turn off non-essential systems.', fx:{p:10, o:-5}, tag:'mixed', tagText:'🙂 Helped, with a small cost',
+          story:'Power is saved, but the air recycler slows down a little.',
+          fact:'Near the Moon\'s south pole, some mountain peaks get sunlight almost all the time.',
+          short:'Turned off systems (power up, air down)' }
       ]
     }
   ];
 
   var LESSONS = {
-    o:'Astronauts can\'t breathe without life-support systems. Space bases must make, clean and recycle air all the time, because even a small oxygen problem matters.',
-    p:'A lunar base needs reliable electrical power for air, heat, lights and radios. The Moon has very long nights, so batteries and clever energy planning are vital.',
-    r:'Space has no thick atmosphere to block radiation from the Sun. That is why scientists watch solar activity and astronauts use shelters to stay safe.'
+    o:'Astronauts need life-support systems to make and clean the air they breathe.',
+    p:'A Moon base needs reliable power. Long Moon nights mean batteries and smart planning.',
+    r:'Space has no thick air to block the Sun\'s radiation, so astronauts watch solar activity and use shelters.'
   };
 
-  /* ---------- State ---------- */
-  var res, step, choices, locked;
+  var MINI = {
+    leaks:{dur:9000, max:5, label:'Sealed', how:'Tap each leak to seal it!', ico:'💨'},
+    storm:{dur:9500, max:8, label:'Blocked', how:'Tap the solar particles before they hit!', ico:'☀️'},
+    charge:{dur:6000, max:25, label:'Charge', how:'Tap CHARGE as fast as you can!', ico:'⚡'}
+  };
+
+  /* ---------- State & helpers ---------- */
+  var res, step, choices, locked, timers = [], muted = false;
   var $ = function(id){ return document.getElementById(id); };
   function clamp(v){ return Math.max(0, Math.min(100, v)); }
+  function T(fn, ms){ var id = setTimeout(fn, ms); timers.push(id); return id; }
+  function clearAll(){ timers.forEach(clearTimeout); timers = []; }
+  function shuffle(a){ a = a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function store(k, v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k, v); }catch(e){ return null; } }
+
+  /* ---------- Sound ---------- */
+  var ac = null;
+  function beep(f, d, type, vol, delay){
+    if(muted) return;
+    try{
+      ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+      var o = ac.createOscillator(), g = ac.createGain(), t0 = ac.currentTime + (delay||0);
+      o.type = type||'sine'; o.frequency.value = f;
+      g.gain.setValueAtTime(vol||.08, t0); g.gain.exponentialRampToValueAtTime(.0001, t0+d);
+      o.connect(g); g.connect(ac.destination); o.start(t0); o.stop(t0+d);
+    }catch(e){}
+  }
+  var sfx = {
+    tap:function(){ beep(700,.08,'sine',.09); },
+    miss:function(){ beep(160,.2,'sawtooth',.05); },
+    alarm:function(){ beep(520,.15,'square',.04); beep(420,.15,'square',.04,.18); },
+    good:function(){ beep(523,.12,'triangle',.1); beep(659,.12,'triangle',.1,.12); beep(784,.2,'triangle',.1,.24); },
+    bad:function(){ beep(300,.18,'sawtooth',.06); beep(200,.3,'sawtooth',.06,.18); },
+    win:function(){ [523,659,784,1047].forEach(function(f,i){ beep(f,.18,'triangle',.1,i*.13); }); }
+  };
+  muted = store('jamt_mute') === '1';
 
   /* ---------- Stars ---------- */
   (function(){
-    var s = $('stars'), html = '';
-    for(var i=0;i<70;i++){
+    var h = '';
+    for(var i=0;i<60;i++){
       var sz = (Math.random()*2.5+1).toFixed(1);
-      html += '<i style="left:'+(Math.random()*100).toFixed(1)+'%;top:'+(Math.random()*100).toFixed(1)+
-              '%;width:'+sz+'px;height:'+sz+'px;animation-delay:'+(Math.random()*3).toFixed(1)+'s"></i>';
+      h += '<i style="left:'+(Math.random()*100).toFixed(1)+'%;top:'+(Math.random()*100).toFixed(1)+'%;width:'+sz+'px;height:'+sz+'px;animation-delay:'+(Math.random()*3).toFixed(1)+'s"></i>';
     }
-    s.innerHTML = html;
+    $('stars').innerHTML = h;
   })();
 
   /* ---------- Meters ---------- */
+  function stateOf(v){ return v < 50 ? 'low' : v < 60 ? 'warn' : ''; }
+  function flagOf(v){ return v < 50 ? '⚠ LOW' : v < 60 ? '👀 WATCH' : ''; }
+  var shown = {o:0,p:0,r:0};
   function meterHTML(k, v){
     return '<div class="meter" data-k="'+k+'" id="m-'+k+'">'+
       '<div class="m-top"><span aria-hidden="true">'+RES[k].icon+'</span><span class="m-name">'+RES[k].name+'</span>'+
@@ -362,10 +417,6 @@ button{font:inherit; color:inherit; cursor:pointer}
       '<div class="bar" role="progressbar" aria-label="'+RES[k].name+' (simulated)" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+v+'"><div class="fill" style="width:'+v+'%"></div></div>'+
       '<div class="m-flag"></div><span class="delta"></span></div>';
   }
-  function stateOf(v){ return v < 50 ? 'low' : v < 60 ? 'warn' : ''; }
-  function flagOf(v){ return v < 50 ? '⚠ LOW' : v < 60 ? '👀 WATCH' : ''; }
-
-  var shown = {o:0,p:0,r:0};
   function setMeter(k, v, delta, intended){
     var m = $('m-'+k); if(!m) return;
     m.querySelector('.fill').style.width = v+'%';
@@ -376,7 +427,7 @@ button{font:inherit; color:inherit; cursor:pointer}
     shown[k] = v;
     function tick(t){
       if(t0===null) t0 = t;
-      var p = Math.min(1,(t-t0)/700);
+      var p = Math.min(1,(t-t0)/600);
       b.textContent = Math.round(from + (v-from)*p);
       if(p<1) requestAnimationFrame(tick);
     }
@@ -399,8 +450,6 @@ button{font:inherit; color:inherit; cursor:pointer}
     var h=''; for(var i=0;i<3;i++) h += '<i class="'+(i<step?'done':i===step?'now':'')+'"></i>';
     $('dots').innerHTML = h;
   }
-
-  /* ---------- Helpers ---------- */
   function chips(fx){
     var h='';
     ['o','p','r'].forEach(function(k){
@@ -410,40 +459,128 @@ button{font:inherit; color:inherit; cursor:pointer}
   }
   function show(id){
     ['welcome','game','results'].forEach(function(s){ $(s).hidden = (s!==id); });
+    $('nasa').hidden = (id==='game');
     window.scrollTo(0,0);
   }
+  function say(text){
+    return '<div class="say"><svg viewBox="0 0 200 240" aria-hidden="true"><use href="#astro"/></svg><div class="bubble">'+text+'</div></div>';
+  }
 
-  /* ---------- Flow ---------- */
+  /* ---------- Mini-games ---------- */
+  function arenaHTML(type){
+    var cfg = MINI[type], bg = '', inner = '';
+    if(type==='leaks'){
+      bg = '<svg class="bg" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><g stroke="#3447b5" stroke-width="3.2" fill="none" stroke-linecap="round"><path d="M0 18H100M0 46H100M26 18V46M74 18V46"/></g><g stroke="#5b73f0" stroke-width="1" fill="none" opacity=".6"><path d="M0 18H100M0 46H100M26 18V46M74 18V46"/></g></svg>';
+    } else if(type==='storm'){
+      bg = '<div class="sun"></div><div class="shield"></div><svg class="bg" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="64" rx="70" ry="12" fill="#c9cde0"/></svg>'+
+           '<svg style="position:absolute;left:50%;bottom:20px;width:110px;margin-left:-55px;z-index:1" viewBox="0 0 110 50" aria-hidden="true"><path d="M10 50a45 45 0 0 1 90 0z" fill="#e9eefc" stroke="#9fb0e6" stroke-width="3"/><path d="M28 50a27 27 0 0 1 54 0z" fill="#6db9ff" opacity=".7"/></svg>';
+    } else {
+      bg = '<svg class="bg" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="66" rx="70" ry="12" fill="#c9cde0"/><g fill="#1f3fbf" stroke="#9fb0e6" stroke-width=".6"><rect x="6" y="46" width="16" height="7" rx="1"/><rect x="78" y="46" width="16" height="7" rx="1"/></g></svg>'+
+           '<div class="chargeWrap"><div class="battery" aria-label="Battery"><i id="gauge"></i></div><button class="chargeBtn" id="chargeBtn" aria-label="Charge">⚡</button></div>';
+    }
+    return '<div class="arena '+type+'">'+bg+'<div class="layer" id="layer"></div>'+
+      '<div class="hudline"><span class="score" id="score">'+cfg.label+' 0/'+cfg.max+'</span><div class="timer"><i id="tbar"></i></div></div>'+
+      '<div class="overlay" id="overlay"><div class="big">'+cfg.ico+' '+cfg.how+'</div><button class="btn" id="goBtn">GO!</button></div></div>'+
+      '<div class="skipRow"><button class="link" id="skipBtn">Skip ➜</button></div>';
+  }
+
+  function runMini(type, host, done){
+    var cfg = MINI[type], score = 0, over = false, resolved = 0;
+    host.innerHTML = arenaHTML(type);
+    var arena = host.querySelector('.arena'), layer = $('layer'), scoreEl = $('score');
+    function upd(){ scoreEl.textContent = cfg.label+' '+score+'/'+cfg.max; }
+    function finish(){ if(over) return; over = true; clearAll(); done(score); }
+    function remove(el, ms){ T(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, ms); }
+
+    var engines = {
+      leaks:function(){
+        var slots = shuffle([[14,28],[42,22],[74,28],[16,70],[50,66],[84,70],[34,44],[66,44]]).slice(0,5);
+        slots.forEach(function(s,i){
+          T(function(){
+            if(over) return;
+            var b = document.createElement('button'); b.className='leak'; b.textContent='💨'; b.setAttribute('aria-label','Seal leak');
+            b.style.left = s[0]+'%'; b.style.top = s[1]+'%';
+            function settle(){ resolved++; if(resolved===cfg.max) T(finish, 450); }
+            b.onclick = function(){ if(b.dataset.d) return; b.dataset.d=1; score++; upd(); sfx.tap(); b.className='leak sealed'; b.textContent='✔'; remove(b,350); settle(); };
+            layer.appendChild(b);
+            T(function(){ if(b.dataset.d) return; b.dataset.d=1; b.className='leak missed'; sfx.miss(); remove(b,300); settle(); }, 1500);
+          }, 300 + i*1700);
+        });
+      },
+      storm:function(){
+        var h = arena.clientHeight - 20, fall = 2400;
+        for(var i=0;i<cfg.max;i++){
+          (function(i){
+            T(function(){
+              if(over) return;
+              var p = document.createElement('button'); p.className='particle'; p.setAttribute('aria-label','Block particle');
+              p.style.left = (10+Math.random()*80)+'%'; p.style.setProperty('--d', fall+'ms'); p.style.setProperty('--h', h+'px');
+              function settle(){ resolved++; if(resolved===cfg.max) T(finish, 450); }
+              p.onclick = function(){ if(p.dataset.d) return; p.dataset.d=1; score++; upd(); sfx.tap(); remove(p,0); p.style.display='none'; settle(); };
+              layer.appendChild(p);
+              T(function(){ if(p.dataset.d) return; p.dataset.d=1; sfx.miss(); arena.classList.remove('hit'); void arena.offsetWidth; arena.classList.add('hit'); remove(p,0); p.style.display='none'; settle(); }, fall-100);
+            }, 300 + i*850);
+          })(i);
+        }
+      },
+      charge:function(){
+        var btn = $('chargeBtn'), gauge = $('gauge');
+        btn.onclick = function(){
+          if(over) return;
+          score = Math.min(cfg.max, score+1); upd();
+          gauge.style.width = (score/cfg.max*100)+'%'; sfx.tap();
+          if(score>=cfg.max) T(finish, 250);
+        };
+        btn.focus({preventScroll:true});
+      }
+    };
+
+    $('goBtn').onclick = function(){
+      $('overlay').hidden = true; sfx.alarm();
+      var tb = $('tbar'); void tb.offsetWidth;
+      tb.style.transition = 'width '+cfg.dur+'ms linear'; tb.style.width = '0';
+      engines[type]();
+      T(finish, cfg.dur + 800);
+    };
+    $('skipBtn').onclick = finish;
+    $('goBtn').focus({preventScroll:true});
+  }
+
+  /* ---------- Game flow ---------- */
   function startGame(){
+    clearAll();
     res = {o:START.o, p:START.p, r:START.r};
     step = 0; choices = [];
-    show('game');
-    drawMeters();
-    showChallenge();
+    show('game'); drawMeters(); showChallenge();
   }
 
   function showChallenge(){
-    locked = false;
+    locked = false; clearAll();
     var c = CHALLENGES[step];
     drawProgress();
-    var html = '<div class="card"><div class="c-head"><span class="c-icon" aria-hidden="true">'+c.icon+'</span><div><div class="c-kicker">'+c.kicker+'</div><h2 class="c-title">'+c.title+'</h2></div></div>';
-    if(c.event) html += '<div class="alert" role="alert">'+c.event.msg+'</div>';
-    html += '<p class="c-text">'+c.text+'</p><p class="c-kicker" style="margin-bottom:8px">What will you do?</p><div class="choices">';
-    c.options.forEach(function(o,i){
-      html += '<button class="choice" data-i="'+i+'"><span class="opt-tag">OPTION '+(i?'B':'A')+'</span><span class="opt-label">'+o.label+'</span><span class="chips">'+chips(o.fx)+'</span></button>';
-    });
-    html += '</div></div>';
-    $('stage').innerHTML = html;
+    $('stage').innerHTML = say('<b>'+c.title+'</b><br>'+c.say)+'<div id="miniHost"></div>';
+    window.scrollTo(0,0);
+    runMini(c.mini, $('miniHost'), function(score){ afterMini(c, score); });
+  }
 
-    // Apply the alert event (state first, animation a moment later so players see the old value)
-    if(c.event){
-      var e = c.event, before = res[e.k];
-      res[e.k] = clamp(before + e.d);
-      var actual = res[e.k] - before;
-      setTimeout(function(){ setMeter(e.k, res[e.k], actual, e.d); }, 450);
-    }
+  function afterMini(c, score){
+    var ev = c.eventFn(score);
+    var before = res[ev.k]; res[ev.k] = clamp(before + ev.d);
+    var actual = res[ev.k] - before;
+    setMeter(ev.k, res[ev.k], actual, ev.d);
+    if(ev.d === 0) sfx.good(); else sfx.bad();
+
+    var html = '<div class="mini-res"><span>'+ev.text+'</span>'+
+      (ev.d===0 ? '<span class="chip up">No damage! 🎉</span>' : '<span class="chip down">'+ev.d+' '+RES[ev.k].name+'</span>')+'</div>'+
+      say(c.ask)+'<div class="choices">';
+    c.options.forEach(function(o,i){
+      html += '<button class="choice" data-i="'+i+'"><span class="opt-ico" aria-hidden="true">'+o.ico+'</span><span class="opt-label">'+o.label+'</span><span class="chips">'+chips(o.fx)+'</span></button>';
+    });
+    html += '</div>';
+    $('stage').innerHTML = html;
     var btns = $('stage').querySelectorAll('.choice');
     for(var i=0;i<btns.length;i++) btns[i].addEventListener('click', onChoose);
+    $('stage').scrollIntoView({behavior:'smooth', block:'start'});
   }
 
   function onChoose(ev){
@@ -453,34 +590,28 @@ button{font:inherit; color:inherit; cursor:pointer}
     var c = CHALLENGES[step], o = c.options[idx];
     choices.push(idx);
 
-    // Update resources immediately
-    var actual = {};
     ['o','p','r'].forEach(function(k){
       if(o.fx[k]){
-        var before = res[k]; res[k] = clamp(before + o.fx[k]); actual[k] = res[k]-before;
-        setMeter(k, res[k], actual[k], o.fx[k]);
+        var before = res[k]; res[k] = clamp(before + o.fx[k]);
+        setMeter(k, res[k], res[k]-before, o.fx[k]);
       }
     });
+    (o.tag==='bad' ? sfx.bad : sfx.good)();
 
-    // Lock buttons
     var all = $('stage').querySelectorAll('.choice');
-    for(var i=0;i<all.length;i++){ all[i].disabled = true; }
+    for(var i=0;i<all.length;i++) all[i].disabled = true;
     btn.classList.add('picked');
 
-    // Dynamic warning
-    var low = ['o','p','r'].filter(function(k){ return res[k] < 60; })
-      .sort(function(a,b){ return res[a]-res[b]; });
+    var low = ['o','p','r'].filter(function(k){ return res[k] < 60; }).sort(function(a,b){ return res[a]-res[b]; });
     var warn = '';
     if(low.length){
       var k = low[0];
-      warn = '<div class="warnline">'+(res[k]<50?'🚨 Careful, Commander! ':'👀 Keep an eye on it: ')+RES[k].name+' is at '+res[k]+'%. Try to get every meter to 60 or more.</div>';
+      warn = '<div class="warnline">'+(res[k]<50?'🚨 ':'👀 ')+RES[k].name+' is at '+res[k]+'%. Aim for 60+.</div>';
     }
-
     var last = step === CHALLENGES.length-1;
-    var fb = '<div class="card fb"><span class="fb-tag '+o.tag+'">'+o.tagText+'</span><h3>What happened?</h3><p>'+o.result+'</p>'+
-      '<div class="chips">'+chips(o.fx)+'</div>'+warn+
-      '<div class="fact"><span class="fi" aria-hidden="true">🔭</span><div><b>SPACE SCIENCE FACT</b>'+o.fact+'</div></div>'+
-      '<button class="btn" id="nextBtn">'+(last?'SEE MISSION RESULTS 🏁':'CONTINUE ➜')+'</button></div>';
+    var fb = '<div class="card fb"><span class="fb-tag '+o.tag+'">'+o.tagText+'</span><p class="story">'+o.story+'</p>'+warn+
+      '<div class="fact"><span class="fi" aria-hidden="true">🔭</span><div><b>SPACE FACT</b>'+o.fact+'</div></div>'+
+      '<button class="btn" id="nextBtn">'+(last?'SEE RESULTS 🏁':'CONTINUE ➜')+'</button></div>';
     $('stage').insertAdjacentHTML('beforeend', fb);
     var nb = $('nextBtn');
     nb.addEventListener('click', function(){
@@ -491,48 +622,76 @@ button{font:inherit; color:inherit; cursor:pointer}
     nb.scrollIntoView({behavior:'smooth', block:'nearest'});
   }
 
-  function rate(){
+  function stars(){
     var min = Math.min(res.o, res.p, res.r);
-    return min >= 60 ? 'success' : min >= 50 ? 'partial' : 'failure';
+    return min >= 60 ? 3 : min >= 50 ? 2 : 1;
+  }
+
+  function confetti(){
+    var e = ['🎉','⭐','✨','🚀','🌟'];
+    for(var i=0;i<28;i++){
+      var s = document.createElement('span'); s.className = 'confetti'; s.textContent = e[i%e.length];
+      s.style.left = Math.random()*100+'vw'; s.style.animationDelay = (Math.random()*.8)+'s';
+      document.body.appendChild(s);
+      (function(s){ setTimeout(function(){ s.remove(); }, 3600); })(s);
+    }
   }
 
   function showResults(){
-    var rating = rate();
-    var info = {
-      success:{badge:'🏆', title:'MISSION SUCCESS!', text:'Fantastic work, Commander! Oxygen, power and radiation protection all stayed in the safe zone. You balanced every trade-off and your crew is safe and happy.'},
-      partial:{badge:'⭐', title:'PARTIAL SUCCESS', text:'Your crew is safe, but at least one system ended in the "watch" zone (below 60). You made good choices, but every decision costs something. Can you find a better balance next time?'},
-      failure:{badge:'🛠️', title:'MISSION NEEDS A REPEAT', text:'One system dropped too low, so the crew must return to Earth early. Don\'t worry — even real astronauts learn from practice missions. Try a different plan!'}
+    clearAll();
+    var n = stars();
+    var rating = n===3 ? 'success' : n===2 ? 'partial' : 'failure';
+    var title = {success:'MISSION SUCCESS!', partial:'PARTIAL SUCCESS', failure:'MISSION FAILED'}[rating];
+    var line = {
+      success:'Great job, Commander! Your crew is safe and happy.',
+      partial:'Your crew is safe, but a system is in the watch zone. Try for 3 stars!',
+      failure:'A system ran too low. Even real astronauts practise. Try again!'
     }[rating];
-
     var lowest = ['o','p','r'].sort(function(a,b){ return res[a]-res[b]; })[0];
-    var lines = '';
-    choices.forEach(function(ci,i){ lines += '<li><b>Challenge '+(i+1)+':</b> '+CHALLENGES[i].options[ci].summary+'</li>'; });
-    var finalMeters = '';
+
+    var picks = '';
+    choices.forEach(function(ci,i){ picks += '<li>'+CHALLENGES[i].options[ci].ico+' '+CHALLENGES[i].options[ci].short+'</li>'; });
+    var fm = '';
     ['o','p','r'].forEach(function(k){
       var st = stateOf(res[k]);
-      finalMeters += '<div class="meter '+st+'" data-k="'+k+'"><div class="m-top"><span aria-hidden="true">'+RES[k].icon+'</span><span class="m-name">'+RES[k].name+'</span></div>'+
-        '<div class="m-val"><b>'+res[k]+'</b><small>%</small></div><div class="bar"><div class="fill" style="width:0"></div></div><div class="m-flag">'+(flagOf(res[k])||'✔ SAFE')+'</div></div>';
+      fm += '<div class="meter '+st+'" data-k="'+k+'"><div class="m-top"><span aria-hidden="true">'+RES[k].icon+'</span><span class="m-name">'+RES[k].name+'</span><span class="m-val"><b>'+res[k]+'</b><small>%</small></span></div>'+
+        '<div class="bar"><div class="fill" style="width:0"></div></div><div class="m-flag">'+(flagOf(res[k])||'✔ SAFE')+'</div></div>';
     });
+    var starHTML = ''; for(var i=1;i<=3;i++) starHTML += '<span class="'+(i<=n?'':'off')+'">⭐</span>';
 
     $('results').innerHTML =
-      '<div class="card"><div class="res-head"><div class="res-badge" aria-hidden="true">'+info.badge+'</div>'+
-      '<h2 class="res-title '+rating+'">'+info.title+'</h2></div>'+
-      '<div class="final" id="finalMeters">'+finalMeters+'</div>'+
-      '<p class="sim" style="margin:0 0 12px">⚠ Simulated game values — not real NASA measurements.</p>'+
-      '<div class="eval"><h3>Your commander report</h3><p>'+info.text+'</p><ul>'+lines+'</ul></div>'+
-      '<div class="learn"><h3>🌟 What you learned</h3><p>'+LESSONS[lowest]+'</p></div>'+
-      '<div class="res-actions"><button class="btn" id="againBtn">PLAY AGAIN 🔄</button></div></div>';
+      '<div class="card"><div class="res-head"><div class="stars" aria-label="'+n+' out of 3 stars">'+starHTML+'</div>'+
+      '<h2 class="res-title '+rating+'">'+title+'</h2><p>'+line+'</p></div>'+
+      '<div class="final" id="finalMeters">'+fm+'</div>'+
+      '<p class="sim" style="margin:0">Simulated game values, not real NASA measurements.</p>'+
+      '<ul class="picks">'+picks+'</ul>'+
+      '<div class="learn"><b>🌟 YOU LEARNED</b>'+LESSONS[lowest]+'</div>'+
+      '<div class="res-actions"><button class="btn" id="againBtn">PLAY AGAIN 🔄</button></div>'+
+      '<details class="grown"><summary>👨‍👩‍👧 For grown-ups</summary><ul>'+
+      '<li><b>Life support:</b> the ISS recycles water and air, and splits water into oxygen with electricity.</li>'+
+      '<li><b>Radiation:</b> beyond Earth\'s magnetic field, solar storms are a real risk. NASA forecasts space weather and plans shelters.</li>'+
+      '<li><b>Power:</b> a Moon night lasts about 14 Earth days, so bases need batteries or other sources. NASA is also studying small nuclear power systems.</li>'+
+      '<li><b>Trade-offs:</b> every fix costs something. Real mission teams balance air, power and safety the same way.</li>'+
+      '</ul></details></div>';
     show('results');
-    // animate final bars
     requestAnimationFrame(function(){ requestAnimationFrame(function(){
       var f = $('finalMeters').querySelectorAll('.meter');
       ['o','p','r'].forEach(function(k,i){ f[i].querySelector('.fill').style.width = res[k]+'%'; });
     });});
+    if(n===3){ sfx.win(); confetti(); } else if(n===2){ sfx.good(); } else { sfx.bad(); }
+    var best = +store('jamt_best') || 0;
+    if(n > best) store('jamt_best', String(n));
     $('againBtn').addEventListener('click', startGame);
     $('againBtn').focus({preventScroll:true});
   }
 
-  $('startBtn').addEventListener('click', startGame);
+  /* ---------- Wiring ---------- */
+  function drawSound(){ $('sndBtn').textContent = muted ? '🔇' : '🔊'; }
+  $('sndBtn').addEventListener('click', function(){ muted = !muted; store('jamt_mute', muted?'1':'0'); drawSound(); if(!muted) sfx.tap(); });
+  drawSound();
+  var best = +store('jamt_best');
+  if(best) $('best').textContent = 'Your best: ' + new Array(best+1).join('⭐');
+  $('startBtn').addEventListener('click', function(){ sfx.tap(); startGame(); });
 })();
 </script>
 </body>
