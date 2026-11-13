@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Junior Astronaut Mission Trainer</title>
+<style>
+:root{
+  --bg:#070d27; --bg2:#101a4a; --card:#15215a; --card2:#1c2b73; --line:#33449a;
+  --text:#f3f6ff; --muted:#b9c4f2;
+  --cyan:#4fe3ff; --yellow:#ffd24d; --green:#62f0a0; --orange:#ff9a4d; --red:#ff5d73; --pink:#ff7ab8;
+  --radius:22px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  min-height:100vh; color:var(--text);
+  font-family:"Trebuchet MS","Segoe UI",system-ui,-apple-system,sans-serif; font-size:18px; line-height:1.45;
+  background:radial-gradient(ellipse at 50% -10%, #1c2a7a 0%, var(--bg2) 35%, var(--bg) 80%) fixed;
+  overflow-x:hidden;
+}
+#stars{position:fixed; inset:0; pointer-events:none; z-index:0}
+#stars i{position:absolute; width:3px; height:3px; border-radius:50%; background:#fff; opacity:.7; animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{50%{opacity:.15; transform:scale(.6)}}
+main{position:relative; z-index:1; max-width:880px; margin:0 auto; padding:16px 16px 40px}
+[hidden]{display:none!important}
+h1,h2,h3,p{margin:0}
+a{color:var(--cyan)}
+button{font:inherit; color:inherit; cursor:pointer}
+:focus-visible{outline:4px solid var(--yellow); outline-offset:3px}
+
+/* Buttons */
+.btn{
+  display:inline-block; border:0; border-radius:999px; padding:16px 34px; min-height:58px;
+  font-size:1.2rem; font-weight:800; letter-spacing:.04em; color:#1a1240;
+  background:linear-gradient(180deg,#ffe27a,#ffb832); box-shadow:0 6px 0 #c98512, 0 12px 24px rgba(0,0,0,.35);
+  transition:transform .12s, box-shadow .12s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(4px); box-shadow:0 2px 0 #c98512}
+
+/* Welcome */
+.welcome{text-align:center; padding-top:8px}
+.welcome h1{font-size:clamp(1.9rem,6vw,3rem); line-height:1.1; margin:6px 0 10px; text-shadow:0 3px 0 #0b1233}
+.welcome h1 span{color:var(--yellow)}
+.scene{width:min(100%,460px); margin:0 auto; display:block}
+.intro{max-width:560px; margin:0 auto 18px; color:var(--muted); font-size:1.15rem}
+.how{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:0 0 22px; padding:0; list-style:none}
+.how li{background:var(--card); border:2px solid var(--line); border-radius:16px; padding:8px 14px; font-size:.95rem}
+.how b{color:var(--yellow)}
+.float{animation:bob 3.5s ease-in-out infinite; transform-origin:center}
+@keyframes bob{50%{transform:translateY(-8px) rotate(2deg)}}
+.wave{animation:wave 1.2s ease-in-out infinite; transform-origin:150px 100px; transform-box:view-box}
+@keyframes wave{50%{transform:rotate(-14deg)}}
+
+/* Dashboard */
+.dash{background:linear-gradient(180deg,var(--card2),var(--card)); border:2px solid var(--line); border-radius:var(--radius); padding:14px 16px 16px; box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.dash-top{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:10px}
+.dash-top .badge{width:46px; height:54px; flex:none}
+.dash-title{font-weight:800; letter-spacing:.06em; font-size:.95rem; color:var(--cyan); text-transform:uppercase}
+.dash-sub{font-size:.85rem; color:var(--muted)}
+.progress{margin-left:auto; text-align:right}
+.progress b{display:block; font-size:1.05rem}
+.dots{display:flex; gap:6px; justify-content:flex-end; margin-top:4px}
+.dots i{width:26px; height:10px; border-radius:6px; background:#2a3a8c}
+.dots i.done{background:var(--green)}
+.dots i.now{background:var(--yellow)}
+.meters{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+.meter{position:relative; background:#0d1642; border-radius:16px; padding:10px 12px 12px; border:2px solid #26358a}
+.m-top{display:flex; align-items:baseline; gap:6px; flex-wrap:wrap}
+.m-name{font-weight:800; font-size:.92rem}
+.m-val{margin-left:auto; font-size:1.5rem; font-weight:900}
+.m-val small{font-size:.85rem; font-weight:700; opacity:.8}
+.bar{height:16px; background:#1d2a74; border-radius:10px; overflow:hidden; margin:6px 0 4px}
+.fill{height:100%; width:100%; border-radius:10px; background:var(--c); transition:width .8s cubic-bezier(.3,.8,.3,1), background .4s}
+.m-flag{font-size:.78rem; font-weight:800; min-height:1.1em; letter-spacing:.05em}
+.meter[data-k=o]{--c:var(--cyan)}
+.meter[data-k=p]{--c:var(--yellow)}
+.meter[data-k=r]{--c:var(--green)}
+.meter.warn{--c:var(--orange)} .meter.warn .m-flag{color:var(--orange)}
+.meter.low{--c:var(--red); border-color:var(--red)} .meter.low .m-flag{color:var(--red)}
+.meter.bump{animation:bump .5s}
+@keyframes bump{30%{transform:scale(1.05)}}
+.delta{position:absolute; right:8px; bottom:6px; font-weight:900; font-size:1.2rem; padding:2px 10px; border-radius:12px; opacity:0; pointer-events:none}
+.delta.up{background:var(--green); color:#06361b}
+.delta.down{background:var(--red); color:#3a0610}
+.delta.show{animation:pop 1.8s ease-out forwards}
+@keyframes pop{0%{opacity:0; transform:translateY(12px) scale(.6)}15%{opacity:1; transform:translateY(0) scale(1.1)}80%{opacity:1}100%{opacity:0; transform:translateY(-14px)}}
+.sim{font-size:.8rem; color:var(--muted); margin-top:10px; text-align:center}
+
+/* Challenge */
+.card{background:var(--card); border:2px solid var(--line); border-radius:var(--radius); padding:20px; margin-top:16px; box-shadow:0 10px 30px rgba(0,0,0,.3); animation:rise .4s ease-out}
+@keyframes rise{from{opacity:0; transform:translateY(14px)}}
+.c-head{display:flex; gap:12px; align-items:center; margin-bottom:8px}
+.c-icon{font-size:2.2rem}
+.c-kicker{font-size:.8rem; letter-spacing:.1em; color:var(--cyan); font-weight:800; text-transform:uppercase}
+.c-title{font-size:1.6rem; font-weight:900; line-height:1.1}
+.alert{margin:10px 0; padding:10px 14px; border-radius:14px; background:rgba(255,93,115,.15); border:2px dashed var(--red); font-weight:700; font-size:.98rem; animation:shake .5s}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.c-text{font-size:1.2rem; margin:8px 0 14px}
+.choices{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.choice{
+  text-align:left; border-radius:20px; padding:16px; min-height:128px; border:3px solid #4a5fd0;
+  background:linear-gradient(180deg,#26378f,#1b2a76); display:flex; flex-direction:column; gap:10px;
+  transition:transform .15s, border-color .15s, opacity .3s; box-shadow:0 6px 0 #101a55;
+}
+.choice:hover:not(:disabled){transform:translateY(-3px); border-color:var(--yellow)}
+.choice:disabled{cursor:default}
+.choice.picked{border-color:var(--green); transform:none}
+.choice:disabled:not(.picked){opacity:.45}
+.opt-tag{font-weight:900; color:var(--yellow); font-size:.85rem; letter-spacing:.1em}
+.opt-label{font-size:1.15rem; font-weight:800; line-height:1.25}
+.chips{display:flex; gap:6px; flex-wrap:wrap; margin-top:auto}
+.chip{font-size:.85rem; font-weight:800; padding:3px 10px; border-radius:999px; white-space:nowrap}
+.chip.up{background:rgba(98,240,160,.18); color:var(--green); border:1.5px solid var(--green)}
+.chip.down{background:rgba(255,93,115,.18); color:#ff97a6; border:1.5px solid var(--red)}
+
+/* Feedback */
+.fb-tag{display:inline-block; font-weight:900; font-size:.85rem; padding:4px 12px; border-radius:999px; letter-spacing:.04em}
+.fb-tag.good{background:var(--green); color:#06361b}
+.fb-tag.mixed{background:var(--orange); color:#3b1c00}
+.fb-tag.bad{background:var(--red); color:#3a0610}
+.fb h3{font-size:1.3rem; margin:10px 0 6px}
+.fb .chips{margin:10px 0}
+.warnline{background:rgba(255,154,77,.14); border-left:6px solid var(--orange); padding:8px 12px; border-radius:10px; margin:10px 0; font-weight:700; font-size:1rem}
+.fact{display:flex; gap:12px; background:#0d1642; border:2px solid var(--cyan); border-radius:18px; padding:12px 14px; margin:14px 0 18px}
+.fact .fi{font-size:1.8rem}
+.fact b{display:block; color:var(--cyan); font-size:.8rem; letter-spacing:.1em}
+.fb .btn{display:block; margin:0 auto}
+
+/* Results */
+.res-head{text-align:center}
+.res-badge{font-size:3.4rem; line-height:1}
+.res-title{font-size:clamp(1.8rem,6vw,2.6rem); font-weight:900; margin:6px 0}
+.res-title.success{color:var(--green)} .res-title.partial{color:var(--yellow)} .res-title.failure{color:var(--red)}
+.final{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:16px 0}
+.final .meter{text-align:center}
+.final .m-top{justify-content:center}
+.final .m-val{margin:0}
+.eval h3,.learn h3{font-size:1.1rem; color:var(--cyan); letter-spacing:.06em; text-transform:uppercase; margin-bottom:6px}
+.eval ul{margin:8px 0 0; padding-left:22px}
+.eval li{margin:4px 0}
+.learn{margin-top:14px; background:#0d1642; border:2px solid var(--yellow); border-radius:18px; padding:12px 16px}
+.res-actions{text-align:center; margin-top:20px}
+
+/* NASA */
+.nasa{margin-top:22px; background:rgba(13,22,66,.8); border:2px solid var(--line); border-radius:var(--radius); padding:14px 18px; font-size:.95rem}
+.nasa h3{font-size:1rem; letter-spacing:.08em; color:var(--cyan); margin-bottom:6px}
+.nasa ul{margin:6px 0 0; padding-left:20px}
+.nasa li{margin:4px 0}
+.nasa .note{color:var(--muted); font-size:.82rem; margin-top:8px}
+
+@media (max-width:620px){
+  body{font-size:16px}
+  main{padding:12px 12px 32px}
+  .choices{grid-template-columns:1fr}
+  .choice{min-height:0}
+  .meters,.final{gap:8px}
+  .meter{padding:8px 8px 10px}
+  .m-name{font-size:.78rem}
+  .m-val{font-size:1.15rem; margin-left:0; width:100%}
+  .progress{margin-left:0; text-align:left; width:100%}
+  .dots{justify-content:flex-start}
+  .btn{width:100%}
+  .card{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important; transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Reusable cartoon astronaut -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="visor" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b5bff"/><stop offset="1" stop-color="#0b1445"/></linearGradient>
+    <radialGradient id="moonG" cx=".35" cy=".25" r=".9"><stop offset="0" stop-color="#f4f4fb"/><stop offset="1" stop-color="#b9bfd6"/></radialGradient>
+    <radialGradient id="earthG" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#7fd0ff"/><stop offset="1" stop-color="#1b5fd1"/></radialGradient>
+    <symbol id="astro" viewBox="0 0 200 240">
+      <rect x="48" y="84" width="104" height="92" rx="20" fill="#c9d3ea"/>
+      <rect x="70" y="166" width="26" height="52" rx="12" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="104" y="166" width="26" height="52" rx="12" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="66" y="208" width="34" height="22" rx="10" fill="#ff7a45"/>
+      <rect x="100" y="208" width="34" height="22" rx="10" fill="#ff7a45"/>
+      <rect x="62" y="88" width="76" height="90" rx="28" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="80" y="118" width="40" height="28" rx="7" fill="#1b2a5a"/>
+      <circle cx="90" cy="132" r="5" fill="#ff5d73"/><circle cx="101" cy="132" r="5" fill="#ffd24d"/><circle cx="112" cy="132" r="5" fill="#62f0a0"/>
+      <g><rect x="30" y="98" width="30" height="62" rx="15" fill="#fff" stroke="#c9d3ea" stroke-width="3" transform="rotate(14 45 100)"/><circle cx="36" cy="160" r="11" fill="#ff7a45"/></g>
+      <g class="wave"><rect x="138" y="62" width="30" height="64" rx="15" fill="#fff" stroke="#c9d3ea" stroke-width="3" transform="rotate(-32 152 100)"/><circle cx="173" cy="62" r="11" fill="#ff7a45"/></g>
+      <circle cx="100" cy="58" r="48" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="62" y="32" width="76" height="52" rx="24" fill="url(#visor)"/>
+      <ellipse cx="78" cy="44" rx="9" ry="5" fill="#fff" opacity=".55" transform="rotate(-25 78 44)"/>
+      <circle cx="88" cy="57" r="5" fill="#fff"/><circle cx="112" cy="57" r="5" fill="#fff"/>
+      <circle cx="89" cy="58" r="2.2" fill="#0b1445"/><circle cx="113" cy="58" r="2.2" fill="#0b1445"/>
+      <path d="M90 69 Q100 78 110 69" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <rect x="86" y="86" width="28" height="8" rx="4" fill="#ff5d73"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div id="stars" aria-hidden="true"></div>
+
+<main>
+
+<!-- 1. WELCOME -->
+<section id="welcome" class="welcome">
+  <svg class="scene" viewBox="0 0 400 270" role="img" aria-label="A friendly astronaut waving above the Moon next to a lunar base">
+    <circle cx="330" cy="50" r="30" fill="url(#earthG)"/>
+    <path d="M318 40 q10 -8 20 2 q-4 8 -12 6 q-6 6 -8 -8z" fill="#5fd18a"/>
+    <path d="M335 60 q8 -2 10 6 q-6 6 -12 2z" fill="#5fd18a"/>
+    <circle cx="200" cy="470" r="260" fill="url(#moonG)"/>
+    <ellipse cx="90" cy="236" rx="26" ry="7" fill="#aab1cc"/><ellipse cx="330" cy="244" rx="30" ry="8" fill="#aab1cc"/>
+    <ellipse cx="250" cy="262" rx="18" ry="5" fill="#aab1cc"/><ellipse cx="40" cy="262" rx="14" ry="4" fill="#aab1cc"/>
+    <!-- base -->
+    <g>
+      <path d="M270 218 a42 42 0 0 1 84 0z" fill="#e9eefc" stroke="#9fb0e6" stroke-width="3"/>
+      <path d="M284 218 a28 28 0 0 1 56 0z" fill="#6db9ff" opacity=".7"/>
+      <rect x="262" y="216" width="100" height="10" rx="5" fill="#9fb0e6"/>
+      <line x1="312" y1="176" x2="312" y2="152" stroke="#9fb0e6" stroke-width="3"/><circle cx="312" cy="150" r="5" fill="#ff5d73"/>
+      <line x1="378" y1="226" x2="378" y2="204" stroke="#9fb0e6" stroke-width="3"/>
+      <rect x="360" y="188" width="36" height="18" rx="3" fill="#2b4bd6" stroke="#9fb0e6" stroke-width="2"/>
+      <path d="M372 188v18M384 188v18" stroke="#6f8cff" stroke-width="1.5"/>
+    </g>
+    <g class="float"><use href="#astro" x="105" y="20" width="130" height="156"/></g>
+  </svg>
+  <h1>Junior Astronaut<br><span>Mission Trainer</span></h1>
+  <p class="intro">Your lunar base is facing three unexpected challenges. Can you make the right decisions to protect your crew?</p>
+  <ul class="how">
+    <li><b>1.</b> Read the problem</li>
+    <li><b>2.</b> Pick one of two choices</li>
+    <li><b>3.</b> See what happens &amp; learn!</li>
+  </ul>
+  <button class="btn" id="startBtn">START MISSION 🚀</button>
+</section>
+
+<!-- 2/3/4. GAME -->
+<section id="game" hidden>
+  <div class="dash" aria-label="Mission dashboard">
+    <div class="dash-top">
+      <svg class="badge" viewBox="0 0 200 240" aria-hidden="true"><use href="#astro"/></svg>
+      <div>
+        <div class="dash-title">Mission Control</div>
+        <div class="dash-sub">Goal: keep every meter at 60 or more!</div>
+      </div>
+      <div class="progress"><b id="progressText">Challenge 1 of 3</b><div class="dots" id="dots"></div></div>
+    </div>
+    <div class="meters" id="meters"></div>
+    <p class="sim">⚠ These are simulated game values — not real NASA measurements.</p>
+  </div>
+  <div id="stage" aria-live="polite"></div>
+</section>
+
+<!-- 5. RESULTS -->
+<section id="results" hidden></section>
+
+<aside class="nasa">
+  <h3>🔭 NASA SCIENCE</h3>
+  Want to explore real space science? Visit NASA:
+  <ul>
+    <li><a href="https://www.nasa.gov/artemis/" target="_blank" rel="noopener">NASA Artemis</a> – NASA's missions to return astronauts to the Moon</li>
+    <li><a href="https://kauai.ccmc.gsfc.nasa.gov/DONKI/" target="_blank" rel="noopener">NASA DONKI</a> – the Space Weather Database that tracks solar flares and storms</li>
+  </ul>
+  <p class="note">Game numbers are made up for fun. Real astronauts and mission controllers use many more measurements.</p>
+</aside>
+
+</main>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- Game data ---------- */
+  var RES = {
+    o:{name:'Oxygen', icon:'💨'},
+    p:{name:'Power', icon:'⚡'},
+    r:{name:'Radiation Protection', icon:'🛡️'}
+  };
+  var START = {o:100, p:100, r:70};
+
+  var CHALLENGES = [
+    {
+      kicker:'Challenge 1 · Oxygen Emergency', title:'Oxygen Emergency', icon:'🫁',
+      text:'The oxygen system is running low! Your crew needs enough oxygen to breathe.',
+      event:{k:'o', d:-30, msg:'🚨 A leak was found in the life-support pipes! Oxygen drops by 30.'},
+      options:[
+        { label:'Activate backup oxygen equipment.', fx:{o:15, p:-15}, tag:'mixed',
+          tagText:'✅ It helped… but made a new challenge',
+          result:'The backup oxygen machines hum to life and fresh air flows through the base. But they use LOTS of electricity, so your power store takes a big hit. You will need to be careful with power from now on!',
+          fact:'On the International Space Station, oxygen is made by splitting water (H₂O) into oxygen and hydrogen using electricity. Each astronaut breathes roughly 0.8 kg (almost 2 pounds) of oxygen every day!',
+          summary:'Backup oxygen kept the air fresh, but it cost a lot of power.' },
+        { label:'Turn off non-essential equipment.', fx:{o:5, p:5}, tag:'mixed',
+          tagText:'🙂 A safe choice, but only a small help',
+          result:'Games, extra lights and the hobby lab go quiet. The base uses less energy and the life-support machines have less work to do. That is safe, but oxygen is still lower than you would like.',
+          fact:'Space stations clean and recycle their air all the time. Special filters take out the carbon dioxide (CO₂) that astronauts breathe out, so the air stays safe to breathe.',
+          summary:'Switching off extra equipment saved power, but oxygen only improved a little.' }
+      ]
+    },
+    {
+      kicker:'Challenge 2 · Radiation Alert', title:'Radiation Alert', icon:'☀️',
+      text:'A solar activity warning has been received. Your crew needs protection from space radiation.',
+      event:null,
+      options:[
+        { label:'Move the crew into the protected shelter.', fx:{r:15, p:-10}, tag:'good',
+          tagText:'✅ Smart safety choice',
+          result:'Everyone hurries into the shelter. Its thick walls block much of the dangerous radiation, so the crew is safer. The shelter\'s heaters and air system use some electricity, and research has to wait.',
+          fact:'The Moon has no thick atmosphere or strong magnetic field to block radiation like Earth does. Future lunar bases may use Moon dust and rock to build thick walls that shield astronauts.',
+          summary:'Moving to the shelter protected the crew, and cost some power.' },
+        { label:'Continue outdoor research.', fx:{r:-15, p:5}, tag:'bad',
+          tagText:'⚠ Risky! This made a new problem',
+          result:'The research goes on and you save energy, but the crew is out in the open while the Sun is active. Space radiation can harm the human body, so your protection is now weaker.',
+          fact:'A solar flare is a giant burst of energy from the Sun. Scientists watch the Sun with satellites and record storms in NASA\'s space weather database (DONKI) so astronauts can be warned and take shelter in time.',
+          summary:'Staying outside saved power, but the crew faced more radiation.' }
+      ]
+    },
+    {
+      kicker:'Challenge 3 · Power Shortage', title:'Power Shortage', icon:'🔋',
+      text:'Your lunar base is running low on electricity. You must decide how to manage the remaining energy.',
+      event:{k:'p', d:-40, msg:'🌑 The long lunar night is starting and the solar panels are in shadow! Power drops by 40.'},
+      options:[
+        { label:'Activate backup batteries.', fx:{p:15}, tag:'good',
+          tagText:'✅ Strong power boost',
+          result:'The backup batteries switch on and the lights, heaters and radios stay on. Power is back up! Just remember that the batteries are now used, so there are fewer spares for the next emergency.',
+          fact:'One day on the Moon lasts about 29.5 Earth days, so the night is about two weeks long! Solar panels make no power in the dark, which is why lunar bases need batteries.',
+          summary:'Backup batteries gave a strong power boost.' },
+        { label:'Turn off non-essential systems.', fx:{p:10, o:-5}, tag:'mixed',
+          tagText:'🙂 Helped, with a small cost',
+          result:'The base saves energy by shutting systems down. But one of them was helping the air recycler, so the oxygen level dips a little. Saving power can have side effects!',
+          fact:'NASA plans to explore near the Moon\'s south pole, where some mountain peaks get sunlight almost all the time. That is a great place for solar panels to make power.',
+          summary:'Turning off systems saved power, but oxygen slipped a little.' }
+      ]
+    }
+  ];
+
+  var LESSONS = {
+    o:'Astronauts can\'t breathe without life-support systems. Space bases must make, clean and recycle air all the time, because even a small oxygen problem matters.',
+    p:'A lunar base needs reliable electrical power for air, heat, lights and radios. The Moon has very long nights, so batteries and clever energy planning are vital.',
+    r:'Space has no thick atmosphere to block radiation from the Sun. That is why scientists watch solar activity and astronauts use shelters to stay safe.'
+  };
+
+  /* ---------- State ---------- */
+  var res, step, choices, locked;
+  var $ = function(id){ return document.getElementById(id); };
+  function clamp(v){ return Math.max(0, Math.min(100, v)); }
+
+  /* ---------- Stars ---------- */
+  (function(){
+    var s = $('stars'), html = '';
+    for(var i=0;i<70;i++){
+      var sz = (Math.random()*2.5+1).toFixed(1);
+      html += '<i style="left:'+(Math.random()*100).toFixed(1)+'%;top:'+(Math.random()*100).toFixed(1)+
+              '%;width:'+sz+'px;height:'+sz+'px;animation-delay:'+(Math.random()*3).toFixed(1)+'s"></i>';
+    }
+    s.innerHTML = html;
+  })();
+
+  /* ---------- Meters ---------- */
+  function meterHTML(k, v){
+    return '<div class="meter" data-k="'+k+'" id="m-'+k+'">'+
+      '<div class="m-top"><span aria-hidden="true">'+RES[k].icon+'</span><span class="m-name">'+RES[k].name+'</span>'+
+      '<span class="m-val"><b>'+v+'</b><small>%</small></span></div>'+
+      '<div class="bar" role="progressbar" aria-label="'+RES[k].name+' (simulated)" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+v+'"><div class="fill" style="width:'+v+'%"></div></div>'+
+      '<div class="m-flag"></div><span class="delta"></span></div>';
+  }
+  function stateOf(v){ return v < 50 ? 'low' : v < 60 ? 'warn' : ''; }
+  function flagOf(v){ return v < 50 ? '⚠ LOW' : v < 60 ? '👀 WATCH' : ''; }
+
+  var shown = {o:0,p:0,r:0};
+  function setMeter(k, v, delta, intended){
+    var m = $('m-'+k); if(!m) return;
+    m.querySelector('.fill').style.width = v+'%';
+    m.querySelector('.bar').setAttribute('aria-valuenow', v);
+    m.classList.remove('warn','low'); var st = stateOf(v); if(st) m.classList.add(st);
+    m.querySelector('.m-flag').textContent = flagOf(v);
+    var b = m.querySelector('.m-val b'), from = shown[k], t0 = null;
+    shown[k] = v;
+    function tick(t){
+      if(t0===null) t0 = t;
+      var p = Math.min(1,(t-t0)/700);
+      b.textContent = Math.round(from + (v-from)*p);
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    if(intended){
+      var d = m.querySelector('.delta');
+      d.textContent = delta===0 ? 'MAX' : (delta>0?'+':'')+delta;
+      d.className = 'delta show ' + (intended>0?'up':'down');
+      m.classList.remove('bump'); void m.offsetWidth; m.classList.add('bump');
+    }
+  }
+  function drawMeters(){
+    var h = '';
+    ['o','p','r'].forEach(function(k){ h += meterHTML(k, res[k]); shown[k] = res[k]; });
+    $('meters').innerHTML = h;
+    ['o','p','r'].forEach(function(k){ setMeter(k, res[k]); });
+  }
+  function drawProgress(){
+    $('progressText').textContent = 'Challenge ' + (step+1) + ' of 3';
+    var h=''; for(var i=0;i<3;i++) h += '<i class="'+(i<step?'done':i===step?'now':'')+'"></i>';
+    $('dots').innerHTML = h;
+  }
+
+  /* ---------- Helpers ---------- */
+  function chips(fx){
+    var h='';
+    ['o','p','r'].forEach(function(k){
+      if(fx[k]) h += '<span class="chip '+(fx[k]>0?'up':'down')+'">'+(fx[k]>0?'+':'')+fx[k]+' '+RES[k].name+'</span>';
+    });
+    return h;
+  }
+  function show(id){
+    ['welcome','game','results'].forEach(function(s){ $(s).hidden = (s!==id); });
+    window.scrollTo(0,0);
+  }
+
+  /* ---------- Flow ---------- */
+  function startGame(){
+    res = {o:START.o, p:START.p, r:START.r};
+    step = 0; choices = [];
+    show('game');
+    drawMeters();
+    showChallenge();
+  }
+
+  function showChallenge(){
+    locked = false;
+    var c = CHALLENGES[step];
+    drawProgress();
+    var html = '<div class="card"><div class="c-head"><span class="c-icon" aria-hidden="true">'+c.icon+'</span><div><div class="c-kicker">'+c.kicker+'</div><h2 class="c-title">'+c.title+'</h2></div></div>';
+    if(c.event) html += '<div class="alert" role="alert">'+c.event.msg+'</div>';
+    html += '<p class="c-text">'+c.text+'</p><p class="c-kicker" style="margin-bottom:8px">What will you do?</p><div class="choices">';
+    c.options.forEach(function(o,i){
+      html += '<button class="choice" data-i="'+i+'"><span class="opt-tag">OPTION '+(i?'B':'A')+'</span><span class="opt-label">'+o.label+'</span><span class="chips">'+chips(o.fx)+'</span></button>';
+    });
+    html += '</div></div>';
+    $('stage').innerHTML = html;
+
+    // Apply the alert event (state first, animation a moment later so players see the old value)
+    if(c.event){
+      var e = c.event, before = res[e.k];
+      res[e.k] = clamp(before + e.d);
+      var actual = res[e.k] - before;
+      setTimeout(function(){ setMeter(e.k, res[e.k], actual, e.d); }, 450);
+    }
+    var btns = $('stage').querySelectorAll('.choice');
+    for(var i=0;i<btns.length;i++) btns[i].addEventListener('click', onChoose);
+  }
+
+  function onChoose(ev){
+    if(locked) return;
+    locked = true;
+    var btn = ev.currentTarget, idx = +btn.getAttribute('data-i');
+    var c = CHALLENGES[step], o = c.options[idx];
+    choices.push(idx);
+
+    // Update resources immediately
+    var actual = {};
+    ['o','p','r'].forEach(function(k){
+      if(o.fx[k]){
+        var before = res[k]; res[k] = clamp(before + o.fx[k]); actual[k] = res[k]-before;
+        setMeter(k, res[k], actual[k], o.fx[k]);
+      }
+    });
+
+    // Lock buttons
+    var all = $('stage').querySelectorAll('.choice');
+    for(var i=0;i<all.length;i++){ all[i].disabled = true; }
+    btn.classList.add('picked');
+
+    // Dynamic warning
+    var low = ['o','p','r'].filter(function(k){ return res[k] < 60; })
+      .sort(function(a,b){ return res[a]-res[b]; });
+    var warn = '';
+    if(low.length){
+      var k = low[0];
+      warn = '<div class="warnline">'+(res[k]<50?'🚨 Careful, Commander! ':'👀 Keep an eye on it: ')+RES[k].name+' is at '+res[k]+'%. Try to get every meter to 60 or more.</div>';
+    }
+
+    var last = step === CHALLENGES.length-1;
+    var fb = '<div class="card fb"><span class="fb-tag '+o.tag+'">'+o.tagText+'</span><h3>What happened?</h3><p>'+o.result+'</p>'+
+      '<div class="chips">'+chips(o.fx)+'</div>'+warn+
+      '<div class="fact"><span class="fi" aria-hidden="true">🔭</span><div><b>SPACE SCIENCE FACT</b>'+o.fact+'</div></div>'+
+      '<button class="btn" id="nextBtn">'+(last?'SEE MISSION RESULTS 🏁':'CONTINUE ➜')+'</button></div>';
+    $('stage').insertAdjacentHTML('beforeend', fb);
+    var nb = $('nextBtn');
+    nb.addEventListener('click', function(){
+      step++;
+      if(step >= CHALLENGES.length) showResults(); else showChallenge();
+    });
+    nb.focus({preventScroll:true});
+    nb.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function rate(){
+    var min = Math.min(res.o, res.p, res.r);
+    return min >= 60 ? 'success' : min >= 50 ? 'partial' : 'failure';
+  }
+
+  function showResults(){
+    var rating = rate();
+    var info = {
+      success:{badge:'🏆', title:'MISSION SUCCESS!', text:'Fantastic work, Commander! Oxygen, power and radiation protection all stayed in the safe zone. You balanced every trade-off and your crew is safe and happy.'},
+      partial:{badge:'⭐', title:'PARTIAL SUCCESS', text:'Your crew is safe, but at least one system ended in the "watch" zone (below 60). You made good choices, but every decision costs something. Can you find a better balance next time?'},
+      failure:{badge:'🛠️', title:'MISSION NEEDS A REPEAT', text:'One system dropped too low, so the crew must return to Earth early. Don\'t worry — even real astronauts learn from practice missions. Try a different plan!'}
+    }[rating];
+
+    var lowest = ['o','p','r'].sort(function(a,b){ return res[a]-res[b]; })[0];
+    var lines = '';
+    choices.forEach(function(ci,i){ lines += '<li><b>Challenge '+(i+1)+':</b> '+CHALLENGES[i].options[ci].summary+'</li>'; });
+    var finalMeters = '';
+    ['o','p','r'].forEach(function(k){
+      var st = stateOf(res[k]);
+      finalMeters += '<div class="meter '+st+'" data-k="'+k+'"><div class="m-top"><span aria-hidden="true">'+RES[k].icon+'</span><span class="m-name">'+RES[k].name+'</span></div>'+
+        '<div class="m-val"><b>'+res[k]+'</b><small>%</small></div><div class="bar"><div class="fill" style="width:0"></div></div><div class="m-flag">'+(flagOf(res[k])||'✔ SAFE')+'</div></div>';
+    });
+
+    $('results').innerHTML =
+      '<div class="card"><div class="res-head"><div class="res-badge" aria-hidden="true">'+info.badge+'</div>'+
+      '<h2 class="res-title '+rating+'">'+info.title+'</h2></div>'+
+      '<div class="final" id="finalMeters">'+finalMeters+'</div>'+
+      '<p class="sim" style="margin:0 0 12px">⚠ Simulated game values — not real NASA measurements.</p>'+
+      '<div class="eval"><h3>Your commander report</h3><p>'+info.text+'</p><ul>'+lines+'</ul></div>'+
+      '<div class="learn"><h3>🌟 What you learned</h3><p>'+LESSONS[lowest]+'</p></div>'+
+      '<div class="res-actions"><button class="btn" id="againBtn">PLAY AGAIN 🔄</button></div></div>';
+    show('results');
+    // animate final bars
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      var f = $('finalMeters').querySelectorAll('.meter');
+      ['o','p','r'].forEach(function(k,i){ f[i].querySelector('.fill').style.width = res[k]+'%'; });
+    });});
+    $('againBtn').addEventListener('click', startGame);
+    $('againBtn').focus({preventScroll:true});
+  }
+
+  $('startBtn').addEventListener('click', startGame);
+})();
+</script>
+</body>
+</html>
