@@ -295,8 +295,9 @@
 
 
   /* ---------------- "What to do now" helper ---------------- */
-  var coachBox = null, glow = [];
-  function clearGlow(){ glow.forEach(function(e){ e.classList.remove('guide-pulse'); }); glow = []; }
+  var coachBox = null, glow = [], hand = null, handTimer = null, handEl = null, handDone = false;
+  function clearGlow(){ glow.forEach(function(e){ e.classList.remove('guide-pulse'); }); glow = []; killHand(); }
+  function killHand(){ if(handTimer){ clearInterval(handTimer); handTimer = null; } if(hand){ hand.style.display = 'none'; } handEl = null; }
   function findTarget(t){
     if(!t) return null;
     if(t.nodeType === 1) return t;
@@ -308,6 +309,45 @@
       if(t.test((el.textContent || '').replace(/\s+/g, ' ').trim()) || (el.__orig && t.test(el.__orig)) || (el.id && t.test(el.id))) return el;
     }
     return null;
+  }
+  /* A bouncing hand that points at the thing to tap. If it is off screen the hand sits at the edge with an arrow. */
+  function placeHand(){
+    if(!hand || !handEl || !document.body.contains(handEl)){ killHand(); return; }
+    var r = handEl.getBoundingClientRect(), vh = window.innerHeight, vw = window.innerWidth;
+    var cb = coachBox && coachBox.style.display !== 'none' ? coachBox.getBoundingClientRect() : null;
+    var topLimit = 70, botLimit = cb ? cb.top - 6 : vh - 90;
+    var isInput = handEl.tagName === 'INPUT';
+    var lab = isInput ? 'Type here!' : 'Tap here!';
+    var icon, x = Math.min(Math.max(r.left + r.width/2, 60), vw - 60), y, cls = '';
+    if(r.bottom < topLimit){ icon = '⬆️'; lab = 'Scroll up'; y = topLimit + 6; cls = 'edge'; }
+    else if(r.top > botLimit){ icon = '⬇️'; lab = 'Scroll down'; y = botLimit - 54; cls = 'edge'; }
+    else {
+      // sit on the lower-right corner of the thing to tap, so it points at it without covering other text
+      icon = '👆'; cls = 'in';
+      x = r.width > 170 ? Math.min(r.right - 46, vw - 40) : x;
+      y = Math.min(Math.max(r.bottom - 30, topLimit), botLimit - 46);
+    }
+    hand.className = cls; hand.style.display = 'flex';
+    hand.style.left = x + 'px'; hand.style.top = y + 'px';
+    hand.innerHTML = '<span class="hand-ico">'+icon+'</span><span class="hand-tag">'+lab+'</span>';
+  }
+  function showHand(el){
+    if(!hand){ hand = document.createElement('div'); hand.id = 'coach-hand'; document.body.appendChild(hand);
+      hand.addEventListener('click', function(){ if(handEl){ J.sfx.tap(); handEl.scrollIntoView({behavior:'smooth', block:'center'}); } }); }
+    handEl = el; placeHand();
+    if(handTimer) clearInterval(handTimer);
+    handTimer = setInterval(placeHand, 250);
+    window.addEventListener('scroll', placeHand, {passive:true});
+    window.addEventListener('resize', placeHand);
+    var gone = function(){ killHand(); el.classList.remove('guide-pulse'); el.removeEventListener('click', gone); el.removeEventListener('focus', gone); };
+    el.addEventListener('click', gone); el.addEventListener('focus', gone);
+    // if the thing to tap is hidden (below the fold or under the helper), gently bring it into view
+    setTimeout(function(){
+      if(handEl !== el || !document.body.contains(el)) return;
+      var r = el.getBoundingClientRect(), cb = coachBox ? coachBox.getBoundingClientRect() : null;
+      var hidden = r.bottom < 70 || r.top > window.innerHeight - 90 || (cb && r.bottom > cb.top - 70 && r.top < cb.bottom);
+      if(hidden) el.scrollIntoView({behavior:'smooth', block:'center'});
+    }, 900);
   }
   /* text: one short instruction. target: regex (button text), css selector or element to make glow. */
   J.coachSet = function(text, target, opts){
@@ -321,12 +361,13 @@
     if(!text){ coachBox.style.display = 'none'; return; }
     var el = findTarget(target);
     coachBox.style.display = 'flex';
-    coachBox.innerHTML = '<span class="coach-ico" aria-hidden="true">🧑‍🚀</span><div class="coach-text"><b>What to do now</b><span>'+text+'</span></div>'+
-      (el ? '<button class="coach-show" type="button">SHOW ME</button>' : '')+'<button class="coach-x" type="button" aria-label="Hide tip">✕</button>';
+    coachBox.innerHTML = '<span class="coach-ico" aria-hidden="true">🧑‍🚀</span><div class="coach-text"><b>Commander Nova says</b><span>'+text+'</span></div>'+
+      (el ? '<button class="coach-show" type="button">TAKE ME THERE</button>' : '')+'<button class="coach-x" type="button" aria-label="Hide tip">✕</button>';
     if(el){
       el.classList.add('guide-pulse'); glow.push(el);
       coachBox.querySelector('.coach-show').onclick = function(){ J.sfx.tap(); el.scrollIntoView({behavior:'smooth', block:'center'}); };
       if(opts.scroll) el.scrollIntoView({behavior:'smooth', block:'center'});
+      showHand(el);
     }
     coachBox.querySelector('.coach-x').onclick = function(){ coachBox.style.display = 'none'; clearGlow(); document.body.classList.remove('has-coach'); };
   };
