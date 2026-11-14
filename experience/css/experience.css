@@ -84,3 +84,26 @@ input.guide-pulse,div.guide-pulse{border-radius:1rem}
 .nasa-strip-t em{font-style:normal;font-size:.78rem;color:#bac9cc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nasa-strip-go{background:#ffb300;color:#0b0d1b;font-weight:900;border-radius:9999px;padding:.35rem .8rem;font-size:.8rem;box-shadow:0 3px 0 #c68400;flex:none}
 .has-coach .nasa-strip{margin-bottom:.5rem}
+
+/* header: numbers never wrap or squash; long labels step aside on smaller screens */
+#app header.fixed span,#app header.fixed button,#app header.fixed h1{white-space:nowrap}
+#app header.fixed [class*="rounded-full"]{white-space:nowrap}
+#app header.fixed .hidden.lg\:flex,#app header.fixed div.lg\:flex{flex-wrap:nowrap;gap:.35rem}
+@media (max-width:1699px){#app header.fixed [data-hdr="long"]{display:none!important}}
+@media (max-width:1399px){#app header.fixed [data-hdr="sim"]{display:none!important}}
+@media (max-width:1279px){#app header.fixed .hidden.lg\:flex span{font-size:.7rem}}
+/* medallions that were pulled up over the card border no longer cut through the label */
+#app .-mt-9{margin-top:0!important}
+
+/* small screens: the four map pins sit in the four corners so their labels do not pile up */
+@media (max-width:700px){
+  #app #node-rim{left:3%!important;right:auto!important;top:5%!important;bottom:auto!important}
+  #app #node-ridge{right:3%!important;left:auto!important;top:5%!important;bottom:auto!important}
+  #app #node-shadow{right:3%!important;left:auto!important;bottom:5%!important;top:auto!important}
+  #app #node-flat{left:3%!important;right:auto!important;bottom:5%!important;top:auto!important;--tw-translate-y:0px!important}
+  #app .loc-pin span.text-\[10px\]{display:none}
+  #coach{padding:.4rem .55rem;gap:.45rem}
+  #coach .coach-ico{font-size:1.4rem}
+  #coach .coach-text > b{display:none}
+  #coach .coach-text span{font-size:.8rem}
+}

@@ -261,9 +261,21 @@
       if(v !== o) n.nodeValue = v;
     });
   }
+  /* If an icon name is missing from our icon font it would show as a long word. Swap it for a similar icon. */
+  var ICON_FIX = {telescope:'visibility'};
+  function fixIcons(root){
+    Array.prototype.forEach.call(root.querySelectorAll('.material-symbols-outlined'), function(ic){
+      var t = (ic.textContent || '').trim();
+      if(ICON_FIX[t]){ ic.textContent = ICON_FIX[t]; return; }
+      if(t.length > 3 && /^[a-z0-9_]+$/.test(t)){
+        var fs = parseFloat(getComputedStyle(ic).fontSize) || 16;
+        if(ic.getBoundingClientRect().width > fs * 1.8) ic.textContent = 'star';
+      }
+    });
+  }
   function runSimple(){
     if(simpleObs) simpleObs.disconnect();
-    try{ simplifyWalk(app); wordPass(app); }catch(e){ console.warn('plain-language pass:', e.message); }
+    try{ simplifyWalk(app); wordPass(app); fixIcons(app); }catch(e){ console.warn('plain-language pass:', e.message); }
     if(simpleObs) simpleObs.observe(app, {childList:true, subtree:true, characterData:true});
   }
   function scheduleSimple(){
@@ -420,6 +432,17 @@
     var tip = J.coachFor && J.coachFor[name];
     J.coachSet(tip ? tip[0] : '', tip ? tip[1] : null);
     runSimple();   // plain language (after buttons are wired, so they are found by their original names)
+    // the little face avatar in the header does nothing and pushes the numbers off the screen: hide it
+    Array.prototype.forEach.call(document.querySelectorAll('#app header.fixed .material-symbols-outlined'), function(ic){
+      if(/^face_\d*$/.test((ic.textContent || '').trim())){ var c = ic.closest('div.rounded-full, button'); if(c && !c.querySelector('input')) c.style.display = 'none'; }
+    });
+    // header: tag the long "simulated" pills so small screens can hide them instead of squashing the numbers
+    Array.prototype.forEach.call(document.querySelectorAll('#app header.fixed span'), function(sp){
+      if(sp.children.length) return;
+      var t = (sp.textContent || '').trim();
+      if(/SIMULATED \(PRETEND\)/i.test(t)) sp.setAttribute('data-hdr', 'long');
+      else if(/^SIMULATED MISSION$/i.test(t)) sp.setAttribute('data-hdr', 'sim');
+    });
     window.scrollTo(0, 0);
     document.title = 'A Day on the Moon: Junior Astronaut Mission Trainer';
     J.currentScreen = name;

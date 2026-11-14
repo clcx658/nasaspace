@@ -63,16 +63,16 @@
   --------------------------------------------------------------- */
   var SETS = {
     journey:[
-      {slot:'Helmet', e:'🪖', items:[{e:'⛑️',t:'Bike helmet'},{e:'🧑‍🚀',t:'Space helmet',ok:1},{e:'🥽',t:'Swim goggles'}]},
-      {slot:'Gloves', e:'🧤', items:[{e:'🌱',t:'Garden gloves'},{e:'🧤',t:'Space gloves',ok:1},{e:'🍳',t:'Oven mitts'}]},
-      {slot:'Oxygen backpack', e:'🎒', items:[{e:'🎒',t:'School bag'},{e:'💨',t:'Oxygen backpack',ok:1},{e:'🏖️',t:'Beach bag'}]},
-      {slot:'Boots', e:'🥾', items:[{e:'🩴',t:'Sandals'},{e:'🌧️',t:'Rain boots'},{e:'🥾',t:'Space boots',ok:1}]}
+      {slot:'Helmet', e:'🪖', items:[{e:'⛑️',t:'Bike helmet',d:'for bikes, not space'},{e:'🧑‍🚀',t:'Space helmet',d:'keeps your air in',ok:1},{e:'🥽',t:'Swim goggles',d:'for the pool'}]},
+      {slot:'Gloves', e:'🧤', items:[{e:'🌱',t:'Garden gloves',d:'for digging plants'},{e:'🧤',t:'Space gloves',d:'tough and warm',ok:1},{e:'🍳',t:'Oven mitts',d:'for the kitchen'}]},
+      {slot:'Oxygen backpack', e:'🎒', items:[{e:'🎒',t:'School bag',d:'holds books, not air'},{e:'💨',t:'Oxygen backpack',d:'gives you air',ok:1},{e:'🏖️',t:'Beach bag',d:'holds towels'}]},
+      {slot:'Boots', e:'🥾', items:[{e:'🩴',t:'Sandals',d:'toes get cold'},{e:'🌧️',t:'Rain boots',d:'for puddles'},{e:'🥾',t:'Space boots',d:'made for the Moon',ok:1}]}
     ],
     eva:[
-      {slot:'Helmet', e:'🪖', items:[{e:'🔍',t:'Clear indoor visor'},{e:'😎',t:'Gold sun-filter visor',ok:1},{e:'💔',t:'Scratched visor'}]},
-      {slot:'Gloves', e:'🧤', items:[{e:'🧤',t:'Thin indoor gloves'},{e:'🧤',t:'Warm moon gloves',ok:1},{e:'🧴',t:'Rubber gloves'}]},
-      {slot:'Oxygen backpack', e:'🎒', items:[{e:'🫙',t:'Small spare tank'},{e:'💨',t:'Full air backpack',ok:1},{e:'🕳️',t:'Empty pack'}]},
-      {slot:'Boots', e:'🥾', items:[{e:'👟',t:'Slippery indoor shoes'},{e:'🥾',t:'Grippy moon boots',ok:1},{e:'🩴',t:'Light sandals'}]}
+      {slot:'Helmet', e:'🪖', items:[{e:'🔍',t:'Clear-visor helmet',d:'for inside the base'},{e:'😎',t:'Gold-visor helmet',d:'blocks the bright sun',ok:1},{e:'💔',t:'Scratched-visor helmet',d:'hard to see through'}]},
+      {slot:'Gloves', e:'🧤', items:[{e:'🧤',t:'Thin indoor gloves',d:'for inside the base'},{e:'🧤',t:'Warm moon gloves',d:'tough and warm',ok:1},{e:'🧴',t:'Rubber gloves',d:'for washing dishes'}]},
+      {slot:'Oxygen backpack', e:'🎒', items:[{e:'🫙',t:'Small spare tank',d:'runs out fast'},{e:'💨',t:'Full air backpack',d:'lots of air',ok:1},{e:'🕳️',t:'Empty pack',d:'no air left!'}]},
+      {slot:'Boots', e:'🥾', items:[{e:'👟',t:'Slippery indoor shoes',d:'slide on Moon dust'},{e:'🥾',t:'Grippy moon boots',d:'grip the Moon dust',ok:1},{e:'🩴',t:'Light sandals',d:'toes get cold'}]}
     ]
   };
 
@@ -82,13 +82,13 @@
       var set = SETS[o.set || 'journey'], eq = [null,null,null,null], sel = 0;
       host.innerHTML = '<div class="panel"><h3>'+(o.title||'🧑‍🚀 Dress up: choose the right gear for each slot')+'</h3>'+
         '<div class="dress"><svg viewBox="0 0 200 240" aria-hidden="true"><use href="#astro"/></svg><div class="slots" id="slots"></div></div>'+
-        '<div class="tray" id="tray"></div><div id="fb"></div>'+
+        '<div class="mini-note" id="pickhint"></div><div class="tray" id="tray"></div><div id="fb"></div>'+
         '<div class="cta"><button class="btn" id="insp" disabled>SAFETY INSPECTION ✔</button></div></div>';
       function drawSlots(){
         var h = '';
         set.forEach(function(s,i){
           var it = eq[i] !== null ? s.items[eq[i]] : null;
-          h += '<button class="slot '+(it?'full':'')+' '+(sel===i?'sel':'')+'" data-i="'+i+'"><span class="e">'+(it?it.e:s.e)+'</span>'+(it?it.t:s.slot+'?')+'</button>';
+          h += '<button class="slot '+(it?'full':'')+' '+(it && !it.ok ? 'bad' : '')+' '+(sel===i?'sel':'')+'" data-i="'+i+'"><span class="e">'+(it?it.e:s.e)+'</span>'+(it?it.t:s.slot+'?')+'</button>';
         });
         $('slots').innerHTML = h;
         var bs = $('slots').querySelectorAll('.slot');
@@ -97,12 +97,17 @@
       }
       function drawTray(){
         var s = set[sel], h = '';
-        s.items.forEach(function(it,i){ h += '<button class="item '+(eq[sel]===i?'pick':'')+'" data-i="'+i+'"><span class="e">'+it.e+'</span>'+it.t+'</button>'; });
+        s.items.forEach(function(it,i){ h += '<button class="item '+(eq[sel]===i?'pick':'')+'" data-i="'+i+'"><span class="e">'+it.e+'</span>'+it.t+(it.d ? '<small class="why">'+it.d+'</small>' : '')+'</button>'; });
         $('tray').innerHTML = h;
+        $('pickhint').innerHTML = 'Pick the best <b>'+s.slot.toLowerCase()+'</b> for walking <b>outside</b> on the Moon:';
         var bs = $('tray').querySelectorAll('.item');
         for(var i=0;i<bs.length;i++) bs[i].onclick = function(){
-          eq[sel] = +this.getAttribute('data-i'); J.sfx.tap();
-          var nxt = eq.indexOf(null); if(nxt >= 0) sel = nxt;
+          var picked = +this.getAttribute('data-i'), pit = set[sel].items[picked];
+          eq[sel] = picked;
+          // tell the child straight away if the pick is right, so they know what to do next
+          if(pit.ok){ J.sfx.good(); $('fb').innerHTML = '<div class="hintline" style="border-left-color:#22ef7e">✅ Yes! '+(pit.t)+(pit.d ? ': '+pit.d : '')+'.</div>'; }
+          else { J.sfx.miss(); $('fb').innerHTML = '<div class="hintline" style="border-left-color:#ff5d73">❌ Not this one'+(pit.d ? ' ('+pit.d+')' : '')+'. Tap it again or pick another piece.</div>'; }
+          var nxt = pit.ok ? eq.indexOf(null) : -1; if(nxt >= 0) sel = nxt;
           drawSlots(); drawTray();
         };
       }
