@@ -1,9 +1,11 @@
 // Cloudflare Pages Function: /api/donki
 // Fetches real space-weather events from NASA's DONKI database and keeps the NASA API key on the server.
 // The key comes from the secret NASA_API_KEY (Cloudflare Pages -> Settings -> Variables and Secrets).
+// The key is optional: if it is missing or NASA's keyed gateway fails, NASA's direct DONKI web service is used instead.
 // It is never sent to the browser and never included in error messages.
 //
 //   GET /api/donki?type=FLR&days=30     type: FLR (solar flares) | CME | GST | SEP     days: 1-90
+//   add &debug=1 to see what NASA answered (the key is hidden in the output)
 //
 // Answers are cached for an hour so the page cannot use up NASA's rate limit (about 1,000 requests/hour per key).
 
@@ -67,12 +69,11 @@ export async function onRequestGet(context) {
   if (!TYPES.includes(type)) return json({ ok: false, reason: 'bad_type' }, 400);
   days = Math.min(Math.max(isNaN(days) ? 30 : days, 1), 90);
 
-  const key = env && env.NASA_API_KEY;
-  if (!key) return json({ ok: false, reason: 'no_key' }, 503);
+  const key = (env && env.NASA_API_KEY) || '';
 
   const cache = typeof caches !== 'undefined' ? caches.default : null;
   const cacheKey = new Request(`${url.origin}/api/donki?type=${type}&days=${days}`);
-  if (cache) {
+  if (cache && url.searchParams.get('debug') !== '1') {
     const hit = await cache.match(cacheKey);
     if (hit) return hit;
   }
@@ -80,23 +81,39 @@ export async function onRequestGet(context) {
   const end = new Date();
   const start = new Date(end.getTime() - days * 86400000);
   const ymd = (d) => d.toISOString().slice(0, 10);
-  const api = `https://api.nasa.gov/DONKI/${type}?startDate=${ymd(start)}&endDate=${ymd(end)}&api_key=${encodeURIComponent(key)}`;
-
-  let r;
-  try {
-    r = await fetch(api);
-  } catch (e) {
-    return json({ ok: false, reason: 'network' }, 502);
+  const range = `startDate=${ymd(start)}&endDate=${ymd(end)}`;
+  // 1) NASA's keyed API gateway, 2) NASA's own DONKI web service (no key needed) as a backup.
+  const sources = [];
+  if (key) sources.push({ name: 'api.nasa.gov', url: `https://api.nasa.gov/DONKI/${type}?${range}&api_key=${encodeURIComponent(key)}` });
+  sources.push({ name: 'ccmc.gsfc.nasa.gov', url: `https://kauai.ccmc.gsfc.nasa.gov/DONKI/WS/get/${type}?${range}` });
+  const wantDebug = url.searchParams.get('debug') === '1';
+  const attempts = [];
+  const mask = (t) => (key ? String(t).split(key).join('***') : String(t));
+  let data = null;
+  for (const src of sources) {
+    try {
+      const r = await fetch(src.url, { headers: { accept: 'application/json' } });
+      const text = await r.text();
+      attempts.push({ source: src.name, status: r.status, body: mask(text.slice(0, 160)) });
+      if (!r.ok) continue;
+      const t = text.trim();
+      try {
+        data = t === '' ? [] : JSON.parse(t); // DONKI answers with an empty body when there are no events
+      } catch (e) {
+        attempts[attempts.length - 1].note = 'not_json';
+        continue;
+      }
+      break;
+    } catch (e) {
+      attempts.push({ source: src.name, status: 0, note: 'network' });
+    }
   }
-  if (!r.ok) return json({ ok: false, reason: 'upstream_' + r.status }, 502);
-
-  let data;
-  try {
-    data = await r.json();
-  } catch (e) {
-    return json({ ok: false, reason: 'bad_response' }, 502);
+  if (data === null) {
+    const last = attempts[attempts.length - 1] || {};
+    const reason = last.note === 'not_json' ? 'bad_response' : last.status ? 'upstream_' + last.status : 'network';
+    return json(wantDebug ? { ok: false, reason, attempts } : { ok: false, reason }, 502);
   }
-  const res = json({ ok: true, type, days, fetched: new Date().toISOString(), ...trim(type, data) }, 200, 'public, max-age=3600');
-  if (cache && context.waitUntil) context.waitUntil(cache.put(cacheKey, res.clone()));
+  const res = json({ ok: true, type, days, fetched: new Date().toISOString(), ...trim(type, data), ...(wantDebug ? { attempts } : {}) }, 200, wantDebug ? 'no-store' : 'public, max-age=3600');
+  if (cache && !wantDebug && context.waitUntil) context.waitUntil(cache.put(cacheKey, res.clone()));
   return res;
 }
