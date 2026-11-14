@@ -57,3 +57,7 @@ It is context only and never changes the mission or the evaluation.
 - **Fewer things to click:** the bottom bar has three items (Mission, Base HQ, Quests). Decorations that did nothing (fake radio player, map zoom buttons, counselor audio) are hidden.
 - **Ticket:** on the invitation the learner types their name and gets a personalised boarding-pass picture to download (PNG).
 - **Certificate:** at the end a certificate with their name, title and score opens automatically, with PNG download and print. The name never leaves the device.
+
+## Plain language (ages 7–12)
+
+All on-screen text is rewritten at runtime to simple words. The source of truth is `data/simple-text.json` (original → simple sentence pairs). After editing it, run `python3 tools/build-simple-text.py` to regenerate `js/simple-text.js`. Single-word rules (British spelling, "Lunar" → "Moon") live in the same script.

@@ -46,7 +46,7 @@
       ctx.fillStyle = '#05060f'; ctx.beginPath(); ctx.arc(sx, 6, 22, 0, 6.3); ctx.fill(); ctx.beginPath(); ctx.arc(sx, H-6, 22, 0, 6.3); ctx.fill();
       var F = 'Outfit, "Trebuchet MS", sans-serif';
       ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
-      ctx.fillStyle = '#00e5ff'; ctx.font = '800 26px '+F; ctx.fillText('LUNAR LIVING EXPERIENCE CAMP', 70, 92);
+      ctx.fillStyle = '#00e5ff'; ctx.font = '800 26px '+F; ctx.fillText('MOON LIVING EXPERIENCE CAMP', 70, 92);
       ctx.fillStyle = '#ffffff'; ctx.font = '900 84px '+F; ctx.fillText('BOARDING PASS', 70, 176);
       ctx.fillStyle = '#bac9cc'; ctx.font = '700 22px '+F; ctx.fillText('PASSENGER', 70, 246);
       var nm = name.toUpperCase(); var ns = fit(ctx, nm, 900, 76, 900, F); ctx.fillStyle = '#ffb300'; ctx.font = '900 '+ns+'px '+F; ctx.fillText(nm, 70, 246 + ns + 4);
@@ -64,7 +64,7 @@
       ctx.fillStyle = '#00e5ff'; ctx.font = '800 22px '+F; ctx.fillText('JUNIOR ASTRONAUT', (sx+W)/2, 324);
       var bx = sx + 50; for(var k=0;k<34;k++){ var bw = 2 + Math.floor(rnd()*6); ctx.fillStyle = '#e1e1f5'; ctx.fillRect(bx, 360, bw, 70); bx += bw + 3 + Math.floor(rnd()*4); if(bx > W-60) break; }
       ctx.fillStyle = '#bac9cc'; ctx.font = '600 17px '+F; ctx.textAlign = 'left';
-      ctx.fillText('A Day on the Moon · NASA Space Apps Challenge 2026 · Team AstroPath · Simulated educational experience', 70, H-22);
+      ctx.fillText('A Day on the Moon · NASA Space Apps Challenge 2026 · Team AstroPath · Pretend (simulated) learning adventure', 70, H-22);
       return c;
     });
   };
@@ -79,7 +79,7 @@
       ctx.lineWidth = 3; ctx.strokeRect(62, 62, W-124, H-124);
       ctx.fillStyle = '#b8860b'; ctx.font = '60px sans-serif'; ctx.textAlign = 'center';
       [[110,140],[W-110,140],[110,H-84],[W-110,H-84]].forEach(function(p){ ctx.fillText('★', p[0], p[1]); });
-      ctx.fillStyle = '#2a2250'; ctx.font = '800 30px '+F; ctx.fillText('SIMULATED EDUCATIONAL CERTIFICATE', W/2, 150);
+      ctx.fillStyle = '#2a2250'; ctx.font = '800 30px '+F; ctx.fillText('PRETEND (SIMULATED) CERTIFICATE', W/2, 150);
       ctx.font = '900 100px '+F; ctx.fillText('Certificate of Achievement', W/2, 262);
       ctx.fillStyle = '#b8860b'; ctx.font = '700 38px '+F; ctx.fillText('A DAY ON THE MOON · JUNIOR ASTRONAUT MISSION', W/2, 318);
       ctx.fillStyle = '#2a2250'; ctx.font = 'italic 40px '+SERIF; ctx.fillText('This is proudly presented to', W/2, 410);
@@ -87,17 +87,17 @@
       ctx.strokeStyle = '#2a2250'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(W/2-520, 552); ctx.lineTo(W/2+520, 552); ctx.stroke();
       ctx.fillStyle = '#2a2250'; ctx.font = 'italic 38px '+SERIF; ctx.fillText('for completing one day at Artemis Base Alpha and earning the title', W/2, 626);
       ctx.fillStyle = '#b8860b'; ctx.font = '900 84px '+F; ctx.fillText(o.title, W/2, 722);
-      ctx.fillStyle = '#2a2250'; ctx.font = '800 44px '+F; ctx.fillText('Mission evaluation: '+o.total+' / 50', W/2, 802);
+      ctx.fillStyle = '#2a2250'; ctx.font = '800 44px '+F; ctx.fillText('Score: '+o.total+' / 50', W/2, 802);
       ctx.fillStyle = '#4a4470'; ctx.font = '600 28px '+F;
       ctx.fillText('Oxygen '+o.res.o+'%  ·  Power '+o.res.p+'%  ·  Food '+o.res.f+'%  ·  Water '+o.res.w+'%  ·  Research '+o.research+' pts', W/2, 852);
       // signature + date + seal
       ctx.textAlign = 'left'; ctx.fillStyle = '#2a2250'; ctx.font = 'italic 54px '+SERIF; ctx.fillText('Commander Nova', 160, 962);
       ctx.strokeStyle = '#2a2250'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(160, 976); ctx.lineTo(560, 976); ctx.stroke();
-      ctx.font = '600 24px '+F; ctx.fillText('Station Chief, Artemis Base Alpha', 160, 1012);
+      ctx.font = '600 24px '+F; ctx.fillText('Chief of Artemis Moon Base Alpha', 160, 1012);
       ctx.textAlign = 'right'; ctx.font = '700 34px '+F; ctx.fillText(today(), W-160, 962); ctx.strokeStyle = '#2a2250'; ctx.beginPath(); ctx.moveTo(W-560, 976); ctx.lineTo(W-160, 976); ctx.stroke(); ctx.font = '600 24px '+F; ctx.fillText('Date', W-160, 1012);
       ctx.textAlign = 'center'; ctx.fillStyle = '#b8860b'; ctx.beginPath(); ctx.arc(W/2, 940, 62, 0, 6.3); ctx.fill(); ctx.fillStyle = '#fffaf0'; ctx.beginPath(); ctx.arc(W/2, 940, 50, 0, 6.3); ctx.fill();
       ctx.fillStyle = '#b8860b'; ctx.font = '60px sans-serif'; ctx.fillText('★', W/2, 961);
-      ctx.fillStyle = '#6a6490'; ctx.font = '600 20px '+F; ctx.fillText('Simulated educational certificate, not an official NASA credential. NASA Space Apps Challenge 2026 · Team AstroPath. Values are simulated.', W/2, H-80);
+      ctx.fillStyle = '#6a6490'; ctx.font = '600 20px '+F; ctx.fillText('Pretend (simulated) certificate. Not an official NASA award. NASA Space Apps Challenge 2026 · Team AstroPath. The numbers are made up for learning.', W/2, H-80);
       return c;
     });
   };
@@ -120,7 +120,7 @@
           '<img alt="Boarding pass for '+name+'" src="'+canvas.toDataURL('image/png')+'" style="width:100%;border-radius:1rem;margin:.5rem 0">'+
           '<p style="font-size:.9rem;color:#bac9cc">Download it to keep it. Your name stays on your own device.</p>'+
           '<div class="gactions"><button class="gbtn gold" id="tkDl">⬇ DOWNLOAD TICKET (PNG)</button><button class="gbtn cyan" id="tkGo">CONTINUE ➜</button></div>'});
-        h.box.querySelector('#tkDl').onclick = function(){ J.sfx.tap(); J.downloadCanvas(canvas, 'moon-ticket-'+slug(name)+'.png'); J.toast('Ticket saved! Check your downloads.'); };
+        h.box.querySelector('#tkDl').onclick = function(){ J.sfx.tap(); J.downloadCanvas(canvas, 'moon-ticket-'+slug(name)+'.png'); J.toast('Ticket saved! Look in your downloads.'); };
         h.box.querySelector('#tkGo').onclick = function(){ J.sfx.tap(); h.close(); resolve(); };
       });
     });
@@ -135,7 +135,7 @@
           '<div class="gkicker">Mission complete</div><h2>Congratulations, '+name+'! Here is your certificate</h2>'+
           '<img id="cert-print" alt="Certificate for '+name+'" src="'+canvas.toDataURL('image/png')+'" style="width:100%;border-radius:.5rem;margin:.5rem 0;background:#fff">'+
           '<div class="gactions"><button class="gbtn gold" id="ctDl">⬇ DOWNLOAD CERTIFICATE (PNG)</button><button class="gbtn dim" id="ctPr">🖨 PRINT</button><button class="gbtn cyan" id="ctGo">CLOSE</button></div>'});
-        h.box.querySelector('#ctDl').onclick = function(){ J.sfx.tap(); J.downloadCanvas(canvas, 'moon-certificate-'+slug(name)+'.png'); J.toast('Certificate saved! Check your downloads.'); };
+        h.box.querySelector('#ctDl').onclick = function(){ J.sfx.tap(); J.downloadCanvas(canvas, 'moon-certificate-'+slug(name)+'.png'); J.toast('Certificate saved! Look in your downloads.'); };
         h.box.querySelector('#ctPr').onclick = function(){ J.sfx.tap(); window.print(); };
         h.box.querySelector('#ctGo').onclick = function(){ J.sfx.tap(); h.close(); resolve(); };
       });
