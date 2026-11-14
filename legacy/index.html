@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Day on the Moon: Junior Astronaut Mission Trainer</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="visor" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b5bff"/><stop offset="1" stop-color="#0b1445"/></linearGradient>
+    <radialGradient id="moonG" cx=".35" cy=".25" r=".9"><stop offset="0" stop-color="#f4f4fb"/><stop offset="1" stop-color="#b9bfd6"/></radialGradient>
+    <radialGradient id="earthG" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#7fd0ff"/><stop offset="1" stop-color="#1b5fd1"/></radialGradient>
+    <symbol id="astro" viewBox="0 0 200 240">
+      <rect x="48" y="84" width="104" height="92" rx="20" fill="#c9d3ea"/>
+      <rect x="70" y="166" width="26" height="52" rx="12" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="104" y="166" width="26" height="52" rx="12" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="66" y="208" width="34" height="22" rx="10" fill="#ff7a45"/>
+      <rect x="100" y="208" width="34" height="22" rx="10" fill="#ff7a45"/>
+      <rect x="62" y="88" width="76" height="90" rx="28" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="80" y="118" width="40" height="28" rx="7" fill="#1b2a5a"/>
+      <circle cx="90" cy="132" r="5" fill="#ff5d73"/><circle cx="101" cy="132" r="5" fill="#ffd24d"/><circle cx="112" cy="132" r="5" fill="#62f0a0"/>
+      <rect x="30" y="98" width="30" height="62" rx="15" fill="#fff" stroke="#c9d3ea" stroke-width="3" transform="rotate(14 45 100)"/><circle cx="36" cy="160" r="11" fill="#ff7a45"/>
+      <g class="wave"><rect x="138" y="62" width="30" height="64" rx="15" fill="#fff" stroke="#c9d3ea" stroke-width="3" transform="rotate(-32 152 100)"/><circle cx="173" cy="62" r="11" fill="#ff7a45"/></g>
+      <circle cx="100" cy="58" r="48" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="62" y="32" width="76" height="52" rx="24" fill="url(#visor)"/>
+      <ellipse cx="78" cy="44" rx="9" ry="5" fill="#fff" opacity=".55" transform="rotate(-25 78 44)"/>
+      <circle cx="88" cy="57" r="5" fill="#fff"/><circle cx="112" cy="57" r="5" fill="#fff"/>
+      <circle cx="89" cy="58" r="2.2" fill="#0b1445"/><circle cx="113" cy="58" r="2.2" fill="#0b1445"/>
+      <path d="M90 69 Q100 78 110 69" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <rect x="86" y="86" width="28" height="8" rx="4" fill="#ff5d73"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div id="stars" aria-hidden="true"></div>
+
+<main>
+
+<!-- WELCOME -->
+<section id="welcome" class="welcome">
+  <svg class="scene" viewBox="0 0 400 270" role="img" aria-label="A friendly astronaut waving above the Moon next to a lunar base">
+    <circle cx="330" cy="50" r="30" fill="url(#earthG)"/>
+    <path d="M318 40 q10 -8 20 2 q-4 8 -12 6 q-6 6 -8 -8z" fill="#5fd18a"/>
+    <path d="M335 60 q8 -2 10 6 q-6 6 -12 2z" fill="#5fd18a"/>
+    <circle cx="200" cy="470" r="260" fill="url(#moonG)"/>
+    <ellipse cx="90" cy="236" rx="26" ry="7" fill="#aab1cc"/><ellipse cx="330" cy="244" rx="30" ry="8" fill="#aab1cc"/>
+    <ellipse cx="250" cy="262" rx="18" ry="5" fill="#aab1cc"/><ellipse cx="40" cy="262" rx="14" ry="4" fill="#aab1cc"/>
+    <path d="M270 218 a42 42 0 0 1 84 0z" fill="#e9eefc" stroke="#9fb0e6" stroke-width="3"/>
+    <path d="M284 218 a28 28 0 0 1 56 0z" fill="#6db9ff" opacity=".7"/>
+    <rect x="262" y="216" width="100" height="10" rx="5" fill="#9fb0e6"/>
+    <line x1="312" y1="176" x2="312" y2="152" stroke="#9fb0e6" stroke-width="3"/><circle cx="312" cy="150" r="5" fill="#ff5d73"/>
+    <line x1="378" y1="226" x2="378" y2="204" stroke="#9fb0e6" stroke-width="3"/>
+    <rect x="360" y="188" width="36" height="18" rx="3" fill="#2b4bd6" stroke="#9fb0e6" stroke-width="2"/>
+    <path d="M372 188v18M384 188v18" stroke="#6f8cff" stroke-width="1.5"/>
+    <g class="float"><use href="#astro" x="105" y="20" width="130" height="156"/></g>
+  </svg>
+  <h1>A Day on the Moon<br><span>Junior Astronaut Mission Trainer</span></h1>
+  <p class="intro">Train like an astronaut, travel to the Moon and live one day at a lunar base. Can you make the right decisions to protect your crew?</p>
+  <ul class="how">
+    <li>🎓 Train</li>
+    <li>🚀 Fly</li>
+    <li>🌕 Live a day on the Moon</li>
+  </ul>
+  <button class="btn" id="startBtn">START MISSION 🚀</button>
+  <p class="best" id="best"></p>
+  <button class="link" id="demoBtn">Quick demo: skip to the Moon day</button>
+  <p class="best" style="margin-top:6px"><a href="../experience/">✨ Try the new interactive experience (Stitch design) →</a></p>
+</section>
+
+<!-- GAME -->
+<section id="game" hidden>
+  <div class="hud" id="hud" aria-label="Mission dashboard">
+    <div class="hud-row">
+      <b id="hudTitle"></b>
+      <div class="dots" id="dots"></div>
+      <span class="clock" id="clock" hidden></span>
+      <button class="snd" id="sndBtn" aria-label="Sound on or off">🔊</button>
+    </div>
+    <div class="meters" id="meters" hidden></div>
+    <p class="sim" id="simNote" hidden>Simulated values, not real NASA measurements.</p>
+  </div>
+  <div id="stage"></div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" hidden></section>
+
+<aside class="nasa" id="nasa">
+  <h3>🔭 NASA SCIENCE</h3>
+  Explore the real thing:
+  <ul>
+    <li><a href="https://www.nasa.gov/artemis/" target="_blank" rel="noopener">NASA Artemis</a>: returning astronauts to the Moon</li>
+    <li><a href="https://kauai.ccmc.gsfc.nasa.gov/DONKI/" target="_blank" rel="noopener">NASA DONKI</a>: tracks solar flares and space weather</li>
+  </ul>
+  <p class="note">This is a fictional learning experience. The numbers are made up for learning and are not real NASA measurements.</p>
+</aside>
+
+</main>
+
+<script src="js/core.js"></script>
+<script src="js/training.js"></script>
+<script src="js/minis.js"></script>
+<script src="js/story.js"></script>
+</body>
+</html>

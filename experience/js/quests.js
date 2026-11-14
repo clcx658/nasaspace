@@ -24,6 +24,7 @@
       J.bindText(root, /NEXT QUEST/i, function(){ J.go(QUESTS[(i+1) % QUESTS.length].id); });
       J.bindText(root, /REPLAY SCIENCE QUEST/i, function(){ J.render(q.id); });
       J.bindText(root, /RETURN TO MAIN MENU/i, function(){ J.go('menu'); });
+      J.bindText(root, /CONTINUE EXPLORING THE MOON/i, function(){ J.G ? J.go(J.nextScreen ? J.nextScreen() : 'hub') : J.go('menu'); });
       // "XP" is only decoration here: show it as a badge reward and keep it out of the mission
       J.setText(root, /\b\d+\s*XP REWARD/i, 'BADGE REWARD');
       // detect a correct quiz answer -> quest done (state is stored separately from the mission)

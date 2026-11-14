@@ -20,6 +20,8 @@ the weather branches, calculated endings, a certificate, and optional hands-on a
 | `js/engine.js` | Router, saved progress, screen mounting, live header (Oxygen/Power/Water/Food/time), modals, toasts |
 | `js/flow.js` | Screens 1-22: wiring, tasks, scoring, weather, evaluation, endings |
 | `js/quests.js` | Quest hub + the 5 NASA Science Quests. Separate storage; never touches the mission or score |
+| `js/media.js` | The learner's name, the downloadable boarding-pass ticket and the certificate (drawn in the browser, nothing uploaded) |
+| `js/donki.js` | Real space-weather card |
 | `js/minis.js` | The optional hands-on activities (rocks, power puzzle, shelter, antenna, breakfast, dress-up ...) |
 | `css/tailwind.css` | **Generated** static Tailwind build (no CDN needed) |
 | `css/fonts.css`, `assets/fonts/` | Self-hosted Outfit + Material Symbols |
@@ -49,3 +51,9 @@ It is context only and never changes the mission or the evaluation.
 - If no live source answers (GitHub Pages, offline, NASA outage), the card shows a clearly labelled example, so nothing breaks. Failures are remembered for 5 minutes so visitors don't wait through timeouts.
 - To see what NASA answered, open `/api/donki?type=FLR&days=30&debug=1` (the key is hidden in the output).
 - Testing locally: copy `.dev.vars.example` to `.dev.vars`, add the key, then run `npx wrangler pages dev experience`.
+
+## Guidance for testers
+- **"What to do now" box:** every screen shows one short instruction, the button to press glows, and the box updates as you go (for example "2 of 5 parts inspected"). **SHOW ME** scrolls to the glowing control.
+- **Fewer things to click:** the bottom bar has three items (Mission, Base HQ, Quests). Decorations that did nothing (fake radio player, map zoom buttons, counselor audio) are hidden.
+- **Ticket:** on the invitation the learner types their name and gets a personalised boarding-pass picture to download (PNG).
+- **Certificate:** at the end a certificate with their name, title and score opens automatically, with PNG download and print. The name never leaves the device.
