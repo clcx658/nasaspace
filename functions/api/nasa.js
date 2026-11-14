@@ -98,7 +98,11 @@ export async function onRequestGet({ request, env }) {
       }
       if (debug) return json({ status: r.status, retry: r.retry || null, usedKey: !!key, body: hide(r.text).slice(0, 600) });
       const d = r.data;
-      if (r.status === 200 && d && d.title) {
+      // NASA's service sometimes answers with a site logo or placeholder instead of a real picture: do not use those.
+      const junk = (u) => /logo|\/themes\/|\/assets\/images\/|placeholder|favicon|\.svg(\?|$)/i.test(String(u || ''));
+      const good = r.status === 200 && d && d.title && !/^nasa science$/i.test(String(d.title).trim()) &&
+        !junk(d.media_type === 'video' ? d.thumbnail_url : d.url);
+      if (good) {
         const isVideo = d.media_type === 'video';
         const image = safeUrl(isVideo ? d.thumbnail_url : d.url, ['nasa.gov', 'apod.nasa.gov', 'youtube.com', 'ytimg.com', 'vimeo.com']);
         if (image) {
