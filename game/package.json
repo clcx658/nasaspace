@@ -1,0 +1,17 @@
+{
+  "name": "a-day-on-the-moon-stitch",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Build tooling for the Stitch-based UI (screens, CSS, fonts). The game itself needs no build to run.",
+  "scripts": {
+    "build:screens": "node tools/extract-screens.js",
+    "build:css": "tailwindcss -c tailwind.config.js -i css/input.css -o css/tailwind.css --minify",
+    "build:fonts": "node tools/fetch-fonts.js",
+    "build": "npm run build:screens && npm run build:css"
+  },
+  "devDependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.11",
+    "tailwindcss": "^3.4.17"
+  }
+}

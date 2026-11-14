@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Day on the Moon: Junior Astronaut Mission Trainer</title>
+<meta name="description" content="A NASA Space Apps Challenge educational game for ages 7-12. Train, fly to the Moon and live one day at a lunar base.">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tailwind.css">
+<link rel="stylesheet" href="css/game.css">
+<link rel="stylesheet" href="css/minis.css">
+</head>
+<body class="bg-surface-container-lowest text-on-surface">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="visor" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b5bff"/><stop offset="1" stop-color="#0b1445"/></linearGradient>
+    <radialGradient id="moonG" cx=".35" cy=".25" r=".9"><stop offset="0" stop-color="#f4f4fb"/><stop offset="1" stop-color="#b9bfd6"/></radialGradient>
+    <radialGradient id="earthG" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#7fd0ff"/><stop offset="1" stop-color="#1b5fd1"/></radialGradient>
+    <symbol id="astro" viewBox="0 0 200 240">
+      <rect x="48" y="84" width="104" height="92" rx="20" fill="#c9d3ea"/>
+      <rect x="70" y="166" width="26" height="52" rx="12" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="104" y="166" width="26" height="52" rx="12" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="66" y="208" width="34" height="22" rx="10" fill="#ff7a45"/>
+      <rect x="100" y="208" width="34" height="22" rx="10" fill="#ff7a45"/>
+      <rect x="62" y="88" width="76" height="90" rx="28" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="80" y="118" width="40" height="28" rx="7" fill="#1b2a5a"/>
+      <circle cx="90" cy="132" r="5" fill="#ff5d73"/><circle cx="101" cy="132" r="5" fill="#ffd24d"/><circle cx="112" cy="132" r="5" fill="#62f0a0"/>
+      <rect x="30" y="98" width="30" height="62" rx="15" fill="#fff" stroke="#c9d3ea" stroke-width="3" transform="rotate(14 45 100)"/><circle cx="36" cy="160" r="11" fill="#ff7a45"/>
+      <g class="wave"><rect x="138" y="62" width="30" height="64" rx="15" fill="#fff" stroke="#c9d3ea" stroke-width="3" transform="rotate(-32 152 100)"/><circle cx="173" cy="62" r="11" fill="#ff7a45"/></g>
+      <circle cx="100" cy="58" r="48" fill="#fff" stroke="#c9d3ea" stroke-width="3"/>
+      <rect x="62" y="32" width="76" height="52" rx="24" fill="url(#visor)"/>
+      <ellipse cx="78" cy="44" rx="9" ry="5" fill="#fff" opacity=".55" transform="rotate(-25 78 44)"/>
+      <circle cx="88" cy="57" r="5" fill="#fff"/><circle cx="112" cy="57" r="5" fill="#fff"/>
+      <circle cx="89" cy="58" r="2.2" fill="#0b1445"/><circle cx="113" cy="58" r="2.2" fill="#0b1445"/>
+      <path d="M90 69 Q100 78 110 69" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <rect x="86" y="86" width="28" height="8" rx="4" fill="#ff5d73"/>
+    </symbol>
+  </defs>
+</svg>
+<div id="bgstars" aria-hidden="true"></div>
+<div id="app" aria-live="polite"></div>
+<div id="modal-root"></div>
+<div id="toast-root" aria-live="polite"></div>
+<noscript><p style="padding:2rem;color:#fff">This game needs JavaScript.</p></noscript>
+<script src="js/lib.js"></script>
+<script src="assets/img/manifest.js"></script>
+<script src="js/screens-data.js"></script>
+<script src="js/minis.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/flow.js"></script>
+<script src="js/quests.js"></script>
+<script src="js/boot.js"></script>
+</body>
+</html>
