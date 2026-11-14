@@ -353,7 +353,7 @@
         });
       }
       function phase2(){
-        host.innerHTML = '<div class="panel"><h3>🧹 Step 2: lunar dust is covering Panel '+(weak+1)+'. Tap it to brush the dust off!</h3><div class="panels" id="pn"></div><div class="mini-note" id="fb">Moon dust is sharp and sticky.</div></div>';
+        host.innerHTML = '<div class="panel"><h3>🧹 Step 2: Moon dust is covering Panel '+(weak+1)+'. Tap it to brush the dust off!</h3><div class="panels" id="pn"></div><div class="mini-note" id="fb">Moon dust is sharp and sticky.</div></div>';
         var dust = 5;
         cfg.outputs.forEach(function(v,i){
           var b = document.createElement('button'); b.className = 'sp'; b.innerHTML = '▦ Panel '+(i+1)+'<small>Output '+(i===weak?'low':v+'%')+'</small>'+(i===weak?'<span class="dust" id="dst"></span>':'');

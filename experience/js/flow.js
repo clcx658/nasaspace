@@ -169,8 +169,8 @@
       while((n = tw.nextNode())) if(/^\s*LORE\s*$/i.test(n.nodeValue)) n.nodeValue = n.nodeValue.replace(/LORE/i, 'STORY');
     });
     J.bindText(root, /LORE|STORY/i, function(){
-      J.modal({kicker:'Lore', title:'Artemis Base Alpha',
-        html:'<p>Welcome to the Moon Living Experience Camp, a made-up space training camp. You will spend one Moon day at a Moon base near the Moon\'s south pole, keeping the crew safe.</p><p style="font-size:.85rem;color:#bac9cc">Made for the NASA Space Apps Challenge. This is a game, not an official NASA product.</p>'});
+      J.modal({kicker:'Story', title:'Artemis Base Alpha',
+        html:'<p>Welcome to the Moon Living Experience Camp, a made-up space training camp. You will spend one Moon day at a Moon base near the Moon\'s south pole, keeping the crew safe.</p><p style="font-size:.85rem;color:#bac9cc">Made for the NASA Space Apps Challenge. This is a pretend learning experience, not an official NASA product.</p>'});
     });
   });
 
@@ -233,7 +233,7 @@
   /* ================= 5. ROCKET LAUNCH ================= */
   J.screen('rocket', 5, function(root){
     ensureGame();
-    var stages = ['Liftoff! Engines at full thrust.', 'Stage separation complete!', 'Trans-Lunar Injection: we are on our way to the Moon!'];
+    var stages = ['Liftoff! Engines at full thrust.', 'Stage separation complete!', 'Next stop: the Moon! We are on our way!'];
     var n = 0;
     J.bindText(root, /COMMENCE LIFTOFF|NEXT STAGE/i, function(){
       J.toast(stages[Math.min(n, stages.length-1)]); J.sfx.good(); n++;
