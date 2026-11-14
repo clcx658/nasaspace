@@ -37,3 +37,12 @@ npm run build            # regenerates js/screens-data.js, tailwind.config.js an
 node tools/fetch-fonts.js        # re-download the fonts (optional)
 node tools/localize-images.js    # download the Stitch images so the experience no longer hot-links Google (run once, then commit assets/img/)
 ```
+
+## Real NASA data (DONKI)
+The Solar Particle Event screen and the Solar Storm quest show a "Real NASA data" card (recent solar flares from NASA's DONKI database).
+It is context only and never changes the mission or the evaluation.
+
+- `functions/api/donki.js` (a Cloudflare Pages Function) fetches the data and keeps the NASA key on the server.
+- Set the key once in Cloudflare: **Pages project -> Settings -> Variables and Secrets -> Add**, name `NASA_API_KEY`, type **Secret**, for Production and Preview.
+- Without the key (or on GitHub Pages, or offline) the card shows a clearly labelled example, so nothing breaks.
+- Testing locally: copy `.dev.vars.example` to `.dev.vars`, add the key, then run `npx wrangler pages dev experience`.

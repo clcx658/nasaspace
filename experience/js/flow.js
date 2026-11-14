@@ -513,6 +513,7 @@
   /* ================= 17. WEATHER C: SOLAR PARTICLE EVENT ================= */
   J.screen('wC', 17, function(root){
     var g = ensureGame(); g.time = '14:30'; J.refreshHeader(false);
+    if(J.donkiPanel) J.donkiPanel(root);   // real NASA space-weather context (never affects the evaluation)
     J.setText(root, /\+5 SAFETY PTS/, 'SAFE CHOICE');
     J.setText(root, /\(\+5 Safety Points\)/, '');
     g.emergency = true; J.save(); J.sfx.alarm();
