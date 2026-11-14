@@ -7,10 +7,10 @@
     {id:'t1', time:'08:00', name:'Morning Health Check'},
     {id:'t2', time:'09:00', name:'Breakfast Time'},
     {id:'t3', time:'10:00', name:'Suit Up'},
-    {id:'t4', time:'11:00', name:'Lunar Exploration'},
-    {id:'t5', time:'13:00', name:'Power Inspection'},
+    {id:'t4', time:'11:00', name:'Moon Exploration'},
+    {id:'t5', time:'13:00', name:'Check the Solar Panels'},
     {id:'t6', time:'15:00', name:'Report to Earth'},
-    {id:'t7', time:'17:00', name:'Return & Rest'}
+    {id:'t7', time:'17:00', name:'Back Home & Rest'}
   ];
   J.TASKS = TASKS;
   var ENDING_SCREEN = {S:'endS', A:'endA', B:'endB', C:'endC'};
@@ -22,20 +22,20 @@
     invitation:['Type your <b>name</b>, then press <b>ACCEPT INVITATION</b>.', '#playerName'],
     trainingHub:['Press <b>START TRAINING</b>.', /START TRAINING/i],
     training:['Pick a station, answer the question, and collect all <b>5 badges</b>.', null],
-    rocket:['Press <b>COMMENCE LIFTOFF</b> three times to launch.', /COMMENCE LIFTOFF|NEXT STAGE/i],
+    rocket:['Press <b>START LIFTOFF</b> three times to launch.', /START LIFTOFF|COMMENCE LIFTOFF|NEXT STEP|NEXT STAGE/i],
     landing:['You landed on the Moon! Press <b>ENTER AIRLOCK</b>.', /ENTER AIRLOCK/i],
     hub:['Press the glowing button to start your next task.', /BEGIN \d\d:00 ROUTINE|CONTINUE \d\d:00 ROUTINE|SEE MISSION EVALUATION/i],
     t1:['Find the card marked <b>Action Needed</b> and press <b>Recalibrate</b>.', '#quick-recal-btn'],
     t2:['Press <b>EAT BREAKFAST</b>.', /EAT BREAKFAST/i],
     t3:['Tap each of the <b>5 suit parts</b> in the list to inspect it (0 of 5).', null],
-    t4:['Tap a <b>place on the map</b>, then press <b>CONFIRM RESEARCH SITE</b>.', '.loc-pin'],
+    t4:['Tap a <b>place on the map</b>, then press <b>CHOOSE THIS PLACE</b>.', '.loc-pin'],
     t5:['Press <b>AUTO-WIPE ALL</b> to clean the dusty panels.', /AUTO-WIPE ALL/i],
-    t6:['Choose a report with its <b>Select</b> button, then press <b>TRANSMIT REPORT</b>.', /Select Full Report/i],
+    t6:['Choose a report with its <b>Select</b> button, then press <b>TRANSMIT REPORT</b> to send it.', /Select Full Report/i],
     t7:['Tap <b>every card</b> in the checklist to inspect it.', null],
-    wA:['Tap <b>one action card</b>, then press <b>CONTINUE MISSION</b>.', null],
+    wA:['Tap <b>one action card</b>, then press <b>CONTINUE THE MISSION</b>.', null],
     wB:['Choose <b>A</b> or <b>B</b>, then press the big button.', null],
     wC:['Read the 3 options and tap the <b>safest</b> one.', null],
-    eval:['Press <b>REVEAL MY MISSION ENDING</b>.', /REVEAL MY MISSION ENDING/i],
+    eval:['Press <b>REVEAL MY MISSION ENDING</b> to see how you did.', /REVEAL MY MISSION ENDING/i],
     endS:['Your certificate is ready! Press <b>VIEW CERTIFICATE</b>.', CERT],
     endA:['Your certificate is ready! Press <b>VIEW CERTIFICATE</b>.', CERT],
     endB:['Your certificate is ready! Press <b>VIEW CERTIFICATE</b>.', CERT],
@@ -161,11 +161,11 @@
     J.bindText(root, /NASA QUESTS/i, function(){ J.go('questHub'); });
     J.bindText(root, /HOW (TO PLAY|IT WORKS)/i, function(){
       J.modal({kicker:'How it works', title:'You are a Junior Astronaut!',
-        html:'<p>1. <b>Train</b> in 5 short challenges.</p><p>2. <b>Fly</b> to the Moon base.</p><p>3. Spend <b>one Moon day</b> doing 7 tasks. Tap, explore and read each screen. Watch Oxygen, Power, Food and Water at the top.</p><p>4. Hands-on activities are <b>optional</b> and give bonus points.</p><p>5. Your choices lead to one of four endings (a mission evaluation out of 50).</p><p>6. The <b>NASA Science Quests</b> are extra learning. They never change your evaluation.</p><p style="font-size:.85rem;color:#bac9cc">Everything here is simulated for learning. The numbers are not real NASA measurements.</p>'});
+        html:'<p>1. <b>Train</b> in 5 short challenges.</p><p>2. <b>Fly</b> to the Moon base.</p><p>3. Spend <b>one Moon day</b> doing 7 tasks. Tap, explore and read each screen. Watch Oxygen, Power, Food and Water at the top.</p><p>4. Hands-on activities are <b>optional</b> and give bonus points.</p><p>5. Your choices lead to one of four endings (a score out of 50).</p><p>6. The <b>NASA Science Quests</b> are extra learning. They never change your score.</p><p style="font-size:.85rem;color:#bac9cc">Everything here is pretend (simulated) and made for learning. The numbers are not real NASA measurements.</p>'});
     });
     J.bindText(root, /LORE/i, function(){
       J.modal({kicker:'Lore', title:'Artemis Base Alpha',
-        html:'<p>Welcome to the Lunar Living Experience Camp, a fictional NASA training programme. You will spend one Moon day at a lunar base near the Moon\'s south pole, keeping the crew safe.</p><p style="font-size:.85rem;color:#bac9cc">Made for the NASA Space Apps Challenge. This is a game, not an official NASA product.</p>'});
+        html:'<p>Welcome to the Moon Living Experience Camp, a made-up space training camp. You will spend one Moon day at a Moon base near the Moon\'s south pole, keeping the crew safe.</p><p style="font-size:.85rem;color:#bac9cc">Made for the NASA Space Apps Challenge. This is a game, not an official NASA product.</p>'});
     });
   });
 
@@ -263,7 +263,7 @@
     var btn = Array.prototype.find.call(root.querySelectorAll('button'), function(b){ return /BEGIN \d\d:00 ROUTINE/i.test(b.textContent); });
     if(btn){
       var sp = Array.prototype.find.call(btn.querySelectorAll('span'), function(s){ return /BEGIN/.test(s.textContent); });
-      if(g.task >= 7){ if(sp) sp.textContent = 'SEE MISSION EVALUATION'; }
+      if(g.task >= 7){ if(sp) sp.textContent = 'SEE MY RESULTS'; }
       else if(g.task > 0 && sp){ sp.textContent = 'CONTINUE '+t.time+' ROUTINE'; }
     }
     if(g.task === 0 && !g.briefed){
@@ -282,15 +282,15 @@
     J.bindText(root, /COMPLETE 08:00 HEALTH CHECK/i, async function(){
       if(!calibrated){
         var a = failCount(0);
-        await hintModal('A sensor still needs attention! Look for the card marked <b>Action Needed</b> and press <b>Recalibrate</b>.', 'Find "Sector 2 Recalibration" (CH-05) and press Recalibrate.', a);
+        await hintModal('One check still needs fixing! Look for the card marked <b>Action Needed</b> and press <b>Recalibrate</b>.', 'Find the card "Room 2: Fix the Airflow" and press Recalibrate.', a);
         return;
       }
       var sc = awardTask(0), slow = sc.attempts > 1;
       g.safety += 1; J.save();
       var v = await taskResult(0, sc, {
         tag: slow ? 'Found, but a bit late' : 'Problem found early!',
-        story: slow ? 'You found the airflow drift after a few tries, so the base used extra power for repairs.' : 'You spotted the airflow drift right away and fixed it early. No extra repairs needed!',
-        fx:{p: slow ? -8 : -3}, learn:'Checking instruments every morning helps a crew spot small problems before they become big ones.', fact:'The air on the space station is about 21% oxygen, just like the air on Earth.'});
+        story: slow ? 'You found the airflow problem after a few tries, so the base used extra power to fix it.' : 'You spotted the airflow drift right away and fixed it early. No extra repairs needed!',
+        fx:{p: slow ? -8 : -3}, learn:'Checking the machines every morning helps the crew spot small problems before they get big.', fact:'The air on the space station is about 21% oxygen, just like the air on Earth.'});
       finishTask(0, v);
     });
     J.bindText(root, /RETURN TO BASE HQ/i, function(){ J.go('hub'); });
@@ -315,7 +315,7 @@
       var sc = awardActivity(1, act);
       var v = await taskResult(1, sc, {tag:'Breakfast finished', story:'You finished your '+meals[mi].t.toLowerCase()+'. Food and water supplies went down.', fx:meals[mi].fx,
         learn:'Space food is packed so crumbs and drinks do not float into the machines.',
-        fact:'Astronauts often eat food in sticky sauces or pouches so crumbs do not float into machines.'});
+        fact:'Astronauts eat food in sticky sauces or pouches, so crumbs do not float into machines.'});
       busy = false; finishTask(1, v);
     });
     var swap = Array.prototype.find.call(root.querySelectorAll('button'), function(b){ return /^Swap$/.test(b.textContent.trim()); });
@@ -345,10 +345,10 @@
       if(sp[0]) sp[0].textContent = on ? 'check_circle' : 'radio_button_unchecked';
       if(sp[1]) sp[1].textContent = on ? 'INSPECTED' : 'TAP TO INSPECT';
     }
-    var mods = Array.prototype.find.call(root.querySelectorAll('span,div'), function(e){ return !e.children.length && /MODULES CHECKED/.test(e.textContent); });
+    var mods = Array.prototype.find.call(root.querySelectorAll('span,div'), function(e){ return !e.children.length && /(MODULES|PARTS) CHECKED/.test(e.textContent); });
     function refreshTag(){
       if(tag) tag.textContent = inspected + ' / ' + rows.length + ' INSPECTED';
-      if(mods) mods.textContent = inspected + '/' + rows.length + ' MODULES CHECKED';
+      if(mods) mods.textContent = inspected + '/' + rows.length + ' PARTS CHECKED';
     }
     function reset(){ inspected = 0; rows.forEach(function(r){ r.done = false; setBadge(r, false); }); refreshTag(); if(typeof updateCoach === 'function') updateCoach(); }
     rows.forEach(function(r){
@@ -360,7 +360,7 @@
     });
     function updateCoach(){
       if(inspected < rows.length) J.coachSet('Tap each part to inspect it ('+inspected+' of '+rows.length+' done).');
-      else J.coachSet('✅ All inspected! Now press <b>PRESSURIZE SUIT &amp; OPEN AIRLOCK</b>.', /PRESSURIZE SUIT/i, {scroll:true});
+      else J.coachSet('✅ All checked! Now press <b>SEAL SUIT &amp; OPEN AIRLOCK</b>.', /SEAL SUIT|PRESSURIZE SUIT/i, {scroll:true});
     }
     Array.prototype.forEach.call(root.querySelectorAll('button'), function(b){
       var m = /^([1-5])$/.exec(b.textContent.trim());
@@ -379,9 +379,9 @@
         intro:'Choose the right outdoor gear for each slot, then look for a hidden crack. Which gear keeps you safe on the Moon?',
         runner:function(host){ return M.dressUp(host, {set:'eva', strict:true, damage:true, title:'🧑‍🚀 Suit up: choose the right outdoor gear'}); }});
       var sc = awardActivity(2, act);
-      var v = await taskResult(2, sc, {tag:'Suit ready!', story:'Your spacesuit passed the 5-point inspection. The airlock used a little oxygen and power.', fx:{o:-3,p:-2},
-        learn:'A spacesuit is a personal spacecraft, so every part is checked before going outside.',
-        fact:'A spacesuit gives you air, controls temperature and protects you from dust.'});
+      var v = await taskResult(2, sc, {tag:'Suit ready!', story:'Your space suit passed all 5 checks. The airlock used a little oxygen and power.', fx:{o:-3,p:-2},
+        learn:'A space suit is like a tiny spaceship you wear, so we check every part before going outside.',
+        fact:'A space suit gives you air, keeps you at the right temperature, and protects you from dust.'});
       busy = false; finishTask(2, v);
     });
     J.bindText(root, /RE-INSPECT GEAR/i, function(){ reset(); J.toast('Inspection reset. Tap each part again.'); });
@@ -392,7 +392,7 @@
   var SITES = {
     rim:   {label:'Nearby Crater Rim',          fx:{p:-5,o:-2},  back:{p:-1},         key:'A'},
     ridge: {label:'Rock Formation Ridge',       fx:{p:-10,o:-4}, back:{p:-3,o:-2},    key:'B'},
-    shadow:{label:'Permanently Shadowed Crater',fx:{p:-18,o:-5}, back:{p:-5,o:-3},    key:'C'},
+    shadow:{label:'Always-Dark Crater',fx:{p:-18,o:-5}, back:{p:-5,o:-3},    key:'C'},
     flat:  {label:'Flat Surface Survey',        fx:{p:-3,o:-1},  back:{p:-1},         key:'D'}
   };
   var ROCKS = [{name:'Basalt', e:'⬛', kind:'Dark rock'},{name:'Anorthosite', e:'⬜', kind:'Light rock'},{name:'Breccia', e:'🟫', kind:'Broken rock'}];
@@ -401,7 +401,7 @@
     var g = ensureGame(); g.time = '11:00'; J.refreshHeader(false);
     var site = 'rim', busy = false;
     var origSel = window.selectLocation;
-    window.selectLocation = function(k){ site = k; origSel.apply(this, arguments); J.coachSet('Good choice! Now press <b>CONFIRM RESEARCH SITE &amp; DEPLOY ROVER</b>.', /CONFIRM RESEARCH SITE/i, {scroll:true}); };
+    window.selectLocation = function(k){ site = k; origSel.apply(this, arguments); J.coachSet('Good choice! Now press <b>CHOOSE THIS PLACE &amp; SEND THE ROVER</b>.', /CHOOSE THIS PLACE|CONFIRM RESEARCH SITE/i, {scroll:true}); };
     window.confirmMission = async function(){
       if(busy) return; busy = true;
       var S = SITES[site];
@@ -409,7 +409,7 @@
       if(site === 'ridge') cfg.extras = [{name:'Bonus rock', e:'💎'}];
       if(site === 'shadow' && Math.random() < 0.6) cfg.extras = [{name:'Ice clue', e:'🧊'}];
       var act = await offerActivity({kicker:'11:00 · '+S.label, title:'Collect samples',
-        intro:'Rover-01 has arrived! Dig for 3 different samples. A number tells how many samples hide next to that spot. Careful searching can reveal bonus discoveries.',
+        intro:'Rover-01 has arrived! Dig for 3 different samples. A number tells how many samples hide next to that spot. Careful digging can find bonus treasures!',
         runner:function(host){ return M.rocks(host, cfg); }});
       var sc = awardActivity(3, act);
       var extras = (act.played && act.r && act.r.extras) || [], ice = extras.indexOf('Ice clue') >= 0;
@@ -419,13 +419,13 @@
       var story = {rim:'Rover-01 collected ordinary rock samples close to the base. Low risk and low cost.',
         ridge:'The rocky ridge gave more samples, but it used more oxygen and power.',
         shadow: ice ? 'Amazing! You found a (simulated) clue that could mean water ice, deep in the dark crater.' : 'The dark crater is very cold and no ice clue was found this time. Finding ice is never guaranteed.',
-        flat:'Rover-01 gathered surface data without long walks. Fewer samples, but very safe.'}[site];
+        flat:'Rover-01 learned about the ground without driving far. Fewer samples, but very safe.'}[site];
       var fact = site === 'shadow' ? 'Some craters near the Moon\'s poles never see sunlight. Scientists think they may hold water ice.' :
-                 site === 'flat' ? 'Instruments measure the Moon\'s temperature, dust and radiation to keep astronauts safe.' :
-                 'Moon rocks brought back by Apollo astronauts are still studied by scientists today.';
+                 site === 'flat' ? 'Machines measure the Moon\'s heat, dust and space rays to keep astronauts safe.' :
+                 'Scientists still study the Moon rocks that Apollo astronauts brought back.';
       J.save();
       var v = await taskResult(3, sc, {tag:'Research done!', story:story, fx:fx, fact:fact,
-        learn:'Different places on the Moon teach scientists different things, and every trip costs oxygen and power.'});
+        learn:'Different places on the Moon teach us different things. Every trip uses oxygen and power.'});
       busy = false; finishTask(3, v);
     };
     J.bindText(root, /Base HQ/i, function(){ J.go('hub'); });
@@ -439,7 +439,7 @@
       setTimeout(function(){
         var cells = root.querySelectorAll('.hex-cell'), n = 0;
         cells.forEach(function(c){ if(c.innerText.trim() === '✓') n++; });
-        if(cells.length && n >= cells.length) J.coachSet('✅ Panels are clean! Press <b>CONFIRM POWER MAINTENANCE</b>.', /CONFIRM POWER MAINTENANCE/i, {scroll:true});
+        if(cells.length && n >= cells.length) J.coachSet('✅ Panels are clean! Press <b>FINISH CLEANING &amp; BOOST POWER</b>.', /FINISH CLEANING|CONFIRM POWER MAINTENANCE/i, {scroll:true});
         else if(n > 0) J.coachSet('Keep wiping: '+n+' of '+cells.length+' cells clean. Or press <b>AUTO-WIPE ALL</b>.', /AUTO-WIPE ALL/i);
       }, 90);
     });
@@ -448,7 +448,7 @@
       var cells = root.querySelectorAll('.hex-cell'), clean = 0;
       cells.forEach(function(c){ if(c.innerText.trim() === '✓') clean++; });
       if(cells.length && clean < cells.length){
-        await hintModal('Some solar cells are still covered in dust. Tap each dusty cell to wipe it, or press <b>AUTO-WIPE ALL</b>, then confirm the maintenance. You have cleaned <b>'+clean+' of '+cells.length+'</b>.', '', 1);
+        await hintModal('Some solar cells are still covered in dust. Tap each dusty cell to wipe it, or press <b>AUTO-WIPE ALL</b>, then press <b>FINISH CLEANING</b>. You have cleaned <b>'+clean+' of '+cells.length+'</b>.', '', 1);
         return;
       }
       busy = true;
@@ -457,8 +457,8 @@
         runner:function(host){ return M.power(host, {puzzleOnly:true}); }});
       var sc = awardActivity(4, act);
       var back = SITES[g.loc || 'rim'].back, fx = {p: (act.played && act.attempts === 1 ? 12 : 8) + (back.p||0)}; if(back.o) fx.o = back.o;
-      var v = await taskResult(4, sc, {tag:'Power restored!', story:'The panels are clean and the base is charging again. The walk back from the exploration site used some resources too.', fx:fx,
-        learn:'Dust on solar panels lowers the power they make, so keeping them clean keeps the base running.',
+      var v = await taskResult(4, sc, {tag:'Power restored!', story:'The panels are clean and the base is charging again. Walking back from your trip used some supplies too.', fx:fx,
+        learn:'Dust on solar panels means less power, so clean panels keep the base running.',
         fact:'Moon dust is sharp and sticky. It can scratch equipment and cover solar panels.'});
       busy = false; finishTask(4, v);
     };
@@ -488,7 +488,7 @@
       var fx = {p:COST[sel].p}, extraHtml = '';
       if(g.emergency && sel !== 'B'){
         await J.modal({cls:'warn', kicker:'Safety rule', title:'Safety report first!',
-          html:'<p>There is an emergency, so the <b>Safety Priority Report</b> must go to Mission Control first. Safety always comes before science.</p><p>Your chosen report goes second.</p><div>'+J.chips({p:-4})+'</div>',
+          html:'<p>There is an emergency, so the <b>Safety Report</b> must go first. Staying safe always comes before science.</p><p>Your chosen report goes second.</p><div>'+J.chips({p:-4})+'</div>',
           actions:[{label:'SEND BOTH REPORTS', cls:'gold', value:true}]});
         fx.p += -4; extraHtml = '<p>The safety report was sent first.</p>';
       }
@@ -499,9 +499,9 @@
       var sc = awardActivity(5, act);
       if(!g.emergency){ g.eventPts = (sel === 'C') ? 1 : 2; g.safety += g.eventPts; }
       J.save();
-      var txt = (sel === 'B' || g.emergency) ? 'Mission Control received your safety information first.' : sel === 'A' ? 'Mission Control received your complete report.' : 'Mission Control received your science results. Safety news will come later.';
+      var txt = (sel === 'B' || g.emergency) ? 'Mission Control got your safety news first.' : sel === 'A' ? 'Mission Control got your big report.' : 'Mission Control got your science results. News about safety will come later.';
       var v = await taskResult(5, sc, {tag:'Report sent!', story:txt, fx:fx, extra:extraHtml,
-        learn:'Mission Control needs the right information at the right time, and safety news always comes first.',
+        learn:'Mission Control needs the right news at the right time. News about safety always goes first.',
         fact:'Radio signals take about 1.3 seconds to travel from Earth to the Moon.'});
       busy = false; finishTask(5, v);
     });
@@ -520,7 +520,7 @@
     function say7(){
       var c = checkedCount();
       if(c < items.length) J.coachSet('Tap every card to inspect it ('+c+' of '+items.length+' done).');
-      else J.coachSet('✅ All checked! Press <b>CONCLUDE SOL 04 &amp; VIEW MISSION DEBRIEF</b>.', /CONCLUDE SOL 04/i, {scroll:true});
+      else J.coachSet('✅ All checked! Press <b>FINISH THE DAY &amp; SEE MY RESULTS</b>.', /FINISH THE DAY|CONCLUDE SOL 04/i, {scroll:true});
     }
     function checkedCount(){
       var c = 0; Array.prototype.forEach.call(items, function(card){ var ic = card.querySelector('.material-symbols-outlined'); if(ic && ic.textContent.trim() === 'check_circle') c++; });
@@ -540,7 +540,7 @@
       busy = true;
       var sc = awardTask(6); g.safety += 1; J.save();
       var v = await taskResult(6, sc, {tag:'Base is safe for the night', story:'Equipment is stored and the base is checked. Night heating, dinner and sleep use some supplies.',
-        fx:{o:-4,p:-4,f:-6,w:-4}, learn:'End-of-day checks keep the base safe through the long Moon night.', fact:'A night on the Moon lasts about 14 Earth days, so bases need power to stay warm.', nextLabel:'MISSION DEBRIEF 🏁'});
+        fx:{o:-4,p:-4,f:-6,w:-4}, learn:'End-of-day checks keep the base safe through the long Moon night.', fact:'A night on the Moon lasts about 14 Earth days, so bases need power to stay warm.', nextLabel:'SEE MY RESULTS 🏁'});
       busy = false; finishTask(6, v);
     });
     J.bindText(root, /RETURN TO BASE HQ/i, function(){ J.go('hub'); });
@@ -551,12 +551,12 @@
     var g = ensureGame(); g.time = '14:30'; J.refreshHeader(false);
     J.setText(root, /Projected Outcome:.*$/, 'Projected Outcome:');
     var choice = null, origSel = window.selectChoice;
-    window.selectChoice = function(el, k){ choice = k; origSel.apply(this, arguments); J.coachSet('Nice! Now press <b>CONTINUE MISSION</b>.', /CONTINUE MISSION/i, {scroll:true}); };
-    J.bindText(root, /Inspect Sector/i, function(){ J.toast('Sector scan complete: all systems normal.'); });
+    window.selectChoice = function(el, k){ choice = k; origSel.apply(this, arguments); J.coachSet('Nice! Now press <b>CONTINUE THE MISSION</b>.', /CONTINUE (THE )?MISSION/i, {scroll:true}); };
+    J.bindText(root, /Inspect Sector/i, function(){ J.toast('Scan finished: everything is working.'); });
     J.bindText(root, /CONTINUE MISSION/i, async function(){
       if(!choice){ J.toast('Pick one action first!'); return; }
-      var o = {A:{pts:2, fx:{}, story:'You completed the scheduled inspections. Routine checks help find problems early.', tag:'Inspections complete'},
-               B:{pts:1, fx:{r:2}, story:'Rover-01 scanned the crater soil and found interesting minerals.', tag:'New observations'},
+      var o = {A:{pts:2, fx:{}, story:'You finished the checks. Checking often helps you find problems early.', tag:'Inspections complete'},
+               B:{pts:1, fx:{r:2}, story:'Rover-01 scanned the soil near the crater and found interesting minerals.', tag:'New observations'},
                C:{pts:1, fx:{p:5}, story:'The crew rested and saved some power. Morale is high!', tag:'Good rest'}}[choice];
       g.eventPts = o.pts; g.safety += o.pts; g.weatherAC = true; J.save();
       await J.modal({kicker:'14:30 · All systems go', title:o.tag, html:'<p style="font-weight:700">'+o.story+'</p><div>'+J.chips(o.fx)+'</div>', actions:[{label:'CONTINUE ➜', cls:'gold', value:true}]});
@@ -599,7 +599,7 @@
         }
         var att = ((g.att && g.att[7]) || 0) + 1;
         g.eventPts = att === 1 ? 2 : 1; g.safety += g.eventPts; g.weatherB = true; g.emergency = true; J.save();
-        await taskResult(-1, null, {tag:'Power plan set', story:story, fx:fx, learn:'When power is short, protect life support, heat and radio first.', fact:'Solar panels need sunlight, so dust and the long Moon night are big challenges for lunar bases.', nextLabel:'CONTINUE ➜'});
+        await taskResult(-1, null, {tag:'Power plan set', story:story, fx:fx, learn:'When power is short, protect life support, heat and radio first.', fact:'Solar panels need sunlight, so dust and the long Moon night are big problems for a Moon base.', nextLabel:'CONTINUE ➜'});
         busy = false; J.go(nextScreen());
       });
     }
@@ -629,16 +629,16 @@
         var opts = [
           {ico:'💧', t:'Move more water and food into the shelter', d:'More protective supplies. Less left for daily use.', fx:{f:-10,w:-10}},
           {ico:'⚖️', t:'Share supplies evenly', d:'Balance daily needs and the shelter.', fx:{f:-5,w:-5}},
-          {ico:'🔌', t:'Turn off non-essential equipment', d:'Saves electricity. Some research is paused.', fx:{p:8,r:-1}}
+          {ico:'🔌', t:'Turn off non-essential equipment', d:'Saves power. Some science stops for now.', fx:{p:8,r:-1}}
         ];
-        var ci = await J.choose({kicker:'Solar particle event', title:'How will you use your supplies?', options:opts});
-        var act = await offerActivity({kicker:'Solar particle event', title:'Build the radiation shelter',
-          intro:'Choose 5 items for the shelter: water, food, storage, and two kinds of radiation protection.',
+        var ci = await J.choose({kicker:'Solar storm', title:'How will you use your supplies?', options:opts});
+        var act = await offerActivity({kicker:'Solar storm', title:'Build the storm shelter',
+          intro:'Pick 5 things for the shelter: water, food, storage boxes, and two things that block space rays.',
           runner:function(host){ return M.shelter(host, {once:true}); }});
         var failed = (g.att && g.att[8]) || 0;
         g.eventPts = (failed === 0 && act.played && act.attempts === 1) ? 2 : 1; g.safety += g.eventPts; g.weatherAC = true; J.save();
-        await taskResult(-1, null, {tag:'Crew is safe!', story:'Everyone is inside the shelter. Thick materials block much of the radiation, and nobody goes outside until the storm has passed.', fx:opts[ci].fx,
-          learn:'Thick materials such as Moon soil and water block radiation, so crews shelter during solar storms.',
+        await taskResult(-1, null, {tag:'Crew is safe!', story:'Everyone is inside the shelter. The thick walls block most of the harmful rays. Nobody goes outside until the storm is over.', fx:opts[ci].fx,
+          learn:'Thick things like Moon soil and water block harmful space rays, so crews hide in shelters during solar storms.',
           fact:'The Moon has no thick air or magnetic field to block radiation. Future bases may be covered with Moon soil for protection.'});
         busy = false; J.go(nextScreen());
       });

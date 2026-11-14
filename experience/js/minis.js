@@ -70,8 +70,8 @@
     ],
     eva:[
       {slot:'Helmet', e:'🪖', items:[{e:'🔍',t:'Clear indoor visor'},{e:'😎',t:'Gold sun-filter visor',ok:1},{e:'💔',t:'Scratched visor'}]},
-      {slot:'Gloves', e:'🧤', items:[{e:'🧤',t:'Thin indoor gloves'},{e:'🧤',t:'Insulated moon gloves',ok:1},{e:'🧴',t:'Rubber gloves'}]},
-      {slot:'Oxygen backpack', e:'🎒', items:[{e:'🫙',t:'Small spare tank'},{e:'💨',t:'Full life-support pack',ok:1},{e:'🕳️',t:'Empty pack'}]},
+      {slot:'Gloves', e:'🧤', items:[{e:'🧤',t:'Thin indoor gloves'},{e:'🧤',t:'Warm moon gloves',ok:1},{e:'🧴',t:'Rubber gloves'}]},
+      {slot:'Oxygen backpack', e:'🎒', items:[{e:'🫙',t:'Small spare tank'},{e:'💨',t:'Full air backpack',ok:1},{e:'🕳️',t:'Empty pack'}]},
       {slot:'Boots', e:'🥾', items:[{e:'👟',t:'Slippery indoor shoes'},{e:'🥾',t:'Grippy moon boots',ok:1},{e:'🩴',t:'Light sandals'}]}
     ]
   };
@@ -134,7 +134,7 @@
         J.sfx.miss();
         var names = wrong.map(function(i){ return set[i].slot; }).join(', ');
         if(o.strict){
-          resolve({ok:false, hint:'The inspector says: wrong gear for the '+names+'.', help:'Pick the item made for space: it protects you and gives you air.'});
+          resolve({ok:false, hint:'The inspector says: wrong gear for the '+names+'.', help:'Pick the thing made for space. It keeps you safe and gives you air.'});
         } else {
           $('fb').innerHTML = '<div class="hintline">Inspector: check your '+names+'! Choose gear made for space.</div>';
           var ss = $('slots').querySelectorAll('.slot');
@@ -471,7 +471,7 @@
     return new Promise(function(resolve){
       var picked = {}, count = 0;
       host.innerHTML = '<div class="panel"><h3>🏠 Build the radiation shelter: choose 5 items</h3>'+
-        '<div class="mini-note">You need <b>water, food, storage</b> and <b>2 kinds of radiation protection</b>. Picked: <b id="pc">0</b>/5</div>'+
+        '<div class="mini-note">You need <b>water, food, storage</b> and <b>2 things that block space rays</b>. Picked: <b id="pc">0</b>/5</div>'+
         '<div class="igrid" id="sg"></div><div id="fb"></div><div class="cta"><button class="btn" id="build" disabled>BUILD SHELTER 🏗️</button></div></div>';
       var items = J.shuffle(SHELTER.map(function(s,i){ return {s:s,i:i}; }));
       items.forEach(function(x){
@@ -489,7 +489,7 @@
         J.sfx.miss();
         var bs = $('sg').querySelectorAll('.item');
         items.forEach(function(x,k){ if(picked[x.i] && !x.s.ok){ bs[k].classList.add('bad'); } });
-        $('fb').innerHTML = '<div class="hintline">'+wrong.length+' item'+(wrong.length>1?'s are':' is')+' not right for a radiation shelter. Thick materials block radiation. Thin foil, toys and umbrellas do not!</div>';
+        $('fb').innerHTML = '<div class="hintline">'+wrong.length+' item'+(wrong.length>1?'s are':' is')+' not right for a radiation shelter. Thick things block space rays. Thin foil, toys and umbrellas do not!</div>';
         if(o.once) resolve({ok:false});
       };
     });
@@ -506,7 +506,7 @@
     return new Promise(function(resolve){
       var on = SYS.map(function(){ return true; }), mistakes = 0;
       host.innerHTML = '<div class="panel"><h3>🔋 Power shortage: tap systems to switch them off</h3>'+
-        '<div class="mini-note">Available power: <b>'+budget+' units</b>. Keep life support, heater and communications ON!</div>'+
+        '<div class="mini-note">Available power: <b>'+budget+' units</b>. Keep the air machine, heater and radio ON!</div>'+
         '<div class="budget" id="bd"><i></i></div><div class="mini-note" id="bt"></div><div id="sy"></div><div id="fb"></div>'+
         '<div class="cta"><button class="btn" id="setp">SET POWER PLAN ✔</button></div></div>';
       function use(){ return SYS.reduce(function(a,s,i){ return a + (on[i]?s.w:0); }, 0); }

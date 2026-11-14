@@ -129,7 +129,7 @@
         hdr.push({n:n,k:'w'});
         // add a Food chip next to Water (the story has four resources): clone the smallest wrapper that holds only the Water readout
         var chip = n.parentElement;
-        while(chip && chip.parentElement && !/O2:|Power:|Sol\s*\d/.test(chip.parentElement.textContent) && chip.parentElement.tagName !== 'HEADER') chip = chip.parentElement;
+        while(chip && chip.parentElement && !/O2:|Power:|(?:Sol|Day)\s*\d/.test(chip.parentElement.textContent) && chip.parentElement.tagName !== 'HEADER') chip = chip.parentElement;
         if(chip && chip.parentElement && chip.tagName !== 'HEADER' && !chip.parentElement.querySelector('[data-food]')){
           var c = chip.cloneNode(true); c.setAttribute('data-food', '1');
           var tw2 = document.createTreeWalker(c, NodeFilter.SHOW_TEXT, null), m;
@@ -140,7 +140,7 @@
           chip.parentElement.insertBefore(c, chip.nextSibling);
         }
       }
-      else if(/Sol\s*\d+\s*[•·]\s*\d{1,2}:\d{2}/.test(t)) hdr.push({n:n,k:'t'});
+      else if(/(?:Sol|Day)\s*\d+\s*[•·]\s*\d{1,2}:\d{2}/.test(t)) hdr.push({n:n,k:'t'});
     });
     J.refreshHeader(false);
   }
@@ -153,7 +153,7 @@
       if(h.k==='p') v = v.replace(/Power:\s*\d+%/, 'Power: '+r.p+'%');
       if(h.k==='w') v = v.replace(/Water:\s*\d+%/, 'Water: '+r.w+'%');
       if(h.k==='f') v = v.replace(/Food:\s*\d+%/, 'Food: '+r.f+'%');
-      if(h.k==='t') v = v.replace(/(Sol\s*\d+\s*[•·]\s*)\d{1,2}:\d{2}/, '$1'+time);
+      if(h.k==='t') v = v.replace(/((?:Sol|Day)\s*\d+\s*[•·]\s*)\d{1,2}:\d{2}/, '$1'+time);
       h.n.nodeValue = v;
       if(flash && h.k!=='t' && h.n.parentElement){
         var el = h.n.parentElement; el.style.transition = 'transform .25s'; el.style.transform = 'scale(1.15)';
@@ -209,6 +209,70 @@
   }
   J.reword = reword;
 
+
+  /* ---------------- plain language (ages 7-12) ---------------- */
+  var wordRes = null, simpleObs = null, simplePending = false;
+  function nrm(t){ return String(t).replace(/\s+/g, ' ').trim(); }
+  function lookupSimple(t){
+    var n = nrm(t), S = J.SIMPLE || {};
+    if(Object.prototype.hasOwnProperty.call(S, n)) return S[n];
+    var m = /^(["“'‘]+)([\s\S]*?)(["”'’]+)$/.exec(n);
+    if(m && Object.prototype.hasOwnProperty.call(S, m[2])) return m[1] + S[m[2]] + m[3];
+    return null;
+  }
+  function inIcon(n){ return n.parentElement && n.parentElement.closest('.material-symbols-outlined,script,style,svg'); }
+  function textNodesOf(el){
+    var out = [], tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n;
+    while((n = tw.nextNode())) if(!inIcon(n)) out.push(n);
+    return out;
+  }
+  function applyOne(el, original, val){
+    var b = el.closest && el.closest('button,a');
+    if(b) b.__orig = (b.__orig ? b.__orig + ' ' : '') + original;
+    el.__orig = original;
+    if(val === '__HIDE__'){ el.style.display = 'none'; return; }
+    var nodes = textNodesOf(el); if(!nodes.length) return;
+    var direct = nodes.filter(function(n){ return n.parentNode === el; });
+    var first = direct[0] || nodes[0];
+    first.nodeValue = val;
+    nodes.forEach(function(n){ if(n !== first) n.nodeValue = ''; });
+    el.__simple = true;
+  }
+  function simplifyWalk(el){
+    if(!el || el.nodeType !== 1 || el.closest('script,style,svg') || el.classList.contains('material-symbols-outlined')) return;
+    var kids = Array.prototype.filter.call(el.children, function(c){ return !c.classList.contains('material-symbols-outlined'); });
+    var blockKid = kids.some(function(c){ var d = getComputedStyle(c).display; return d !== 'inline' && d !== 'none' && c.tagName !== 'BR'; });
+    if(!blockKid){
+      if(el.__simple) return;
+      var t = nrm(textNodesOf(el).map(function(n){ return n.nodeValue; }).join(''));
+      if(t){ var v = lookupSimple(t); if(v !== null) applyOne(el, t, v); }
+    } else kids.forEach(simplifyWalk);
+  }
+  function caseLike(src, rep){
+    if(src.length > 1 && src === src.toUpperCase()) return rep.toUpperCase();
+    if(/^[A-Z]/.test(src) && /^[a-z]/.test(rep)) return rep.charAt(0).toUpperCase() + rep.slice(1);
+    return rep;
+  }
+  function wordPass(root){
+    if(!wordRes) wordRes = (J.WORDS || []).map(function(w){ return [new RegExp(w[0], w[2] === 'cs' ? 'g' : 'gi'), w[1], w[2] === 'cs']; });
+    textNodesOf(root).forEach(function(n){
+      var v = n.nodeValue, o = v;
+      wordRes.forEach(function(w){ v = v.replace(w[0], function(m){ return w[2] ? w[1] : caseLike(m, w[1]); }); });
+      if(v !== o) n.nodeValue = v;
+    });
+  }
+  function runSimple(){
+    if(simpleObs) simpleObs.disconnect();
+    try{ simplifyWalk(app); wordPass(app); }catch(e){ console.warn('plain-language pass:', e.message); }
+    if(simpleObs) simpleObs.observe(app, {childList:true, subtree:true, characterData:true});
+  }
+  function scheduleSimple(){
+    if(simplePending) return; simplePending = true;
+    requestAnimationFrame(function(){ simplePending = false; runSimple(); });
+  }
+  J.simplify = runSimple;
+  simpleObs = new MutationObserver(scheduleSimple);
+
   J.screens = {};
   J.screen = function(name, n, bind){ J.screens[name] = {n:n, bind:bind}; };
   J.customScreen = function(name, def, bind){ J.screens[name] = {custom:def, bind:bind}; };
@@ -216,7 +280,7 @@
     var hit = 0;
     Array.prototype.forEach.call(root.querySelectorAll(sel || 'button, a'), function(el){
       var t = (el.textContent || '').replace(/\s+/g,' ').trim();
-      if(re.test(t)){
+      if(re.test(t) || (el.__orig && re.test(el.__orig))){
         hit++;
         el.addEventListener('click', function(e){ e.preventDefault(); J.sfx.tap(); fn(el, e); });
       }
@@ -241,7 +305,7 @@
     for(var i=0;i<all.length;i++){
       var el = all[i];
       if(el.offsetParent === null) continue;
-      if(t.test((el.textContent || '').replace(/\s+/g, ' ').trim()) || (el.id && t.test(el.id))) return el;
+      if(t.test((el.textContent || '').replace(/\s+/g, ' ').trim()) || (el.__orig && t.test(el.__orig)) || (el.id && t.test(el.id))) return el;
     }
     return null;
   }
@@ -325,13 +389,13 @@
   }
   J.settings = function(){
     return J.modal({kicker:'Settings', title:'Cadet settings',
-      html:'<p>Sound is <b>'+(J.muted?'OFF':'ON')+'</b>.</p><p class="text-sm">This is a fictional, interactive learning experience. All numbers are simulated mission values, not real NASA measurements.</p>',
+      html:'<p>Sound is <b>'+(J.muted?'OFF':'ON')+'</b>.</p><p class="text-sm">This is a pretend (simulated) learning adventure. The numbers are made up for learning and are not real NASA measurements.</p>',
       actions:[{label:J.muted?'TURN SOUND ON':'TURN SOUND OFF', cls:'gold', value:'snd'},{label:'CLOSE', cls:'dim', value:false}]}).then(function(v){
         if(v === 'snd'){ J.setMuted(!J.muted); J.toast('Sound '+(J.muted?'off':'on')); }
       });
   };
   J.pauseMenu = function(){
-    return J.modal({kicker:'Paused', title:'Mission paused', html:'<p>Your progress is saved automatically.</p>',
+    return J.modal({kicker:'Paused', title:'Mission paused', html:'<p>Your place is saved for you.</p>',
       actions:[{label:'RESUME', cls:'cyan', value:'resume'},{label:'MAIN MENU', cls:'dim', value:'menu'}]}).then(function(v){ if(v === 'menu') J.go('menu'); });
   };
 
@@ -355,8 +419,9 @@
     if(def.bind){ try{ def.bind(app); }catch(e){ console.error('bind error in '+name+':', e); } }
     var tip = J.coachFor && J.coachFor[name];
     J.coachSet(tip ? tip[0] : '', tip ? tip[1] : null);
+    runSimple();   // plain language (after buttons are wired, so they are found by their original names)
     window.scrollTo(0, 0);
-    document.title = (scr.title || 'A Day on the Moon').replace(/\s+/g,' ');
+    document.title = 'A Day on the Moon: Junior Astronaut Mission Trainer';
     J.currentScreen = name;
   }
   J.render = render;

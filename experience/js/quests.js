@@ -5,11 +5,11 @@
   var J = window.JAM, $ = J.$;
   var QKEY = 'jamt_stitch_quests_v1';
   var QUESTS = [
-    {id:'q1', n:23, icon:'air', title:'Breathe Easy!', sub:'How life support keeps astronauts alive (ECLSS)', color:'tertiary-container'},
-    {id:'q2', n:24, icon:'sunny', title:'Solar Storm Alert!', sub:'Space weather and radiation', color:'secondary-container'},
-    {id:'q3', n:25, icon:'bolt', title:'Power Up!', sub:'Solar and fission power for a Moon base', color:'primary-container'},
+    {id:'q1', n:23, icon:'air', title:'Breathe Easy!', sub:'How machines keep astronauts alive', color:'tertiary-container'},
+    {id:'q2', n:24, icon:'sunny', title:'Solar Storm Alert!', sub:'Space weather and space rays', color:'secondary-container'},
+    {id:'q3', n:25, icon:'bolt', title:'Power Up!', sub:'How a Moon base makes power', color:'primary-container'},
     {id:'q4', n:26, icon:'potted_plant', title:'Greenhouse Heroes', sub:'Growing plants in space', color:'tertiary-container'},
-    {id:'q5', n:27, icon:'diamond', title:'Moon Resource Explorer', sub:'Using Moon materials (ISRU)', color:'primary-container'}
+    {id:'q5', n:27, icon:'diamond', title:'Moon Resource Explorer', sub:'Using what is on the Moon', color:'primary-container'}
   ];
   function done(){ try{ return JSON.parse(J.store(QKEY) || '{}'); }catch(e){ return {}; } }
   function markDone(id){ var d = done(); d[id] = true; J.store(QKEY, JSON.stringify(d)); }
@@ -72,7 +72,7 @@
         '<div class="grid gap-4 md:grid-cols-2" id="questCards">'+cards+'</div>'+
         '<div class="flex flex-wrap gap-3 justify-center mt-8">'+
         '<button id="qhMenu" class="gbtn dim">MAIN MENU</button>'+(J.G && !J.G.finished ? '<button id="qhBack" class="gbtn gold">BACK TO MY MISSION</button>' : '')+'</div>'+
-        '<p class="text-center text-label-sm font-label-sm text-on-surface-variant mt-6">Simulated educational experience. Learn more at <a class="underline text-primary-container" href="https://www.nasa.gov/artemis/" target="_blank" rel="noopener">NASA Artemis</a> and <a class="underline text-primary-container" href="https://kauai.ccmc.gsfc.nasa.gov/DONKI/" target="_blank" rel="noopener">NASA DONKI</a>.</p></main>'
+        '<p class="text-center text-label-sm font-label-sm text-on-surface-variant mt-6">A pretend (simulated) learning adventure. Read about the real thing at <a class="underline text-primary-container" href="https://www.nasa.gov/artemis/" target="_blank" rel="noopener">NASA Artemis</a> and <a class="underline text-primary-container" href="https://kauai.ccmc.gsfc.nasa.gov/DONKI/" target="_blank" rel="noopener">NASA DONKI</a>.</p></main>'
     };
   }
   J.customScreen('questHub', {get html(){ return hubDef().html; }, get bodyClass(){ return hubDef().bodyClass; }, style:'', title:'NASA Science Quests'}, function(root){
