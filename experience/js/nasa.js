@@ -59,6 +59,7 @@
       var p = list[start % list.length];
       box.className = 'nasa-strip';
       box.style.display = '';
+      if(d.fallback) intro = 'A real NASA space picture';
       box.innerHTML = '<button type="button" class="nasa-strip-btn" aria-label="Open the NASA photo: '+esc(p.title)+'">'+
         '<img src="'+esc(p.image)+'" alt="" loading="lazy">'+
         '<span class="nasa-strip-t"><b>'+esc(label)+'</b><span>'+esc(intro)+'</span><em>'+esc(p.title)+'</em></span>'+
