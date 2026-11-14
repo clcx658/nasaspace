@@ -116,3 +116,4 @@
 #mg .tray{grid-template-columns:repeat(3,1fr)}
 #mg .igrid{grid-template-columns:repeat(2,1fr)}
 #mg .panels{gap:6px}}
+#mg .item .why{display:block;font-weight:600;font-size:.72rem;opacity:.85;margin-top:3px}

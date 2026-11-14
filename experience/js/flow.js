@@ -219,6 +219,36 @@
   J.screen('training', 4, function(root){
     J.bindText(root, /PROCEED TO ROCKET LAUNCH/i, function(){ ensureGame().trained = true; J.save(); J.go('rocket'); });
     window.resetTraining = function(){ J.render('training'); };
+    // A NEXT button under each challenge: it wakes up when that challenge is done and moves to the next one.
+    var nexts = [];
+    [1,2,3,4,5].forEach(function(n){
+      var fb = root.querySelector('#c'+n+'-feedback'); if(!fb) return;
+      var btn = document.createElement('button'); btn.type = 'button'; btn.setAttribute('data-next-challenge', n);
+      btn.className = 'mt-5 w-full py-3 rounded-full font-extrabold text-label-lg font-label-lg uppercase tracking-wider transition-all';
+      fb.insertAdjacentElement('afterend', btn);
+      var done = null;
+      function paint(){
+        var st = root.querySelector('#badge-status-'+n), now = !!(st && /EARNED/i.test(st.textContent));
+        if(now === done) return; done = now;
+        btn.disabled = !now;
+        if(now){
+          btn.style.cssText = 'background:#00e5ff;color:#0b0d1b;box-shadow:0 4px 0 #009bb0;cursor:pointer';
+          btn.textContent = n < 5 ? 'NEXT CHALLENGE ›' : 'GO TO ROCKET LAUNCH ›';
+          if(n < 5 && J.coachSet) J.coachSet('Great job! Press <b>NEXT CHALLENGE</b>.', btn, {scroll:true});
+        } else {
+          btn.style.cssText = 'background:#1d2138;color:#bac9cc;border:2px solid #3b494c;opacity:.75;cursor:not-allowed';
+          btn.textContent = 'Answer the question to go on';
+        }
+      }
+      btn.addEventListener('click', function(){
+        if(btn.disabled) return; J.sfx.tap();
+        if(n < 5){ if(window.switchChallenge) window.switchChallenge(n + 1); var t = root.querySelector('#tab-btn-'+(n+1)); if(t) t.scrollIntoView({behavior:'smooth', block:'center'}); }
+        else { ensureGame().trained = true; J.save(); J.go('rocket'); }
+      });
+      nexts.push(paint);
+    });
+    var pollT = setInterval(function(){ if(!document.body.contains(root) || !root.querySelector('[data-next-challenge]')){ clearInterval(pollT); return; } nexts.forEach(function(f){ f(); }); }, 300);
+    nexts.forEach(function(f){ f(); });
     // "Tap the bubble" was only text in the design: make the bubbles wobble and show the science fact
     root.addEventListener('click', function(ev){
       var bub = ev.target.closest && ev.target.closest('.animate-float-bubble');
@@ -256,6 +286,8 @@
     var g = ensureGame();
     g.time = g.task < 7 ? TASKS[Math.min(g.task, 6)].time : '17:30'; J.refreshHeader(false);
     var t = g.task < 7 ? TASKS[g.task] : null;
+    // show all 7 tasks of the routine without a hidden scroll area
+    Array.prototype.forEach.call(root.querySelectorAll('.overflow-y-auto'), function(l){ if(/max-h-/.test(l.className)) l.style.maxHeight = 'none'; });
     // routine list statuses
     var tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), n;
     while((n = tw.nextNode())){
@@ -490,13 +522,54 @@
       var k = /Full Mission/i.test(t) ? 'A' : /Safety Priority/i.test(t) ? 'B' : /Scientific Research/i.test(t) ? 'C' : null;
       if(k) cards[k] = h.closest('div.flex-col, div[class*="p-"]') || h.parentElement;
     });
-    function mark(){ Object.keys(cards).forEach(function(k){ if(cards[k]) cards[k].style.outline = (k === sel) ? '4px solid #00e5ff' : 'none'; }); }
-    mark();
-    J.bindText(root, /Select Full Report/i, function(){ sel = 'A'; mark(); J.toast('Full report selected (-12% Power).'); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }, 'button');
-    J.bindText(root, /Select Science Only/i, function(){ sel = 'C'; mark(); J.toast('Science report selected (-16% Power).'); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }, 'button');
-    Array.prototype.forEach.call(root.querySelectorAll('h4'), function(h){
-      if(/Safety Priority/i.test(h.textContent)){ h.style.cursor = 'pointer'; h.addEventListener('click', function(){ sel = 'B'; mark(); J.toast('Safety report selected (-4% Power).'); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }); }
+    // The three cards: the chosen one gets the "selected" look (ring, tick, READY TO SEND) and the others go back to "Select ...".
+    var INFO = {A:{lab:'Select Full Report', msg:'Full report selected (-12% Power).'},
+                B:{lab:'Select Safety Report', msg:'Safety report selected (-4% Power).'},
+                C:{lab:'Select Science Only', msg:'Science report selected (-16% Power).'}};
+    var BTN_ON  = 'mt-4 w-full py-2.5 rounded-DEFAULT bg-primary-container text-on-primary-container text-label-md font-label-md text-center font-extrabold shadow-[0_4px_0_#009bb0] flex items-center justify-center gap-1';
+    var BTN_OFF = 'mt-4 w-full py-2.5 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant hover:border-primary-container text-on-surface text-label-md font-label-md transition-all active:translate-y-1 shadow-[0_3px_0_#3b494c]';
+    var BADGE_ON = 'px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-primary-container/20 text-primary-container border border-primary-container/40';
+    var BADGE_OFF = 'px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface-variant border border-outline-variant';
+    function pieces(card){
+      var kids = Array.prototype.slice.call(card.children);
+      var body = kids.filter(function(e){ return e.tagName === 'DIV' && !/absolute/.test(e.className); })[0];
+      var head = body && body.firstElementChild;
+      return {head:head, badge: head && head.children[0], side: head && head.children[1], title: body && body.querySelector('h4'), desc: body && body.querySelector('p'), action: kids[kids.length - 1]};
+    }
+    Object.keys(cards).forEach(function(k){
+      var card = cards[k]; if(!card) return;
+      var p = pieces(card); if(!p.action) return;
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.setAttribute('data-report', k);
+      p.action.parentNode.replaceChild(btn, p.action);
+      btn.addEventListener('click', function(){ J.sfx.tap(); choose(k, false); });
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function(e){ if(e.target.closest('button')) return; if(sel !== k){ J.sfx.tap(); choose(k, false); } });
     });
+    function mark(){
+      Object.keys(cards).forEach(function(k){
+        var card = cards[k]; if(!card) return;
+        var on = (k === sel), p = pieces(card);
+        card.style.outline = 'none';
+        ['ring-2','ring-primary-container','border-primary-container','shadow-[0_0_24px_rgba(0,229,255,0.25)]'].forEach(function(c){ card.classList.toggle(c, on); });
+        card.classList.toggle('border-outline-variant', !on); card.classList.toggle('border-2', !on); card.classList.toggle('border-3', on);
+        if(p.badge){ p.badge.className = on ? BADGE_ON : BADGE_OFF; p.badge.textContent = 'Option ' + k + (on ? ' (Selected)' : ''); }
+        if(p.title){ p.title.classList.toggle('text-primary-container', on); p.title.classList.toggle('text-primary', !on); }
+        if(p.desc){ p.desc.classList.toggle('text-on-surface', on); p.desc.classList.toggle('text-on-surface-variant', !on); }
+        var b = card.querySelector('button[data-report]');
+        if(b){
+          b.className = on ? BTN_ON : BTN_OFF;
+          b.innerHTML = on ? '<span class="material-symbols-outlined text-[18px]">radio_button_checked</span><span>READY TO SEND</span>' : '';
+          if(!on) b.textContent = INFO[k].lab;
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        }
+      });
+    }
+    function choose(k, quiet){
+      sel = k; mark();
+      if(!quiet){ J.toast(INFO[k].msg); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }
+    }
+    mark();
     J.bindText(root, /TRANSMIT REPORT/i, async function(){
       if(busy) return; busy = true;
       var fx = {p:COST[sel].p}, extraHtml = '';
@@ -564,6 +637,12 @@
   J.screen('wA', 15, function(root){
     var g = ensureGame(); g.time = '14:30'; J.refreshHeader(false);
     J.setText(root, /Projected Outcome:.*$/, 'Projected Outcome:');
+    // The design shows Choice A as already selected, but nothing is chosen yet. Show all three as "not chosen" until the child picks one.
+    Array.prototype.forEach.call(root.querySelectorAll('#choiceGrid > *'), function(c){
+      Array.prototype.forEach.call(c.querySelectorAll('div'), function(d){ if(/SELECTED ACTION/i.test(d.textContent) && !d.querySelector('div') && !d.classList.contains('action-badge') && /absolute/.test(d.className)) d.remove(); });
+      c.classList.remove('border-3', 'border-primary-container', 'shadow-[0_0_20px_rgba(0,229,255,0.3)]');
+      c.classList.add('border-2', 'border-outline-variant');
+    });
     var choice = null, origSel = window.selectChoice;
     window.selectChoice = function(el, k){ choice = k; origSel.apply(this, arguments); J.coachSet('Nice! Now press <b>CONTINUE THE MISSION</b>.', /CONTINUE (THE )?MISSION/i, {scroll:true}); };
     J.bindText(root, /Inspect Sector/i, function(){ J.toast('Scan finished: everything is working.'); });
@@ -586,6 +665,21 @@
     J.setText(root, /\+?10 Resource Mgmt Points/, '+10 Power');
     if(!g.wbAnnounced){ g.wbAnnounced = true; J.apply({p:-15}); J.sfx.alarm(); J.toast('Power dropped by 15%!'); }
     Array.prototype.forEach.call(root.querySelectorAll('input[name="powerChoice"]'), function(r){ r.addEventListener('change', function(){ J.coachSet('Choice picked. Now press the big <b>RESTORE</b> button.', '#restoreBtn', {scroll:true}); }); });
+    // map picture: keep the solar panels under the title pill, and the Nova / Rover markers clear of the dust warning
+    Array.prototype.forEach.call(root.querySelectorAll('.absolute.top-6'), function(e){ e.classList.remove('top-6'); e.classList.add('top-16'); });
+    Array.prototype.forEach.call(root.querySelectorAll('.absolute.bottom-4'), function(e){ e.classList.remove('bottom-4'); e.classList.add('bottom-12'); });
+    // show a clear tick on the chosen plan (the design only had an empty circle)
+    var radios = root.querySelectorAll('input[name="powerChoice"]');
+    function paintTicks(){
+      Array.prototype.forEach.call(radios, function(r){
+        var lab = r.closest('label'), ind = lab && lab.querySelector('.w-6.h-6.rounded-full');
+        if(!ind) return;
+        ind.innerHTML = r.checked ? '<span class="material-symbols-outlined" style="font-size:18px;font-weight:700">check</span>' : '';
+        ind.style.color = r.checked ? '#0b0d1b' : ''; ind.style.background = r.checked ? '#00e5ff' : ''; ind.style.borderColor = r.checked ? '#00e5ff' : '';
+      });
+    }
+    Array.prototype.forEach.call(radios, function(r){ r.addEventListener('change', paintTicks); });
+    paintTicks();
     var busy = false;
     var btn = root.querySelector('#restoreBtn');
     if(btn){
