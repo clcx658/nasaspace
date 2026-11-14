@@ -44,5 +44,7 @@ It is context only and never changes the mission or the evaluation.
 
 - `functions/api/donki.js` (a Cloudflare Pages Function) fetches the data and keeps the NASA key on the server.
 - Set the key once in Cloudflare: **Pages project -> Settings -> Variables and Secrets -> Add**, name `NASA_API_KEY`, type **Secret**, for Production and Preview.
-- Without the key (or on GitHub Pages, or offline) the card shows a clearly labelled example, so nothing breaks.
+- The key is optional: if it is missing or NASA's keyed gateway answers with an error, the function falls back to NASA's direct DONKI web service (no key needed).
+- If the live feed is unavailable altogether (GitHub Pages, offline), the card shows a clearly labelled example, so nothing breaks.
+- To see what NASA answered, open `/api/donki?type=FLR&days=30&debug=1` (the key is hidden in the output).
 - Testing locally: copy `.dev.vars.example` to `.dev.vars`, add the key, then run `npx wrangler pages dev experience`.
