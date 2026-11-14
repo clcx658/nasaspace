@@ -1,0 +1,4 @@
+# Copy this file to ".dev.vars" (it is git-ignored) and put your NASA key after the equals sign.
+# Only used when testing on your own computer with:  npx wrangler pages dev experience
+# On the live site, set NASA_API_KEY as a Secret in the Cloudflare dashboard instead.
+NASA_API_KEY=

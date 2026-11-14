@@ -19,6 +19,7 @@
   QUESTS.forEach(function(q, i){
     J.screen(q.id, q.n, function(root){
       // buttons that exist on every quest screen
+      if(q.id === 'q2' && J.donkiPanel) J.donkiPanel(root);   // real NASA data on the Solar Storm quest
       J.bindText(root, /RETURN TO SCIENCE QUEST HUB|NASA Science Quests/i, function(){ J.go('questHub'); });
       J.bindText(root, /NEXT QUEST/i, function(){ J.go(QUESTS[(i+1) % QUESTS.length].id); });
       J.bindText(root, /REPLAY SCIENCE QUEST/i, function(){ J.render(q.id); });
