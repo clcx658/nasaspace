@@ -70,7 +70,7 @@
         '<div class="grid gap-4 md:grid-cols-2" id="questCards">'+cards+'</div>'+
         '<div class="flex flex-wrap gap-3 justify-center mt-8">'+
         '<button id="qhMenu" class="gbtn dim">MAIN MENU</button>'+(J.G && !J.G.finished ? '<button id="qhBack" class="gbtn gold">BACK TO MY MISSION</button>' : '')+'</div>'+
-        '<p class="text-center text-label-sm font-label-sm text-on-surface-variant mt-6">Simulated educational game. Learn more at <a class="underline text-primary-container" href="https://www.nasa.gov/artemis/" target="_blank" rel="noopener">NASA Artemis</a> and <a class="underline text-primary-container" href="https://kauai.ccmc.gsfc.nasa.gov/DONKI/" target="_blank" rel="noopener">NASA DONKI</a>.</p></main>'
+        '<p class="text-center text-label-sm font-label-sm text-on-surface-variant mt-6">Simulated educational experience. Learn more at <a class="underline text-primary-container" href="https://www.nasa.gov/artemis/" target="_blank" rel="noopener">NASA Artemis</a> and <a class="underline text-primary-container" href="https://kauai.ccmc.gsfc.nasa.gov/DONKI/" target="_blank" rel="noopener">NASA DONKI</a>.</p></main>'
     };
   }
   J.customScreen('questHub', {get html(){ return hubDef().html; }, get bodyClass(){ return hubDef().bodyClass; }, style:'', title:'NASA Science Quests'}, function(root){

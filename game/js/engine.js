@@ -71,7 +71,7 @@
     setTimeout(function(){ t.remove(); }, ms || 3200);
   };
   // The Stitch demo screens use alert() for placeholder feedback ("+100 Energy Points", "Task complete!").
-  // The real game shows its own feedback and scoring, so these placeholders are silenced (kept in J.lastAlert for debugging).
+  // The experience shows its own feedback and evaluation, so these placeholders are silenced (kept in J.lastAlert for debugging).
   window.alert = function(msg){ J.lastAlert = String(msg); };
   window.confirm = function(){ return false; };
 
@@ -185,6 +185,30 @@
     });
   }
 
+  /* Wording: this is an interactive learning experience, not a game. Patch the Stitch text that says otherwise. */
+  var REWORD = [
+    [/SIMULATED GAMEPLAY VALUES/g, 'SIMULATED MISSION VALUES'],
+    [/Simulated Gameplay Values/g, 'Simulated Mission Values'],
+    [/INTERACTIVE MINIGAME/g, 'INTERACTIVE ACTIVITY'],
+    [/IMPORTANT GAME RULE:/g, 'IMPORTANT SAFETY RULE:'],
+    [/play an orbital space game/g, 'listen to some music'],
+    [/The game will guide you to retry without penalty!/g, 'Mission Control will help you choose again, with no penalty!'],
+    [/SIMULATED EDUCATIONAL GAME CERTIFICATE/g, 'SIMULATED EDUCATIONAL CERTIFICATE'],
+    [/Simulated educational game certificate/g, 'Simulated educational certificate'],
+    [/Mission Mini-Game:/g, 'Mission Activity:'],
+    [/HOW TO PLAY/g, 'HOW IT WORKS']
+  ];
+  function reword(root){
+    var tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), n, list = [];
+    while((n = tw.nextNode())) list.push(n);
+    list.forEach(function(n){
+      var v = n.nodeValue, o = v;
+      for(var i=0;i<REWORD.length;i++) v = v.replace(REWORD[i][0], REWORD[i][1]);
+      if(v !== o) n.nodeValue = v;
+    });
+  }
+  J.reword = reword;
+
   J.screens = {};
   J.screen = function(name, n, bind){ J.screens[name] = {n:n, bind:bind}; };
   J.customScreen = function(name, def, bind){ J.screens[name] = {custom:def, bind:bind}; };
@@ -244,7 +268,7 @@
   }
   J.settings = function(){
     return J.modal({kicker:'Settings', title:'Cadet settings',
-      html:'<p>Sound is <b>'+(J.muted?'OFF':'ON')+'</b>.</p><p class="text-sm">This is a fictional training game. All numbers are simulated game values, not real NASA measurements.</p>',
+      html:'<p>Sound is <b>'+(J.muted?'OFF':'ON')+'</b>.</p><p class="text-sm">This is a fictional, interactive learning experience. All numbers are simulated mission values, not real NASA measurements.</p>',
       actions:[{label:J.muted?'TURN SOUND ON':'TURN SOUND OFF', cls:'gold', value:'snd'},{label:'CLOSE', cls:'dim', value:false}]}).then(function(v){
         if(v === 'snd'){ J.setMuted(!J.muted); J.toast('Sound '+(J.muted?'off':'on')); }
       });
@@ -267,6 +291,7 @@
     app.innerHTML = (scr.style ? '<style>'+scr.style+'</style>' : '') + scr.html;
     if(scr.js) runScreenScript(scr.js);
     if(!/^q[1-5]$/.test(name) && name !== 'questHub') stripXp(app);
+    reword(app);
     patchHeader(app);
     fixImages(app);
     bindCommon(app, name);
