@@ -82,3 +82,15 @@ input.guide-pulse,div.guide-pulse{border-radius:1rem}
 @media (prefers-reduced-motion:reduce){#coach,#coach .coach-ico,#coach-hand .hand-ico{animation:none}}
 @media print{#coach-hand{display:none!important}}
 #coach-hand.in .hand-tag{position:absolute;right:100%;top:.55rem;margin-right:.1rem}
+
+/* real NASA photo strip */
+.nasa-strip{max-width:64rem;margin:1.2rem auto .5rem;padding:0 1rem}
+.nasa-strip-btn{display:flex;align-items:center;gap:.9rem;width:100%;text-align:left;cursor:pointer;color:#fff;background:#191a2a;border:2px solid #00e5ff;border-radius:1.4rem;padding:.55rem .8rem .55rem .55rem;box-shadow:0 0 14px rgba(0,229,255,.15);font-family:inherit}
+.nasa-strip-btn:hover{box-shadow:0 0 22px rgba(0,229,255,.35)}
+.nasa-strip-btn img{width:5.2rem;height:4rem;object-fit:cover;border-radius:.9rem;flex:none;background:#0b0d1b}
+.nasa-strip-t{display:flex;flex-direction:column;min-width:0;line-height:1.25;flex:1}
+.nasa-strip-t b{font-size:.68rem;letter-spacing:.1em;color:#22ef7e}
+.nasa-strip-t span{font-size:.9rem;font-weight:700}
+.nasa-strip-t em{font-style:normal;font-size:.78rem;color:#bac9cc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nasa-strip-go{background:#ffb300;color:#0b0d1b;font-weight:900;border-radius:9999px;padding:.35rem .8rem;font-size:.8rem;box-shadow:0 3px 0 #c68400;flex:none}
+.has-coach .nasa-strip{margin-bottom:.5rem}

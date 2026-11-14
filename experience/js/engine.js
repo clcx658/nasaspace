@@ -220,7 +220,7 @@
     if(m && Object.prototype.hasOwnProperty.call(S, m[2])) return m[1] + S[m[2]] + m[3];
     return null;
   }
-  function inIcon(n){ return n.parentElement && n.parentElement.closest('.material-symbols-outlined,script,style,svg'); }
+  function inIcon(n){ return n.parentElement && n.parentElement.closest('.material-symbols-outlined,script,style,svg,[data-nosimple]'); }
   function textNodesOf(el){
     var out = [], tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n;
     while((n = tw.nextNode())) if(!inIcon(n)) out.push(n);
@@ -239,7 +239,7 @@
     el.__simple = true;
   }
   function simplifyWalk(el){
-    if(!el || el.nodeType !== 1 || el.closest('script,style,svg') || el.classList.contains('material-symbols-outlined')) return;
+    if(!el || el.nodeType !== 1 || el.closest('script,style,svg,[data-nosimple]') || el.classList.contains('material-symbols-outlined')) return;
     var kids = Array.prototype.filter.call(el.children, function(c){ return !c.classList.contains('material-symbols-outlined'); });
     var blockKid = kids.some(function(c){ var d = getComputedStyle(c).display; return d !== 'inline' && d !== 'none' && c.tagName !== 'BR'; });
     if(!blockKid){
