@@ -61,3 +61,11 @@ It is context only and never changes the mission or the evaluation.
 ## Plain language (ages 7–12)
 
 All on-screen text is rewritten at runtime to simple words. The source of truth is `data/simple-text.json` (original → simple sentence pairs). After editing it, run `python3 tools/build-simple-text.py` to regenerate `js/simple-text.js`. Single-word rules (British spelling, "Lunar" → "Moon") live in the same script.
+
+## Real NASA pictures
+
+A small "Real NASA photo" strip sits at the bottom of the menu (NASA's Astronomy Picture of the Day) and of each Moon-day task (a real photo for that topic from the NASA Image and Video Library). Tapping it opens a bigger picture with a link to NASA, and "Another photo" shows more.
+
+- `functions/api/nasa.js` fetches them. Photos need no key; the picture of the day uses `NASA_API_KEY` (or NASA's shared `DEMO_KEY`). Only a fixed list of topics can be searched.
+- `js/nasa.js` draws the strip. If NASA cannot be reached the strip does not appear. It never changes the score.
+- Check the live answer at `/api/nasa?kind=apod&debug=1` and `/api/nasa?kind=photo&topic=crater&debug=1` (the key is hidden).
