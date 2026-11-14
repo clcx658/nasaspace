@@ -41,7 +41,7 @@
   }
   function banner(i){
     var t = TASKS[i];
-    return '<div class="banner"><span style="font-size:1.8rem" aria-hidden="true">'+t.ico+'</span><div><span class="t">'+t.time+'</span> <span class="n">Task '+(i+1)+': '+t.name+'</span><small>Mini-game '+(i+1)+' of 7</small></div></div>';
+    return '<div class="banner"><span style="font-size:1.8rem" aria-hidden="true">'+t.ico+'</span><div><span class="t">'+t.time+'</span> <span class="n">Task '+(i+1)+': '+t.name+'</span><small>Activity '+(i+1)+' of 7</small></div></div>';
   }
   function ptsChip(pts, attempts){
     return '<div class="chips"><span class="chip neutral">⭐ +'+pts+' points ('+(attempts===1?'first try!':'try '+attempts)+')</span></div>';
@@ -395,11 +395,11 @@
 
     var tip = '';
     if(key === 'B' || key === 'C'){
-      if(miniPts < 25) tip = 'Next time: take your time in the mini-games. Fewer tries means more points.';
+      if(miniPts < 25) tip = 'Next time: take your time in each activity. Fewer tries means more points.';
       else if(resPts < 5) tip = 'Next time: try a nearby crater and a light breakfast to save resources.';
       else tip = 'Next time: follow safety steps carefully and respond quickly to alerts.';
-    } else if(key === 'A'){ tip = 'So close to Ending S! Try to win each mini-game on the first try.'; }
-    else tip = 'Try a different research location and report next time. The weather changes every game!';
+    } else if(key === 'A'){ tip = 'So close to Ending S! Try to finish each activity on the first try.'; }
+    else tip = 'Try a different research location and report next time. The weather changes every time!';
 
     var lesson = S.scenario==='C' ? 'Solar storms are a real risk in space. Shelters and thick materials help protect astronauts.' :
                  S.scenario==='B' ? 'A Moon base needs reliable power. When power is short, keep life support, heat and radio first.' :
@@ -425,11 +425,11 @@
       '<h2 class="res-title">'+E.title+'</h2><div class="award">🎖️ '+E.award+'</div></div>'+
       '<p class="story" style="text-align:center">'+E.story+'</p>'+
       '<div class="quote">Mission Control: “'+E.quote+'”</div>'+
-      '<div class="scorebox">'+row('Mini-games', miniPts, 35)+row('Resources', resPts, 10)+row('Safety', safePts, 5)+
+      '<div class="scorebox">'+row('Activities', miniPts, 35)+row('Resources', resPts, 10)+row('Safety', safePts, 5)+
         '<div class="srow"><b style="text-align:left;grid-column:1/3;font-size:1.1rem">Total score</b><b style="font-size:1.2rem">'+total+'/50</b></div></div>'+
       '<div class="final">'+fm+'</div>'+
-      '<p class="sim" style="margin:0">Simulated game values, not real NASA measurements.</p>'+
-      '<ul class="picks"><li>🎮 Mini-games won on the first try: '+firstTry+' of 7</li>'+
+      '<p class="sim" style="margin:0">Simulated values, not real NASA measurements.</p>'+
+      '<ul class="picks"><li>🎯 Activities finished on the first try: '+firstTry+' of 7</li>'+
       '<li>🔬 Research: '+S.research+' points'+(loc?' ('+loc+')':'')+(S.ice?' · found an ice clue!':'')+'</li>'+
       '<li>🌤️ Space weather today: '+SCENARIOS[S.scenario]+'</li></ul>'+
       '<div class="learn"><b>🌟 YOU LEARNED</b>'+lesson+'</div>'+

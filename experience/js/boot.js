@@ -1,4 +1,4 @@
-/* Start the game. ?demo=1 jumps straight to the Moon base (handy for judges); ?scenario=A|B|C forces the space weather. */
+/* Start the experience. ?demo=1 jumps straight to the Moon base (handy for judges); ?scenario=A|B|C forces the space weather. */
 (function(){
   'use strict';
   var J = window.JAM;

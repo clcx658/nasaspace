@@ -464,7 +464,7 @@
   var SHELTER = [
     {e:'💧',t:'Water containers',ok:1},{e:'🍱',t:'Food packs',ok:1},{e:'📦',t:'Storage boxes',ok:1},
     {e:'🪨',t:'Moon-soil shield bags',ok:1},{e:'🧱',t:'Thick plastic wall panels',ok:1},
-    {e:'🎞️',t:'Thin foil blanket'},{e:'🎮',t:'Video games'},{e:'⛱️',t:'Beach umbrella'},{e:'🎈',t:'Party balloons'}
+    {e:'🎞️',t:'Thin foil blanket'},{e:'🧸',t:'Toys'},{e:'⛱️',t:'Beach umbrella'},{e:'🎈',t:'Party balloons'}
   ];
   M.shelter = function(host, o){
     o = o || {};

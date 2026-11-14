@@ -1,5 +1,5 @@
 {
-  "name": "a-day-on-the-moon-stitch",
+  "name": "a-day-on-the-moon-experience",
   "private": true,
   "version": "0.1.0",
   "description": "Build tooling for the Stitch-based UI (screens, CSS, fonts). The game itself needs no build to run.",
