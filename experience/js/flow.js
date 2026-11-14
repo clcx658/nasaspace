@@ -163,7 +163,12 @@
       J.modal({kicker:'How it works', title:'You are a Junior Astronaut!',
         html:'<p>1. <b>Train</b> in 5 short challenges.</p><p>2. <b>Fly</b> to the Moon base.</p><p>3. Spend <b>one Moon day</b> doing 7 tasks. Tap, explore and read each screen. Watch Oxygen, Power, Food and Water at the top.</p><p>4. Hands-on activities are <b>optional</b> and give bonus points.</p><p>5. Your choices lead to one of four endings (a score out of 50).</p><p>6. The <b>NASA Science Quests</b> are extra learning. They never change your score.</p><p style="font-size:.85rem;color:#bac9cc">Everything here is pretend (simulated) and made for learning. The numbers are not real NASA measurements.</p>'});
     });
-    J.bindText(root, /LORE/i, function(){
+    // "Lore" is a hard word for kids: show "STORY" instead (behaviour unchanged)
+    Array.prototype.forEach.call(root.querySelectorAll('button,a'), function(b){
+      var tw = document.createTreeWalker(b, NodeFilter.SHOW_TEXT, null), n;
+      while((n = tw.nextNode())) if(/^\s*LORE\s*$/i.test(n.nodeValue)) n.nodeValue = n.nodeValue.replace(/LORE/i, 'STORY');
+    });
+    J.bindText(root, /LORE|STORY/i, function(){
       J.modal({kicker:'Lore', title:'Artemis Base Alpha',
         html:'<p>Welcome to the Moon Living Experience Camp, a made-up space training camp. You will spend one Moon day at a Moon base near the Moon\'s south pole, keeping the crew safe.</p><p style="font-size:.85rem;color:#bac9cc">Made for the NASA Space Apps Challenge. This is a game, not an official NASA product.</p>'});
     });
@@ -214,6 +219,15 @@
   J.screen('training', 4, function(root){
     J.bindText(root, /PROCEED TO ROCKET LAUNCH/i, function(){ ensureGame().trained = true; J.save(); J.go('rocket'); });
     window.resetTraining = function(){ J.render('training'); };
+    // "Tap the bubble" was only text in the design: make the bubbles wobble and show the science fact
+    root.addEventListener('click', function(ev){
+      var bub = ev.target.closest && ev.target.closest('.animate-float-bubble');
+      if(!bub) return;
+      J.sfx.tap();
+      if(bub.animate) bub.animate([{transform:'scale(1)'},{transform:'scale(1.25,.8)'},{transform:'scale(.85,1.2)'},{transform:'scale(1.12,.92)'},{transform:'scale(1)'}], {duration:700, easing:'ease-in-out'});
+      J.toast('Wobble! In space, water pulls itself into a round ball.');
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('.animate-float-bubble'), function(b){ b.style.cursor = 'pointer'; });
   });
 
   /* ================= 5. ROCKET LAUNCH ================= */
