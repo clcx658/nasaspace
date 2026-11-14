@@ -45,6 +45,7 @@ It is context only and never changes the mission or the evaluation.
 - `functions/api/donki.js` (a Cloudflare Pages Function) fetches the data and keeps the NASA key on the server.
 - Set the key once in Cloudflare: **Pages project -> Settings -> Variables and Secrets -> Add**, name `NASA_API_KEY`, type **Secret**, for Production and Preview.
 - The key is optional: if it is missing or NASA's keyed gateway answers with an error, the function falls back to NASA's direct DONKI web service (no key needed).
-- If the live feed is unavailable altogether (GitHub Pages, offline), the card shows a clearly labelled example, so nothing breaks.
+- For solar flares there is a third backup: NOAA's Space Weather Prediction Center (real GOES-satellite records, last 7 days). The card says which source it used (NASA DONKI or NOAA).
+- If no live source answers (GitHub Pages, offline, NASA outage), the card shows a clearly labelled example, so nothing breaks. Failures are remembered for 5 minutes so visitors don't wait through timeouts.
 - To see what NASA answered, open `/api/donki?type=FLR&days=30&debug=1` (the key is hidden in the output).
 - Testing locally: copy `.dev.vars.example` to `.dev.vars`, add the key, then run `npx wrangler pages dev experience`.

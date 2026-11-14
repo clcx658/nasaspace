@@ -10,7 +10,7 @@
     return new Promise(function(resolve){
       var done = false;
       function finish(v){ if(done) return; done = true; clearTimeout(timer); resolve(v); }
-      var timer = setTimeout(function(){ finish(SAMPLE); }, 5000);
+      var timer = setTimeout(function(){ finish(SAMPLE); }, 12000);
       try{
         fetch('/api/donki?type=FLR&days=30', {headers:{accept:'application/json'}})
           .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('http')); })
@@ -26,24 +26,28 @@
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
   function panelHTML(d){
+    var noaa = d.source === 'NOAA SWPC';
+    var who = noaa ? 'NOAA\'s satellites' : 'NASA';
     var live = !d.sample && d.count > 0 && d.strongest && d.strongest.classType;
-    var head = live ? 'REAL NASA DATA · DONKI' : 'EXAMPLE · LIVE NASA FEED NOT AVAILABLE';
+    var real = !d.sample;
+    var head = !real ? 'EXAMPLE · LIVE FEED NOT AVAILABLE' : noaa ? 'REAL DATA · NOAA SPACE WEATHER (GOES SATELLITES)' : 'REAL NASA DATA · DONKI';
     var body;
     if(live){
       var when = fmtDate(d.strongest.beginTime);
-      body = 'In the last <b>'+d.days+' days</b>, NASA recorded <b>'+d.count+' solar flare'+(d.count === 1 ? '' : 's')+'</b>. The strongest was class <b>'+esc(d.strongest.classType)+'</b>'+(when ? ' on <b>'+when+'</b>' : '')+'.';
-    } else if(!d.sample){
-      body = 'NASA recorded <b>no solar flares</b> in the last <b>'+d.days+' days</b>. Quiet Sun!';
-      head = 'REAL NASA DATA · DONKI';
+      body = 'In the last <b>'+d.days+' days</b>, '+who+' recorded <b>'+d.count+' solar flare'+(d.count === 1 ? '' : 's')+'</b>. The strongest was class <b>'+esc(d.strongest.classType)+'</b>'+(when ? ' on <b>'+when+'</b>' : '')+'.';
+    } else if(real){
+      body = who.charAt(0).toUpperCase()+who.slice(1)+' recorded <b>no solar flares</b> in the last <b>'+d.days+' days</b>. Quiet Sun!';
     } else {
       body = 'Scientists record solar flares every day in NASA\'s DONKI database. A strong <b>X-class</b> flare is the kind of event this mission practises for.';
     }
+    var links = '<a class="inline-block mt-2 underline text-primary-container text-label-md font-label-md font-extrabold" href="https://kauai.ccmc.gsfc.nasa.gov/DONKI/" target="_blank" rel="noopener">Explore NASA DONKI ↗</a>'+
+      (noaa ? ' <a class="inline-block mt-2 ml-3 underline text-primary-container text-label-md font-label-md font-extrabold" href="https://www.swpc.noaa.gov/" target="_blank" rel="noopener">NOAA Space Weather ↗</a>' : '');
     return '<div class="flex items-start gap-3">'+
       '<span class="material-symbols-outlined text-primary-container" style="font-size:2rem;font-variation-settings:\'FILL\' 1">'+(live ? 'satellite_alt' : 'wb_sunny')+'</span>'+
-      '<div class="flex-1"><div class="text-label-sm font-label-sm font-extrabold tracking-wider '+(live ? 'text-tertiary-container' : 'text-secondary-container')+'">'+head+'</div>'+
+      '<div class="flex-1"><div class="text-label-sm font-label-sm font-extrabold tracking-wider '+(real ? 'text-tertiary-container' : 'text-secondary-container')+'">'+head+'</div>'+
       '<p class="text-body-md font-body-md text-on-surface mt-1">'+body+'</p>'+
       '<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Flares are ranked A, B, C, M and X. <b>X</b> is the strongest. The storm in this mission is <b>simulated</b>; this note is real science for context.</p>'+
-      '<a class="inline-block mt-2 underline text-primary-container text-label-md font-label-md font-extrabold" href="https://kauai.ccmc.gsfc.nasa.gov/DONKI/" target="_blank" rel="noopener">Explore NASA DONKI ↗</a></div></div>';
+      links+'</div></div>';
   }
 
   /* Insert the card near the top of the screen's main area, then fill it in when the data arrives. */
