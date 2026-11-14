@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon — Screen 23: Breathe Easy! (ECLSS)</title>
+<!-- Material Symbols Outlined Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Outfit -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary": "#003918",
+            "outline-variant": "#3b494c",
+            "surface-container-highest": "#323443",
+            "secondary": "#ffd799",
+            "on-secondary-fixed": "#281900",
+            "outline": "#849396",
+            "error": "#ffb4ab",
+            "on-surface-variant": "#bac9cc",
+            "on-secondary-container": "#6a4800",
+            "on-primary-fixed-variant": "#004f58",
+            "primary-fixed-dim": "#00daf3",
+            "on-primary": "#00363d",
+            "inverse-primary": "#006875",
+            "primary": "#c3f5ff",
+            "primary-fixed": "#9cf0ff",
+            "tertiary-container": "#22ef7e",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#604100",
+            "surface-container-high": "#272938",
+            "surface-variant": "#323443",
+            "on-primary-fixed": "#001f24",
+            "surface-dim": "#101221",
+            "error-container": "#93000a",
+            "secondary-container": "#feb300",
+            "surface-container": "#1d1f2d",
+            "inverse-on-surface": "#2e2f3f",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#005226",
+            "on-tertiary-fixed": "#00210b",
+            "surface": "#101221",
+            "primary-container": "#00e5ff",
+            "tertiary-fixed-dim": "#00e475",
+            "background": "#101221",
+            "surface-container-low": "#191b29",
+            "surface-tint": "#00daf3",
+            "tertiary": "#b1ffbf",
+            "on-secondary": "#432c00",
+            "on-surface": "#e1e1f5",
+            "on-tertiary-container": "#006731",
+            "secondary-fixed-dim": "#ffba38",
+            "secondary-fixed": "#ffdeac",
+            "inverse-surface": "#e1e1f5",
+            "on-primary-container": "#00626e",
+            "surface-container-lowest": "#0b0d1b",
+            "surface-bright": "#363848",
+            "tertiary-fixed": "#62ff96",
+            "on-background": "#e1e1f5"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-desktop": "2rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "gutter-desktop": "1.5rem",
+            "margin-tablet": "1.5rem",
+            "space-xl": "2rem",
+            "space-2xl": "3rem",
+            "space-md": "1rem",
+            "gutter-tablet": "1.25rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Outfit"],
+            "body-md": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "headline-md": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "label-md": ["Outfit"],
+            "headline-sm": ["Outfit"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "800" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #0b0d1b;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #3b494c;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container pb-28">
+<!-- TOP APP BAR (from Shared Components JSON: TopNavBar) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<!-- Brand / Title Cluster -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container bg-surface-container-high flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.4)]">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">science</span>
+</div>
+<div>
+<div class="text-headline-sm font-headline-sm font-extrabold text-primary-container dark:text-primary tracking-wider">
+          A Day on the Moon
+        </div>
+<p class="text-label-sm font-label-sm text-outline hidden sm:block">NASA Space Apps Challenge 2026</p>
+</div>
+</div>
+<!-- Telemetry Navigation Stream (Shared Components values) -->
+<div class="hidden lg:flex items-center gap-4 bg-surface-container-lowest/80 px-4 py-1.5 rounded-full border border-outline-variant">
+<span class="text-label-md font-label-md text-primary-container dark:text-primary font-extrabold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">schedule</span> Sol 04 • 10:30
+      </span>
+<span class="w-1 h-3 bg-outline-variant rounded-full"></span>
+<span class="text-label-md font-label-md text-tertiary-container font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">air</span> O2: 98%
+      </span>
+<span class="w-1 h-3 bg-outline-variant rounded-full"></span>
+<span class="text-label-md font-label-md text-secondary-container font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">bolt</span> Power: 85%
+      </span>
+<span class="w-1 h-3 bg-outline-variant rounded-full"></span>
+<span class="text-label-md font-label-md text-primary font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">water_drop</span> Water: 92%
+      </span>
+</div>
+<!-- Trailing Actions & Disclaimer -->
+<div class="flex items-center gap-2">
+<div class="hidden xl:flex items-center px-3 py-1 rounded-full bg-secondary-container/20 border border-secondary-container/50 text-secondary text-label-sm font-label-sm tracking-wide">
+        SIMULATED MISSION
+      </div>
+<button class="px-3.5 py-1.5 rounded-DEFAULT bg-surface-container-high hover:bg-surface-container border border-outline-variant text-label-md font-label-md text-on-surface active:translate-y-1 transition-transform duration-100 flex items-center gap-1">
+<span class="material-symbols-outlined text-base">pause</span> Pause
+      </button>
+<button aria-label="Settings" class="w-9 h-9 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface-variant active:translate-y-1 transition-transform duration-100">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+<button aria-label="Volume Control" class="w-9 h-9 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface-variant active:translate-y-1 transition-transform duration-100">
+<span class="material-symbols-outlined text-xl">volume_up</span>
+</button>
+</div>
+</header>
+<!-- MAIN VIEWPORT CONTAINER -->
+<main class="pt-20 px-4 max-w-7xl mx-auto space-y-6">
+<!-- SIMULATED DATA NOTICE STRIP -->
+<div class="w-full bg-surface-container border-2 border-outline-variant rounded-DEFAULT p-2.5 flex items-center justify-between gap-3 text-label-sm font-label-sm text-on-surface-variant shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">info</span>
+<span>SIMULATED GAMEPLAY VALUES — NOT REAL NASA MEASUREMENTS</span>
+</div>
+<span class="hidden md:inline text-outline">NASA ECLSS STEM Module • Grade 3-7</span>
+</div>
+<!-- BREADCRUMBS & QUEST HUB BADGE HEADER -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-label-md font-label-md text-on-surface-variant">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#quests">
+<span class="material-symbols-outlined text-base">home</span> NASA Science Quests
+        </a>
+<span class="material-symbols-outlined text-xs text-outline">arrow_forward_ios</span>
+<span class="text-primary-container font-extrabold">Screen 23: Breathe Easy! (ECLSS)</span>
+</nav>
+<!-- Quest Hub Badge Header -->
+<div class="inline-flex items-center gap-2 self-start md:self-auto bg-surface-container-high border-2 border-primary-container/60 px-3.5 py-1.5 rounded-full shadow-[0_0_12px_rgba(0,229,255,0.25)]">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="text-label-sm font-label-sm text-primary font-extrabold tracking-wider">
+          SCIENCE QUEST 1 OF 5 • ESTIMATED TIME: 3 MINS • STATUS: ACTIVE
+        </span>
+</div>
+</div>
+<!-- HERO SECTION: Title & Commander Nova Mascot Dialogue Card -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+<!-- Headline & Introduction -->
+<div class="lg:col-span-7 bg-surface-container border-2 border-outline-variant rounded-xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/20 text-primary-container text-label-sm font-label-sm font-extrabold mb-3">
+<span class="material-symbols-outlined text-base">nest_eco_leaf</span>
+            HABITAT LIFE SUPPORT (ECLSS)
+          </div>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-primary tracking-tight">
+            23. Breathe Easy! — How Do Astronauts Stay Alive?
+          </h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-2 max-w-2xl">
+            Space has zero air and zero atmospheric pressure! Inside our lunar outpost, specialized machines work every second to clean our air, provide fresh oxygen, and recycle every single drop of water.
+          </p>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant flex flex-wrap items-center gap-3">
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3 py-1.5 rounded-DEFAULT border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-sm font-label-sm text-on-surface">Target Standard: 101.3 kPa Sea-Level Mix</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3 py-1.5 rounded-DEFAULT border border-outline-variant">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">autorenew</span>
+<span class="text-label-sm font-label-sm text-on-surface">Closed-Loop Recovery Systems</span>
+</div>
+</div>
+</div>
+<!-- Mascot Dialogue Card (Commander Nova) -->
+<div class="lg:col-span-5 bg-surface-container-low border-2 border-primary-container rounded-xl p-6 relative shadow-[0_0_20px_rgba(0,229,255,0.2)] flex flex-col justify-between">
+<!-- Floating Mascot Medallion Header -->
+<div class="flex items-center gap-4">
+<div class="relative w-16 h-16 rounded-full overflow-hidden border-2 border-primary-container shadow-[0_0_14px_rgba(0,229,255,0.5)] bg-surface-container-high flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Playful cartoon astronaut Commander Nova wearing a futuristic white spacesuit with cyan neon visor reflection and golden mission patch on a deep space cosmic starfield backdrop in vibrant kid-friendly 3D video game art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbtLGzon3QybgqMvpMgi3FBcZYQ8dgS1rKQW4Jf236hA2-zBxapCDMEM5d2MPPa7m-c2WaPYKXNqB-v_0s4arDYN87UiNkDgtbieZZkE7bfIV1_79NusNAsylmaZtmhOBal37SNRLdHhJl4hnJwxF2n-q0qddihBkoDLrljKkJUUMBFVTSmSnj-Z2E3FAjN8vcvzmLL5rLFOUd89_PUB10sptLsFO75bTIBnLiTfFG"/>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-headline-sm font-headline-sm text-primary-container font-extrabold">Commander Nova</span>
+<span class="material-symbols-outlined text-primary-container text-base" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">LUNAR EXPEDITION CHIEF SCIENCE OFFICER</p>
+</div>
+</div>
+<!-- Speech Bubble Body -->
+<div class="mt-4 bg-surface-container-high border-2 border-outline-variant rounded-DEFAULT p-4 relative">
+<!-- Triangle pointer for speech bubble -->
+<div class="absolute -top-2 left-8 w-4 h-4 bg-surface-container-high border-t-2 border-l-2 border-outline-variant rotate-45"></div>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed">
+            "Welcome to the Life Support Laboratory, Cadet! On the Moon, we cannot simply open a window for fresh air. Let's discover how our habitat helps astronauts breathe and stay comfortable!"
+          </p>
+</div>
+<!-- Cadet Status Indicator -->
+<div class="mt-4 flex items-center justify-between text-label-sm font-label-sm text-outline-variant bg-surface-container-lowest px-3 py-2 rounded-DEFAULT">
+<span class="text-on-surface-variant font-bold">CADET ID: #MOON-7704</span>
+<span class="text-tertiary-container font-extrabold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span> COMMS ONLINE
+          </span>
+</div>
+</div>
+</section>
+<!-- SECTION 1: 4 EDUCATIONAL SCIENCE MODULES (BENTO GRID) -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">science</span>
+            ECLSS Mission Modules
+          </h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Explore the four primary systems sustaining life inside a sealed space habitat.</p>
+</div>
+<span class="text-label-sm font-label-sm bg-surface-container border border-outline-variant px-3 py-1 rounded-full text-outline hidden sm:block">
+          4 KEY LUNAR DISCIPLINES
+        </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Module A: Breathe & Circulate -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-primary-container transition-all rounded-DEFAULT p-5 flex flex-col justify-between group shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
+<div>
+<div class="w-12 h-12 rounded-DEFAULT bg-primary-container/10 border-2 border-primary-container flex items-center justify-center text-primary-container mb-4 shadow-[0_0_12px_rgba(0,229,255,0.3)]">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">air</span>
+</div>
+<div class="text-label-sm font-label-sm text-primary-container font-extrabold">MODULE 01</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mt-1 group-hover:text-primary transition-colors">
+              Breathe &amp; Circulate
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2 leading-relaxed">
+              Without gravity-driven thermal air convection, exhaled carbon dioxide would pool around sleeping astronauts like an invisible bubble. Continuous fans circulate fresh oxygen throughout every corridor.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-outline">Airflow: 0.2 m/s</span>
+<span class="text-primary font-extrabold">Circulating ➔</span>
+</div>
+</div>
+<!-- Module B: Remove Carbon Dioxide -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-secondary-container transition-all rounded-DEFAULT p-5 flex flex-col justify-between group shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
+<div>
+<div class="w-12 h-12 rounded-DEFAULT bg-secondary-container/10 border-2 border-secondary-container flex items-center justify-center text-secondary-container mb-4 shadow-[0_0_12px_rgba(254,179,0,0.3)]">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">filter_alt</span>
+</div>
+<div class="text-label-sm font-label-sm text-secondary-container font-extrabold">MODULE 02</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mt-1 group-hover:text-secondary transition-colors">
+              Remove Carbon Dioxide
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2 leading-relaxed">
+              Humans breathe in oxygen and exhale CO2. Advanced regenerative scrubbers and amine filters trap and vent excess CO2 before it can cause headaches or oxygen depletion.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-outline">Scrubber: CDRA Active</span>
+<span class="text-secondary font-extrabold">PPM: 320 OK</span>
+</div>
+</div>
+<!-- Module C: Recycle Water -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-tertiary-container transition-all rounded-DEFAULT p-5 flex flex-col justify-between group shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
+<div>
+<div class="w-12 h-12 rounded-DEFAULT bg-tertiary-container/10 border-2 border-tertiary-container flex items-center justify-center text-tertiary-container mb-4 shadow-[0_0_12px_rgba(34,239,126,0.3)]">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">water_voc</span>
+</div>
+<div class="text-label-sm font-label-sm text-tertiary-container font-extrabold">MODULE 03</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mt-1 group-hover:text-tertiary transition-colors">
+              Recycle Water
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2 leading-relaxed">
+              Water is super heavy to launch from Earth! Lunar life support captures cabin humidity from breath and sweat, distilling it with urine processor assemblies into ultrapure drinking water.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-outline">Recovery: 98.4%</span>
+<span class="text-tertiary-container font-extrabold">Purified ➔</span>
+</div>
+</div>
+<!-- Module D: Monitor the Habitat -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-primary transition-all rounded-DEFAULT p-5 flex flex-col justify-between group shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
+<div>
+<div class="w-12 h-12 rounded-DEFAULT bg-primary/10 border-2 border-primary flex items-center justify-center text-primary mb-4 shadow-[0_0_12px_rgba(195,245,255,0.3)]">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">sensors</span>
+</div>
+<div class="text-label-sm font-label-sm text-primary font-extrabold">MODULE 04</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mt-1 group-hover:text-primary transition-colors">
+              Monitor the Habitat
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2 leading-relaxed">
+              Dozens of sensors constantly watch habitat air pressure (held at 101.3 kPa like Earth's beaches), track O2 partial pressure, and balance thermal radiators against the -130°C to +120°C lunar surface swings.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-outline">Atmosphere: 101.3 kPa</span>
+<span class="text-primary font-extrabold">Nominal ➔</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: INTERACTIVE MATCHING ACTIVITY ("Life-Support Systems Matcher") -->
+<section class="bg-surface-container border-2 border-primary-container/80 rounded-xl p-6 sm:p-8 shadow-[0_0_24px_rgba(0,229,255,0.25)] space-y-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-outline-variant pb-4">
+<div>
+<div class="inline-flex items-center gap-1.5 text-label-sm font-label-sm text-primary-container font-extrabold">
+<span class="material-symbols-outlined text-base">extension</span> HANDS-ON SIMULATION LAB
+          </div>
+<h2 class="text-headline-md font-headline-md text-on-surface mt-0.5">
+            Life-Support Systems Matcher
+          </h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+            Connect each ECLSS subsystem on the left to its critical biological mission on the right. Tap cards to form pairs!
+          </p>
+</div>
+<!-- Success Counter Badge -->
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-DEFAULT border-2 border-outline-variant" id="matcher-score-badge">
+<span class="text-label-md font-label-md text-on-surface-variant">PAIRS SOLVED:</span>
+<span class="text-headline-sm font-headline-sm text-tertiary-container font-extrabold" id="match-counter">0 / 4</span>
+</div>
+</div>
+<!-- Matcher Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Subsystems Column -->
+<div class="space-y-3">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">settings_input_component</span> 1. Life Support Subsystem
+          </p>
+<button class="match-item-left w-full text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-primary-container text-on-surface font-headline-sm transition-all flex items-center justify-between shadow-[0_4px_0_#3b494c] active:translate-y-1" data-match-key="air">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-2xl">air</span>
+<div>
+<div class="text-body-lg font-bold">Air circulation</div>
+<div class="text-label-sm text-outline">Cabin Air Assembly</div>
+</div>
+</div>
+<span class="material-symbols-outlined match-status text-outline">radio_button_unchecked</span>
+</button>
+<button class="match-item-left w-full text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-secondary-container text-on-surface font-headline-sm transition-all flex items-center justify-between shadow-[0_4px_0_#3b494c] active:translate-y-1" data-match-key="co2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-2xl">filter_alt</span>
+<div>
+<div class="text-body-lg font-bold">Carbon dioxide removal</div>
+<div class="text-label-sm text-outline">Amine Scrubber Unit</div>
+</div>
+</div>
+<span class="material-symbols-outlined match-status text-outline">radio_button_unchecked</span>
+</button>
+<button class="match-item-left w-full text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-tertiary-container text-on-surface font-headline-sm transition-all flex items-center justify-between shadow-[0_4px_0_#3b494c] active:translate-y-1" data-match-key="water">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-container text-2xl">water_voc</span>
+<div>
+<div class="text-body-lg font-bold">Water recovery</div>
+<div class="text-label-sm text-outline">Distillation Loop</div>
+</div>
+</div>
+<span class="material-symbols-outlined match-status text-outline">radio_button_unchecked</span>
+</button>
+<button class="match-item-left w-full text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-primary text-on-surface font-headline-sm transition-all flex items-center justify-between shadow-[0_4px_0_#3b494c] active:translate-y-1" data-match-key="monitor">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">sensors</span>
+<div>
+<div class="text-body-lg font-bold">Environmental monitoring</div>
+<div class="text-label-sm text-outline">Atmosphere Telemetry</div>
+</div>
+</div>
+<span class="material-symbols-outlined match-status text-outline">radio_button_unchecked</span>
+</button>
+</div>
+<!-- Biological Roles Column -->
+<div class="space-y-3">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">psychology</span> 2. Habitat Function
+          </p>
+<button class="match-item-right w-full text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-secondary-container text-on-surface font-headline-sm transition-all flex items-center justify-between shadow-[0_4px_0_#3b494c] active:translate-y-1" data-match-target="co2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-2xl">sanitizer</span>
+<div>
+<div class="text-body-lg font-bold">Cleans cabin atmosphere</div>
+<div class="text-label-sm text-outline">Traps exhaled CO2 gas</div>
+</div>
+</div>
+<span class="material-symbols-outlined target-status text-outline">link_off</span>
+</button>
+<button class="match-item-right w-full text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-primary-container text-on-surface font-headline-sm transition-all flex items-center justify-between shadow-[0_4px_0_#3b494c] active:translate-y-1" data-match-target="air">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-2xl">cyclone</span>
+<div>
+<div class="text-body-lg font-bold">Moves cabin air</div>
+<div class="text-label-sm text-outline">Stops stale air pockets</div>
+</div>
+</div>
+<span class="material-symbols-outlined target-status text-outline">link_off</span>
+</button>
+<button class="match-item-right w-full text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-primary text-on-surface font-headline-sm transition-all flex items-center justify-between shadow-[0_4px_0_#3b494c] active:translate-y-1" data-match-target="monitor">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">thermostat</span>
+<div>
+<div class="text-body-lg font-bold">Checks habitat pressure and temperature</div>
+<div class="text-label-sm text-outline">Maintains 101.3 kPa environment</div>
+</div>
+</div>
+<span class="material-symbols-outlined target-status text-outline">link_off</span>
+</button>
+<button class="match-item-right w-full text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-tertiary-container text-on-surface font-headline-sm transition-all flex items-center justify-between shadow-[0_4px_0_#3b494c] active:translate-y-1" data-match-target="water">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-container text-2xl">humidity_high</span>
+<div>
+<div class="text-body-lg font-bold">Purifies and recycles water</div>
+<div class="text-label-sm text-outline">Reclaims urine &amp; condensation</div>
+</div>
+</div>
+<span class="material-symbols-outlined target-status text-outline">link_off</span>
+</button>
+</div>
+</div>
+<!-- Real-time Feedback Banner -->
+<div class="p-3.5 rounded-DEFAULT bg-surface-container-low border border-outline-variant text-body-md font-body-md text-center text-outline flex items-center justify-center gap-2" id="matcher-feedback">
+<span class="material-symbols-outlined text-base">touch_app</span>
+        Select a Life Support Subsystem, then select its matching Habitat Function!
+      </div>
+</section>
+<!-- SECTION 3: KNOWLEDGE CHALLENGE -->
+<section class="bg-surface-container border-2 border-outline-variant rounded-xl p-6 sm:p-8 space-y-6 shadow-[0_4px_16px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-secondary-container font-extrabold">
+<span class="material-symbols-outlined text-base">quiz</span>
+        KNOWLEDGE CHECKPOINT
+      </div>
+<div class="space-y-2">
+<h2 class="text-headline-md font-headline-md text-on-surface">
+          What happens when astronauts breathe out carbon dioxide in a closed habitat?
+        </h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+          Think about why an airtight room on the Moon is different from walking around outside on Earth.
+        </p>
+</div>
+<!-- Multiple Choice Options -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="quiz-container">
+<!-- Option A -->
+<button class="quiz-option p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-outline text-left transition-all flex items-center gap-4 active:translate-y-1 shadow-[0_4px_0_#3b494c]" onclick="handleQuizAnswer(this, false, 'A')">
+<span class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-extrabold text-on-surface border border-outline-variant flex-shrink-0">
+            A
+          </span>
+<span class="text-body-md font-body-md text-on-surface">
+            It disappears outside through walls.
+          </span>
+</button>
+<!-- Option B (Correct) -->
+<button class="quiz-option p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-primary-container text-left transition-all flex items-center gap-4 active:translate-y-1 shadow-[0_4px_0_#3b494c]" onclick="handleQuizAnswer(this, true, 'B')">
+<span class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-extrabold text-primary-container border border-outline-variant flex-shrink-0">
+            B
+          </span>
+<span class="text-body-md font-body-md text-on-surface">
+            Life-support scrubbers remove it from the cabin air.
+          </span>
+</button>
+<!-- Option C -->
+<button class="quiz-option p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-outline text-left transition-all flex items-center gap-4 active:translate-y-1 shadow-[0_4px_0_#3b494c]" onclick="handleQuizAnswer(this, false, 'C')">
+<span class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-extrabold text-on-surface border border-outline-variant flex-shrink-0">
+            C
+          </span>
+<span class="text-body-md font-body-md text-on-surface">
+            It turns instantly into lunar dust.
+          </span>
+</button>
+<!-- Option D -->
+<button class="quiz-option p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-outline text-left transition-all flex items-center gap-4 active:translate-y-1 shadow-[0_4px_0_#3b494c]" onclick="handleQuizAnswer(this, false, 'D')">
+<span class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-extrabold text-on-surface border border-outline-variant flex-shrink-0">
+            D
+          </span>
+<span class="text-body-md font-body-md text-on-surface">
+            Nothing happens at all.
+          </span>
+</button>
+</div>
+<!-- Quiz Answer Feedback Modal/Banner -->
+<div class="hidden p-4 rounded-DEFAULT border-2 transition-all" id="quiz-feedback"></div>
+</section>
+<!-- SECTION 4 & 5: FUN STEM FACT & REWARD BADGE CARDS (TWO COLUMNS) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Fun STEM Science Fact Card -->
+<div class="lg:col-span-6 bg-surface-container-high border-2 border-outline-variant rounded-xl p-6 flex flex-col justify-between shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
+<div>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-secondary-container font-extrabold mb-3">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+            FUN STEM SCIENCE FACT
+          </div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">
+            Earth Does It for Free, but Space Stations Must Build It!
+          </h3>
+<p class="text-body-lg font-body-lg text-primary mt-3 leading-relaxed font-semibold">
+            "Spacecraft and habitats need carefully managed life-support systems because astronauts cannot rely on Earth's open environment."
+          </p>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2 leading-relaxed">
+            On Earth, vast forests, blue oceans, and a huge atmosphere naturally recycle carbon dioxide back into oxygen and filter fresh rainwater. On the Moon, our entire planetary biosphere is engineered inside compact titanium boxes!
+          </p>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-base">public</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline">Earth Biosphere vs. Closed Lunar ECLSS Loop</span>
+</div>
+</div>
+<!-- Reward & Badge Card with NASA Resource Link -->
+<div class="lg:col-span-6 bg-surface-container border-2 border-secondary-container/80 rounded-xl p-6 flex flex-col justify-between shadow-[0_0_24px_rgba(254,179,0,0.15)]">
+<div>
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 text-label-sm font-label-sm text-secondary-container font-extrabold">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+              CADET REWARD UNLOCKED
+            </div>
+<span class="text-label-sm font-label-sm bg-secondary-container/20 border border-secondary-container/40 text-secondary px-2.5 py-1 rounded-full font-extrabold">
+              TIER 1 BADGE
+            </span>
+</div>
+<div class="mt-5 flex items-center gap-5">
+<!-- Golden Badge Icon -->
+<div class="w-20 h-20 rounded-2xl bg-gradient-to-b from-secondary to-secondary-container border-4 border-secondary-fixed text-on-secondary-container flex items-center justify-center shadow-[0_4px_0_#996500,0_0_20px_rgba(255,179,0,0.4)] flex-shrink-0 animate-bounce">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">bubble_chart</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-secondary font-extrabold tracking-wider uppercase">Collectible Emblem</div>
+<h3 class="text-headline-md font-headline-md text-on-surface font-extrabold">
+                BREATHING SYSTEMS EXPERT
+              </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
+                Golden oxygen molecule emblem awarded for mastering closed-loop habitat life support.
+              </p>
+</div>
+</div>
+</div>
+<!-- NASA Resource Outbound Button -->
+<div class="mt-6 pt-5 border-t border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="text-label-sm font-label-sm text-outline">
+            Want to see how NASA builds it in real life?
+          </div>
+<a class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-DEFAULT bg-surface-container-high hover:bg-surface-container border-2 border-outline-variant hover:border-primary text-label-md font-label-md text-primary transition-all shadow-[0_2px_8px_rgba(0,0,0,0.4)] active:translate-y-0.5" href="https://www.nasa.gov/reference/environmental-control-and-life-support-systems-eclss/" rel="noopener noreferrer" target="_blank">
+<span>Official NASA ECLSS Guide (nasa.gov)</span>
+<span class="material-symbols-outlined text-base">north_east</span>
+</a>
+</div>
+</div>
+</section>
+<!-- SECTION 6: ACTIONS STRIP (BOTTOM NAVIGATIONAL LAUNCHPAD) -->
+<section class="bg-surface-container-low border-2 border-outline-variant rounded-xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+<button class="w-full sm:w-auto px-6 py-3.5 rounded-DEFAULT bg-surface-container-high hover:bg-surface-container border-2 border-outline-variant text-on-surface text-label-lg font-label-lg font-extrabold flex items-center justify-center gap-2 shadow-[0_4px_0_#3b494c] active:translate-y-1 transition-all" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+        RETURN TO SCIENCE QUEST HUB
+      </button>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-8 py-3.5 rounded-DEFAULT bg-primary-container text-on-primary-container hover:bg-primary-fixed-dim text-label-lg font-label-lg font-extrabold flex items-center justify-center gap-2 shadow-[0_6px_0_#009bb0] active:translate-y-1 transition-transform duration-100">
+<span>NEXT QUEST: SOLAR STORM ALERT</span>
+<span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BOTTOM NAVIGATION BAR (from Shared Components JSON: BottomNavBar) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md border-t-2 border-outline-variant shadow-[0_-4px_20px_rgba(0,229,255,0.25)] rounded-t-xl md:hidden">
+<!-- Explore -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform duration-100">
+<span class="material-symbols-outlined text-2xl">explore</span>
+<span class="text-label-md font-label-md mt-0.5">Explore</span>
+</button>
+<!-- Base HQ -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform duration-100">
+<span class="material-symbols-outlined text-2xl">apartment</span>
+<span class="text-label-md font-label-md mt-0.5">Base HQ</span>
+</button>
+<!-- Rover -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform duration-100">
+<span class="material-symbols-outlined text-2xl">electric_bolt</span>
+<span class="text-label-md font-label-md mt-0.5">Rover</span>
+</button>
+<!-- Research (ACTIVE: Mapped to ECLSS Science Quest) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-transform duration-100">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">science</span>
+<span class="text-label-md font-label-md mt-0.5">Research</span>
+</button>
+<!-- Comms -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform duration-100">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+<span class="text-label-md font-label-md mt-0.5">Comms</span>
+</button>
+</nav>
+<!-- INTERACTIVE LOGIC SCRIPT (Matching activity & Quiz feedback) -->
+<script>
+    // State management for matching activity
+    let selectedLeftKey = null;
+    let selectedLeftBtn = null;
+    let solvedCount = 0;
+    const totalMatches = 4;
+
+    const leftButtons = document.querySelectorAll('.match-item-left');
+    const rightButtons = document.querySelectorAll('.match-item-right');
+    const feedbackBox = document.getElementById('matcher-feedback');
+    const counterBadge = document.getElementById('match-counter');
+
+    leftButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('opacity-50')) return; // already solved
+
+        leftButtons.forEach(b => b.classList.remove('ring-4', 'ring-primary-container', 'bg-surface-container-high'));
+        btn.classList.add('ring-4', 'ring-primary-container', 'bg-surface-container-high');
+        selectedLeftKey = btn.getAttribute('data-match-key');
+        selectedLeftBtn = btn;
+
+        feedbackBox.innerHTML = `
+          <span class="material-symbols-outlined text-primary-container">arrow_forward</span>
+          <span>Now pick the matching biological habitat function on the right!</span>
+        `;
+        feedbackBox.className = "p-3.5 rounded-DEFAULT bg-surface-container-low border border-primary-container text-body-md font-body-md text-center text-primary-container flex items-center justify-center gap-2";
+      });
+    });
+
+    rightButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('opacity-50')) return; // already solved
+        if (!selectedLeftKey) {
+          feedbackBox.innerHTML = `
+            <span class="material-symbols-outlined text-secondary-container">priority_high</span>
+            <span>Cadet, select a subsystem from the left column first!</span>
+          `;
+          feedbackBox.className = "p-3.5 rounded-DEFAULT bg-surface-container-low border border-secondary-container text-body-md font-body-md text-center text-secondary-container flex items-center justify-center gap-2";
+          return;
+        }
+
+        const targetKey = btn.getAttribute('data-match-target');
+
+        if (targetKey === selectedLeftKey) {
+          // Success match
+          solvedCount++;
+          counterBadge.textContent = `${solvedCount} / ${totalMatches}`;
+          
+          // Lock visual state
+          selectedLeftBtn.classList.remove('ring-4', 'ring-primary-container', 'hover:border-primary-container');
+          selectedLeftBtn.classList.add('bg-tertiary-container/20', 'border-tertiary-container', 'opacity-50', 'pointer-events-none');
+          selectedLeftBtn.querySelector('.match-status').innerHTML = "check_circle";
+          selectedLeftBtn.querySelector('.match-status').classList.replace('text-outline', 'text-tertiary-container');
+          selectedLeftBtn.querySelector('.match-status').style.fontVariationSettings = "'FILL' 1";
+
+          btn.classList.add('bg-tertiary-container/20', 'border-tertiary-container', 'opacity-50', 'pointer-events-none');
+          btn.querySelector('.target-status').innerHTML = "verified";
+          btn.querySelector('.target-status').classList.replace('text-outline', 'text-tertiary-container');
+          btn.querySelector('.target-status').style.fontVariationSettings = "'FILL' 1";
+
+          selectedLeftKey = null;
+          selectedLeftBtn = null;
+
+          if (solvedCount === totalMatches) {
+            feedbackBox.innerHTML = `
+              <span class="material-symbols-outlined text-tertiary-container text-2xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+              <span class="font-bold text-tertiary">All ECLSS Subsystems Online! Excellent discovery, Cadet!</span>
+            `;
+            feedbackBox.className = "p-3.5 rounded-DEFAULT bg-tertiary-container/20 border-2 border-tertiary-container text-body-md font-body-md text-center text-tertiary-container flex items-center justify-center gap-2 shadow-[0_0_16px_rgba(34,239,126,0.3)]";
+          } else {
+            feedbackBox.innerHTML = `
+              <span class="material-symbols-outlined text-tertiary-container">check_circle</span>
+              <span>Subsystem matched! Excellent discovery, Cadet! Select another.</span>
+            `;
+            feedbackBox.className = "p-3.5 rounded-DEFAULT bg-tertiary-container/10 border border-tertiary-container text-body-md font-body-md text-center text-tertiary-container flex items-center justify-center gap-2";
+          }
+        } else {
+          // Mismatch
+          feedbackBox.innerHTML = `
+            <span class="material-symbols-outlined text-error">close</span>
+            <span>Telemetry mismatch! Let's re-check the function and try another connection.</span>
+          `;
+          feedbackBox.className = "p-3.5 rounded-DEFAULT bg-error-container/20 border border-error text-body-md font-body-md text-center text-error flex items-center justify-center gap-2";
+        }
+      });
+    });
+
+    // Quiz evaluation
+    function handleQuizAnswer(btnElement, isCorrect, optionLetter) {
+      const feedbackDiv = document.getElementById('quiz-feedback');
+      const allOptions = document.querySelectorAll('.quiz-option');
+      
+      allOptions.forEach(opt => {
+        opt.classList.remove('border-primary-container', 'border-error', 'bg-tertiary-container/20', 'bg-error-container/20');
+      });
+
+      feedbackDiv.classList.remove('hidden');
+
+      if (isCorrect) {
+        btnElement.classList.add('bg-tertiary-container/20', 'border-tertiary-container');
+        feedbackDiv.className = "p-4 rounded-DEFAULT border-2 border-tertiary-container bg-surface-container-high text-on-surface space-y-1 shadow-[0_0_16px_rgba(34,239,126,0.3)]";
+        feedbackDiv.innerHTML = `
+          <div class="flex items-center gap-2 text-tertiary-container font-headline-sm font-extrabold">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            MISSION ACCOMPLISHED! Option B is 100% Correct.
+          </div>
+          <p class="text-body-md font-body-md text-on-surface-variant">
+            Without chemical scrubbers like the Carbon Dioxide Removal Assembly (CDRA), exhaled carbon dioxide would build up and become toxic in just hours!
+          </p>
+        `;
+      } else {
+        btnElement.classList.add('bg-error-container/20', 'border-error');
+        feedbackDiv.className = "p-4 rounded-DEFAULT border-2 border-error bg-surface-container-high text-on-surface space-y-1";
+        feedbackDiv.innerHTML = `
+          <div class="flex items-center gap-2 text-error font-headline-sm font-extrabold">
+            <span class="material-symbols-outlined">cancel</span>
+            Not quite right, Cadet.
+          </div>
+          <p class="text-body-md font-body-md text-on-surface-variant">
+            In an airtight pressurized habitat, gases cannot escape on their own. Active machinery is needed to trap and remove carbon dioxide! Try Option B.
+          </p>
+        `;
+      }
+    }
+  </script>
+</body></html>

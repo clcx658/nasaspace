@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon — Astronaut Training &amp; Qualification</title>
+<!-- Google Fonts: Outfit -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#00daf3",
+            "tertiary": "#b1ffbf",
+            "surface-container-lowest": "#0b0d1b",
+            "secondary-fixed-dim": "#ffba38",
+            "primary-fixed-dim": "#00daf3",
+            "secondary-fixed": "#ffdeac",
+            "surface-container": "#1d1f2d",
+            "on-tertiary-container": "#006731",
+            "inverse-surface": "#e1e1f5",
+            "on-primary-fixed": "#001f24",
+            "outline-variant": "#3b494c",
+            "tertiary-container": "#22ef7e",
+            "primary": "#c3f5ff",
+            "error": "#ffb4ab",
+            "on-secondary": "#432c00",
+            "surface-variant": "#323443",
+            "surface": "#101221",
+            "inverse-on-surface": "#2e2f3f",
+            "surface-container-low": "#191b29",
+            "inverse-primary": "#006875",
+            "on-primary-fixed-variant": "#004f58",
+            "tertiary-fixed": "#62ff96",
+            "on-secondary-fixed-variant": "#604100",
+            "on-primary-container": "#00626e",
+            "on-surface": "#e1e1f5",
+            "on-error-container": "#ffdad6",
+            "secondary-container": "#feb300",
+            "on-background": "#e1e1f5",
+            "outline": "#849396",
+            "error-container": "#93000a",
+            "surface-bright": "#363848",
+            "on-secondary-container": "#6a4800",
+            "on-tertiary-fixed": "#00210b",
+            "primary-container": "#00e5ff",
+            "surface-container-highest": "#323443",
+            "on-primary": "#00363d",
+            "background": "#101221",
+            "tertiary-fixed-dim": "#00e475",
+            "surface-dim": "#101221",
+            "on-surface-variant": "#bac9cc",
+            "primary-fixed": "#9cf0ff",
+            "surface-container-high": "#272938",
+            "on-secondary-fixed": "#281900",
+            "on-tertiary-fixed-variant": "#005226",
+            "on-error": "#690005",
+            "secondary": "#ffd799",
+            "on-tertiary": "#003918"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin-desktop": "2rem",
+            "space-md": "1rem",
+            "margin": "1rem",
+            "margin-tablet": "1.5rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "gutter-tablet": "1.25rem",
+            "space-2xl": "3rem"
+          },
+          "fontFamily": {
+            "body-md": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "headline-md": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "label-md": ["Outfit"],
+            "headline-sm": ["Outfit"]
+          },
+          "fontSize": {
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "800" }],
+            "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800" }],
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    /* Tactile Arcade Extrusions */
+    .btn-arcade-cyan {
+      background-color: #00e5ff;
+      color: #00363d;
+      box-shadow: 0 6px 0 #009bb0, 0 10px 20px rgba(0, 229, 255, 0.35);
+      transition: all 0.08s ease-in-out;
+    }
+    .btn-arcade-cyan:active, .btn-arcade-cyan.is-pressed {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #009bb0, 0 4px 10px rgba(0, 229, 255, 0.4);
+    }
+
+    .btn-arcade-gold {
+      background-color: #feb300;
+      color: #432c00;
+      box-shadow: 0 6px 0 #b37d00, 0 10px 20px rgba(254, 179, 0, 0.35);
+      transition: all 0.08s ease-in-out;
+    }
+    .btn-arcade-gold:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #b37d00, 0 4px 10px rgba(254, 179, 0, 0.4);
+    }
+
+    .btn-arcade-card {
+      box-shadow: 0 6px 0 #1d1f2d;
+      transition: all 0.1s ease;
+    }
+    .btn-arcade-card:hover {
+      border-color: #00e5ff;
+      box-shadow: 0 6px 0 #009bb0, 0 0 16px rgba(0, 229, 255, 0.25);
+    }
+    .btn-arcade-card:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #009bb0;
+    }
+
+    /* Floating Bubble Keyframes */
+    @keyframes floatBubble {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      50% { transform: translateY(-12px) rotate(4deg) scale(1.04); }
+    }
+    .animate-float-bubble {
+      animation: floatBubble 4s ease-in-out infinite;
+    }
+    
+    /* Neon Glow Pulse */
+    @keyframes pulseGlow {
+      0%, 100% { filter: drop-shadow(0 0 12px rgba(0,229,255,0.4)); }
+      50% { filter: drop-shadow(0 0 22px rgba(0,229,255,0.85)); }
+    }
+    .neon-pulse {
+      animation: pulseGlow 2.5s infinite;
+    }
+
+    /* Target Slot Glow */
+    .slot-glow {
+      box-shadow: inset 0 0 12px rgba(0,229,255,0.3), 0 0 10px rgba(0,229,255,0.25);
+    }
+    .slot-complete {
+      box-shadow: inset 0 0 14px rgba(34,239,126,0.5), 0 0 16px rgba(34,239,126,0.4);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden pb-24 md:pb-12">
+<!-- ========================================== -->
+<!-- 1. PERSISTENT TOP HUD (Shared Component)  -->
+<!-- ========================================== -->
+<header class="fixed top-0 left-0 w-full z-50 flex flex-wrap justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md border-b-2 border-outline-variant shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<!-- Brand / Mission Logo Anchor -->
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 group active:translate-y-1 transition-transform duration-100" onclick="window.location.reload()">
+<div class="w-10 h-10 rounded-DEFAULT bg-primary-container/20 border-2 border-primary-container flex items-center justify-center text-primary-container shadow-[0_0_12px_rgba(0,229,255,0.35)]">
+<span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div class="text-left">
+<span class="text-headline-sm font-headline-sm font-extrabold text-primary-container tracking-wider block leading-tight">A Day on the Moon</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-ping inline-block"></span>
+            Team AstroPath • Training Terminal
+          </span>
+</div>
+</button>
+<span class="hidden xl:inline-block px-3 py-1 bg-surface-container-highest/60 text-secondary border border-secondary/40 rounded-full text-label-sm font-label-sm uppercase tracking-wider">
+        SIMULATED GAMEPLAY VALUES — NOT REAL NASA MEASUREMENTS
+      </span>
+</div>
+<!-- Live Telemetry Status Chips -->
+<div class="hidden lg:flex items-center gap-2">
+<!-- Sol / Time -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/60 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-body-md" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span>Sol 04 • 10:30</span>
+</div>
+<!-- O2 Level -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-tertiary-container/60 text-tertiary-container font-label-md text-label-md shadow-[0_0_8px_rgba(34,239,126,0.25)]">
+<span class="material-symbols-outlined text-body-md" style="font-variation-settings: 'FILL' 1;">air</span>
+<span>O2: 98%</span>
+</div>
+<!-- Power -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-secondary-container/60 text-secondary-container font-label-md text-label-md shadow-[0_0_8px_rgba(254,179,0,0.25)]">
+<span class="material-symbols-outlined text-body-md" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span>Power: 85%</span>
+</div>
+<!-- Water -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-primary-container/60 text-primary-container font-label-md text-label-md shadow-[0_0_8px_rgba(0,229,255,0.25)]">
+<span class="material-symbols-outlined text-body-md" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span>Water: 92%</span>
+</div>
+</div>
+<!-- Trailing Actions Cluster -->
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-DEFAULT bg-surface-container-high border border-outline text-on-surface hover:border-primary-container text-label-md font-label-md flex items-center gap-1.5 active:translate-y-1 transition-transform" onclick="resetTraining()">
+<span class="material-symbols-outlined text-body-md">replay</span>
+<span class="hidden sm:inline">Reset Simulator</span>
+</button>
+<button class="w-9 h-9 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface hover:text-primary-container active:translate-y-1 transition-transform" id="audioToggleBtn" onclick="toggleAudio()">
+<span class="material-symbols-outlined text-body-md" id="audioIcon">volume_up</span>
+</button>
+<button class="w-9 h-9 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface hover:text-primary-container active:translate-y-1 transition-transform" onclick="toggleSettingsModal()">
+<span class="material-symbols-outlined text-body-md">settings</span>
+</button>
+<div class="hidden sm:flex items-center gap-2 pl-2 border-l border-outline-variant">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary-container to-secondary-container p-0.5 shadow-[0_0_8px_rgba(0,229,255,0.4)]">
+<div class="w-full h-full bg-surface-container rounded-full flex items-center justify-center text-primary text-label-md font-extrabold">
+            C4
+          </div>
+</div>
+</div>
+</div>
+</header>
+<!-- ========================================== -->
+<!-- MAIN STAGE / CONTENT WRAPPER               -->
+<!-- ========================================== -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16 flex flex-col gap-6">
+<!-- SUB-HEADER / MISSION BANNER & LIVE STEPPER -->
+<section class="bg-surface/90 border-2 border-outline-variant rounded-DEFAULT p-4 md:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-md relative overflow-hidden">
+<!-- Glow ambient backdrop line -->
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container/20 text-primary-container border border-primary-container/50 font-label-sm text-label-sm">
+              CADET CERTIFICATION LAB
+            </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">• Ages 7–12 Isometric Physics</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-primary tracking-tight">
+            Astronaut Training: 5 Interactive Challenges
+          </h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-2xl mt-1">
+            Complete each tactical simulation station to earn your 5 specialist lunar badges and unlock flight clearance for the Moon Rocket!
+          </p>
+</div>
+<!-- Training Progress Card & Bar -->
+<div class="bg-surface-container-low border-2 border-outline-variant p-4 rounded-DEFAULT flex flex-col gap-2 min-w-[280px] shadow-inner">
+<div class="flex items-center justify-between text-label-md font-label-md">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-body-md" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+              Challenges Progress:
+            </span>
+<span class="text-primary-container font-extrabold font-headline-sm text-headline-sm" id="progressPillText">0/5 (0%)</span>
+</div>
+<!-- Kid-Friendly Resource Style Meter -->
+<div class="w-full h-5 rounded-full bg-surface-container-lowest border-2 border-outline-variant overflow-hidden relative p-0.5">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container via-tertiary-container to-secondary-container transition-all duration-500 ease-out" id="trainingProgressBar" style="width: 0%;">
+<div class="w-full h-full opacity-30 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:6px_6px]"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-label-sm font-label-sm text-on-surface-variant">
+<span>Level: Recruit Cadet</span>
+<span id="badgeCounterLabel">0 of 5 Badges Ready</span>
+</div>
+</div>
+</div>
+<!-- CHALLENGE STEPPER TABS (1 - 5) -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mt-6 pt-6 border-t border-outline-variant/60">
+<!-- Step 1 Button -->
+<button class="tab-button p-3 rounded-DEFAULT border-2 border-primary-container bg-primary-container/10 flex items-center gap-3 text-left transition-all active:translate-y-1" id="tab-btn-1" onclick="switchChallenge(1)">
+<div class="w-10 h-10 rounded-DEFAULT bg-primary-container text-on-primary-container font-headline-sm text-headline-sm font-extrabold flex items-center justify-center shrink-0 shadow-[0_3px_0_#009bb0]" id="tab-icon-1">
+            1
+          </div>
+<div class="overflow-hidden">
+<div class="text-label-sm font-label-sm text-primary-container uppercase">Station 1</div>
+<div class="text-body-sm font-body-sm text-on-surface font-bold truncate">Meet The Moon</div>
+</div>
+</button>
+<!-- Step 2 Button -->
+<button class="tab-button p-3 rounded-DEFAULT border-2 border-outline-variant bg-surface-container hover:border-primary-container/70 flex items-center gap-3 text-left transition-all active:translate-y-1" id="tab-btn-2" onclick="switchChallenge(2)">
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-high text-on-surface-variant font-headline-sm text-headline-sm font-extrabold flex items-center justify-center shrink-0 border border-outline-variant" id="tab-icon-2">
+            2
+          </div>
+<div class="overflow-hidden">
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase">Station 2</div>
+<div class="text-body-sm font-body-sm text-on-surface font-bold truncate">Life In Space</div>
+</div>
+</button>
+<!-- Step 3 Button -->
+<button class="tab-button p-3 rounded-DEFAULT border-2 border-outline-variant bg-surface-container hover:border-primary-container/70 flex items-center gap-3 text-left transition-all active:translate-y-1" id="tab-btn-3" onclick="switchChallenge(3)">
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-high text-on-surface-variant font-headline-sm text-headline-sm font-extrabold flex items-center justify-center shrink-0 border border-outline-variant" id="tab-icon-3">
+            3
+          </div>
+<div class="overflow-hidden">
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase">Station 3</div>
+<div class="text-body-sm font-body-sm text-on-surface font-bold truncate">Astronaut Gear</div>
+</div>
+</button>
+<!-- Step 4 Button -->
+<button class="tab-button p-3 rounded-DEFAULT border-2 border-outline-variant bg-surface-container hover:border-primary-container/70 flex items-center gap-3 text-left transition-all active:translate-y-1" id="tab-btn-4" onclick="switchChallenge(4)">
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-high text-on-surface-variant font-headline-sm text-headline-sm font-extrabold flex items-center justify-center shrink-0 border border-outline-variant" id="tab-icon-4">
+            4
+          </div>
+<div class="overflow-hidden">
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase">Station 4</div>
+<div class="text-body-sm font-body-sm text-on-surface font-bold truncate">Environment</div>
+</div>
+</button>
+<!-- Step 5 Button -->
+<button class="tab-button p-3 rounded-DEFAULT border-2 border-outline-variant bg-surface-container hover:border-primary-container/70 flex items-center gap-3 text-left transition-all active:translate-y-1 col-span-2 sm:col-span-1" id="tab-btn-5" onclick="switchChallenge(5)">
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-high text-on-surface-variant font-headline-sm text-headline-sm font-extrabold flex items-center justify-center shrink-0 border border-outline-variant" id="tab-icon-5">
+            5
+          </div>
+<div class="overflow-hidden">
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase">Station 5</div>
+<div class="text-body-sm font-body-sm text-on-surface font-bold truncate">Space Safety</div>
+</div>
+</button>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- CHALLENGE WORKSPACES (PANELS 1 - 5)        -->
+<!-- ========================================== -->
+<!-- ======================================================== -->
+<!-- CHALLENGE 1: MEET THE MOON (Multiple Choice)             -->
+<!-- ======================================================== -->
+<div class="challenge-panel block" id="panel-challenge-1">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Interactive Question Canvas (8 cols) -->
+<div class="lg:col-span-8 bg-surface border-2 border-outline-variant rounded-DEFAULT p-6 shadow-xl relative">
+<!-- Mascot dialogue chip breaking the header -->
+<div class="flex items-center gap-3 mb-6 bg-surface-container-low p-3 rounded-DEFAULT border border-outline-variant">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 border-2 border-primary-container flex items-center justify-center text-primary-container text-headline-md shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">face_6</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-primary-container font-extrabold tracking-wider">COMMANDER NOVA ASKS:</span>
+<p class="text-body-md font-body-md text-on-surface">"Cadet! Study our base viewport crater field! Can you solve our planetary science question?"</p>
+</div>
+</div>
+<!-- Question Body -->
+<div class="mb-6">
+<div class="inline-block px-3 py-1 bg-surface-container-high border border-outline-variant rounded-full text-secondary font-label-md text-label-md mb-2">
+              LUNAR GEOLOGY • QUESTION 1
+            </div>
+<h2 class="text-headline-md font-headline-md text-primary font-extrabold leading-snug">
+              Why does the Moon have so many craters compared to Earth?
+            </h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+              Select the correct scientific explanation to calibrate our base telescope.
+            </p>
+</div>
+<!-- 4 Answer Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="c1-options-container">
+<!-- Option A -->
+<button class="btn-arcade-card p-4 rounded-DEFAULT bg-surface-container border-2 border-outline-variant text-left flex items-start gap-3 group" id="c1-btn-A" onclick="handleC1Answer('A', false)">
+<span class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shrink-0 border border-outline">A</span>
+<div>
+<div class="text-body-md font-body-md text-on-surface group-hover:text-primary font-bold">Space rain washed away the dirt</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-body-sm text-primary-container">cloud_off</span>
+                  Atmospheric erosion hypothesis
+                </div>
+</div>
+</button>
+<!-- Option B (CORRECT) -->
+<button class="btn-arcade-card p-4 rounded-DEFAULT bg-surface-container border-2 border-outline-variant text-left flex items-start gap-3 group" id="c1-btn-B" onclick="handleC1Answer('B', true)">
+<span class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shrink-0 border border-outline">B</span>
+<div>
+<div class="text-body-md font-body-md text-on-surface group-hover:text-primary font-bold">The Moon has almost no atmosphere to burn up incoming space rocks</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-body-sm text-tertiary-container">shield</span>
+                  Zero atmospheric friction shield
+                </div>
+</div>
+</button>
+<!-- Option C -->
+<button class="btn-arcade-card p-4 rounded-DEFAULT bg-surface-container border-2 border-outline-variant text-left flex items-start gap-3 group" id="c1-btn-C" onclick="handleC1Answer('C', false)">
+<span class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shrink-0 border border-outline">C</span>
+<div>
+<div class="text-body-md font-body-md text-on-surface group-hover:text-primary font-bold">Astronauts dug them with rovers</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-body-sm text-secondary">handyman</span>
+                  Excavation hypothesis
+                </div>
+</div>
+</button>
+<!-- Option D -->
+<button class="btn-arcade-card p-4 rounded-DEFAULT bg-surface-container border-2 border-outline-variant text-left flex items-start gap-3 group" id="c1-btn-D" onclick="handleC1Answer('D', false)">
+<span class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shrink-0 border border-outline">D</span>
+<div>
+<div class="text-body-md font-body-md text-on-surface group-hover:text-primary font-bold">The Moon is made of Swiss cheese</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-body-sm text-secondary">lunch_dining</span>
+                  Folk myth &amp; bedtime tales
+                </div>
+</div>
+</button>
+</div>
+<!-- Immediate Interactive Feedback Drawer -->
+<div class="mt-6 p-4 rounded-DEFAULT hidden transition-all duration-300" id="c1-feedback">
+<!-- Dynamically populated by JS -->
+</div>
+</div>
+<!-- Sidebar Badge & Info Card (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface border-2 border-outline-variant rounded-DEFAULT p-6 flex flex-col items-center text-center">
+<div class="w-28 h-28 rounded-full bg-surface-container-low border-4 border-dashed border-outline-variant flex items-center justify-center mb-4 transition-all duration-300" id="badge-slot-1">
+<span class="material-symbols-outlined text-display-hero text-outline-variant">qr_code_2</span>
+</div>
+<div class="text-label-md font-label-md text-secondary uppercase tracking-wider">Station 1 Reward</div>
+<h3 class="text-headline-sm font-headline-sm text-primary font-bold mt-1">Lunar Scholar Badge</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Awarded for understanding the lunar vacuum, meteorite impacts, and Earth's atmosphere comparison.
+            </p>
+<div class="mt-4 px-3 py-1 bg-surface-container-high rounded-full text-label-sm font-label-sm text-outline" id="badge-status-1">
+              LOCKED • Complete Challenge 1
+            </div>
+</div>
+<!-- Astro Fact Card -->
+<div class="bg-surface-container-low border-2 border-outline-variant/60 rounded-DEFAULT p-5">
+<div class="flex items-center gap-2 text-primary-container text-label-md font-label-md mb-2">
+<span class="material-symbols-outlined text-body-md">lightbulb</span>
+              DID YOU KNOW?
+            </div>
+<p class="text-body-sm font-body-sm text-on-surface">
+              Meteoroids strike the Moon at speeds exceeding <strong>45,000 miles per hour</strong>! Without air to create friction and vaporize them, even pebble-sized cosmic pebbles carve punchy craters.
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- CHALLENGE 2: LIFE IN SPACE (True or False & Bubbles)     -->
+<!-- ======================================================== -->
+<div class="challenge-panel hidden" id="panel-challenge-2">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 bg-surface border-2 border-outline-variant rounded-DEFAULT p-6 shadow-xl relative">
+<!-- Mission Prompt -->
+<div class="flex items-center gap-3 mb-6 bg-surface-container-low p-3 rounded-DEFAULT border border-outline-variant">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 border-2 border-primary-container flex items-center justify-center text-primary-container text-headline-md shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-primary-container font-extrabold tracking-wider">COMMANDER NOVA ASKS:</span>
+<p class="text-body-md font-body-md text-on-surface">"In orbital habitats and freefall, fluids don't behave like in a kitchen cup! Test your zero-g intuition!"</p>
+</div>
+</div>
+<div class="mb-6">
+<div class="inline-block px-3 py-1 bg-surface-container-high border border-outline-variant rounded-full text-secondary font-label-md text-label-md mb-2">
+              MICROGRAVITY PHYSICS • QUESTION 2
+            </div>
+<h2 class="text-headline-md font-headline-md text-primary font-extrabold leading-snug">
+              "In zero gravity, water forms floating bubbles instead of pouring down!"
+            </h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+              Decide whether this orbital phenomenon is scientifically True or False.
+            </p>
+</div>
+<!-- Interactive Graphic Area: Animated Floating Water Spheres -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant rounded-DEFAULT p-8 my-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[220px]">
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(#00e5ff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<!-- Animated Water Orbs -->
+<div class="relative flex items-center justify-center w-full h-36">
+<!-- Giant Center Bubble -->
+<div class="w-24 h-24 rounded-full bg-gradient-to-tr from-primary-container/80 via-primary/60 to-white/90 border-2 border-white shadow-[0_0_30px_rgba(0,229,255,0.7)] animate-float-bubble flex items-center justify-center cursor-pointer hover:scale-110 transition-transform" onclick="popTinyBubble(event)">
+<span class="material-symbols-outlined text-on-primary-fixed text-headline-lg select-none" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<!-- Secondary mini satellite bubbles -->
+<div class="absolute top-4 left-1/4 w-10 h-10 rounded-full bg-primary-container/70 border border-white/80 shadow-[0_0_15px_rgba(0,229,255,0.5)] animate-float-bubble" style="animation-delay: 1s;"></div>
+<div class="absolute bottom-4 right-1/4 w-14 h-14 rounded-full bg-primary-fixed/60 border border-white/80 shadow-[0_0_20px_rgba(0,229,255,0.6)] animate-float-bubble" style="animation-delay: 2s;"></div>
+</div>
+<div class="text-label-sm font-label-sm text-primary-container mt-2 flex items-center gap-1 z-10">
+<span class="material-symbols-outlined text-body-sm">touch_app</span>
+              Tap the bubble to observe microgravity surface tension!
+            </div>
+</div>
+<!-- TRUE / FALSE Chunky Buttons -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<button class="h-16 rounded-DEFAULT bg-tertiary-container text-on-tertiary-container font-headline-sm text-headline-sm font-extrabold flex items-center justify-center gap-3 border-2 border-white/30 shadow-[0_6px_0_#009b4d] active:translate-y-1 active:shadow-[0_2px_0_#009b4d] transition-all" id="c2-btn-true" onclick="handleC2Answer(true)">
+<span class="material-symbols-outlined text-headline-md" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+              TRUE (It Floats!)
+            </button>
+<button class="h-16 rounded-DEFAULT bg-surface-container-high text-on-surface hover:text-error font-headline-sm text-headline-sm font-extrabold flex items-center justify-center gap-3 border-2 border-outline-variant shadow-[0_6px_0_#1d1f2d] active:translate-y-1 active:shadow-[0_2px_0_#1d1f2d] transition-all" id="c2-btn-false" onclick="handleC2Answer(false)">
+<span class="material-symbols-outlined text-headline-md">cancel</span>
+              FALSE (It Falls)
+            </button>
+</div>
+<div class="mt-6 p-4 rounded-DEFAULT hidden transition-all duration-300" id="c2-feedback"></div>
+</div>
+<!-- Sidebar Badge & Info Card -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface border-2 border-outline-variant rounded-DEFAULT p-6 flex flex-col items-center text-center">
+<div class="w-28 h-28 rounded-full bg-surface-container-low border-4 border-dashed border-outline-variant flex items-center justify-center mb-4 transition-all duration-300" id="badge-slot-2">
+<span class="material-symbols-outlined text-display-hero text-outline-variant">bubble_chart</span>
+</div>
+<div class="text-label-md font-label-md text-secondary uppercase tracking-wider">Station 2 Reward</div>
+<h3 class="text-headline-sm font-headline-sm text-primary font-bold mt-1">Orbit Cadet Badge</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Honoring mastery of fluid mechanics, microgravity surface tension, and life in orbit.
+            </p>
+<div class="mt-4 px-3 py-1 bg-surface-container-high rounded-full text-label-sm font-label-sm text-outline" id="badge-status-2">
+              LOCKED • Complete Challenge 2
+            </div>
+</div>
+<div class="bg-surface-container-low border-2 border-outline-variant/60 rounded-DEFAULT p-5">
+<div class="flex items-center gap-2 text-primary-container text-label-md font-label-md mb-2">
+<span class="material-symbols-outlined text-body-md">science</span>
+              SURFACE TENSION FACT
+            </div>
+<p class="text-body-sm font-body-sm text-on-surface">
+              On Earth, gravity pulls water flat into puddles. In orbit, surface tension pulls water molecules inward to occupy the smallest possible surface area: <strong>a flawless mathematical sphere</strong>!
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- CHALLENGE 3: ASTRONAUT EQUIPMENT (Gear Dressing Simulator) -->
+<!-- ======================================================== -->
+<div class="challenge-panel hidden" id="panel-challenge-3">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Interactive Dressing Canvas -->
+<div class="lg:col-span-8 bg-surface border-2 border-outline-variant rounded-DEFAULT p-6 shadow-xl relative">
+<div class="flex items-center justify-between gap-4 mb-4">
+<div>
+<span class="px-3 py-1 bg-surface-container-high border border-outline-variant rounded-full text-secondary font-label-md text-label-md">
+                EXTRAVEHICULAR MOBILITY UNIT (EMU)
+              </span>
+<h2 class="text-headline-md font-headline-md text-primary font-extrabold mt-1">
+                Spacesuit Equipment Dressing Bay
+              </h2>
+</div>
+<button class="px-3 py-1.5 rounded-DEFAULT bg-surface-container-high hover:bg-surface-container border border-outline text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1" onclick="resetSuit()">
+<span class="material-symbols-outlined text-body-sm">restart_alt</span> Reset Suit
+            </button>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-6">
+            Equip Cadet Chibi for the lunar walk! Tap an item from your Inventory Dock to slot it onto the matching target zone.
+          </p>
+<!-- Main Interactive Stage: Suit Figure + 4 Drop Target Zones -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant rounded-DEFAULT p-6 relative flex flex-col md:flex-row items-center justify-around gap-6 min-h-[380px]">
+<!-- Isometric Silhouette / Astronaut Avatar Representation -->
+<div class="relative w-56 h-72 flex flex-col items-center justify-center">
+<!-- Suit Body Silhouette base -->
+<div class="w-44 h-64 rounded-t-full rounded-b-3xl bg-surface-container-high/60 border-2 border-outline-variant relative flex flex-col items-center p-3 shadow-inner">
+<!-- Visor Head area -->
+<div class="w-20 h-20 rounded-full bg-surface-container border-2 border-dashed border-primary-container/40 flex items-center justify-center transition-all duration-300" id="suit-avatar-head">
+<span class="material-symbols-outlined text-headline-lg text-outline" id="suit-avatar-head-icon">sports_motorsports</span>
+</div>
+<!-- Chest / Backpack Anchor -->
+<div class="w-28 h-20 rounded-DEFAULT bg-surface-container border-2 border-dashed border-primary-container/40 mt-3 flex items-center justify-center transition-all duration-300" id="suit-avatar-chest">
+<span class="material-symbols-outlined text-headline-lg text-outline" id="suit-avatar-chest-icon">backpack</span>
+</div>
+<!-- Gloves area -->
+<div class="w-36 flex justify-between mt-2 px-1" id="suit-avatar-hands">
+<div class="w-9 h-9 rounded-full bg-surface-container border-2 border-dashed border-primary-container/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-body-md text-outline">pan_tool</span>
+</div>
+<div class="w-9 h-9 rounded-full bg-surface-container border-2 border-dashed border-primary-container/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-body-md text-outline">pan_tool</span>
+</div>
+</div>
+<!-- Boots base -->
+<div class="w-28 flex justify-between mt-2" id="suit-avatar-feet">
+<div class="w-10 h-7 rounded-t-lg bg-surface-container border-2 border-dashed border-primary-container/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-body-md text-outline">snowshoeing</span>
+</div>
+<div class="w-10 h-7 rounded-t-lg bg-surface-container border-2 border-dashed border-primary-container/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-body-md text-outline">snowshoeing</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Target Slot Trays (Right / Surrounding) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-md">
+<!-- Slot 1: Head Target -->
+<div class="p-3 rounded-DEFAULT bg-surface-container border-2 border-outline-variant flex items-center gap-3 transition-all slot-glow" id="slot-head">
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-high flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">face_6</span>
+</div>
+<div class="overflow-hidden flex-1">
+<div class="text-label-sm font-label-sm text-on-surface-variant">HEAD TARGET</div>
+<div class="text-body-sm font-body-sm font-bold text-outline" id="slot-head-label">Empty Slot</div>
+</div>
+<div class="hidden text-tertiary-container font-headline-sm" id="slot-head-check">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Slot 2: Chest / Backpack Target -->
+<div class="p-3 rounded-DEFAULT bg-surface-container border-2 border-outline-variant flex items-center gap-3 transition-all slot-glow" id="slot-chest">
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-high flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">backpack</span>
+</div>
+<div class="overflow-hidden flex-1">
+<div class="text-label-sm font-label-sm text-on-surface-variant">CHEST &amp; LIFE SUPPORT</div>
+<div class="text-body-sm font-body-sm font-bold text-outline" id="slot-chest-label">Empty Slot</div>
+</div>
+<div class="hidden text-tertiary-container font-headline-sm" id="slot-chest-check">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Slot 3: Hands Target -->
+<div class="p-3 rounded-DEFAULT bg-surface-container border-2 border-outline-variant flex items-center gap-3 transition-all slot-glow" id="slot-hands">
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-high flex items-center justify-center text-tertiary-container shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">front_hand</span>
+</div>
+<div class="overflow-hidden flex-1">
+<div class="text-label-sm font-label-sm text-on-surface-variant">HANDS TARGET</div>
+<div class="text-body-sm font-body-sm font-bold text-outline" id="slot-hands-label">Empty Slot</div>
+</div>
+<div class="hidden text-tertiary-container font-headline-sm" id="slot-hands-check">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Slot 4: Feet Target -->
+<div class="p-3 rounded-DEFAULT bg-surface-container border-2 border-outline-variant flex items-center gap-3 transition-all slot-glow" id="slot-feet">
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-high flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">hiking</span>
+</div>
+<div class="overflow-hidden flex-1">
+<div class="text-label-sm font-label-sm text-on-surface-variant">FEET TARGET</div>
+<div class="text-body-sm font-body-sm font-bold text-outline" id="slot-feet-label">Empty Slot</div>
+</div>
+<div class="hidden text-tertiary-container font-headline-sm" id="slot-feet-check">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Inventory Equipment Tray to Click -->
+<div class="mt-6">
+<div class="text-label-md font-label-md text-primary-container mb-3 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-body-md">inventory_2</span>
+              AVAILABLE FLIGHT GEAR DOCK (TAP TO EQUIP):
+            </div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+<!-- Item 1: Visor Helmet -->
+<button class="p-3 rounded-DEFAULT bg-surface-container border-2 border-primary-container/60 hover:border-primary-container text-left flex flex-col justify-between gap-2 active:translate-y-1 transition-all shadow-[0_4px_0_#1d1f2d]" id="gear-item-head" onclick="equipItem('head')">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-secondary text-headline-sm" style="font-variation-settings: 'FILL' 1;">sports_motorsports</span>
+<span class="text-label-sm font-label-sm text-primary-container bg-primary-container/20 px-2 py-0.5 rounded-full">HEAD</span>
+</div>
+<div>
+<div class="text-body-sm font-body-sm text-on-surface font-bold">Gold Visor Helmet</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Blocks blinding cosmic sun rays</div>
+</div>
+</button>
+<!-- Item 2: PLSS Backpack -->
+<button class="p-3 rounded-DEFAULT bg-surface-container border-2 border-primary-container/60 hover:border-primary-container text-left flex flex-col justify-between gap-2 active:translate-y-1 transition-all shadow-[0_4px_0_#1d1f2d]" id="gear-item-chest" onclick="equipItem('chest')">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-tertiary-container text-headline-sm" style="font-variation-settings: 'FILL' 1;">backpack</span>
+<span class="text-label-sm font-label-sm text-secondary bg-secondary/20 px-2 py-0.5 rounded-full">LIFE SUPPORT</span>
+</div>
+<div>
+<div class="text-body-sm font-body-sm text-on-surface font-bold">PLSS Backpack</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Pumps O2 &amp; scrubs dangerous CO2</div>
+</div>
+</button>
+<!-- Item 3: Thermal Pressurized Gloves -->
+<button class="p-3 rounded-DEFAULT bg-surface-container border-2 border-primary-container/60 hover:border-primary-container text-left flex flex-col justify-between gap-2 active:translate-y-1 transition-all shadow-[0_4px_0_#1d1f2d]" id="gear-item-hands" onclick="equipItem('hands')">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary-container text-headline-sm" style="font-variation-settings: 'FILL' 1;">pan_tool</span>
+<span class="text-label-sm font-label-sm text-tertiary-container bg-tertiary-container/20 px-2 py-0.5 rounded-full">HANDS</span>
+</div>
+<div>
+<div class="text-body-sm font-body-sm text-on-surface font-bold">Thermal Gloves</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Maintains hand dexterity &amp; heat</div>
+</div>
+</button>
+<!-- Item 4: Lunar Tread Boots -->
+<button class="p-3 rounded-DEFAULT bg-surface-container border-2 border-primary-container/60 hover:border-primary-container text-left flex flex-col justify-between gap-2 active:translate-y-1 transition-all shadow-[0_4px_0_#1d1f2d]" id="gear-item-feet" onclick="equipItem('feet')">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-secondary text-headline-sm" style="font-variation-settings: 'FILL' 1;">snowshoeing</span>
+<span class="text-label-sm font-label-sm text-primary-container bg-primary-container/20 px-2 py-0.5 rounded-full">FEET</span>
+</div>
+<div>
+<div class="text-body-sm font-body-sm text-on-surface font-bold">Lunar Tread Boots</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Grip on ultra-slick regolith dust</div>
+</div>
+</button>
+</div>
+</div>
+<div class="mt-6 p-4 rounded-DEFAULT hidden transition-all duration-300" id="c3-feedback"></div>
+</div>
+<!-- Sidebar Badge & Info Card -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface border-2 border-outline-variant rounded-DEFAULT p-6 flex flex-col items-center text-center">
+<div class="w-28 h-28 rounded-full bg-surface-container-low border-4 border-dashed border-outline-variant flex items-center justify-center mb-4 transition-all duration-300" id="badge-slot-3">
+<span class="material-symbols-outlined text-display-hero text-outline-variant">shield_with_heart</span>
+</div>
+<div class="text-label-md font-label-md text-secondary uppercase tracking-wider">Station 3 Reward</div>
+<h3 class="text-headline-sm font-headline-sm text-primary font-bold mt-1">Gear Master Badge</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Awarded for properly pressurizing and assembling an Apollo/Artemis certified EMU spacesuit.
+            </p>
+<div class="mt-4 px-3 py-1 bg-surface-container-high rounded-full text-label-sm font-label-sm text-outline" id="badge-status-3">
+              LOCKED • Equip All 4 Pieces
+            </div>
+</div>
+<div class="bg-surface-container-low border-2 border-outline-variant/60 rounded-DEFAULT p-5">
+<div class="flex items-center gap-2 text-primary-container text-label-md font-label-md mb-2">
+<span class="material-symbols-outlined text-body-md">lightbulb</span>
+              WHY REAL GOLD IN VISORS?
+            </div>
+<p class="text-body-sm font-body-sm text-on-surface">
+              Astronaut helmet visors are coated in a microscopic layer of pure <strong>24-karat gold</strong>! Gold is the best reflector of harmful infrared heat radiation while letting visible light pass through.
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- CHALLENGE 4: LUNAR ENVIRONMENT (Extreme Temps Scenario)   -->
+<!-- ======================================================== -->
+<div class="challenge-panel hidden" id="panel-challenge-4">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 bg-surface border-2 border-outline-variant rounded-DEFAULT p-6 shadow-xl relative">
+<!-- Mascot Prompt -->
+<div class="flex items-center gap-3 mb-6 bg-surface-container-low p-3 rounded-DEFAULT border border-outline-variant">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 border-2 border-secondary-container flex items-center justify-center text-secondary text-headline-md shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">thermostat</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-secondary font-extrabold tracking-wider">COMMANDER NOVA ASKS:</span>
+<p class="text-body-md font-body-md text-on-surface">"The Moon is a world of wild extremes! There is no weather or air to smooth out temperature spikes. Analyze this scenario!"</p>
+</div>
+</div>
+<div class="mb-4">
+<div class="inline-block px-3 py-1 bg-surface-container-high border border-outline-variant rounded-full text-secondary font-label-md text-label-md mb-2">
+              THERMAL REGIMES • QUESTION 4
+            </div>
+<h2 class="text-headline-md font-headline-md text-primary font-extrabold leading-snug">
+              Daytime on the lunar equator reaches 120°C (250°F), and night plunges to -130°C (-200°F)! How does your suit protect you?
+            </h2>
+</div>
+<!-- Interactive Thermometer Swing Gauge Visual -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant rounded-DEFAULT p-6 my-6">
+<div class="flex justify-between items-center text-label-md font-label-md mb-2">
+<span class="text-primary-container flex items-center gap-1">
+<span class="material-symbols-outlined">ac_unit</span> Lunar Night: -130°C
+              </span>
+<span class="text-error flex items-center gap-1">
+<span class="material-symbols-outlined">local_fire_department</span> Lunar Noon: +120°C
+              </span>
+</div>
+<!-- Gradient Thermometer bar -->
+<div class="w-full h-7 rounded-full bg-surface-container border-2 border-outline-variant overflow-hidden relative p-1 flex items-center">
+<div class="w-full h-full rounded-full bg-gradient-to-r from-primary-container via-surface-variant to-secondary-container"></div>
+<!-- Suit Operating Range Indicator In Center -->
+<div class="absolute left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-tertiary-container text-on-tertiary-container text-label-sm font-label-sm font-extrabold shadow-[0_0_12px_rgba(34,239,126,0.6)]">
+                Suit Target: 21°C (Room Temp)
+              </div>
+</div>
+</div>
+<!-- Scenario Choices -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Choice 1 (CORRECT) -->
+<button class="btn-arcade-card p-5 rounded-DEFAULT bg-surface-container border-2 border-outline-variant text-left flex flex-col justify-between gap-3 group" id="c4-btn-correct" onclick="handleC4Answer(true)">
+<div class="w-12 h-12 rounded-DEFAULT bg-primary-container/20 text-primary-container flex items-center justify-center text-headline-sm border border-primary-container/50">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">layers</span>
+</div>
+<div>
+<h3 class="text-body-md font-body-md text-on-surface group-hover:text-primary font-bold">
+                  Multi-layer thermal insulation &amp; liquid cooling garment
+                </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                  14 layers of mylar, dacron, and an inner tube mesh circulating chilled water over cadet skin.
+                </p>
+</div>
+<div class="text-label-sm font-label-sm text-primary-container flex items-center gap-1 font-extrabold">
+                SELECT PROTOCOL <span class="material-symbols-outlined text-body-sm">arrow_forward</span>
+</div>
+</button>
+<!-- Choice 2 (WRONG) -->
+<button class="btn-arcade-card p-5 rounded-DEFAULT bg-surface-container border-2 border-outline-variant text-left flex flex-col justify-between gap-3 group" id="c4-btn-wrong" onclick="handleC4Answer(false)">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container-high text-on-surface-variant flex items-center justify-center text-headline-sm border border-outline">
+<span class="material-symbols-outlined">dry_cleaning</span>
+</div>
+<div>
+<h3 class="text-body-md font-body-md text-on-surface group-hover:text-error font-bold">
+                  A simple thick wool winter sweater
+                </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                  Cozy knitted grandma yarn to trap body heat on the chilly lunar hills.
+                </p>
+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1 font-extrabold">
+                SELECT PROTOCOL <span class="material-symbols-outlined text-body-sm">arrow_forward</span>
+</div>
+</button>
+</div>
+<div class="mt-6 p-4 rounded-DEFAULT hidden transition-all duration-300" id="c4-feedback"></div>
+</div>
+<!-- Sidebar Badge & Info Card -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface border-2 border-outline-variant rounded-DEFAULT p-6 flex flex-col items-center text-center">
+<div class="w-28 h-28 rounded-full bg-surface-container-low border-4 border-dashed border-outline-variant flex items-center justify-center mb-4 transition-all duration-300" id="badge-slot-4">
+<span class="material-symbols-outlined text-display-hero text-outline-variant">landscape</span>
+</div>
+<div class="text-label-md font-label-md text-secondary uppercase tracking-wider">Station 4 Reward</div>
+<h3 class="text-headline-sm font-headline-sm text-primary font-bold mt-1">Regolith Ranger Badge</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Awarded for solving the lunar thermal barrier and active liquid cooling systems.
+            </p>
+<div class="mt-4 px-3 py-1 bg-surface-container-high rounded-full text-label-sm font-label-sm text-outline" id="badge-status-4">
+              LOCKED • Complete Challenge 4
+            </div>
+</div>
+<div class="bg-surface-container-low border-2 border-outline-variant/60 rounded-DEFAULT p-5">
+<div class="flex items-center gap-2 text-primary-container text-label-md font-label-md mb-2">
+<span class="material-symbols-outlined text-body-md">info</span>
+              LIQUID COOLING GARMENT (LCG)
+            </div>
+<p class="text-body-sm font-body-sm text-on-surface">
+              Underneath the bulky suit, astronauts wear a tight spandex bodysuit laced with over <strong>300 feet of flexible plastic tubing</strong>. Cold water constantly circulates to stop astronauts from overheating!
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- CHALLENGE 5: SPACE SAFETY (Situational Solar Flare Alert) -->
+<!-- ======================================================== -->
+<div class="challenge-panel hidden" id="panel-challenge-5">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 bg-surface border-2 border-outline-variant rounded-DEFAULT p-6 shadow-xl relative">
+<!-- Critical Mission Alert Banner -->
+<div class="bg-error-container/40 border-2 border-error p-4 rounded-DEFAULT flex items-center gap-4 mb-6 shadow-[0_0_20px_rgba(255,180,171,0.2)]">
+<div class="w-12 h-12 rounded-full bg-error text-on-error flex items-center justify-center text-headline-sm shrink-0 animate-bounce">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-error font-extrabold tracking-wider">TACTICAL RADIATION SPIKE DETECTED</span>
+<p class="text-body-md font-body-md text-on-surface font-bold">
+                "ALERT: A Solar flare radiation surge is racing towards Moonbase Sector 4 at 3 million km/h!"
+              </p>
+</div>
+</div>
+<div class="mb-6">
+<div class="inline-block px-3 py-1 bg-surface-container-high border border-outline-variant rounded-full text-secondary font-label-md text-label-md mb-2">
+              SITUATIONAL PROTOCOL • QUESTION 5
+            </div>
+<h2 class="text-headline-md font-headline-md text-primary font-extrabold leading-snug">
+              What is your primary safety protocol as Lead Mission Cadet?
+            </h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+              Select the proper emergency procedure to safeguard the crew and yourself.
+            </p>
+</div>
+<!-- Situational Choices -->
+<div class="space-y-4">
+<!-- Option A (CORRECT) -->
+<button class="btn-arcade-card w-full p-5 rounded-DEFAULT bg-surface-container border-2 border-outline-variant text-left flex items-start gap-4 group" id="c5-btn-A" onclick="handleC5Answer('A', true)">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 text-tertiary-container flex items-center justify-center font-headline-sm text-headline-sm font-bold shrink-0 border border-tertiary-container/50">
+                A
+              </div>
+<div class="flex-1">
+<h3 class="text-body-md font-body-md text-on-surface group-hover:text-tertiary-container font-extrabold flex items-center gap-2">
+                  Head immediately into the subterranean regolith-shielded shelter!
+                  <span class="material-symbols-outlined text-tertiary-container text-body-md" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                  Lava tubes and thick regolith dirt blocks cosmic ionizing particles that spacesuits alone cannot deflect.
+                </p>
+</div>
+</button>
+<!-- Option B (WRONG) -->
+<button class="btn-arcade-card w-full p-5 rounded-DEFAULT bg-surface-container border-2 border-outline-variant text-left flex items-start gap-4 group" id="c5-btn-B" onclick="handleC5Answer('B', false)">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-headline-sm text-headline-sm font-bold shrink-0 border border-outline">
+                B
+              </div>
+<div class="flex-1">
+<h3 class="text-body-md font-body-md text-on-surface group-hover:text-error font-bold flex items-center gap-2">
+                  Stay outside taking rover selfies to capture the solar glow
+                  <span class="material-symbols-outlined text-outline text-body-md">photo_camera</span>
+</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                  Pose on top of the communications dish and transmit social feed photos back to Mission Control on Earth.
+                </p>
+</div>
+</button>
+</div>
+<div class="mt-6 p-4 rounded-DEFAULT hidden transition-all duration-300" id="c5-feedback"></div>
+</div>
+<!-- Sidebar Badge & Info Card -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface border-2 border-outline-variant rounded-DEFAULT p-6 flex flex-col items-center text-center">
+<div class="w-28 h-28 rounded-full bg-surface-container-low border-4 border-dashed border-outline-variant flex items-center justify-center mb-4 transition-all duration-300" id="badge-slot-5">
+<span class="material-symbols-outlined text-display-hero text-outline-variant">health_and_safety</span>
+</div>
+<div class="text-label-md font-label-md text-secondary uppercase tracking-wider">Station 5 Reward</div>
+<h3 class="text-headline-sm font-headline-sm text-primary font-bold mt-1">Safety Specialist Badge</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">
+              Awarded for mastering solar particle warnings, shielding physics, and emergency bunker procedures.
+            </p>
+<div class="mt-4 px-3 py-1 bg-surface-container-high rounded-full text-label-sm font-label-sm text-outline" id="badge-status-5">
+              LOCKED • Complete Challenge 5
+            </div>
+</div>
+<div class="bg-surface-container-low border-2 border-outline-variant/60 rounded-DEFAULT p-5">
+<div class="flex items-center gap-2 text-primary-container text-label-md font-label-md mb-2">
+<span class="material-symbols-outlined text-body-md">shield</span>
+              REGOLITH SHIELDING POWER
+            </div>
+<p class="text-body-sm font-body-sm text-on-surface">
+              Moon soil (regolith) is rich in basalt and iron. A <strong>2-meter layer of moon dirt</strong> piled on top of a habitat dome absorbs dangerous cosmic radiation just like Earth's atmosphere!
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- TRAINING COMPLETION & FLIGHT CLEARANCE CELEBRATION MODAL -->
+<!-- ======================================================== -->
+<div class="fixed inset-0 z-50 bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center p-4 hidden" id="flightClearanceModal">
+<div class="bg-surface border-4 border-secondary-container rounded-DEFAULT p-6 sm:p-10 max-w-2xl w-full text-center relative shadow-[0_0_50px_rgba(254,179,0,0.4)] animate-float-bubble">
+<!-- Floating celebration confetti glow -->
+<div class="w-24 h-24 rounded-full bg-secondary-container/20 border-4 border-secondary-container mx-auto flex items-center justify-center text-secondary-container mb-4 shadow-[0_0_24px_rgba(254,179,0,0.6)]">
+<span class="material-symbols-outlined text-display-hero" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<div class="inline-block px-4 py-1 rounded-full bg-secondary-container text-on-secondary font-label-md text-label-md font-extrabold uppercase tracking-widest mb-3">
+          MISSION QUALIFICATION COMPLETE
+        </div>
+<h2 class="text-display-hero-mobile sm:text-headline-lg font-headline-lg text-secondary font-black tracking-tight">
+          CADET FLIGHT CLEARANCE GRANTED!
+        </h2>
+<p class="text-body-lg font-body-lg text-on-surface mt-3 max-w-lg mx-auto">
+          Congratulations, Astronaut! You scored <strong>5 out of 5 badges</strong> across lunar geology, orbital microgravity, suit engineering, thermal physics, and bunker safety!
+        </p>
+<!-- 5 Badges Showcase Row -->
+<div class="flex justify-center items-center gap-3 my-6 flex-wrap">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 border-2 border-primary-container text-primary-container flex items-center justify-center shadow-lg" title="Lunar Scholar">
+<span class="material-symbols-outlined text-body-lg" style="font-variation-settings: 'FILL' 1;">qr_code_2</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 border-2 border-tertiary-container text-tertiary-container flex items-center justify-center shadow-lg" title="Orbit Cadet">
+<span class="material-symbols-outlined text-body-lg" style="font-variation-settings: 'FILL' 1;">bubble_chart</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 border-2 border-secondary-container text-secondary-container flex items-center justify-center shadow-lg" title="Gear Master">
+<span class="material-symbols-outlined text-body-lg" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary-container/20 border-2 border-primary-container text-primary-container flex items-center justify-center shadow-lg" title="Regolith Ranger">
+<span class="material-symbols-outlined text-body-lg" style="font-variation-settings: 'FILL' 1;">landscape</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 border-2 border-tertiary-container text-tertiary-container flex items-center justify-center shadow-lg" title="Safety Specialist">
+<span class="material-symbols-outlined text-body-lg" style="font-variation-settings: 'FILL' 1;">health_and_safety</span>
+</div>
+</div>
+<!-- Big Tactile CTA to Rocket Launch -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
+<button class="btn-arcade-gold w-full sm:w-auto px-8 h-14 rounded-full font-headline-sm text-headline-sm font-extrabold flex items-center justify-center gap-3 uppercase tracking-wider" onclick="alert('Preparing Moon Rocket Launch Sequence! Sol 04 Engines Igniting... 🚀'); closeClearanceModal();">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+            PROCEED TO ROCKET LAUNCH 🚀
+          </button>
+<button class="w-full sm:w-auto px-6 h-14 rounded-full bg-surface-container border-2 border-outline-variant hover:border-outline text-on-surface font-label-lg text-label-lg active:translate-y-1" onclick="closeClearanceModal()">
+            Review Challenges
+          </button>
+</div>
+</div>
+</div>
+</main>
+<!-- ========================================== -->
+<!-- 2. BOTTOM NAV BAR (Shared Component)       -->
+<!-- ========================================== -->
+<!-- Matches exact shared JSON structure: docked full-width bottom-0, 5 items, Research is active for training challenges -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md border-t-2 border-outline-variant shadow-[0_-4px_20px_rgba(0,229,255,0.25)] md:hidden">
+<!-- Item 1: Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform" href="#explore">
+<span class="material-symbols-outlined text-headline-sm">explore</span>
+<span class="text-label-md font-label-md mt-0.5">Explore</span>
+</a>
+<!-- Item 2: Base HQ -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform" href="#base">
+<span class="material-symbols-outlined text-headline-sm">apartment</span>
+<span class="text-label-md font-label-md mt-0.5">Base HQ</span>
+</a>
+<!-- Item 3: Rover -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform" href="#rover">
+<span class="material-symbols-outlined text-headline-sm">electric_bolt</span>
+<span class="text-label-md font-label-md mt-0.5">Rover</span>
+</a>
+<!-- Item 4: Research (Active State for Astronaut Training) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-transform" href="#research">
+<span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: 'FILL' 1;">science</span>
+<span class="text-label-md font-label-md mt-0.5 font-extrabold">Research</span>
+</a>
+<!-- Item 5: Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform" href="#comms">
+<span class="material-symbols-outlined text-headline-sm">support_agent</span>
+<span class="text-label-md font-label-md mt-0.5">Comms</span>
+</a>
+</nav>
+<!-- ========================================== -->
+<!-- INLINE JAVASCRIPT GAME LOGIC & MICRO-FX    -->
+<!-- ========================================== -->
+<script>
+    // State Tracking
+    const challengeState = {
+      1: false,
+      2: false,
+      3: false,
+      4: false,
+      5: false
+    };
+
+    const gearSlots = {
+      head: false,
+      chest: false,
+      hands: false,
+      feet: false
+    };
+
+    let audioMuted = false;
+
+    // Switch between 5 challenges
+    function switchChallenge(index) {
+      for (let i = 1; i <= 5; i++) {
+        const panel = document.getElementById(`panel-challenge-${i}`);
+        const tabBtn = document.getElementById(`tab-btn-${i}`);
+        const tabIcon = document.getElementById(`tab-icon-${i}`);
+        
+        if (i === index) {
+          panel.classList.remove('hidden');
+          panel.classList.add('block');
+          tabBtn.classList.remove('border-outline-variant', 'bg-surface-container');
+          tabBtn.classList.add('border-primary-container', 'bg-primary-container/10');
+        } else {
+          panel.classList.add('hidden');
+          panel.classList.remove('block');
+          tabBtn.classList.remove('border-primary-container', 'bg-primary-container/10');
+          tabBtn.classList.add('border-outline-variant', 'bg-surface-container');
+        }
+      }
+    }
+
+    // Refresh Overall Progress & Badges
+    function updateProgress() {
+      const completedCount = Object.values(challengeState).filter(Boolean).length;
+      const pct = Math.round((completedCount / 5) * 100);
+
+      document.getElementById('progressPillText').innerText = `${completedCount}/5 (${pct}%)`;
+      document.getElementById('trainingProgressBar').style.width = `${pct}%`;
+      document.getElementById('badgeCounterLabel').innerText = `${completedCount} of 5 Badges Ready`;
+
+      // Update Step Tab Indicators
+      for (let i = 1; i <= 5; i++) {
+        const iconDiv = document.getElementById(`tab-icon-${i}`);
+        if (challengeState[i]) {
+          iconDiv.className = "w-10 h-10 rounded-DEFAULT bg-tertiary-container text-on-tertiary-container font-headline-sm text-headline-sm font-extrabold flex items-center justify-center shrink-0 shadow-[0_3px_0_#009b4d]";
+          iconDiv.innerHTML = `<span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: 'FILL' 1;">check</span>`;
+        }
+      }
+
+      // If all 5 completed, launch Flight Clearance Modal
+      if (completedCount === 5) {
+        setTimeout(() => {
+          document.getElementById('flightClearanceModal').classList.remove('hidden');
+        }, 600);
+      }
+    }
+
+    // Unlock Single Badge Card
+    function unlockBadge(num, iconName) {
+      challengeState[num] = true;
+      const slot = document.getElementById(`badge-slot-${num}`);
+      const status = document.getElementById(`badge-status-${num}`);
+      
+      slot.className = "w-28 h-28 rounded-full bg-gradient-to-tr from-primary-container/30 to-tertiary-container/30 border-4 border-tertiary-container flex items-center justify-center mb-4 shadow-[0_0_24px_rgba(34,239,126,0.6)] animate-pulse";
+      slot.innerHTML = `<span class="material-symbols-outlined text-display-hero text-tertiary-container" style="font-variation-settings: 'FILL' 1;">${iconName}</span>`;
+
+      status.className = "mt-4 px-3 py-1 bg-tertiary-container/20 text-tertiary-container border border-tertiary-container/50 rounded-full text-label-sm font-label-sm font-extrabold flex items-center gap-1";
+      status.innerHTML = `<span class="material-symbols-outlined text-body-sm" style="font-variation-settings: 'FILL' 1;">verified</span> BADGE EARNED!`;
+
+      updateProgress();
+    }
+
+    // Challenge 1 Handler
+    function handleC1Answer(option, isCorrect) {
+      const feedback = document.getElementById('c1-feedback');
+      const allBtns = document.querySelectorAll('#c1-options-container button');
+      
+      allBtns.forEach(btn => {
+        btn.classList.remove('border-primary-container', 'border-error', 'border-tertiary-container', 'bg-tertiary-container/10', 'bg-error/10');
+      });
+
+      const selectedBtn = document.getElementById(`c1-btn-${option}`);
+      feedback.classList.remove('hidden');
+
+      if (isCorrect) {
+        selectedBtn.classList.add('border-tertiary-container', 'bg-tertiary-container/15');
+        feedback.className = "mt-6 p-4 rounded-DEFAULT bg-tertiary-container/20 border-2 border-tertiary-container flex items-start gap-3 text-left animate-fade-in";
+        feedback.innerHTML = `
+          <span class="material-symbols-outlined text-tertiary-container text-headline-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+          <div>
+            <div class="text-body-md font-body-md text-tertiary-container font-extrabold">CORRECT! Lunar Scholar Badge Unlocked!</div>
+            <p class="text-body-sm font-body-sm text-on-surface mt-1">
+              Earth's thick atmosphere burns up most meteoroids, but the Moon has almost no protective air blanket! Every asteroid impacts the surface unimpeded.
+            </p>
+          </div>
+        `;
+        unlockBadge(1, 'telescope');
+      } else {
+        selectedBtn.classList.add('border-error', 'bg-error/10');
+        feedback.className = "mt-6 p-4 rounded-DEFAULT bg-error-container/30 border-2 border-error flex items-start gap-3 text-left";
+        feedback.innerHTML = `
+          <span class="material-symbols-outlined text-error text-headline-sm">error</span>
+          <div>
+            <div class="text-body-md font-body-md text-error font-extrabold">Not Quite, Cadet! Try Again!</div>
+            <p class="text-body-sm font-body-sm text-on-surface mt-1">
+              Remember: Weather and rain require air. What does the Moon lack that Earth has plenty of?
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    // Challenge 2 Handler
+    function handleC2Answer(isTrue) {
+      const feedback = document.getElementById('c2-feedback');
+      feedback.classList.remove('hidden');
+
+      if (isTrue) {
+        feedback.className = "mt-6 p-4 rounded-DEFAULT bg-tertiary-container/20 border-2 border-tertiary-container flex items-start gap-3 text-left";
+        feedback.innerHTML = `
+          <span class="material-symbols-outlined text-tertiary-container text-headline-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+          <div>
+            <div class="text-body-md font-body-md text-tertiary-container font-extrabold">EXCELLENT CADET! Orbit Cadet Badge Unlocked!</div>
+            <p class="text-body-sm font-body-sm text-on-surface mt-1">
+              Liquid surface tension creates perfect floating spheres in microgravity! Astronauts on the ISS can even drink water bubbles with floating straws!
+            </p>
+          </div>
+        `;
+        unlockBadge(2, 'bubble_chart');
+      } else {
+        feedback.className = "mt-6 p-4 rounded-DEFAULT bg-error-container/30 border-2 border-error flex items-start gap-3 text-left";
+        feedback.innerHTML = `
+          <span class="material-symbols-outlined text-error text-headline-sm">cancel</span>
+          <div>
+            <div class="text-body-md font-body-md text-error font-extrabold">Gravity Mistake!</div>
+            <p class="text-body-sm font-body-sm text-on-surface mt-1">
+              Remember: In freefall and orbit, gravity does not pull liquid down into a glass! Tap 'TRUE' to observe the physical law!
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    function popTinyBubble(e) {
+      const target = e.currentTarget;
+      target.classList.add('scale-125');
+      setTimeout(() => target.classList.remove('scale-125'), 180);
+    }
+
+    // Challenge 3 Handler (Gear Equipping)
+    function equipItem(slotType) {
+      gearSlots[slotType] = true;
+
+      // Update Target Slot UI
+      const slot = document.getElementById(`slot-${slotType}`);
+      const label = document.getElementById(`slot-${slotType}-label`);
+      const check = document.getElementById(`slot-${slotType}-check`);
+      const inventoryBtn = document.getElementById(`gear-item-${slotType}`);
+
+      slot.classList.remove('slot-glow');
+      slot.classList.add('slot-complete', 'border-tertiary-container', 'bg-tertiary-container/10');
+      check.classList.remove('hidden');
+
+      const gearTitles = {
+        head: 'Gold Visor Helmet [SLOTTED]',
+        chest: 'PLSS Life Support [SLOTTED]',
+        hands: 'Thermal Gloves [SLOTTED]',
+        feet: 'Lunar Tread Boots [SLOTTED]'
+      };
+      label.innerText = gearTitles[slotType];
+      label.className = "text-body-sm font-body-sm font-bold text-tertiary-container";
+
+      // Mark inventory button as slotted
+      inventoryBtn.classList.add('opacity-50', 'pointer-events-none', 'border-tertiary-container');
+      inventoryBtn.classList.remove('border-primary-container/60');
+
+      // Update Suit silhouette
+      if (slotType === 'head') {
+        const h = document.getElementById('suit-avatar-head');
+        h.classList.add('bg-secondary-container/30', 'border-secondary-container');
+        document.getElementById('suit-avatar-head-icon').classList.add('text-secondary');
+      } else if (slotType === 'chest') {
+        const c = document.getElementById('suit-avatar-chest');
+        c.classList.add('bg-tertiary-container/30', 'border-tertiary-container');
+        document.getElementById('suit-avatar-chest-icon').classList.add('text-tertiary-container');
+      }
+
+      // Check if all 4 are equipped
+      const allEquipped = Object.values(gearSlots).every(Boolean);
+      if (allEquipped) {
+        const feedback = document.getElementById('c3-feedback');
+        feedback.classList.remove('hidden');
+        feedback.className = "mt-6 p-4 rounded-DEFAULT bg-tertiary-container/20 border-2 border-tertiary-container flex items-start gap-3 text-left";
+        feedback.innerHTML = `
+          <span class="material-symbols-outlined text-tertiary-container text-headline-sm" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+          <div>
+            <div class="text-body-md font-body-md text-tertiary-container font-extrabold">EMU SUIT FULLY PRESSURIZED & READY!</div>
+            <p class="text-body-sm font-body-sm text-on-surface mt-1">
+              Outstanding work, Cadet! Visor protects eyes, PLSS feeds oxygen, thermal gloves prevent frostbite, and deep boots grip the regolith!
+            </p>
+          </div>
+        `;
+        unlockBadge(3, 'shield_with_heart');
+      }
+    }
+
+    function resetSuit() {
+      for (const k in gearSlots) {
+        gearSlots[k] = false;
+        const slot = document.getElementById(`slot-${k}`);
+        const label = document.getElementById(`slot-${k}-label`);
+        const check = document.getElementById(`slot-${k}-check`);
+        const inventoryBtn = document.getElementById(`gear-item-${k}`);
+
+        slot.classList.remove('slot-complete', 'border-tertiary-container', 'bg-tertiary-container/10');
+        slot.classList.add('slot-glow');
+        check.classList.add('hidden');
+        label.innerText = 'Empty Slot';
+        label.className = "text-body-sm font-body-sm font-bold text-outline";
+
+        inventoryBtn.classList.remove('opacity-50', 'pointer-events-none', 'border-tertiary-container');
+        inventoryBtn.classList.add('border-primary-container/60');
+      }
+      document.getElementById('c3-feedback').classList.add('hidden');
+    }
+
+    // Challenge 4 Handler
+    function handleC4Answer(isCorrect) {
+      const feedback = document.getElementById('c4-feedback');
+      feedback.classList.remove('hidden');
+
+      if (isCorrect) {
+        feedback.className = "mt-6 p-4 rounded-DEFAULT bg-tertiary-container/20 border-2 border-tertiary-container flex items-start gap-3 text-left";
+        feedback.innerHTML = `
+          <span class="material-symbols-outlined text-tertiary-container text-headline-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+          <div>
+            <div class="text-body-md font-body-md text-tertiary-container font-extrabold">REGOLITH RANGER BADGE QUALIFIED!</div>
+            <p class="text-body-sm font-body-sm text-on-surface mt-1">
+              14 layers of vacuum-mylar reflection shields against scorching 120°C noon heat, while the liquid cooling undergarment keeps your core stable at a cozy 21°C!
+            </p>
+          </div>
+        `;
+        unlockBadge(4, 'landscape');
+      } else {
+        feedback.className = "mt-6 p-4 rounded-DEFAULT bg-error-container/30 border-2 border-error flex items-start gap-3 text-left";
+        feedback.innerHTML = `
+          <span class="material-symbols-outlined text-error text-headline-sm">warning</span>
+          <div>
+            <div class="text-body-md font-body-md text-error font-extrabold">Thermal Shock Danger!</div>
+            <p class="text-body-sm font-body-sm text-on-surface mt-1">
+              A wool sweater cannot provide a pressurized vacuum seal or liquid heat exchange! In direct lunar sunlight, wool would overheat rapidly!
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    // Challenge 5 Handler
+    function handleC5Answer(opt, isCorrect) {
+      const feedback = document.getElementById('c5-feedback');
+      feedback.classList.remove('hidden');
+
+      if (isCorrect) {
+        feedback.className = "mt-6 p-4 rounded-DEFAULT bg-tertiary-container/20 border-2 border-tertiary-container flex items-start gap-3 text-left";
+        feedback.innerHTML = `
+          <span class="material-symbols-outlined text-tertiary-container text-headline-sm" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+          <div>
+            <div class="text-body-md font-body-md text-tertiary-container font-extrabold">COMMANDER NOVA COMMENDATION: SAFETY SPECIALIST!</div>
+            <p class="text-body-sm font-body-sm text-on-surface mt-1">
+              Outstanding safety protocol, Cadet! Shelter regolith absorbs lethal solar particles! You protected yourself and Moonbase operations!
+            </p>
+          </div>
+        `;
+        unlockBadge(5, 'health_and_safety');
+      } else {
+        feedback.className = "mt-6 p-4 rounded-DEFAULT bg-error-container/30 border-2 border-error flex items-start gap-3 text-left";
+        feedback.innerHTML = `
+          <span class="material-symbols-outlined text-error text-headline-sm">crisis_alert</span>
+          <div>
+            <div class="text-body-md font-body-md text-error font-extrabold">Critical Radiation Hazard!</div>
+            <p class="text-body-sm font-body-sm text-on-surface mt-1">
+              Never stay in open lunar vacuum during an energetic particle solar surge! Head underground immediately!
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    // Audio & Simulator Resets
+    function toggleAudio() {
+      audioMuted = !audioMuted;
+      const icon = document.getElementById('audioIcon');
+      icon.innerText = audioMuted ? 'volume_off' : 'volume_up';
+    }
+
+    function toggleSettingsModal() {
+      alert("Moonbase Cadet Training Simulator • Version 2.4.0\nAudio: Active\nDisplay: High Contrast Tactile\nLanguage: Astro-English");
+    }
+
+    function resetTraining() {
+      if (confirm("Reset all 5 challenge simulators and badges for Cadet rehearsal?")) {
+        window.location.reload();
+      }
+    }
+
+    function closeClearanceModal() {
+      document.getElementById('flightClearanceModal').classList.add('hidden');
+    }
+  </script>
+</body></html>

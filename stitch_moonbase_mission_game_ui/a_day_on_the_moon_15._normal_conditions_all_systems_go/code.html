@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon — 15. Normal Conditions — All Systems Go!</title>
+<!-- Material Symbols Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Outfit Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e1e1f5",
+            "surface-container-low": "#191b29",
+            "surface-container": "#1d1f2d",
+            "surface-dim": "#101221",
+            "error": "#ffb4ab",
+            "secondary-container": "#feb300",
+            "on-tertiary-container": "#006731",
+            "on-error": "#690005",
+            "tertiary": "#b1ffbf",
+            "outline-variant": "#3b494c",
+            "on-tertiary": "#003918",
+            "surface-variant": "#323443",
+            "on-primary-fixed-variant": "#004f58",
+            "on-secondary": "#432c00",
+            "background": "#101221",
+            "secondary-fixed-dim": "#ffba38",
+            "on-secondary-container": "#6a4800",
+            "on-primary-container": "#00626e",
+            "tertiary-fixed": "#62ff96",
+            "on-error-container": "#ffdad6",
+            "primary-fixed": "#9cf0ff",
+            "primary-fixed-dim": "#00daf3",
+            "on-tertiary-fixed": "#00210b",
+            "surface-bright": "#363848",
+            "inverse-on-surface": "#2e2f3f",
+            "surface": "#101221",
+            "on-primary": "#00363d",
+            "surface-container-highest": "#323443",
+            "inverse-primary": "#006875",
+            "surface-tint": "#00daf3",
+            "primary-container": "#00e5ff",
+            "surface-container-high": "#272938",
+            "tertiary-fixed-dim": "#00e475",
+            "secondary": "#ffd799",
+            "on-surface-variant": "#bac9cc",
+            "on-secondary-fixed": "#281900",
+            "on-primary-fixed": "#001f24",
+            "on-tertiary-fixed-variant": "#005226",
+            "on-surface": "#e1e1f5",
+            "tertiary-container": "#22ef7e",
+            "on-secondary-fixed-variant": "#604100",
+            "error-container": "#93000a",
+            "primary": "#c3f5ff",
+            "secondary-fixed": "#ffdeac",
+            "outline": "#849396",
+            "surface-container-lowest": "#0b0d1b"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "gutter-desktop": "1.5rem",
+            "margin-desktop": "2rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "gutter-tablet": "1.25rem",
+            "margin": "1rem",
+            "margin-tablet": "1.5rem",
+            "space-2xl": "3rem"
+          },
+          "fontFamily": {
+            "label-md": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "headline-md": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "body-md": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "body-lg": ["Outfit"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "800" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    /* Tactile 3D Arcade Travel */
+    .arcade-btn-primary {
+      box-shadow: 0 6px 0 #009bb0, 0 10px 20px rgba(0, 229, 255, 0.35);
+      transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .arcade-btn-primary:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #009bb0, 0 4px 10px rgba(0, 229, 255, 0.25);
+    }
+    
+    .arcade-btn-gold {
+      box-shadow: 0 6px 0 #c68400, 0 10px 20px rgba(254, 179, 0, 0.35);
+      transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .arcade-btn-gold:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #c68400, 0 4px 10px rgba(254, 179, 0, 0.25);
+    }
+
+    .arcade-card-choice {
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .arcade-card-choice:hover {
+      transform: translateY(-2px);
+    }
+    .arcade-card-choice:active {
+      transform: translateY(2px);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen font-body-md flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- ================= TOP APP BAR (Shared Component: TopNavBar) ================= -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<!-- Brand Title & Team Anchor -->
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-container/20 border-2 border-primary-container shadow-[0_0_12px_rgba(0,229,255,0.4)]">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<div class="text-headline-sm font-headline-sm font-extrabold text-primary-container dark:text-primary tracking-wider flex items-center gap-2">
+          A Day on the Moon
+          <span class="text-label-sm font-label-sm text-on-secondary-fixed bg-secondary-container px-2 py-0.5 rounded-full border border-secondary">TEAM ASTROPATH</span>
+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1.5">
+<span>NASA Space Apps 2026</span>
+<span>•</span>
+<span class="text-tertiary-fixed font-bold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-ping"></span>
+            Simulated Mission Sol 04
+          </span>
+</div>
+</div>
+</div>
+<!-- HUD Telemetry Capsules (Desktop & Tablet) -->
+<div class="hidden lg:flex items-center gap-2">
+<!-- Sol & Clock -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant/60 shadow-inner">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="text-label-md font-label-md text-primary tracking-wide">Sol 04 • 10:30</span>
+</div>
+<!-- O2 -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-tertiary-container/50 shadow-inner">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">air</span>
+<span class="text-label-md font-label-md text-tertiary-fixed tracking-wide">O2: 98%</span>
+</div>
+<!-- Power -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-secondary-container/50 shadow-inner">
+<span class="material-symbols-outlined text-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">electric_bolt</span>
+<span class="text-label-md font-label-md text-secondary tracking-wide">Power: 85%</span>
+</div>
+<!-- Water -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-primary-container/50 shadow-inner">
+<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="text-label-md font-label-md text-primary-container tracking-wide">Water: 92%</span>
+</div>
+</div>
+<!-- Actions Cluster -->
+<div class="flex items-center gap-2">
+<!-- Simulation Disclaimer Chip -->
+<span class="hidden sm:inline-flex text-label-sm font-label-sm px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant border border-outline-variant">
+        SIMULATED MISSION
+      </span>
+<!-- Pause Button -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-DEFAULT bg-surface-container-high hover:bg-surface-variant border-2 border-outline-variant active:translate-y-1 transition-transform duration-100 text-label-md font-label-md text-on-surface">
+<span class="material-symbols-outlined text-base">pause</span>
+<span>Pause</span>
+</button>
+<!-- Trailing Icon Actions -->
+<button class="w-9 h-9 rounded-DEFAULT flex items-center justify-center bg-surface-container-high hover:bg-surface-variant border-2 border-outline-variant active:translate-y-1 transition-transform duration-100 text-on-surface-variant hover:text-primary-container" title="Sound Control">
+<span class="material-symbols-outlined text-lg">volume_up</span>
+</button>
+<button class="w-9 h-9 rounded-DEFAULT flex items-center justify-center bg-surface-container-high hover:bg-surface-variant border-2 border-outline-variant active:translate-y-1 transition-transform duration-100 text-on-surface-variant hover:text-primary-container" title="Settings">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</header>
+<!-- ================= MAIN WORKSPACE CANVAS ================= -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 pt-20 pb-28 flex flex-col gap-6">
+<!-- BREADCRUMB & STAGE HEADER -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+<div class="flex items-center gap-2 text-label-md font-label-md text-on-surface-variant">
+<a class="hover:text-primary-container transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-base">arrow_back</span>
+          Base HQ
+        </a>
+<span>/</span>
+<span class="text-on-surface-variant">Branching Event</span>
+<span>/</span>
+<span class="text-tertiary-fixed flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-secondary-container" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+          15. Normal Conditions — All Systems Go!
+        </span>
+</div>
+<!-- Glowing Status Pill -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-low border-2 border-tertiary-container shadow-[0_0_16px_rgba(34,239,126,0.3)]">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="text-label-md font-label-md text-tertiary uppercase tracking-wider">MISSION STATUS: NORMAL • ALL SYSTEMS OPTIMAL</span>
+</div>
+</div>
+<!-- TOP SECTION: ISOMETRIC VIEWPORT HERO & COMMANDER NOVA DIALOGUE -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+<!-- Isometric Colony Live Viewport (Inspired by visual anchor) -->
+<div class="lg:col-span-7 bg-surface-container-low rounded-DEFAULT border-2 border-outline-variant overflow-hidden relative group shadow-[0_12px_32px_rgba(0,0,0,0.5)] flex flex-col">
+<!-- Live HUD Tag Overlay -->
+<div class="absolute top-4 left-4 z-10 flex items-center gap-2 bg-surface-dim/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-primary-container/40">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-ping"></span>
+<span class="text-label-sm font-label-sm text-primary tracking-wide">LIVE LUNAR VIEW: SECTOR 4 HABITAT</span>
+</div>
+<div class="absolute top-4 right-4 z-10 flex items-center gap-1.5 bg-surface-dim/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-outline-variant text-label-sm font-label-sm text-secondary">
+<span class="material-symbols-outlined text-sm">shield</span>
+          Rad Shield: 100% Safe
+        </div>
+<!-- Render Image Tag with detailed creative prompt -->
+<div class="relative w-full h-72 sm:h-80 lg:h-full min-h-[300px] overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A vibrant 2D isometric video game screenshot of a futuristic child-friendly Moonbase colony on a cratered lunar terrain. The cute pressurized geodesic dome habitat glows with cozy amber warm light from within. A transparent arched hydroponic greenhouse reveals bright green alien flora and space vegetables. Two friendly cartoon astronauts in rounded white EVA suits wave cheerfully alongside mini solar-powered autonomous rovers holding glowing blue crystals. In the starry dark navy cosmos background, a radiant glowing Earth hangs with soft auroral fringes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA5rjgsyDDU7viB3Wl_I5qGDtn0lGE2sn2-2zvbjwlvu30PZENivy1BYXq5n3B9JLHy4KAHYQ_kayLULxUyEbeGn1M7Il0KfkZQba7CuH90bqNdbmMhQ-rjVNYbSUIuRnZIiSctHVejvZFUJ5H9WqV6kwmXOy_U6MjrddAQsz2YAJs-LUgCjz7dA1WcZDJc8N3hs-V_TxGJ3WjGDyFsFX17CLjp0xRlqpBqHVh7H8L"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent opacity-80 pointer-events-none"></div>
+</div>
+<!-- Viewport Interactive Sub-Bar -->
+<div class="p-3 bg-surface-container border-t-2 border-outline-variant flex items-center justify-between text-label-sm font-label-sm">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1 text-primary"><span class="material-symbols-outlined text-sm">sensors</span> Sensors Nominal</span>
+<span class="flex items-center gap-1 text-tertiary"><span class="material-symbols-outlined text-sm">check_circle</span> Gravity Sim 0.166g</span>
+</div>
+<button class="px-2.5 py-1 rounded bg-surface-container-high hover:bg-surface-bright text-primary-container flex items-center gap-1 border border-outline-variant">
+<span class="material-symbols-outlined text-sm">pan_tool_alt</span> Inspect Sector
+          </button>
+</div>
+</div>
+<!-- Dialogue & Cadet Mascot Card -->
+<div class="lg:col-span-5 bg-surface-container-low rounded-DEFAULT border-2 border-primary-container p-5 flex flex-col justify-between shadow-[0_0_24px_rgba(0,229,255,0.15)] relative">
+<!-- Floating Mascot Badge -->
+<div class="flex items-center gap-4 mb-4">
+<div class="relative w-16 h-16 rounded-full border-2 border-primary-container p-0.5 bg-surface-container shadow-[0_0_16px_rgba(0,229,255,0.4)]">
+<img class="w-full h-full object-cover rounded-full" data-alt="A cheerful cartoon mascot portrait of Commander Nova, a young friendly astronaut inside a rounded white spacesuit with an illuminated golden-tinted sun visor reflecting a tiny blue Earth. Beside her is Rover-01, an adorable cube-shaped lunar companion robot with big digital cyan eyes and antenna, rendered in a crisp 2D isometric arcade animation style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKmDE1BMaAplM-E8BmgvbNMDpjzgclhlcP4q-r_IVO7Yvwuto609Yjk34RGnOqWX84huF2uRJTBomkzvcqFXm6tEZtB-RmSv0YzM0-dszg-JGdzGrswwiCGsdgb_ZyL2EDJ2E_2YYf56Cg-tqBKNlwjJiznEWx7rotM37qj7GRnqQuhRne4EmiFltNiB10XZGAp0oH2UA1tU0uTsn4Z2pcbnEqmTHvmEulNItUMwGJ"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-tertiary-container border-2 border-surface-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-xs text-on-tertiary font-bold">verified</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-headline-sm font-headline-sm text-primary">Commander Nova</h3>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-primary-container/20 text-primary-container border border-primary-container/40">LEAD ASTRONAUT</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span>Co-pilot: Rover-01</span>
+<span>•</span>
+<span class="text-secondary-fixed">Cadet Station Sync</span>
+</p>
+</div>
+</div>
+<!-- Speech Bubble Container -->
+<div class="bg-surface-container rounded-DEFAULT p-4 border-2 border-outline-variant relative flex-1 flex flex-col justify-center">
+<div class="absolute -top-3 left-7 w-4 h-4 bg-surface-container border-t-2 border-l-2 border-outline-variant transform rotate-45"></div>
+<p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
+            “Good news, Cadet! All major habitat systems are operating normally. We have time to complete our scheduled activities and prepare for the next mission!”
+          </p>
+<div class="mt-3 pt-3 border-t border-outline-variant/60 flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">stars</span> All 3 Habitat Modules Ready
+            </span>
+<span class="text-on-surface-variant">Sol 04 Checklist: Active</span>
+</div>
+</div>
+<!-- Quick Summary Stats Grid -->
+<div class="grid grid-cols-3 gap-2 mt-4 pt-1">
+<div class="bg-surface-dim p-2.5 rounded-DEFAULT border border-outline-variant text-center">
+<div class="text-label-sm font-label-sm text-on-surface-variant">CREW STATUS</div>
+<div class="text-headline-sm font-headline-sm text-tertiary-fixed">Fit &amp; Rested</div>
+</div>
+<div class="bg-surface-dim p-2.5 rounded-DEFAULT border border-outline-variant text-center">
+<div class="text-label-sm font-label-sm text-on-surface-variant">LOGS RECORDED</div>
+<div class="text-headline-sm font-headline-sm text-primary-container">14 / 14</div>
+</div>
+<div class="bg-surface-dim p-2.5 rounded-DEFAULT border border-outline-variant text-center">
+<div class="text-label-sm font-label-sm text-on-surface-variant">SCHEDULE BONUS</div>
+<div class="text-headline-sm font-headline-sm text-secondary-container">+15 XP</div>
+</div>
+</div>
+</div>
+</div>
+<!-- MIDDLE SECTION: 3-PART INTERACTIVE BASE INSPECTION MODULE -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<h2 class="text-headline-sm font-headline-sm text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+          Base Telemetry &amp; Diagnostics Review
+        </h2>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Real-time telemetry verification</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Card 1: Habitat ECLSS & Pressure -->
+<div class="bg-surface-container-low rounded-DEFAULT border-2 border-tertiary-container/80 p-4 shadow-[0_4px_16px_rgba(0,0,0,0.3)] flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-tertiary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-DEFAULT bg-tertiary-container/20 flex items-center justify-center border border-tertiary-container">
+<span class="material-symbols-outlined text-tertiary-fixed text-lg" style="font-variation-settings: 'FILL' 1;">air</span>
+</div>
+<span class="text-label-lg font-label-lg text-on-surface">ECLSS &amp; Pressure</span>
+</div>
+<span class="text-label-sm font-label-sm px-2.5 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary-fixed border border-tertiary-container font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check</span> OPTIMAL
+              </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">
+              Atmospheric oxygen partial pressure at 101.3 kPa, CO₂ scrubbers operating at 99.4% peak efficiency.
+            </p>
+</div>
+<!-- Gauge & Bar -->
+<div class="space-y-1.5 pt-2 border-t border-outline-variant/60">
+<div class="flex justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Pressure Integrity</span>
+<span class="text-tertiary-fixed">101.3 kPa (1.00 atm)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-dim overflow-hidden p-0.5 border border-outline-variant">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container to-tertiary-container w-[99%] shadow-[0_0_8px_rgba(0,230,118,0.5)]"></div>
+</div>
+</div>
+</div>
+<!-- Card 2: Greenhouse & Hydroponics -->
+<div class="bg-surface-container-low rounded-DEFAULT border-2 border-tertiary-container/80 p-4 shadow-[0_4px_16px_rgba(0,0,0,0.3)] flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-tertiary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-DEFAULT bg-tertiary-container/20 flex items-center justify-center border border-tertiary-container">
+<span class="material-symbols-outlined text-tertiary-fixed text-lg" style="font-variation-settings: 'FILL' 1;">potted_plant</span>
+</div>
+<span class="text-label-lg font-label-lg text-on-surface">Hydroponic Dome</span>
+</div>
+<span class="text-label-sm font-label-sm px-2.5 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary-fixed border border-tertiary-container font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check</span> THRIVING
+              </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">
+              Closed-loop hydration active, micro-dwarf space tomatoes &amp; crisp space spinach growing vigorously.
+            </p>
+</div>
+<!-- Gauge & Bar -->
+<div class="space-y-1.5 pt-2 border-t border-outline-variant/60">
+<div class="flex justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Nutrient Flow Rate</span>
+<span class="text-tertiary-fixed">98.2% Balanced</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-dim overflow-hidden p-0.5 border border-outline-variant">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container to-tertiary-container w-[98%] shadow-[0_0_8px_rgba(0,230,118,0.5)]"></div>
+</div>
+</div>
+</div>
+<!-- Card 3: Photovoltaic Array & Battery -->
+<div class="bg-surface-container-low rounded-DEFAULT border-2 border-tertiary-container/80 p-4 shadow-[0_4px_16px_rgba(0,0,0,0.3)] flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-secondary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-DEFAULT bg-secondary-container/20 flex items-center justify-center border border-secondary-container">
+<span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">solar_power</span>
+</div>
+<span class="text-label-lg font-label-lg text-on-surface">Photovoltaic Array</span>
+</div>
+<span class="text-label-sm font-label-sm px-2.5 py-0.5 rounded-full bg-secondary-container/20 text-secondary border border-secondary font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check</span> FULL HARVEST
+              </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">
+              Sun elevation angle 42.4°, dual solar tracking yield at 18.6 kW, base battery storage banks at 94%.
+            </p>
+</div>
+<!-- Gauge & Bar -->
+<div class="space-y-1.5 pt-2 border-t border-outline-variant/60">
+<div class="flex justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Storage Cell Charge</span>
+<span class="text-secondary">94% (Full Harvest)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-dim overflow-hidden p-0.5 border border-outline-variant">
+<div class="h-full rounded-full bg-gradient-to-r from-secondary-container to-secondary w-[94%] shadow-[0_0_8px_rgba(254,179,0,0.5)]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- DECISION MATRIX: 3 KID-FRIENDLY CHOICES -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">alt_route</span>
+            Choose Next Action for Sol 04
+          </h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Select an activity to advance to the crew evaluation screen.</p>
+</div>
+<span class="text-label-sm font-label-sm px-3 py-1 rounded-full bg-surface-container border border-primary-container text-primary-container">
+          1 Action Point Available
+        </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="choiceGrid">
+<!-- Choice A: ACTIVE / SELECTED -->
+<div class="arcade-card-choice relative bg-surface-container-low rounded-DEFAULT border-3 border-primary-container p-5 flex flex-col justify-between shadow-[0_0_20px_rgba(0,229,255,0.3)] cursor-pointer" onclick="selectChoice(this, 'A')">
+<div class="absolute -top-3 right-4 px-3 py-0.5 rounded-full bg-primary-container text-on-primary-container font-extrabold text-label-sm font-label-sm flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-xs">radio_button_checked</span> SELECTED ACTION
+          </div>
+<div>
+<div class="w-10 h-10 rounded-DEFAULT bg-primary-container/20 border-2 border-primary-container flex items-center justify-center text-primary-container mb-3">
+<span class="material-symbols-outlined text-xl">checklist</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Complete Scheduled Base Inspections</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">
+              Conduct detailed verification protocols across the airlock seals, water recycling filter beds, and battery terminals.
+            </p>
+</div>
+<div class="space-y-2 pt-3 border-t border-outline-variant">
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Projected Outcome:</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary-fixed border border-tertiary-container/50">+15 Mission Progress</span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-primary-container/20 text-primary-container border border-primary-container/50">Routine Logged</span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-outline-variant">+5 Habitability</span>
+</div>
+</div>
+</div>
+<!-- Choice B: Unselected -->
+<div class="arcade-card-choice relative bg-surface-container-low rounded-DEFAULT border-2 border-outline-variant p-5 flex flex-col justify-between hover:border-primary-container/60 cursor-pointer" onclick="selectChoice(this, 'B')">
+<div>
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-secondary mb-3">
+<span class="material-symbols-outlined text-xl">biotech</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-1">Conduct Additional Scientific Observations</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">
+              Deploy Rover-01’s miniature spectrometer onto nearby crater regolith samples to uncover trace ilmenite and water-ice crystals.
+            </p>
+</div>
+<div class="space-y-2 pt-3 border-t border-outline-variant">
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Projected Outcome:</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-secondary-container/20 text-secondary border border-secondary-container/50">+20 Science XP</span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-outline-variant">Mineral Discovery</span>
+</div>
+</div>
+</div>
+<!-- Choice C: Unselected -->
+<div class="arcade-card-choice relative bg-surface-container-low rounded-DEFAULT border-2 border-outline-variant p-5 flex flex-col justify-between hover:border-primary-container/60 cursor-pointer" onclick="selectChoice(this, 'C')">
+<div>
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-tertiary mb-3">
+<span class="material-symbols-outlined text-xl">bedtime</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-1">Take a Scheduled Crew Rest Period</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">
+              Rest inside the pressurized crew quarters, play an orbital space game, or call Earth Mission Control during lunch break.
+            </p>
+</div>
+<div class="space-y-2 pt-3 border-t border-outline-variant">
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Projected Outcome:</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary-fixed border border-tertiary-container/50">Crew Morale Max</span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-secondary-container/20 text-secondary border border-secondary-container/50">Save 5% Power</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- STEM EDUCATIONAL FEEDBACK DRAWER (NASA Science Insight) -->
+<div class="bg-surface-container rounded-DEFAULT border-2 border-secondary-container/60 p-5 shadow-[0_0_20px_rgba(254,179,0,0.15)] relative overflow-hidden">
+<!-- Background subtle icon watermark -->
+<span class="material-symbols-outlined absolute -right-6 -bottom-6 text-9xl text-secondary-container/5 select-none pointer-events-none">school</span>
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-outline-variant/60 pb-3 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-fixed flex items-center justify-center font-black shadow-[0_0_12px_rgba(254,179,0,0.4)]">
+<span class="material-symbols-outlined text-xl">lightbulb</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-secondary-container/20 text-secondary border border-secondary-container">NASA STEM DISCOVERY INSIGHT</span>
+<h3 class="text-headline-sm font-headline-sm text-secondary-fixed">Why Routine Checks Matter in Deep Space</h3>
+</div>
+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-tertiary-fixed">verified</span> Artemis Base Camp Principle #04
+        </div>
+</div>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed mb-4">
+        Even when everything appears completely normal, lunar astronauts constantly monitor their habitat, closed-loop life support (ECLSS), and power arrays. Regular routine checks help identify problems early before minor drifts affect crew safety.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+<div class="bg-surface-dim/80 p-3.5 rounded-DEFAULT border border-outline-variant flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-container text-xl mt-0.5">help_outline</span>
+<div>
+<div class="text-label-md font-label-md text-primary tracking-wide">WHAT HAPPENED?</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">All primary and backup base systems are currently operating at peak engineered condition with zero anomalies.</div>
+</div>
+</div>
+<div class="bg-surface-dim/80 p-3.5 rounded-DEFAULT border border-outline-variant flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-container text-xl mt-0.5">warning_amber</span>
+<div>
+<div class="text-label-md font-label-md text-secondary tracking-wide">WHY DOES IT MATTER?</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Space habitats have no atmosphere outside, so constant ECLSS situational awareness ensures life support redundancy is never taken for granted.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- MISSION ACTION BAR (Bottom Trigger Controls) -->
+<div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+<button class="w-full sm:w-auto px-6 py-3.5 rounded-DEFAULT bg-surface-container-high hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg border-2 border-outline-variant active:translate-y-1 transition-transform duration-100 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+        RETURN TO BASE HQ OVERVIEW
+      </button>
+<button class="arcade-btn-primary w-full sm:w-auto px-8 py-4 rounded-DEFAULT bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-label-lg text-label-lg font-black border-2 border-primary tracking-wider flex items-center justify-center gap-3" id="primaryContinueBtn">
+<span>CONTINUE MISSION &amp; PROCEED TO EVALUATION</span>
+<span class="material-symbols-outlined font-black">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- ================= BOTTOM NAVIGATION BAR (Shared Component: BottomNavBar) ================= -->
+<!-- BottomNavBar logic: Top-level ecosystem dock. Semantic active mapping: 'Base HQ' since this is an inspection at lunar Base HQ -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md rounded-t-xl shadow-[0_-4px_20px_rgba(0,229,255,0.25)]">
+<!-- Item 1: Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container dark:hover:bg-surface-container active:translate-y-1 transition-transform duration-100 rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-2xl">explore</span>
+<span class="text-label-md font-label-md mt-0.5">Explore</span>
+</a>
+<!-- Item 2: Base HQ (CURRENT ACTIVE DESTINATION) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-transform duration-100 font-extrabold" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">apartment</span>
+<span class="text-label-md font-label-md mt-0.5">Base HQ</span>
+</a>
+<!-- Item 3: Rover -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container dark:hover:bg-surface-container active:translate-y-1 transition-transform duration-100 rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-2xl">electric_bolt</span>
+<span class="text-label-md font-label-md mt-0.5">Rover</span>
+</a>
+<!-- Item 4: Research -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container dark:hover:bg-surface-container active:translate-y-1 transition-transform duration-100 rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-2xl">science</span>
+<span class="text-label-md font-label-md mt-0.5">Research</span>
+</a>
+<!-- Item 5: Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container dark:hover:bg-surface-container active:translate-y-1 transition-transform duration-100 rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+<span class="text-label-md font-label-md mt-0.5">Comms</span>
+</a>
+</nav>
+<!-- Lightweight Inline Vanilla JS for Kid-friendly Tactical Feedback -->
+<script>
+    function selectChoice(cardElement, choiceKey) {
+      const container = document.getElementById('choiceGrid');
+      const cards = container.getElementsByClassName('arcade-card-choice');
+      
+      // Reset all cards
+      for (let i = 0; i < cards.length; i++) {
+        const c = cards[i];
+        c.classList.remove('border-3', 'border-primary-container', 'shadow-[0_0_20px_rgba(0,229,255,0.3)]');
+        c.classList.add('border-2', 'border-outline-variant');
+        
+        // Remove badge if present
+        const oldBadge = c.querySelector('.action-badge');
+        if (oldBadge) {
+          oldBadge.remove();
+        }
+      }
+
+      // Activate clicked card
+      cardElement.classList.remove('border-2', 'border-outline-variant');
+      cardElement.classList.add('border-3', 'border-primary-container', 'shadow-[0_0_20px_rgba(0,229,255,0.3)]');
+
+      // Add badge
+      const badge = document.createElement('div');
+      badge.className = 'action-badge absolute -top-3 right-4 px-3 py-0.5 rounded-full bg-primary-container text-on-primary-container font-extrabold text-label-sm font-label-sm flex items-center gap-1 shadow-sm';
+      badge.innerHTML = '<span class="material-symbols-outlined text-xs">radio_button_checked</span> SELECTED ACTION';
+      cardElement.appendChild(badge);
+
+      // Micro pulse on the CTA
+      const btn = document.getElementById('primaryContinueBtn');
+      btn.classList.add('scale-105');
+      setTimeout(() => btn.classList.remove('scale-105'), 200);
+    }
+  </script>
+</body></html>

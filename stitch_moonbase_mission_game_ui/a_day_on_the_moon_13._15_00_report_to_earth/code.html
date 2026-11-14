@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon — Screen 13: 15:00 Report to Earth</title>
+<!-- Fonts & Material Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e1e1f5",
+            "on-secondary-fixed": "#281900",
+            "inverse-on-surface": "#2e2f3f",
+            "tertiary-fixed-dim": "#00e475",
+            "primary-fixed": "#9cf0ff",
+            "on-error": "#690005",
+            "on-secondary-container": "#6a4800",
+            "primary-fixed-dim": "#00daf3",
+            "on-surface": "#e1e1f5",
+            "tertiary-fixed": "#62ff96",
+            "surface-container-low": "#191b29",
+            "surface-variant": "#323443",
+            "surface-tint": "#00daf3",
+            "on-tertiary-fixed-variant": "#005226",
+            "secondary-container": "#feb300",
+            "outline": "#849396",
+            "surface-container-lowest": "#0b0d1b",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#004f58",
+            "outline-variant": "#3b494c",
+            "on-primary-fixed": "#001f24",
+            "error-container": "#93000a",
+            "on-tertiary": "#003918",
+            "background": "#101221",
+            "tertiary": "#b1ffbf",
+            "surface-container-highest": "#323443",
+            "surface-bright": "#363848",
+            "on-surface-variant": "#bac9cc",
+            "secondary-fixed-dim": "#ffba38",
+            "surface-dim": "#101221",
+            "on-tertiary-fixed": "#00210b",
+            "error": "#ffb4ab",
+            "primary-container": "#00e5ff",
+            "primary": "#c3f5ff",
+            "surface": "#101221",
+            "on-primary-container": "#00626e",
+            "secondary": "#ffd799",
+            "on-secondary": "#432c00",
+            "inverse-primary": "#006875",
+            "surface-container-high": "#272938",
+            "on-background": "#e1e1f5",
+            "surface-container": "#1d1f2d",
+            "on-primary": "#00363d",
+            "secondary-fixed": "#ffdeac",
+            "on-secondary-fixed-variant": "#604100",
+            "on-tertiary-container": "#006731",
+            "tertiary-container": "#22ef7e"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-tablet": "1.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-2xl": "3rem",
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "gutter-tablet": "1.25rem",
+            "space-xl": "2rem",
+            "margin-desktop": "2rem"
+          },
+          "fontFamily": {
+            "label-md": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "body-md": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-md": ["Outfit"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800" }],
+            "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "800" }],
+            "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Arcade tactile animations */
+    @keyframes pulse-glow {
+      0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.4)); }
+      50% { filter: drop-shadow(0 0 22px rgba(0, 229, 255, 0.85)); }
+    }
+    .neon-pulse {
+      animation: pulse-glow 2.5s infinite ease-in-out;
+    }
+    @keyframes beam-dash {
+      to {
+        stroke-dashoffset: -40;
+      }
+    }
+    .laser-beam {
+      stroke-dasharray: 8 6;
+      animation: beam-dash 1.2s linear infinite;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen selection:bg-primary-container selection:text-on-primary-container relative overflow-x-hidden pb-24">
+<!-- TOP APP BAR (Shared Components JSON Injected Anchor) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md border-b-2 border-outline-variant shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<div class="flex items-center gap-3">
+<!-- Mascot Cadence Badge -->
+<div class="relative w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary-container flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.4)]">
+<span class="material-symbols-outlined text-primary-container text-[22px]">rocket_launch</span>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm font-extrabold text-primary-container tracking-wider">A Day on the Moon</span>
+<span class="text-label-sm font-label-sm text-secondary-container">ARTEMIS BASE ALPHA • SOL 04</span>
+</div>
+</div>
+<!-- Telemetry Badges (Desktop & Tablet) -->
+<div class="hidden md:flex items-center gap-2">
+<!-- Time -->
+<div class="px-3 py-1 bg-surface-container-highest/80 rounded-full border border-outline-variant flex items-center gap-1.5 shadow-inner">
+<span class="material-symbols-outlined text-secondary text-[16px]">schedule</span>
+<span class="text-label-md font-label-md text-on-surface">Sol 04 • 15:00</span>
+</div>
+<!-- O2 -->
+<div class="px-3 py-1 bg-surface-container-highest/80 rounded-full border border-tertiary-container/50 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary-container text-[16px]" style="font-variation-settings: 'FILL' 1;">air</span>
+<span class="text-label-md font-label-md text-tertiary-container">O2: 95%</span>
+</div>
+<!-- Power -->
+<div class="px-3 py-1 bg-surface-container-highest/80 rounded-full border border-secondary-container/50 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary-container text-[16px]" style="font-variation-settings: 'FILL' 1;">electric_bolt</span>
+<span class="text-label-md font-label-md text-secondary-container">Power: 88%</span>
+</div>
+<!-- Water -->
+<div class="px-3 py-1 bg-surface-container-highest/80 rounded-full border border-primary-container/50 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[16px]" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="text-label-md font-label-md text-primary-container">Water: 87%</span>
+</div>
+</div>
+<!-- Trailing Actions & Simulation Badge -->
+<div class="flex items-center gap-2">
+<div class="hidden lg:flex flex-col text-right">
+<span class="text-label-sm font-label-sm text-secondary px-2 py-0.5 rounded bg-secondary-container/20 border border-secondary-container/40">SIMULATED MISSION</span>
+<span class="text-[9px] text-outline">NOT REAL NASA DATA</span>
+</div>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant hover:border-primary-container text-on-surface text-label-md font-label-md active:translate-y-1 transition-transform">
+<span class="material-symbols-outlined text-[18px]">pause</span>
+<span>Pause</span>
+</button>
+<button class="p-1.5 rounded-DEFAULT bg-surface-container-high text-on-surface hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+<button class="p-1.5 rounded-DEFAULT bg-surface-container-high text-on-surface hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+</header>
+<!-- MAIN HUD CANVAS -->
+<main class="pt-20 px-4 md:px-8 max-w-7xl mx-auto space-y-6">
+<!-- BREADCRUMBS & MISSION PROGRESS HEADER -->
+<section class="flex flex-wrap items-center justify-between gap-4 bg-surface-container/60 p-3 rounded-DEFAULT border-2 border-outline-variant/60 backdrop-blur-sm">
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-DEFAULT bg-surface-container-high border border-outline hover:border-primary-container text-primary-container text-label-md font-label-md active:translate-y-0.5 transition-all shadow-[0_2px_0_#009bb0]">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span>Base HQ</span>
+</button>
+<span class="text-outline text-label-sm">/</span>
+<span class="text-secondary-fixed text-label-md font-label-md bg-secondary-container/10 px-2.5 py-1 rounded-full border border-secondary-container/30">
+          Daily Task 6 of 7
+        </span>
+<span class="text-outline text-label-sm">/</span>
+<span class="text-primary-container font-headline-sm text-headline-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]">cell_tower</span>
+          Earth Comm-Link Alpha
+        </span>
+</div>
+<!-- Quick Safety Protocol Pin -->
+<div class="flex items-center gap-2 bg-surface-container-lowest/80 px-3 py-1.5 rounded-full border border-outline-variant">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="text-label-sm font-label-sm text-on-surface tracking-wider">LASER LINK: LOCKED TO EARTH DSN</span>
+</div>
+</section>
+<!-- HOLOGRAPHIC COMM HERO DISPLAY (Asymmetric Bento Layout) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- LEFT: Interactive Holographic Laser Link Terminal (7 cols) -->
+<div class="lg:col-span-7 bg-surface-container-low/90 rounded-DEFAULT border-2 border-primary-container/80 p-5 shadow-[0_8px_32px_rgba(0,229,255,0.18)] relative overflow-hidden flex flex-col justify-between">
+<!-- Decorative Cyber Grids -->
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div>
+<!-- Panel Header -->
+<div class="flex items-center justify-between border-b border-outline-variant pb-3 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[26px]">podcasts</span>
+<h2 class="text-headline-sm font-headline-sm text-primary">High-Gain Optical Transceiver Terminal</h2>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container-lowest rounded-full border border-primary-container/40">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">lock</span>
+<span class="text-label-sm font-label-sm text-primary">SHACKLETON RIM LASER 01</span>
+</div>
+</div>
+<!-- Deep Space Optical Link Visualization -->
+<div class="relative bg-surface-container-lowest/90 rounded-DEFAULT p-4 border border-outline-variant/80 min-h-[220px] flex flex-col justify-between overflow-hidden">
+<!-- Background stars & telemetry vectors -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="absolute top-4 left-1/4 w-1 h-1 bg-primary-container rounded-full"></div>
+<div class="absolute bottom-8 left-1/3 w-1.5 h-1.5 bg-secondary-container rounded-full"></div>
+<div class="absolute top-1/2 right-1/4 w-1 h-1 bg-white rounded-full"></div>
+</div>
+<!-- Optical Trajectory SVG Diagram -->
+<div class="relative z-10 flex items-center justify-between py-4 px-2 md:px-6">
+<!-- Moon Base Terminal Node -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border-2 border-primary-container flex items-center justify-center neon-pulse shadow-[0_0_16px_rgba(0,229,255,0.4)]">
+<span class="material-symbols-outlined text-primary-container text-[32px]">satellite_alt</span>
+</div>
+<span class="text-label-md font-label-md text-primary mt-2">Artemis Alpha</span>
+<span class="text-label-sm font-label-sm text-outline">Lunar South Pole</span>
+</div>
+<!-- Animated Laser Waveform & Pulse -->
+<div class="flex-1 px-4 relative flex flex-col items-center">
+<div class="w-full flex items-center justify-center relative">
+<svg class="w-full h-8 overflow-visible" preserveaspectratio="none" viewbox="0 0 200 24">
+<line stroke="#1d1f2d" stroke-linecap="round" stroke-width="4" x1="0" x2="200" y1="12" y2="12"></line>
+<line class="laser-beam" stroke="#00e5ff" stroke-width="2.5" x1="0" x2="200" y1="12" y2="12"></line>
+</svg>
+<div class="absolute -top-3 px-2 py-0.5 bg-surface-container-high rounded-full border border-primary-container text-[10px] font-label-sm text-primary tracking-widest uppercase">
+                    1550nm Laser Link
+                  </div>
+</div>
+<div class="mt-2 text-center">
+<span class="text-label-sm font-label-sm text-tertiary-container bg-tertiary-container/10 px-2 py-0.5 rounded-full border border-tertiary-container/30">
+                    Delay: 1.28 Seconds (Speed of Light)
+                  </span>
+</div>
+</div>
+<!-- Earth DSN Ground Station Node -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border-2 border-secondary-container flex items-center justify-center shadow-[0_0_16px_rgba(254,179,0,0.35)]">
+<span class="material-symbols-outlined text-secondary-container text-[32px]">public</span>
+</div>
+<span class="text-label-md font-label-md text-secondary-fixed mt-2">NASA DSN</span>
+<span class="text-label-sm font-label-sm text-outline">Goldstone / Madrid</span>
+</div>
+</div>
+<!-- Telemetry Metrics Strip -->
+<div class="grid grid-cols-3 gap-2 pt-3 border-t border-outline-variant/60 text-center">
+<div class="bg-surface-container/70 p-2 rounded-DEFAULT border border-outline-variant">
+<span class="block text-label-sm font-label-sm text-outline">DISTANCE</span>
+<span class="text-headline-sm font-headline-sm text-primary">384,400 km</span>
+</div>
+<div class="bg-surface-container/70 p-2 rounded-DEFAULT border border-outline-variant">
+<span class="block text-label-sm font-label-sm text-outline">SIGNAL DELAY</span>
+<span class="text-headline-sm font-headline-sm text-secondary-container">1.28 sec</span>
+</div>
+<div class="bg-surface-container/70 p-2 rounded-DEFAULT border border-outline-variant">
+<span class="block text-label-sm font-label-sm text-outline">SIGNAL STRENGTH</span>
+<span class="text-headline-sm font-headline-sm text-tertiary-container">99.4% (Locked)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Commander Nova Cadet Message -->
+<div class="mt-4 bg-surface-container-high/90 rounded-DEFAULT border-2 border-outline-variant p-3.5 flex items-start gap-3">
+<div class="relative shrink-0">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 border-2 border-primary-container flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-primary-container text-[28px]">face_6</span>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-tertiary-container rounded-full border-2 border-surface-container-high"></div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-primary-container">Commander Nova • CapCom</span>
+<span class="text-label-sm font-label-sm text-outline">15:00 Sol Briefing</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface mt-1">
+              "Cadet! It's time for our afternoon dispatch to Mission Control in Houston. Select which transmission packet to downlink so flight directors can review our habitat status before evening rest."
+            </p>
+</div>
+</div>
+</div>
+<!-- RIGHT: NASA Comm Protocol Rule & Status Terminal (5 cols) -->
+<div class="lg:col-span-5 space-y-4 flex flex-col justify-between">
+<!-- NASA Safety Rule Callout Box -->
+<div class="bg-surface-container-low rounded-DEFAULT border-2 border-secondary-container p-4 shadow-[0_4px_20px_rgba(254,179,0,0.15)] relative">
+<div class="flex items-center gap-2 mb-2 text-secondary-container">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+<span class="text-label-lg font-label-lg uppercase">NASA Communication Protocol</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed">
+<strong class="text-secondary">Space Safety Rule:</strong> Mission life-support (ECLSS) and crew health telemetry are <em>always</em> prioritized over routine science photography! In deep space, life safety comes first.
+          </p>
+<div class="mt-3 flex items-center justify-between text-label-sm font-label-sm text-outline border-t border-outline-variant/60 pt-2">
+<span>NASA SP-2026-6105 MANUAL</span>
+<span class="text-secondary-fixed">MANDATORY PROTOCOL</span>
+</div>
+</div>
+<!-- Live Downlink Status Confirmation Panel -->
+<div class="bg-surface-container rounded-DEFAULT border-2 border-outline-variant p-4 space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-[20px]">cloud_sync</span>
+<span class="text-label-md font-label-md text-on-surface">Downlink Transmitter Queue</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary-container text-label-sm font-label-sm border border-tertiary-container/40">
+              READY TO BURST
+            </span>
+</div>
+<!-- Progress Bar Component -->
+<div>
+<div class="flex justify-between text-label-sm font-label-sm mb-1">
+<span class="text-on-surface-variant">Selected Packet Readiness</span>
+<span class="text-primary font-bold">100% PACKED ✓</span>
+</div>
+<div class="w-full h-4 rounded-full bg-surface-container-lowest border border-outline-variant overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container to-tertiary-container w-full shadow-[0_0_8px_rgba(0,229,255,0.6)]"></div>
+</div>
+</div>
+<!-- Houston Mission Control Incoming Transcript -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-3 border border-outline-variant/70 space-y-1">
+<div class="flex items-center justify-between text-label-sm font-label-sm text-outline">
+<span class="flex items-center gap-1 text-secondary-fixed">
+<span class="material-symbols-outlined text-[14px]">headset_mic</span>
+                Houston MCC (Johnson Space Center)
+              </span>
+<span>15:00:14 UTC</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface italic">
+              "Copy Artemis Base Alpha! Standing by for your Sol 04 15:00 packet. We show all base solar arrays operating at nominal afternoon charge."
+            </p>
+</div>
+</div>
+<!-- Simulation Gameplay Note -->
+<div class="bg-surface-container-lowest/60 p-2.5 rounded-DEFAULT border border-outline-variant/40 text-center">
+<span class="text-[11px] font-label-sm text-outline uppercase tracking-wider">
+            Simulated Gameplay Values — Educational Prototype For Ages 7–12
+          </span>
+</div>
+</div>
+</section>
+<!-- SECTION 2: 3 INTERACTIVE REPORT TRANSMISSION OPTIONS -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary-fixed">Select Daily Downlink Packet</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Each transmission option has specific power, bandwidth, and mission rewards.</p>
+</div>
+<span class="text-label-md font-label-md text-secondary-container bg-surface-container-high px-3 py-1 rounded-full border border-secondary-container/40">
+          Required to Complete Sol 04 Task
+        </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<!-- OPTION A: Full Mission Report -->
+<div class="bg-surface-container-low rounded-DEFAULT border-2 border-outline-variant p-4 flex flex-col justify-between relative hover:border-primary-container transition-all group">
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<span class="px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface-variant border border-outline-variant">
+                Option A
+              </span>
+<span class="text-label-sm font-label-sm text-secondary-container flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[16px]">stars</span>
+                +300 Science XP
+              </span>
+</div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-primary">Full Mission Report</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                Telemetry + Science + Crew Vitals + Hab Camera feeds. High payload burst packet.
+              </p>
+</div>
+<div class="space-y-1.5 text-label-sm font-label-sm pt-2 border-t border-outline-variant">
+<div class="flex justify-between">
+<span class="text-outline">Power Cost:</span>
+<span class="text-error font-bold">-12% Base Power</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Bandwidth:</span>
+<span class="text-on-surface">100 MB/s (High Optical)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Houston Status:</span>
+<span class="text-tertiary-container">Comprehensive Analysis</span>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2.5 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant hover:border-primary-container text-on-surface text-label-md font-label-md transition-all active:translate-y-1 shadow-[0_3px_0_#3b494c]">
+            Select Full Report
+          </button>
+</div>
+<!-- OPTION B: Emergency & Safety Priority Report (ACTIVE / SELECTED) -->
+<div class="bg-surface-container-low rounded-DEFAULT border-3 border-primary-container p-4 flex flex-col justify-between relative shadow-[0_0_24px_rgba(0,229,255,0.25)] ring-2 ring-primary-container">
+<!-- Active Ribbon Tag -->
+<div class="absolute -top-3 right-4 px-3 py-0.5 rounded-full bg-primary-container text-on-primary-container text-label-sm font-label-sm uppercase font-extrabold shadow-[0_2px_8px_rgba(0,229,255,0.5)]">
+            RECOMMENDED PROTOCOL
+          </div>
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<span class="px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-primary-container/20 text-primary-container border border-primary-container/40">
+                Option B (Selected)
+              </span>
+<span class="material-symbols-outlined text-primary-container text-[22px]" style="font-variation-settings: 'FILL' 1;">
+                check_circle
+              </span>
+</div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-primary-container">Safety Priority Report</h4>
+<p class="text-body-sm font-body-sm text-on-surface mt-1">
+                Mandatory ECLSS life support telemetry, solar flare forecast, &amp; habitat seal pressure check.
+              </p>
+</div>
+<div class="space-y-1.5 text-label-sm font-label-sm pt-2 border-t border-outline-variant">
+<div class="flex justify-between">
+<span class="text-outline">Power Cost:</span>
+<span class="text-tertiary-container font-bold">-4% Power (Safe &amp; Lean)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Bandwidth:</span>
+<span class="text-on-surface">25 MB/s (Low Energy Burst)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Compliance:</span>
+<span class="text-secondary-fixed font-bold">100% NASA Flight Rules</span>
+</div>
+</div>
+</div>
+<div class="mt-4 w-full py-2.5 rounded-DEFAULT bg-primary-container text-on-primary-container text-label-md font-label-md text-center font-extrabold shadow-[0_4px_0_#009bb0] flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[18px]">radio_button_checked</span>
+<span>PACKET ARMED FOR TRANSMISSION</span>
+</div>
+</div>
+<!-- OPTION C: Scientific Research Only -->
+<div class="bg-surface-container-low rounded-DEFAULT border-2 border-outline-variant p-4 flex flex-col justify-between relative hover:border-primary-container transition-all group">
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<span class="px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface-variant border border-outline-variant">
+                Option C
+              </span>
+<span class="text-label-sm font-label-sm text-secondary-container flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[16px]">science</span>
+                +450 Geology XP
+              </span>
+</div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-primary">Scientific Research Only</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                Rock sample spectrometer data and PSR crater imagery. Non-critical telemetry delayed.
+              </p>
+</div>
+<div class="space-y-1.5 text-label-sm font-label-sm pt-2 border-t border-outline-variant">
+<div class="flex justify-between">
+<span class="text-outline">Power Cost:</span>
+<span class="text-error font-bold">-16% Base Power</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Bandwidth:</span>
+<span class="text-on-surface">150 MB/s (Max Laser)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Warning:</span>
+<span class="text-error font-bold">Life Support Data Postponed</span>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2.5 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant hover:border-primary-container text-on-surface text-label-md font-label-md transition-all active:translate-y-1 shadow-[0_3px_0_#3b494c]">
+            Select Science Only
+          </button>
+</div>
+</div>
+</section>
+<!-- SECTION 3: TACTILE ACTION FOOTER ROW -->
+<section class="bg-surface-container-low rounded-DEFAULT border-2 border-outline-variant p-4 flex flex-col md:flex-row items-center justify-between gap-4 shadow-[0_6px_24px_rgba(0,0,0,0.4)]">
+<!-- Base Status Brief -->
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-secondary-container/20 border-2 border-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary-container text-[28px]">bedtime</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-outline">UPCOMING FLIGHT SCHEDULE</span>
+<h4 class="text-headline-sm font-headline-sm text-on-surface">17:00 Sol Rest &amp; Maintenance Cycle</h4>
+</div>
+</div>
+<!-- Chunky Arcade Push Buttons (Execution of Style Guidance) -->
+<div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+<!-- Secondary Button: Return to Base HQ -->
+<button class="flex-1 md:flex-none px-6 py-3.5 rounded-DEFAULT bg-surface-container-high border-2 border-outline hover:border-primary-container text-on-surface text-label-lg font-label-lg active:translate-y-1 transition-all shadow-[0_4px_0_#3b494c]">
+          RETURN TO BASE HQ
+        </button>
+<!-- Primary Action 3D Arcade Push Button -->
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-8 py-3.5 rounded-DEFAULT bg-primary-container hover:bg-primary text-on-primary-container text-label-lg font-label-lg font-black transition-all active:translate-y-1 shadow-[0_6px_0_#009bb0] hover:shadow-[0_6px_0_#007a8b]">
+<span>TRANSMIT REPORT &amp; PROCEED TO 17:00 REST</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Shared Components JSON Anchor) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md rounded-t-xl border-t-2 border-outline-variant shadow-[0_-4px_20px_rgba(0,229,255,0.25)]">
+<!-- Item 1: Explore -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform duration-100 rounded-DEFAULT">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+<span class="text-label-md font-label-md mt-0.5">Explore</span>
+</button>
+<!-- Item 2: Base HQ -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform duration-100 rounded-DEFAULT">
+<span class="material-symbols-outlined text-[22px]">apartment</span>
+<span class="text-label-md font-label-md mt-0.5">Base HQ</span>
+</button>
+<!-- Item 3: Rover -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform duration-100 rounded-DEFAULT">
+<span class="material-symbols-outlined text-[22px]">electric_bolt</span>
+<span class="text-label-md font-label-md mt-0.5">Rover</span>
+</button>
+<!-- Item 4: Research -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform duration-100 rounded-DEFAULT">
+<span class="material-symbols-outlined text-[22px]">science</span>
+<span class="text-label-md font-label-md mt-0.5">Research</span>
+</button>
+<!-- Item 5: Comms (ACTIVE STATE - Intent matches Screen 13 Report to Earth Mission Control) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-transform duration-100">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+<span class="text-label-md font-label-md mt-0.5 font-extrabold">Comms</span>
+</button>
+</nav>
+<!-- Interactive Option Switcher Script (Vanilla JS for child-friendly responsiveness) -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Audio or visual tactile click feedbacks
+      const interactiveButtons = document.querySelectorAll('button');
+      interactiveButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.classList.add('scale-95');
+          setTimeout(() => btn.classList.remove('scale-95'), 120);
+        });
+      });
+    });
+  </script>
+</body></html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon — 17. Solar Particle Event — Shelter Now!</title>
+<!-- Material Symbols Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Outfit Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config verbatum -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e1e1f5",
+            "surface-container-low": "#191b29",
+            "surface-container": "#1d1f2d",
+            "surface-dim": "#101221",
+            "error": "#ffb4ab",
+            "secondary-container": "#feb300",
+            "on-tertiary-container": "#006731",
+            "on-error": "#690005",
+            "tertiary": "#b1ffbf",
+            "outline-variant": "#3b494c",
+            "on-tertiary": "#003918",
+            "surface-variant": "#323443",
+            "on-primary-fixed-variant": "#004f58",
+            "on-secondary": "#432c00",
+            "background": "#101221",
+            "secondary-fixed-dim": "#ffba38",
+            "on-secondary-container": "#6a4800",
+            "on-primary-container": "#00626e",
+            "on-background": "#e1e1f5",
+            "tertiary-fixed": "#62ff96",
+            "on-error-container": "#ffdad6",
+            "primary-fixed": "#9cf0ff",
+            "primary-fixed-dim": "#00daf3",
+            "on-tertiary-fixed": "#00210b",
+            "surface-bright": "#363848",
+            "inverse-on-surface": "#2e2f3f",
+            "surface": "#101221",
+            "on-primary": "#00363d",
+            "surface-container-highest": "#323443",
+            "inverse-primary": "#006875",
+            "surface-tint": "#00daf3",
+            "primary-container": "#00e5ff",
+            "surface-container-high": "#272938",
+            "tertiary-fixed-dim": "#00e475",
+            "secondary": "#ffd799",
+            "on-surface-variant": "#bac9cc",
+            "on-secondary-fixed": "#281900",
+            "on-primary-fixed": "#001f24",
+            "on-tertiary-fixed-variant": "#005226",
+            "on-surface": "#e1e1f5",
+            "tertiary-container": "#22ef7e",
+            "on-secondary-fixed-variant": "#604100",
+            "error-container": "#93000a",
+            "primary": "#c3f5ff",
+            "secondary-fixed": "#ffdeac",
+            "outline": "#849396",
+            "surface-container-lowest": "#0b0d1b"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "gutter-desktop": "1.5rem",
+            "margin-desktop": "2rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "gutter-tablet": "1.25rem",
+            "margin": "1rem",
+            "margin-tablet": "1.5rem",
+            "space-2xl": "3rem"
+          },
+          "fontFamily": {
+            "label-md": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "headline-md": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "body-md": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "body-lg": ["Outfit"]
+          },
+          "fontSize": {
+            "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "800"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+            "label-lg": ["16px", {"lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800"}],
+            "display-hero": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900"}],
+            "display-hero-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+            "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.88; transform: scale(0.995); }
+    }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 2s infinite ease-in-out;
+    }
+    .isometric-stage-bg {
+      background: radial-gradient(circle at 50% 20%, #1d1f2d 0%, #101221 65%, #0b0d1b 100%);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md selection:bg-primary-container selection:text-on-primary-container pb-28 pt-16 overflow-x-hidden">
+<!-- TOP APP BAR (Shared Component Anchor) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md shadow-[0_4px_16px_rgba(0,229,255,0.2)] border-b-2 border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary-container flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.35)] overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylized cartoon astronaut cadet mascot portrait wearing an electric cyan visor helmet with friendly eyes against deep space background, clean isometric game illustration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj7uWRLf9udAbuI9ZOl_OcXH_end2tNqeyWW06yUUTUFoQvU9VI4Rhmnl_fUazVdb-2bZLu-fbve5fOwY5rLTv3GAeX94s1AzHuzpTAaECYF8mAQYN5BE6PM15VWL5Qtxgk8kMWYYKahnXKHy7_Zr_t3F0MBDtEyRmyHsXPkQ2dn3hgPDg0HSEvOuVxHkrHKIRJmGrU93fFjjWKXNTXe-Yy8abQXskQYf6Ojb5AhzY"/>
+</div>
+<div>
+<span class="text-headline-sm font-headline-sm font-extrabold text-primary-container tracking-wider block">A Day on the Moon</span>
+<span class="text-label-sm font-label-sm text-secondary-container">SIMULATED MISSION • NASA SPACE APPS</span>
+</div>
+</div>
+<!-- HUD Telemetry Clusters (Immutable Strings From JSON) -->
+<div class="hidden md:flex items-center gap-3">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant">
+<span class="material-symbols-outlined text-secondary text-sm">schedule</span>
+<span class="text-label-md font-label-md text-on-surface">Sol 04 • 10:30</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-tertiary-container/40">
+<span class="material-symbols-outlined text-tertiary-container text-sm">air</span>
+<span class="text-label-md font-label-md text-tertiary">O2: 98%</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-secondary-container/40">
+<span class="material-symbols-outlined text-secondary-container text-sm">bolt</span>
+<span class="text-label-md font-label-md text-secondary">Power: 85%</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-primary-container/40">
+<span class="material-symbols-outlined text-primary-container text-sm">water_drop</span>
+<span class="text-label-md font-label-md text-primary">Water: 92%</span>
+</div>
+<!-- Live Emergency Badge -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-error border-2 border-error animate-pulse-subtle">
+<span class="material-symbols-outlined text-error text-sm" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-label-md font-label-md font-extrabold uppercase tracking-wide">SPE EVENT ACTIVE</span>
+</div>
+</div>
+<!-- Header Actions -->
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 bg-surface-container-high hover:bg-surface-bright border border-outline-variant text-on-surface rounded-DEFAULT text-label-md font-label-md active:translate-y-0.5 transition-transform">
+        Pause
+      </button>
+<button aria-label="Volume" class="w-9 h-9 flex items-center justify-center rounded-DEFAULT bg-surface-container-high border border-outline-variant text-on-surface-variant hover:text-primary active:translate-y-0.5">
+<span class="material-symbols-outlined text-lg">volume_up</span>
+</button>
+<button aria-label="Settings" class="w-9 h-9 flex items-center justify-center rounded-DEFAULT bg-surface-container-high border border-outline-variant text-on-surface-variant hover:text-primary active:translate-y-0.5">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</header>
+<!-- MAIN MISSION CANVAS -->
+<main class="w-full max-w-7xl mx-auto px-4 md:px-6 pt-4 flex-1 flex flex-col gap-5">
+<!-- Breadcrumb & Simulation Disclaimer -->
+<div class="flex flex-wrap items-center justify-between gap-2 border-b border-outline-variant/50 pb-2">
+<div class="flex items-center gap-2 text-label-md font-label-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span> Base HQ
+        </a>
+<span class="text-outline">/</span>
+<span class="text-secondary-fixed">Branching Event</span>
+<span class="text-outline">/</span>
+<span class="text-error font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-base">crisis_alert</span>
+          17. Solar Particle Event — Shelter Now!
+        </span>
+</div>
+<div class="text-label-sm font-label-sm text-outline-variant bg-surface-container-lowest/80 px-2.5 py-1 rounded-full border border-outline-variant/40">
+        SIMULATED GAMEPLAY VALUES — NOT REAL NASA MEASUREMENTS
+      </div>
+</div>
+<!-- CRITICAL ALERT BANNER (ARCADE ALARM STRIP) -->
+<section class="rounded-DEFAULT bg-gradient-to-r from-error-container via-surface-container-high to-error-container border-2 border-error p-4 md:p-5 shadow-[0_0_24px_rgba(255,61,0,0.35)] relative overflow-hidden animate-pulse-subtle">
+<div class="absolute -right-6 -bottom-6 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-9xl text-error">wb_sunny</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
+<div class="flex items-start md:items-center gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-error text-on-error flex items-center justify-center shadow-[0_4px_0_#93000a] shrink-0">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 bg-error text-on-error rounded-sm text-label-sm font-label-sm tracking-wider uppercase font-black">EMERGENCY PROTOCOL</span>
+<span class="text-label-md font-label-md text-secondary">SOLAR PARTICLE EVENT DETECTED</span>
+</div>
+<h1 class="text-headline-md font-headline-md font-extrabold text-on-background mt-0.5">
+              High Solar Flux Incoming! Return to Regolith Shelter Immediately
+            </h1>
+</div>
+</div>
+<!-- Telemetry Pill Badges -->
+<div class="flex flex-wrap items-center gap-2 self-start md:self-auto">
+<div class="bg-surface-container-lowest px-3 py-1.5 rounded-full border border-error/50 flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
+<span class="text-label-sm font-label-sm text-error">Class-M Flare</span>
+</div>
+<div class="bg-surface-container-lowest px-3 py-1.5 rounded-full border border-secondary-container/50 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-sm">block</span>
+<span class="text-label-sm font-label-sm text-secondary">Outdoor EVA: Halted</span>
+</div>
+<div class="bg-surface-container-lowest px-3 py-1.5 rounded-full border border-tertiary-container/50 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-sm">shield</span>
+<span class="text-label-sm font-label-sm text-tertiary">Bunker: Shield Armed</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2D ISOMETRIC GAME VIEWPORT & CREW DIALOGUE SECTION (Bento Grid) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+<!-- Isometric Moonbase Viewport Stage (Col 7) -->
+<section class="lg:col-span-7 bg-surface-container-low border-2 border-primary-container/40 rounded-DEFAULT p-3 flex flex-col relative overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
+<!-- Frame HUD Badges -->
+<div class="absolute top-5 left-5 z-20 flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md border border-primary-container text-label-sm font-label-sm text-primary flex items-center gap-1.5 shadow-[0_0_12px_rgba(0,229,255,0.3)]">
+<span class="material-symbols-outlined text-sm">videocam</span> LUNAR DOME ISOMETRIC FEED #04
+          </span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high/80 backdrop-blur-md text-label-sm font-label-sm text-secondary-container border border-outline-variant">
+            SECTOR 3: BUNKER INGRESS
+          </span>
+</div>
+<div class="absolute top-5 right-5 z-20">
+<div class="px-3 py-1 rounded-full bg-error-container text-error text-label-sm font-label-sm border border-error flex items-center gap-1 shadow-lg">
+<span class="material-symbols-outlined text-xs">timer</span> 04:12 TO PEAK FLUX
+          </div>
+</div>
+<!-- Rendered Lunar Isometric Stage Container with Reference Visual -->
+<div class="w-full h-80 md:h-[390px] rounded-lg relative overflow-hidden bg-surface-container-lowest flex items-center justify-center border border-outline-variant/60 group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="High-contrast child-friendly 2D isometric lunar base station simulation view. Astronauts in pressurized suits with yellow and cyan helmets move safely toward a lighted cavernous subterranean shelter blast door while robotic rovers shine beacons, under a starry black cosmos and blue Earth horizon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSAmckKo2zI4N8al9hGegsKjrj0OXzYXVs_cWZG1z3YA0BS9EdEYI3nCDUJVgnoJw2rxSmoyM4BlZmvRq7X7XIfv0CYCbV96Vzbs6xfZvmPwPgt7rymfzE_obou3Ckt1_VsYoQON2-VUfaphbwYR_0VaYdditpuH_pOujYZ94oNm_edUIGcAoC5sGd0GIgDqjwiA0UseX4AtmiGDvutFyb7BGHEXkIcYdx40aK2x-G"/>
+<!-- Tactical HUD Overlay overlaying stage -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent pointer-events-none"></div>
+<!-- Interactive Hotspot marker on the Shelter Ingress Hatch -->
+<div class="absolute bottom-16 left-1/4 z-20 flex flex-col items-center animate-bounce pointer-events-none">
+<span class="px-2.5 py-1 bg-primary-container text-on-primary-container font-label-sm text-label-sm rounded-full shadow-[0_4px_0_#009bb0] border border-white font-extrabold uppercase">
+              Storm Hatch Here
+            </span>
+<span class="material-symbols-outlined text-3xl text-primary-container drop-shadow-[0_0_8px_#00e5ff]">arrow_drop_down</span>
+</div>
+<!-- Bottom Viewport Telemetry ticker -->
+<div class="absolute bottom-3 left-3 right-3 z-20 flex justify-between items-center px-4 py-2 rounded-DEFAULT bg-surface-container-lowest/85 backdrop-blur-md border border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-lg">solar_power</span>
+<span class="text-body-sm font-body-sm text-on-surface">Solar Array: Safe Stowed Mode</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-on-surface-variant">SUBTERRANEAN DEPTH:</span>
+<span class="text-label-md font-label-md text-primary font-extrabold">3.2m Regolith Shield</span>
+</div>
+</div>
+</div>
+<!-- Crew Comms Radio Bar below Viewport -->
+<div class="mt-3 p-3.5 rounded-DEFAULT bg-surface-container border border-outline-variant flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary flex items-center justify-center shrink-0 border border-secondary shadow">
+<span class="material-symbols-outlined text-2xl">smart_toy</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm font-black text-secondary">ROVER-01 COMMS BEACON</span>
+<span class="text-xs text-outline">• Automated Beacon Ping</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface mt-0.5">
+              "Guidance tether active! Subterranean habitat shielding confirmed at 100% capacity. Proceed cadets!"
+            </p>
+</div>
+</div>
+</section>
+<!-- Astronaut Nova Dialogue & Decision Column (Col 5) -->
+<section class="lg:col-span-5 flex flex-col gap-4">
+<!-- Commander Nova Card with integrated mascot medallion -->
+<div class="bg-surface-container-low border-2 border-primary-container/70 rounded-DEFAULT p-5 relative pt-7 shadow-[0_4px_16px_rgba(0,0,0,0.5)]">
+<!-- Mascot Medallion Breaking Border -->
+<div class="absolute -top-6 left-6 flex items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container border-2 border-on-primary-container flex items-center justify-center shadow-[0_4px_0_#009bb0]">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">person_pin</span>
+</div>
+<span class="bg-surface-container-high px-3 py-1 rounded-full border border-primary-container text-label-md font-label-md text-primary font-extrabold shadow">
+              COMMANDER NOVA
+            </span>
+</div>
+<div class="mt-1">
+<div class="inline-block px-2 py-0.5 rounded bg-error-container text-error text-label-sm font-label-sm font-extrabold mb-2">
+              URGENT MISSION DIRECTIVE
+            </div>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed">
+              "Cadet, our orbital space weather satellite has confirmed a sudden <strong class="text-secondary">Solar Particle Event</strong>! Solar energetic particles travel fast and can pose a serious radiation hazard outside. We must suspend outdoor activities and enter the thick <strong class="text-primary-container">regolith-shielded storm shelter</strong> now. <span class="underline decoration-secondary">Crew safety always comes first!</span>"
+            </p>
+</div>
+</div>
+<!-- Interactive Safety Challenge Decision Center -->
+<div class="bg-surface-container-low border-2 border-outline-variant rounded-DEFAULT p-4 flex flex-col gap-3 shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-lg">flag_circle</span>
+<h2 class="text-label-lg font-label-lg font-extrabold text-on-surface">MANDATORY PROTOCOL CHOICE</h2>
+</div>
+<span class="text-label-sm font-label-sm text-tertiary bg-surface-container px-2 py-0.5 rounded-full border border-tertiary/40">
+              DECISION GATE
+            </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+            Select the correct NASA safety action to preserve crew health during this space weather event:
+          </p>
+<!-- Choices Container with Active Dynamic Physics -->
+<div class="flex flex-col gap-2.5" id="choiceContainer">
+<!-- Choice A: The Only Correct Safe Protocol -->
+<button class="group relative w-full text-left p-3.5 rounded-DEFAULT bg-surface-container-high hover:bg-surface-bright border-2 border-tertiary-container shadow-[0_4px_0_#006731] active:translate-y-1 active:shadow-none transition-all duration-100 flex items-start gap-3" onclick="handleChoice('correct')">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center shrink-0 font-extrabold text-sm shadow">
+                A
+              </div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-tertiary font-extrabold">RECOMMENDED SAFE PROTOCOL</span>
+<span class="text-label-sm font-label-sm text-tertiary-container font-black">+5 SAFETY PTS</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-bold mt-0.5">
+                  Return to Habitat &amp; Enter Regolith-Shielded Storm Shelter
+                </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                  Follow designated path into the 3-meter compressed lunar soil bunker with emergency water buffer walls.
+                </p>
+</div>
+</button>
+<!-- Choice B: Unsafe Rover Choice -->
+<button class="group relative w-full text-left p-3 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high border-2 border-outline-variant shadow-[0_4px_0_#3b494c] active:translate-y-1 active:shadow-none transition-all duration-100 flex items-start gap-3" onclick="handleChoice('wrong_rover')">
+<div class="w-7 h-7 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center shrink-0 font-bold text-sm">
+                B
+              </div>
+<div class="flex-1">
+<span class="text-label-sm font-label-sm text-outline">OUTDOOR OPTION</span>
+<h4 class="text-body-md font-body-md text-on-surface font-semibold">
+                  Stay Outdoors to Finish Rover Crater Survey
+                </h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs mt-0.5">
+                  Attempt to collect remaining rock samples before heading back inside.
+                </p>
+</div>
+</button>
+<!-- Choice C: Unsafe Mineral Choice -->
+<button class="group relative w-full text-left p-3 rounded-DEFAULT bg-surface-container hover:bg-surface-container-high border-2 border-outline-variant shadow-[0_4px_0_#3b494c] active:translate-y-1 active:shadow-none transition-all duration-100 flex items-start gap-3" onclick="handleChoice('wrong_mineral')">
+<div class="w-7 h-7 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center shrink-0 font-bold text-sm">
+                C
+              </div>
+<div class="flex-1">
+<span class="text-label-sm font-label-sm text-outline">EXPERIMENT OPTION</span>
+<h4 class="text-body-md font-body-md text-on-surface font-semibold">
+                  Ignore Alert to Collect Rare Lunar Ice Crystals
+                </h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs mt-0.5">
+                  Keep conducting field science while the solar event peaks.
+                </p>
+</div>
+</button>
+</div>
+<!-- Dynamic Feedback Container for Safety Education -->
+<div class="mt-1 p-3 rounded-DEFAULT bg-surface-container-highest border border-tertiary-container/60 flex items-start gap-2.5 transition-all" id="feedbackBox">
+<span class="material-symbols-outlined text-tertiary-container text-xl mt-0.5" id="feedbackIcon">verified</span>
+<div class="text-body-sm font-body-sm" id="feedbackText">
+<span class="font-extrabold text-tertiary">Mission Ready:</span> Review Commander Nova's briefing above and click the safest astronaut action to secure your crew.
+            </div>
+</div>
+</div>
+</section>
+</div>
+<!-- LOWER SECTION: SAFE STATE ROOM SCHEMATIC & STEM SCIENCE CLASSROOM -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-5 mt-1">
+<!-- Subterranean Safe Shelter Schematic & Ingress Checklist (Col 6) -->
+<section class="md:col-span-6 bg-surface-container-low border-2 border-outline-variant rounded-DEFAULT p-4 flex flex-col justify-between shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+<div>
+<div class="flex items-center justify-between border-b border-outline-variant pb-2 mb-3">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high border border-primary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-lg">door_sliding</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm font-extrabold text-on-surface">Artemis Base Storm Shelter Status</h3>
+</div>
+<span class="text-label-sm font-label-sm text-tertiary font-bold bg-surface-container-high px-2.5 py-1 rounded-full border border-tertiary/30">
+              LEVEL -1 SECURE
+            </span>
+</div>
+<!-- Cross-Section Schematic Graphic Container -->
+<div class="relative w-full h-36 rounded-DEFAULT bg-surface-container-lowest border border-outline-variant overflow-hidden mb-3.5 flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-85" data-alt="Technical child-friendly cutaway diagram of an underground lunar habitat storm shelter with multiple thick layers of gray lunar soil regolith on top, interior water wall insulation tanks glowing blue, and cozy airlocked bunks where astronaut figures sit safely." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZQ2t9kZ9MRXhHFmuU7CZi4HbX5mFyIR1YB6t5VLOjvDH1bcQojtTfLH5BtR-OQsz141eEVvFyVNfwIwNokTG_77OnJg5uwIRKfdWWe1fs9EkS7lRl5jhmGPy_9EQUzmflg40za76_qLuc8n42aTD8YvERXX5G9e1fguERL73Iy_X_X9Li615AmXg3MxJJB4cEmF3oLNWU_Vh9jso22sPQeCSgYbR6swOP2LzGiVmE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-surface-container-lowest/40 pointer-events-none"></div>
+<div class="absolute bottom-2 left-3 flex items-center gap-2 bg-surface-container-low/90 px-2.5 py-1 rounded-md border border-outline-variant text-label-sm font-label-sm text-primary">
+<span class="material-symbols-outlined text-sm">layers</span> Multilayer Regolith + Water Wall Buffer Active
+            </div>
+</div>
+<!-- Verified Ingress Checklist -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-body-sm font-body-sm">
+<div class="p-2.5 rounded-DEFAULT bg-surface-container border border-outline-variant/60 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-medium">1. Airlock Ingress Confirmed</span>
+</div>
+<div class="p-2.5 rounded-DEFAULT bg-surface-container border border-outline-variant/60 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-medium">2. Blast Shutter Sealed</span>
+</div>
+<div class="p-2.5 rounded-DEFAULT bg-surface-container border border-outline-variant/60 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-medium">3. ECLSS Oxygen Loop Safe</span>
+</div>
+<div class="p-2.5 rounded-DEFAULT bg-surface-container border border-outline-variant/60 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-medium">4. Dosimeter: Safe Range</span>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-outline-variant flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span>Radiation Absorption Rate: <strong class="text-tertiary">99.4% Blocked</strong></span>
+<span class="text-secondary font-bold">Storm Duration: ~18 Hours</span>
+</div>
+</section>
+<!-- NASA Science Classroom: What is an SPE? (Col 6) -->
+<section class="md:col-span-6 bg-surface-container-low border-2 border-secondary-container/50 rounded-DEFAULT p-4 flex flex-col justify-between shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+<div>
+<div class="flex items-center gap-2 border-b border-outline-variant pb-2 mb-3">
+<div class="w-8 h-8 rounded-lg bg-secondary-container text-on-secondary flex items-center justify-center font-extrabold">
+<span class="material-symbols-outlined text-lg">school</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-secondary font-bold tracking-wider">STEM KNOWLEDGE EXPLORER</span>
+<h3 class="text-headline-sm font-headline-sm font-extrabold text-on-surface">What is a Solar Particle Event (SPE)?</h3>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed">
+            The Sun constantly radiates light and warmth, but during intense coronal mass ejections and solar flares, it fires energetic atomic particles (mostly protons) across space at nearly the speed of light!
+          </p>
+<div class="mt-3 p-3 rounded-DEFAULT bg-surface-container border border-secondary-container/30 flex flex-col gap-2">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary-container text-xl mt-0.5">shield_moon</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+<strong class="text-on-surface">Earth vs. Moon Protection:</strong> On Earth, our strong global magnetic field and thick atmosphere deflect almost all solar storm particles. But the Moon has no global magnetic shield or air—so lunar astronauts use <strong class="text-primary">lunar regolith (compacted moon dirt)</strong> and <strong class="text-primary">water wall jackets</strong> in habitats as shields!
+              </p>
+</div>
+</div>
+</div>
+<!-- Takeaway Insight Grid -->
+<div class="mt-4 pt-3 border-t border-outline-variant grid grid-cols-1 sm:grid-cols-2 gap-2 text-label-sm font-label-sm">
+<div class="p-2 bg-surface-container-high rounded-md">
+<span class="text-outline block uppercase">What Happened?</span>
+<span class="text-tertiary font-bold">Crew secured safely in regolith shelter.</span>
+</div>
+<div class="p-2 bg-surface-container-high rounded-md">
+<span class="text-outline block uppercase">Why It Matters:</span>
+<span class="text-secondary font-bold">Keeps explorers healthy for Mars trips!</span>
+</div>
+</div>
+</section>
+</div>
+<!-- PRIMARY ACTION BAR (ARCADE CTA BUTTONS) -->
+<div class="my-3 p-4 rounded-DEFAULT bg-surface-container-low border-2 border-primary-container/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+<button class="w-full sm:w-auto px-5 py-3 rounded-full bg-surface-container hover:bg-surface-container-high border-2 border-outline-variant text-on-surface font-label-md text-label-md active:translate-y-1 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">arrow_back</span>
+        RETURN TO BASE HQ OVERVIEW
+      </button>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<div class="hidden md:flex flex-col items-end text-right">
+<span class="text-label-sm font-label-sm text-tertiary font-extrabold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-container inline-block"></span>
+            SAFETY SCORE: 100/100
+          </span>
+<span class="text-xs text-outline">Ready to move to debrief phase</span>
+</div>
+<button class="w-full sm:w-auto min-h-[52px] px-8 py-3.5 rounded-full bg-primary-container text-on-primary-container text-label-lg font-label-lg font-extrabold tracking-wider border-2 border-white shadow-[0_5px_0_#009bb0] hover:bg-primary-fixed active:translate-y-1 active:shadow-[0_2px_0_#009bb0] transition-all flex items-center justify-center gap-2.5" id="primaryCta" onclick="alert('Mission Screen 17 Complete: Proceeding to Cadet Safety Evaluation debrief with 5 Safety Stars!')">
+<span>CREW SAFE — CONTINUE MISSION &amp; PROCEED TO EVALUATION</span>
+<span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Shared Component Anchor) -->
+<!-- Contextual Active Tab: "Base HQ" corresponds directly to the Base HQ habitat safety branch -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md rounded-t-xl border-t-2 border-outline-variant shadow-[0_-4px_20px_rgba(0,229,255,0.25)]">
+<!-- Item 1: Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl">explore</span>
+<span class="text-label-md font-label-md mt-0.5">Explore</span>
+</a>
+<!-- Item 2: Base HQ (ACTIVE TAB for Screen 17 Habitat Shelter Event) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">apartment</span>
+<span class="text-label-md font-label-md mt-0.5">Base HQ</span>
+</a>
+<!-- Item 3: Rover -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl">electric_bolt</span>
+<span class="text-label-md font-label-md mt-0.5">Rover</span>
+</a>
+<!-- Item 4: Research -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl">science</span>
+<span class="text-label-md font-label-md mt-0.5">Research</span>
+</a>
+<!-- Item 5: Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+<span class="text-label-md font-label-md mt-0.5">Comms</span>
+</a>
+</nav>
+<!-- Interactive JavaScript for micro-interactions & feedback education -->
+<script>
+    function handleChoice(type) {
+      const feedbackBox = document.getElementById('feedbackBox');
+      const feedbackIcon = document.getElementById('feedbackIcon');
+      const feedbackText = document.getElementById('feedbackText');
+      const primaryCta = document.getElementById('primaryCta');
+
+      if (type === 'correct') {
+        feedbackBox.className = "mt-1 p-3.5 rounded-DEFAULT bg-tertiary-container/20 border-2 border-tertiary-container flex items-start gap-2.5 transition-all";
+        feedbackIcon.className = "material-symbols-outlined text-tertiary-container text-2xl mt-0.5";
+        feedbackIcon.innerText = "check_circle";
+        feedbackText.innerHTML = "<strong class='text-tertiary font-extrabold'>OUTSTANDING DECISION! (+5 Safety Points)</strong><br><span class='text-on-surface'>You followed standard NASA Apollo and Artemis planetary weather doctrine: during an SPE, all outside sorties pause immediately, and astronauts shelter beneath thick lunar regolith shielding. Crew is 100% safe!</span>";
+        
+        primaryCta.classList.add('ring-4', 'ring-primary-container', 'animate-pulse');
+        setTimeout(() => primaryCta.classList.remove('animate-pulse'), 1500);
+      } else if (type === 'wrong_rover') {
+        feedbackBox.className = "mt-1 p-3.5 rounded-DEFAULT bg-error-container/40 border-2 border-error flex items-start gap-2.5 transition-all";
+        feedbackIcon.className = "material-symbols-outlined text-error text-2xl mt-0.5";
+        feedbackIcon.innerText = "warning";
+        feedbackText.innerHTML = "<strong class='text-error font-extrabold'>Unsafe Choice! Space radiation passes right through thin rover canopies.</strong><br><span class='text-on-surface'>All outdoor work must cease immediately during an SPE. Choose the subterranean shelter (Choice A) to protect your crew and continue!</span>";
+      } else if (type === 'wrong_mineral') {
+        feedbackBox.className = "mt-1 p-3.5 rounded-DEFAULT bg-error-container/40 border-2 border-error flex items-start gap-2.5 transition-all";
+        feedbackIcon.className = "material-symbols-outlined text-error text-2xl mt-0.5";
+        feedbackIcon.innerText = "gpp_bad";
+        feedbackText.innerHTML = "<strong class='text-error font-extrabold'>Astronaut Safety Rule #1: Human life always comes first!</strong><br><span class='text-on-surface'>Science samples can always be collected later, but space radiation poses immediate risks. Tap Choice A to enter the protected storm shelter.</span>";
+      }
+    }
+  </script>
+</body></html>

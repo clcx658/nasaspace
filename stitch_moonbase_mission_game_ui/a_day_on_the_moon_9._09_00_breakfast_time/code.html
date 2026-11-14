@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon - Breakfast Time in Lunar Kitchen</title>
+<!-- Google Fonts: Outfit -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e1e1f5",
+            "on-secondary-fixed": "#281900",
+            "inverse-on-surface": "#2e2f3f",
+            "tertiary-fixed-dim": "#00e475",
+            "primary-fixed": "#9cf0ff",
+            "on-error": "#690005",
+            "on-secondary-container": "#6a4800",
+            "primary-fixed-dim": "#00daf3",
+            "on-surface": "#e1e1f5",
+            "tertiary-fixed": "#62ff96",
+            "surface-container-low": "#191b29",
+            "surface-variant": "#323443",
+            "surface-tint": "#00daf3",
+            "on-tertiary-fixed-variant": "#005226",
+            "secondary-container": "#feb300",
+            "outline": "#849396",
+            "surface-container-lowest": "#0b0d1b",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#004f58",
+            "outline-variant": "#3b494c",
+            "on-primary-fixed": "#001f24",
+            "error-container": "#93000a",
+            "on-tertiary": "#003918",
+            "background": "#101221",
+            "tertiary": "#b1ffbf",
+            "surface-container-highest": "#323443",
+            "surface-bright": "#363848",
+            "on-surface-variant": "#bac9cc",
+            "secondary-fixed-dim": "#ffba38",
+            "surface-dim": "#101221",
+            "on-tertiary-fixed": "#00210b",
+            "error": "#ffb4ab",
+            "primary-container": "#00e5ff",
+            "primary": "#c3f5ff",
+            "surface": "#101221",
+            "on-primary-container": "#00626e",
+            "secondary": "#ffd799",
+            "on-secondary": "#432c00",
+            "inverse-primary": "#006875",
+            "surface-container-high": "#272938",
+            "on-background": "#e1e1f5",
+            "surface-container": "#1d1f2d",
+            "on-primary": "#00363d",
+            "secondary-fixed": "#ffdeac",
+            "on-secondary-fixed-variant": "#604100",
+            "on-tertiary-container": "#006731",
+            "tertiary-container": "#22ef7e"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-tablet": "1.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-2xl": "3rem",
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "gutter-tablet": "1.25rem",
+            "space-xl": "2rem",
+            "margin-desktop": "2rem"
+          },
+          "fontFamily": {
+            "label-md": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "body-md": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-md": ["Outfit"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800" }],
+            "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "800" }],
+            "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #0b0d1b;
+      color: #e1e1f5;
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+      user-select: none;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .arcade-shadow-primary {
+      box-shadow: 0 6px 0 #009bb0, 0 10px 20px rgba(0, 229, 255, 0.35);
+    }
+    .arcade-shadow-gold {
+      box-shadow: 0 6px 0 #c68400, 0 10px 24px rgba(254, 179, 0, 0.4);
+    }
+    .arcade-shadow-dark {
+      box-shadow: 0 5px 0 #0b0d1b;
+    }
+    .arcade-shadow-danger {
+      box-shadow: 0 5px 0 #700008;
+    }
+    .slot-inset {
+      box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.65);
+    }
+    @keyframes floatBob {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(1.5deg); }
+    }
+    .float-microgravity {
+      animation: floatBob 4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface min-h-screen flex flex-col antialiased">
+<!-- ================= TOP APP BAR ================= -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md border-b-2 border-outline-variant shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<!-- Brand / Title -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_2px_8px_rgba(0,229,255,0.4)]">
+<span class="material-symbols-outlined font-black text-2xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<span class="text-headline-sm font-headline-sm font-extrabold text-primary-container tracking-wider block leading-none">
+          A Day on the Moon
+        </span>
+<span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+          NASA Space Apps Challenge 2026 • Team AstroPath
+        </span>
+</div>
+</div>
+<!-- Live Telemetry Badges (Desktop & Tablet) -->
+<div class="hidden lg:flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border-2 border-primary-container/40">
+<span class="material-symbols-outlined text-primary-container text-sm">schedule</span>
+<span class="text-label-md font-label-md text-primary-container">Sol 04 • 10:30</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border-2 border-tertiary-container/50">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">air</span>
+<span class="text-label-md font-label-md text-tertiary">O2: 98%</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border-2 border-secondary-container/50">
+<span class="material-symbols-outlined text-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">electric_bolt</span>
+<span class="text-label-md font-label-md text-secondary">Power: 85%</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border-2 border-primary-container/50">
+<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="text-label-md font-label-md text-primary">Water: 92%</span>
+</div>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-3">
+<span class="hidden sm:inline-block px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant text-label-sm font-label-sm text-secondary-container tracking-wider">
+        SIMULATED MISSION
+      </span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button aria-label="Audio settings" class="w-9 h-9 rounded-DEFAULT flex items-center justify-center hover:bg-surface-container-high active:translate-y-1 transition-transform">
+<span class="material-symbols-outlined">volume_up</span>
+</button>
+<button aria-label="Settings" class="w-9 h-9 rounded-DEFAULT flex items-center justify-center hover:bg-surface-container-high active:translate-y-1 transition-transform">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high hover:bg-surface-container border-2 border-outline-variant text-label-md font-label-md text-on-surface active:translate-y-1 transition-transform">
+        Pause
+      </button>
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden bg-surface-variant relative shadow-[0_0_10px_rgba(0,229,255,0.4)]">
+<img class="w-full h-full object-cover" data-alt="Playful cartoon astronaut cadet wearing a clean white pressurized spacesuit helmet with reflective gold visor, smiling brightly against deep cosmic background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASzZn-VHgg3z_HlhhXZep1soAo9HYj4kbquHjaXDIoxTs68m-Xz6DIIS4IeyKcuANUzcV0L0qpr0MpOoJdHp34GMylX6PUkRUzoZnJ8CITKHHFk2agNFDlTGS-mxxpMiWC6myPgEDcqquWUMpbCuewud_8_a5xwX82Kl8T2ul5bw2vf616Gti3rmxGLnBsypdJ3xyC2CEfJTbJhriA8TT3nV38VNhftRobl1ql5o2Z"/>
+</div>
+</div>
+</header>
+<!-- ================= MAIN VIEWPORT / GAME CANVAS ================= -->
+<main class="flex-1 pt-20 pb-28 px-3 sm:px-6 max-w-7xl mx-auto w-full flex flex-col gap-5">
+<!-- Mission Header & Breadcrumb Strip -->
+<section class="bg-surface-container/85 border-2 border-outline-variant rounded-DEFAULT p-3 sm:p-4 backdrop-blur-md flex flex-wrap items-center justify-between gap-3 shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-2 sm:gap-4 flex-wrap">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high hover:bg-surface-bright border-2 border-outline-variant text-label-md font-label-md text-primary active:translate-y-0.5 transition-all" href="#base-hub">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span>← Base HQ</span>
+</a>
+<div class="h-5 w-0.5 bg-outline-variant hidden sm:block"></div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-DEFAULT bg-secondary-container/20 text-secondary-container border border-secondary-container/40 text-label-sm font-label-sm">
+            Daily Task 2 of 7
+          </span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">
+            Sol 04 Routine • 09:00 Breakfast Galley
+          </span>
+</div>
+</div>
+<!-- Disclaimer Pip -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest border border-outline-variant/70 text-on-surface-variant text-[11px] font-label-sm">
+<span class="material-symbols-outlined text-secondary text-xs">info</span>
+<span>SIMULATED GAMEPLAY VALUES — NOT REAL NASA MEASUREMENTS</span>
+</div>
+</section>
+<!-- Commander Nova Astro-Guide Speech Bubble (Card) -->
+<section class="relative bg-surface-container border-2 border-primary-container rounded-DEFAULT p-4 sm:p-5 shadow-[0_0_20px_rgba(0,229,255,0.15)] flex flex-col sm:flex-row items-center sm:items-start gap-4">
+<div class="relative flex-shrink-0">
+<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-4 border-primary-container bg-surface-container-high overflow-hidden shadow-[0_0_16px_rgba(0,229,255,0.5)] float-microgravity">
+<img class="w-full h-full object-cover" data-alt="Chunky cartoon astro-guide Commander Nova in lunar spacesuit with a transparent bubble helmet, giving a warm thumbs up inside the lunar base habitat module" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCdwcg4z0j4ea_xmpFfyiRMapKtaIpqVwkyobBKorqrQERqSFD0kiEFI-tV-eB88We0MsDI2jQzPzLQbP6kHuVQkkiC7XLKxu1c0HtyX0UQg-2aWskHWnf1gXtyhjqkze6y7tBptmELGUmJaiJPX-jBy9ohMR94cwb8mCu3_KMnJrnPfMn7CTb6jsiS1SX8cGsD4yZ43cs8t4aua81oLvxmP7p-uA_P-Pq02Q_eJJl"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-secondary-container text-on-secondary-container rounded-full p-1 border-2 border-surface-container shadow-md">
+<span class="material-symbols-outlined text-sm font-black" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+</div>
+<div class="flex-1 text-center sm:text-left">
+<div class="flex items-center justify-center sm:justify-start gap-2 mb-1">
+<h2 class="text-headline-sm font-headline-sm text-primary tracking-wide">Commander Nova</h2>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container text-label-sm font-label-sm">GALLEY LEADER</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed">
+          “Good morning, Cadet! Breakfast in <span class="text-primary-container font-bold">1/6th gravity</span> is a science mission on its own! Build a balanced astronaut breakfast tray so you have sustained high energy for our upcoming surface rover exploration!”
+        </p>
+</div>
+<!-- Quick Microgravity Tip Chip -->
+<div class="hidden xl:flex flex-col items-end justify-center bg-surface-container-high/80 border border-outline-variant px-3 py-2 rounded-DEFAULT text-right">
+<span class="text-label-sm font-label-sm text-secondary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">lightbulb</span> CRUMB WARNING
+        </span>
+<span class="text-body-sm font-body-sm text-on-surface-variant max-w-[170px]">
+          Crumbs float into filters! Pick tortilla wraps instead.
+        </span>
+</div>
+</section>
+<!-- ================= BENTO GRID: INTERACTIVE TRAY & SELECTION ================= -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+<!-- LEFT COL: MICROGRAVITY MEAL TRAY (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="bg-surface-container border-2 border-outline-variant rounded-DEFAULT p-4 sm:p-5 relative shadow-[0_8px_24px_rgba(0,0,0,0.5)]">
+<div class="flex items-center justify-between mb-4 border-b-2 border-outline-variant/60 pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-2xl" style="font-variation-settings: 'FILL' 1;">set_meal</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Magnetic Microgravity Tray</h3>
+</div>
+<span class="text-label-sm font-label-sm px-2.5 py-1 rounded-full bg-surface-container-highest text-primary border border-primary-container/30">
+              4 / 4 SLOTS LOCKED
+            </span>
+</div>
+<!-- Tray Physical Surface Area -->
+<div class="bg-surface-container-lowest p-4 sm:p-5 rounded-DEFAULT border-2 border-outline-variant slot-inset grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Slot 1: Protein & Energy -->
+<div class="group bg-surface-container-low border-2 border-primary-container rounded-DEFAULT p-3 flex flex-col justify-between min-h-[140px] relative transition-transform hover:-translate-y-1 shadow-[0_4px_12px_rgba(0,229,255,0.2)]">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-primary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">shield</span> [Protein &amp; Energy]
+                </span>
+<span class="w-5 h-5 rounded-full bg-primary-container/20 text-primary-container flex items-center justify-center text-xs">✓</span>
+</div>
+<div class="flex items-center gap-3 my-2">
+<div class="w-14 h-14 rounded-DEFAULT bg-surface-container-high border-2 border-primary-container overflow-hidden flex-shrink-0 flex items-center justify-center shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Vibrant cartoon scrambled eggs wrapped in a warm soft tortilla on a lunar magnetic tray, colorful futuristic space food style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWiNM1NizW5i1sCOoMXDy744UFmEHPfTrd_pAYCY089cRqUNlejm3x5yTjkQwXLjTbDfXfGH6ReoyCwtIoDwAC3QqNvRPXuL3JobtMBBjpChE42eVokxy-INEeQ5-q1JvrZIELJuaD03I2ShDlv4wYottq6pdr2v8ncgNHzbziiJL5tHX6We7zGuxRMBJ2wC8icdgkKVbFpbk29u1cTouDllHlIyBoTuLImwcjmw91"/>
+</div>
+<div>
+<h4 class="text-body-md font-headline-sm text-on-surface font-bold leading-snug">Scrambled Egg Bites</h4>
+<p class="text-body-sm font-body-sm text-tertiary">Tortilla-wrapped • 0 crumbs</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/40">
+<span class="text-label-sm font-label-sm text-on-surface-variant">280 kcal</span>
+<span class="text-label-sm font-label-sm text-tertiary-container flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">check_circle</span> Locked in Tray
+                </span>
+</div>
+</div>
+<!-- Slot 2: Fresh Space Veggies -->
+<div class="group bg-surface-container-low border-2 border-tertiary-container rounded-DEFAULT p-3 flex flex-col justify-between min-h-[140px] relative transition-transform hover:-translate-y-1 shadow-[0_4px_12px_rgba(34,239,126,0.2)]">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-tertiary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">eco</span> [Fresh Space Veggies]
+                </span>
+<span class="w-5 h-5 rounded-full bg-tertiary-container/20 text-tertiary-container flex items-center justify-center text-xs">✓</span>
+</div>
+<div class="flex items-center gap-3 my-2">
+<div class="w-14 h-14 rounded-DEFAULT bg-surface-container-high border-2 border-tertiary-container overflow-hidden flex-shrink-0 flex items-center justify-center shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Chunky cartoon hydroponic green spinach and crispy microgreens inside an airtight sealed dome pod bowl on a futuristic space tray" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBnyQy9G0OTtp1xxwARPWMZINjJsc0DdV4UCTBIWDYZwAkbaU2Bu2W_annwsHkRgzJbcS1obeCSClMZVDGjfiyfqgn9Rc0oPr2wqsG4_VEvqUdTxb1aXaf-DxDFOASGxmofWxklBX_g5s1nv5j4Cy5QlbR3EMN19XgX0PXd96gTUHKk4yxrCczrnJhyjLcNSWVgI1uyZ2f7ZjNdlolOt9RyccPMunoIsu4enb_9I2-"/>
+</div>
+<div>
+<h4 class="text-body-md font-headline-sm text-on-surface font-bold leading-snug">Hydro Space Spinach</h4>
+<p class="text-body-sm font-body-sm text-tertiary">Artemis Alpha Greenhouse</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/40">
+<span class="text-label-sm font-label-sm text-on-surface-variant">90 kcal</span>
+<span class="text-label-sm font-label-sm text-tertiary-container flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">check_circle</span> Locked in Tray
+                </span>
+</div>
+</div>
+<!-- Slot 3: Hydration Drink -->
+<div class="group bg-surface-container-low border-2 border-primary-container rounded-DEFAULT p-3 flex flex-col justify-between min-h-[140px] relative transition-transform hover:-translate-y-1 shadow-[0_4px_12px_rgba(0,229,255,0.2)]">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-primary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">water_drop</span> [Hydration Drink]
+                </span>
+<span class="w-5 h-5 rounded-full bg-primary-container/20 text-primary-container flex items-center justify-center text-xs">✓</span>
+</div>
+<div class="flex items-center gap-3 my-2">
+<div class="w-14 h-14 rounded-DEFAULT bg-surface-container-high border-2 border-primary-container overflow-hidden flex-shrink-0 flex items-center justify-center shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Vibrant cartoon astronaut juice pouch with sealed straw showing glowing purple berry electrolyte drink, playful game prop asset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzmUHaEWjl5YP2RF82VUn6m6H_6M3LmfLmhKiu2o9FF0SshKxJJRKv0oAjHfLXqyV8SDN_mfMUN4pe74tdL5S41sA1yb4-XMj4cOT6Sl9UsZAa7ezqe-JJ7-oowHXog7uFtv7P9kCByQO__gJH7oBjlU65v1Xzt6ST4sbrrqr0I98thP5q0v3BYAsV1ickXc3QXJ_XVJGIiE9SX9kDr0Tx30KibPkVtgqG46Up5AOb"/>
+</div>
+<div>
+<h4 class="text-body-md font-headline-sm text-on-surface font-bold leading-snug">Berry Electrolyte Pouch</h4>
+<p class="text-body-sm font-body-sm text-primary">Sealed one-way valve straw</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/40">
+<span class="text-label-sm font-label-sm text-on-surface-variant">140 kcal</span>
+<span class="text-label-sm font-label-sm text-tertiary-container flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">check_circle</span> Locked in Tray
+                </span>
+</div>
+</div>
+<!-- Slot 4: Space Fruit Snack -->
+<div class="group bg-surface-container-low border-2 border-secondary-container rounded-DEFAULT p-3 flex flex-col justify-between min-h-[140px] relative transition-transform hover:-translate-y-1 shadow-[0_4px_12px_rgba(254,179,0,0.2)]">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-secondary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">nutrition</span> [Space Fruit Snack]
+                </span>
+<span class="w-5 h-5 rounded-full bg-secondary-container/20 text-secondary-container flex items-center justify-center text-xs">✓</span>
+</div>
+<div class="flex items-center gap-3 my-2">
+<div class="w-14 h-14 rounded-DEFAULT bg-surface-container-high border-2 border-secondary-container overflow-hidden flex-shrink-0 flex items-center justify-center shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Cute cartoon freeze-dried rehydrated peach slices shining with sweet moisture in a space pouch, vibrant child-friendly game asset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRT_KaNr7vDnjGmeVUNNVovDsf30KuUK5PcW9STEREDK2YPnISDHeebrHtJ2-YQHNKkxA8PeaVnkgGOUGX_2-sKqjyk2Lr_xUUCmAC0n0oyRLvgI0KDOPgTeQ-3aN0yojkG3j5eVhMk5bOXXZYpnUiLfd0vr5PzEArR3C_B9Ve_0nHnSsu8mQ78cFKG6o6bTdFhKthXwI1ush_apclfGgWMbmeM-Ta4eQ-wtQoLVmA"/>
+</div>
+<div>
+<h4 class="text-body-md font-headline-sm text-on-surface font-bold leading-snug">Rehydrated Peaches</h4>
+<p class="text-body-sm font-body-sm text-secondary">Freeze-dried snack pack</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/40">
+<span class="text-label-sm font-label-sm text-on-surface-variant">140 kcal</span>
+<span class="text-label-sm font-label-sm text-tertiary-container flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">check_circle</span> Locked in Tray
+                </span>
+</div>
+</div>
+</div>
+<!-- Tray Status Meters Bar -->
+<div class="mt-4 pt-4 border-t-2 border-outline-variant/60 grid grid-cols-3 gap-3 text-center">
+<div class="bg-surface-container-high/60 p-2.5 rounded-DEFAULT border border-outline-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant block mb-1">TOTAL CALORIES</span>
+<span class="text-headline-sm font-headline-sm text-primary-container font-extrabold">650 kcal</span>
+<span class="text-[11px] text-tertiary block mt-0.5 font-bold">Target Reached!</span>
+</div>
+<div class="bg-surface-container-high/60 p-2.5 rounded-DEFAULT border border-outline-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant block mb-1">BALANCED NUTRITION</span>
+<span class="text-headline-sm font-headline-sm text-tertiary-container font-extrabold">100%</span>
+<div class="w-full bg-surface-container-lowest h-2 rounded-full mt-1.5 overflow-hidden border border-outline-variant">
+<div class="bg-gradient-to-r from-primary-container to-tertiary-container h-full w-full"></div>
+</div>
+</div>
+<div class="bg-surface-container-high/60 p-2.5 rounded-DEFAULT border border-outline-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant block mb-1">CRUMBS RISK</span>
+<span class="text-headline-sm font-headline-sm text-tertiary-container font-extrabold">0% (Low)</span>
+<span class="text-[11px] text-tertiary-fixed-dim block mt-0.5 font-bold">Safe for Air Filters</span>
+</div>
+</div>
+</div>
+<!-- NASA Space Food Educational Card -->
+<div class="bg-surface-container border-2 border-secondary-container/80 rounded-DEFAULT p-4 relative shadow-[0_4px_16px_rgba(254,179,0,0.15)] flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center flex-shrink-0 shadow-[0_2px_8px_rgba(254,179,0,0.4)]">
+<span class="material-symbols-outlined text-2xl font-bold" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h4 class="text-headline-sm font-headline-sm text-secondary-container text-base">NASA Space Food Fact</h4>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-secondary/20 text-secondary font-extrabold uppercase">Mission Intel</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface text-sm sm:text-base leading-relaxed">
+              Astronauts eat tortillas instead of regular bread because <strong class="text-secondary-fixed">bread crumbs float in low gravity</strong>, and floating crumbs can drift into astronauts' eyes or jam vital spacecraft ventilation vents!
+            </p>
+</div>
+</div>
+</div>
+<!-- RIGHT COL: FOOD SELECTOR & GRAVITY DISPENSER (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-4">
+<div class="bg-surface-container border-2 border-outline-variant rounded-DEFAULT p-4 sm:p-5 shadow-[0_8px_24px_rgba(0,0,0,0.5)]">
+<div class="flex items-center justify-between mb-3 border-b-2 border-outline-variant/60 pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-2xl">kitchen</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Galley Pantry Dispenser</h3>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Tap to swap item</span>
+</div>
+<!-- Food Cards List -->
+<div class="flex flex-col gap-2.5 max-h-[460px] overflow-y-auto pr-1">
+<!-- Item 1: Selected / In Tray -->
+<div class="bg-surface-container-high border-2 border-primary-container rounded-DEFAULT p-3 flex items-center justify-between cursor-pointer hover:bg-surface-bright active:translate-y-1 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container-lowest border border-primary-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Playful cartoon scrambled egg tortilla pocket in microgravity, vibrant game artwork" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH__Lh0V3iZqOyyxwAR3_Y-95qNVIDzrbzTXX1bK8GCOdGuDY2omTk1qyJiCEh4GgcXLQeZI9l08UG2OzfMBhmpNiitmYa6_Q5TkG-aKeDPhUEWIFRblJus-DSk6musuc4Jh0dqm326H3rc0uoqHk71k1fy3UDMvIsW6GTx3AlDiEct0HVRwSfIa-Ys9rwmN7w-5ClileYoSNfmUwUj5j90rYn3Ijs1dWYVI5Crq9E"/>
+</div>
+<div>
+<h5 class="text-body-md font-headline-sm text-primary font-bold">1. Scrambled Egg Bites</h5>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs">Tortilla-wrapped • High Protein</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary-container text-on-primary-container text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check</span> IN TRAY
+              </span>
+</div>
+<!-- Item 2: Selected / In Tray -->
+<div class="bg-surface-container-high border-2 border-tertiary-container rounded-DEFAULT p-3 flex items-center justify-between cursor-pointer hover:bg-surface-bright active:translate-y-1 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container-lowest border border-tertiary-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Hydroponic fresh green spinach bowl in transparent zero gravity bubble, colorful art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsjabnW3hfSe73nsJ74fKVUgHiSPPk1M-U4JhJAPw-KOsTZs9LOuPcN6HXu2nJtxzdxvkea2uqDNEq1Bo8ObvbQ66h1Yi0ZOdkhOUHlSBMRx4UDuxsXQx2NKQU1V4vLrOKs1Szntx3jaC6WQeM9np4rDdoPK7cTMDdddwyNb4g1WcyX3x6Jrj3rC9UhmoB6hmlyZSLqCPMxkV9sDoPleH2a9GSUXgMOSqRoKo06PRH"/>
+</div>
+<div>
+<h5 class="text-body-md font-headline-sm text-tertiary font-bold">2. Hydroponic Spinach</h5>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs">Greenhouse Alpha • Iron &amp; Vitamin C</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-tertiary-container text-on-tertiary-container text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check</span> IN TRAY
+              </span>
+</div>
+<!-- Item 3: Selected / In Tray -->
+<div class="bg-surface-container-high border-2 border-secondary-container rounded-DEFAULT p-3 flex items-center justify-between cursor-pointer hover:bg-surface-bright active:translate-y-1 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container-lowest border border-secondary-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Freeze-dried glowing yellow peach slices in foil space packet, cartoon video game asset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKvcH5qcYBSNzzSX9UAsImxNLTGAOyvOlinonPQkz3diZ8EDA8NLbd16RoU_xoOU0zDq4wqefkYhVxdVuxep99Lh1GCDJHzuH94ZCNb1uPg4lOPfTYyzfx_fAgv5-hAMHtfQ8IV5m6oqNbDFJLK2q6cIaloRjoUJ9ISZlNdDj2TiF6mfl8ltDRBERQR0DlQkkrug3VaeLtZxp2ReCQOvA6PI0c8xJDJOE-hM2AoRba"/>
+</div>
+<div>
+<h5 class="text-body-md font-headline-sm text-secondary font-bold">3. Rehydrated Peaches</h5>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs">Freeze-dried space fruit treat</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check</span> IN TRAY
+              </span>
+</div>
+<!-- Item 4: Selected / In Tray -->
+<div class="bg-surface-container-high border-2 border-primary-container rounded-DEFAULT p-3 flex items-center justify-between cursor-pointer hover:bg-surface-bright active:translate-y-1 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container-lowest border border-primary-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Berry drink hydration foil pouch with colorful cartoon straw valve for low gravity liquid consumption" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCswBK17np8itu32OUwDgzECkWoTk8p8yvrkr--bVlGxwh4iMusPavRGgloqQTmhMOCK20hnqI6fecW3__nTB-ESs_simXi1WJ6aMkppYayiUfLjk4G7dzknDyFEmlwOEP01ZXkpVbDQeoovw_FhLDdVDrUhlTdmLKBaLi8KT8lNLkAt2vZiUIZvJr7Jj9ArBGEEFN1CgkMCMbjEoREFoFBa3dB6g4wkZX_QT0sAd-d"/>
+</div>
+<div>
+<h5 class="text-body-md font-headline-sm text-primary font-bold">4. Electrolyte Berry Pouch</h5>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs">Hydration lock • Zero spill</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary-container text-on-primary-container text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check</span> IN TRAY
+              </span>
+</div>
+<!-- Item 5: Unrecommended / Crumbly Toast (WARNING OPTION) -->
+<div class="bg-surface-container-low border-2 border-error/70 rounded-DEFAULT p-3 flex items-center justify-between cursor-pointer hover:bg-error-container/20 active:translate-y-1 transition-all opacity-90">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container-lowest border-2 border-error overflow-hidden flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Crumbly golden toast with small animated bread crumbs drifting in zero-gravity space air, warning icon indicator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdq3xOkANN0GHuO9QdJqmKmT096_fCJrBB4_f6SEKmyPykwEnFMfiNJc69lmEz9hCKJSp9AGOE5jw4hHQ85jgJgOm0bhPr3P0acLHtCjvRAMIBhyEH6XwXhVShj9_rC1ZtJnLUxw1g5vuMph5CgW8svnoubuGxW1enhYxJxHmfGMfgB_IdqKls1zXALUaDAsWtz0wo80hKLyIFiy7HDcyDZ8J9vaj5THYfQ4CdpONB"/>
+<div class="absolute inset-0 bg-error/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-error font-black">warning</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h5 class="text-body-md font-headline-sm text-error font-bold line-through">Crumbly Toast</h5>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-error text-on-error font-bold uppercase">Hazard</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs">
+                    Floating crumbs clog air filters! Choose tortillas!
+                  </p>
+</div>
+</div>
+<button class="px-2.5 py-1 rounded-full bg-surface-container-highest border border-error/50 text-error text-label-sm font-label-sm hover:bg-error hover:text-on-error transition-colors">
+                Swap
+              </button>
+</div>
+</div>
+</div>
+<!-- ACTION PUSH BUTTONS CLUSTER -->
+<div class="flex flex-col gap-3">
+<!-- Primary CTA Button (Solar Gold 3D Arcade Push Button) -->
+<button class="w-full py-4 px-6 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm font-black tracking-wide arcade-shadow-gold active:translate-y-1 active:shadow-[0_2px_0_#c68400] transition-all flex items-center justify-center gap-2">
+<span>EAT BREAKFAST &amp; COMPLETE TASK</span>
+<span class="material-symbols-outlined text-2xl font-black">arrow_forward</span>
+</button>
+<!-- Secondary Auxiliary Actions -->
+<div class="grid grid-cols-2 gap-3">
+<button class="py-3 px-4 rounded-full bg-surface-container-high hover:bg-surface-bright border-2 border-outline-variant text-on-surface font-label-lg text-label-lg active:translate-y-0.5 transition-all flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-base">restart_alt</span>
+<span>RESET TRAY</span>
+</button>
+<button class="py-3 px-4 rounded-full bg-surface-container-high hover:bg-surface-bright border-2 border-outline-variant text-primary font-label-lg text-label-lg active:translate-y-0.5 transition-all flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-base">hub</span>
+<span>BASE HUB</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- ================= BOTTOM NAVIGATION BAR (DASHBOARD SHELL) ================= -->
+<!-- Contextual lock: "Base HQ" is active since Kitchen & Galley is located inside Base Habitat -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md border-t-2 border-outline-variant shadow-[0_-4px_20px_rgba(0,229,255,0.25)] rounded-t-xl">
+<!-- Item 1: Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#explore">
+<span class="material-symbols-outlined text-2xl">explore</span>
+<span class="text-label-md font-label-md mt-0.5">Explore</span>
+</a>
+<!-- Item 2: Base HQ (ACTIVE TAB: Galley Kitchen sits inside Base HQ) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-transform" href="#base-hq">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">apartment</span>
+<span class="text-label-md font-label-md mt-0.5">Base HQ</span>
+</a>
+<!-- Item 3: Rover -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#rover">
+<span class="material-symbols-outlined text-2xl">electric_bolt</span>
+<span class="text-label-md font-label-md mt-0.5">Rover</span>
+</a>
+<!-- Item 4: Research -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#research">
+<span class="material-symbols-outlined text-2xl">science</span>
+<span class="text-label-md font-label-md mt-0.5">Research</span>
+</a>
+<!-- Item 5: Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#comms">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+<span class="text-label-md font-label-md mt-0.5">Comms</span>
+</a>
+</nav>
+<!-- Interactive Script for micro-interaction feedback -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const eatButton = document.querySelector('button.arcade-shadow-gold');
+      if (eatButton) {
+        eatButton.addEventListener('click', () => {
+          eatButton.innerHTML = `
+            <span class="material-symbols-outlined text-2xl font-black animate-spin">sync</span>
+            <span>EATING BREAKFAST... ENERGIZED!</span>
+          `;
+          setTimeout(() => {
+            alert('🎉 Sol 04 Task 2 Complete! +100 Energy Points. Next up: 10:00 Airlock Suit Up for Rover Expedition!');
+            eatButton.innerHTML = `
+              <span>PROCEED TO 10:00 SUIT UP</span>
+              <span class="material-symbols-outlined text-2xl font-black">arrow_forward</span>
+            `;
+          }, 600);
+        });
+      }
+    });
+  </script>
+</body></html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon — Rocket Launch Sequence</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#00daf3",
+            "tertiary": "#b1ffbf",
+            "surface-container-lowest": "#0b0d1b",
+            "secondary-fixed-dim": "#ffba38",
+            "primary-fixed-dim": "#00daf3",
+            "secondary-fixed": "#ffdeac",
+            "surface-container": "#1d1f2d",
+            "on-tertiary-container": "#006731",
+            "inverse-surface": "#e1e1f5",
+            "on-primary-fixed": "#001f24",
+            "outline-variant": "#3b494c",
+            "tertiary-container": "#22ef7e",
+            "primary": "#c3f5ff",
+            "error": "#ffb4ab",
+            "on-secondary": "#432c00",
+            "surface-variant": "#323443",
+            "surface": "#101221",
+            "inverse-on-surface": "#2e2f3f",
+            "surface-container-low": "#191b29",
+            "inverse-primary": "#006875",
+            "on-primary-fixed-variant": "#004f58",
+            "tertiary-fixed": "#62ff96",
+            "on-secondary-fixed-variant": "#604100",
+            "on-primary-container": "#00626e",
+            "on-surface": "#e1e1f5",
+            "on-error-container": "#ffdad6",
+            "secondary-container": "#feb300",
+            "on-background": "#e1e1f5",
+            "outline": "#849396",
+            "error-container": "#93000a",
+            "surface-bright": "#363848",
+            "on-secondary-container": "#6a4800",
+            "on-tertiary-fixed": "#00210b",
+            "primary-container": "#00e5ff",
+            "surface-container-highest": "#323443",
+            "on-primary": "#00363d",
+            "background": "#101221",
+            "tertiary-fixed-dim": "#00e475",
+            "surface-dim": "#101221",
+            "on-surface-variant": "#bac9cc",
+            "primary-fixed": "#9cf0ff",
+            "surface-container-high": "#272938",
+            "on-secondary-fixed": "#281900",
+            "on-tertiary-fixed-variant": "#005226",
+            "on-error": "#690005",
+            "secondary": "#ffd799",
+            "on-tertiary": "#003918"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin-desktop": "2rem",
+            "space-md": "1rem",
+            "margin": "1rem",
+            "margin-tablet": "1.5rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "gutter-tablet": "1.25rem",
+            "space-2xl": "3rem"
+          },
+          "fontFamily": {
+            "body-md": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "headline-md": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "label-md": ["Outfit"],
+            "headline-sm": ["Outfit"]
+          },
+          "fontSize": {
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "800" }],
+            "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800" }],
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+    }
+    @keyframes flameFlicker {
+      0%, 100% { transform: scaleY(1) translateY(0); filter: drop-shadow(0 0 16px rgba(0,229,255,0.7)); }
+      50% { transform: scaleY(1.08) translateY(2px); filter: drop-shadow(0 0 24px rgba(254,179,0,0.9)); }
+    }
+    .flame-pulse {
+      animation: flameFlicker 0.25s infinite ease-in-out;
+    }
+    @keyframes starTwinkle {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    .star-sparkle {
+      animation: starTwinkle 1.8s infinite ease-in-out;
+    }
+    @keyframes alertGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(0, 229, 255, 0.4), inset 0 0 10px rgba(0, 229, 255, 0.2); }
+      50% { box-shadow: 0 0 26px rgba(254, 179, 0, 0.6), inset 0 0 15px rgba(254, 179, 0, 0.3); }
+    }
+    .hud-glow {
+      animation: alertGlow 2.5s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen flex flex-col select-none overflow-x-hidden">
+<!-- TOP APP BAR (Shared Anchor Component) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md border-b-2 border-outline-variant shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary-container flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.4)]">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<div class="text-headline-sm font-headline-sm font-extrabold text-primary-container tracking-wider flex items-center gap-2">
+          A Day on the Moon
+          <span class="text-label-sm font-label-sm bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full font-black tracking-widest">ARTEMIS V</span>
+</div>
+<div class="text-label-sm font-label-sm text-secondary font-bold flex items-center gap-1">
+<span>TEAM ASTROPATH</span>
+<span class="text-outline">•</span>
+<span class="text-tertiary">NASA SPACE APPS CHALLENGE 2026</span>
+</div>
+</div>
+</div>
+<!-- HUD Telemetry Capsules (Shared Anchors) -->
+<div class="hidden lg:flex items-center gap-2 bg-surface-container-lowest/80 p-1.5 rounded-full border border-outline-variant">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant text-label-md font-label-md text-primary font-extrabold border-b-2 border-primary-container">
+<span class="material-symbols-outlined text-primary-container text-[18px]">timer</span>
+<span>Sol 04 • 10:30</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high border border-tertiary text-label-md font-label-md text-tertiary font-bold">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">air</span>
+<span>O2: 98%</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high border border-secondary-container text-label-md font-label-md text-secondary-fixed-dim font-bold">
+<span class="material-symbols-outlined text-secondary-container text-[18px]">solar_power</span>
+<span>Power: 85%</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high border border-primary-container text-label-md font-label-md text-primary font-bold">
+<span class="material-symbols-outlined text-primary-container text-[18px]">water_drop</span>
+<span>Water: 92%</span>
+</div>
+</div>
+<!-- Trailing Actions (JSON Anchors) -->
+<div class="flex items-center gap-2">
+<div class="hidden sm:flex items-center gap-1 px-3 py-1 bg-surface-container-highest/60 rounded-full border border-outline-variant text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider font-extrabold">
+        SIMULATED MISSION
+      </div>
+<button class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-outline-variant hover:border-primary-container text-primary flex items-center justify-center active:translate-y-1 transition-all" id="audio-toggle-btn">
+<span class="material-symbols-outlined text-[20px]" data-icon="volume_up">volume_up</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-outline-variant hover:border-primary-container text-primary flex items-center justify-center active:translate-y-1 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+</button>
+<button class="px-4 py-2 bg-surface-variant hover:bg-surface-container-high text-primary font-headline-sm text-label-md rounded-DEFAULT border-2 border-outline-variant active:translate-y-1 transition-transform flex items-center gap-1.5 shadow-[0_3px_0_#3b494c]">
+<span class="material-symbols-outlined text-[18px]">pause</span>
+<span>Pause</span>
+</button>
+</div>
+</header>
+<!-- MAIN VIEWPORT CONTAINER -->
+<main class="flex-1 pt-16 pb-24 px-3 sm:px-6 max-w-7xl mx-auto w-full flex flex-col gap-4 mt-2">
+<!-- SUB-HEADER ALERT STRIP -->
+<div class="w-full bg-surface-container-low/80 backdrop-blur-sm rounded-DEFAULT border-2 border-outline-variant p-3 flex flex-wrap items-center justify-between gap-3 hud-glow">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-tertiary-container animate-ping"></div>
+<div>
+<span class="text-label-sm font-label-sm text-secondary-container tracking-widest font-black uppercase">LAUNCH PHASE //</span>
+<span class="text-label-lg font-label-lg text-primary font-black ml-1 tracking-wider">T-00:00:12 TO ORBIT INJECTION</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-label-sm font-label-sm">
+<span class="px-2.5 py-1 bg-surface-container rounded-full text-on-surface-variant border border-outline-variant">
+          THRUST: <span class="text-tertiary font-bold">100% MAXIMUM</span>
+</span>
+<span class="px-2.5 py-1 bg-surface-container rounded-full text-on-surface-variant border border-outline-variant">
+          SPEED: <span class="text-primary-container font-bold">MACH 4.2</span>
+</span>
+<span class="hidden md:inline-block px-2.5 py-1 bg-surface-container rounded-full text-secondary font-bold border border-outline-variant">
+          TRAJECTORY: LUNAR TRANSFER ORBIT (TLI)
+        </span>
+</div>
+<div class="text-[11px] font-bold text-outline uppercase tracking-wider">
+        *SIMULATED GAMEPLAY VALUES — NOT REAL NASA MEASUREMENTS*
+      </div>
+</div>
+<!-- BENTO GRID GAME ENGINE CANVAS -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-4 flex-1">
+<!-- LEFT COLUMN: FLIGHT STAGES & DISPATCH (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-4 order-2 lg:order-1">
+<!-- 1. FLIGHT STAGES CONTROLLER (Interactive Multi-step sequence) -->
+<div class="bg-surface rounded-DEFAULT border-2 border-outline-variant p-4 flex flex-col gap-3 shadow-[0_8px_24px_rgba(0,0,0,0.5)]">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">alt_route</span>
+<h2 class="text-headline-sm font-headline-sm text-primary">Flight Stages</h2>
+</div>
+<span class="text-label-sm font-label-sm bg-surface-container-high text-tertiary px-2 py-0.5 rounded-full border border-tertiary">STAGE 3 ACTIVE</span>
+</div>
+<!-- Step Progression Cards -->
+<div class="flex flex-col gap-2.5">
+<!-- Stage 1 -->
+<div class="flex items-start gap-3 p-2.5 rounded-DEFAULT bg-surface-container-low border border-tertiary/60 opacity-80">
+<div class="w-8 h-8 rounded-full bg-tertiary/20 border-2 border-tertiary flex items-center justify-center text-tertiary flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="text-label-md font-label-md text-tertiary font-bold flex justify-between">
+<span>STAGE 1: PRE-FLIGHT CHECK</span>
+<span class="text-[11px] font-black uppercase text-tertiary">COMPLETE</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-[13px] leading-tight">Suit pressurized, telemetry links verified with Houston.</p>
+</div>
+</div>
+<!-- Stage 2 -->
+<div class="flex items-start gap-3 p-2.5 rounded-DEFAULT bg-surface-container-low border border-tertiary/60 opacity-80">
+<div class="w-8 h-8 rounded-full bg-tertiary/20 border-2 border-tertiary flex items-center justify-center text-tertiary flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="text-label-md font-label-md text-tertiary font-bold flex justify-between">
+<span>STAGE 2: COUNTDOWN &amp; IGNITION</span>
+<span class="text-[11px] font-black uppercase text-tertiary">COMPLETE</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-[13px] leading-tight">All 4 RS-25 core engines lit, solid boosters engaged.</p>
+</div>
+</div>
+<!-- Stage 3 (Current Active) -->
+<div class="flex items-start gap-3 p-3 rounded-DEFAULT bg-surface-container border-2 border-primary-container shadow-[0_0_16px_rgba(0,229,255,0.25)] relative overflow-hidden">
+<div class="absolute -right-2 -bottom-2 opacity-10">
+<span class="material-symbols-outlined text-[80px] text-primary-container">rocket</span>
+</div>
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center flex-shrink-0 font-black animate-pulse">
+                3
+              </div>
+<div class="flex-1 z-10">
+<div class="text-label-md font-label-md text-primary-container font-extrabold flex justify-between items-center">
+<span>STAGE 3: ATMOSPHERIC ASCENT</span>
+<span class="text-label-sm font-label-sm bg-primary-container/20 text-primary-container px-2 py-0.5 rounded-full border border-primary-container">FIRING</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface text-[13px] mt-0.5 leading-snug">Punching through stratosphere. Reaching 28,000 km/h escape velocity.</p>
+<!-- Mini Progress Track -->
+<div class="w-full bg-surface-container-lowest h-2 rounded-full mt-2 overflow-hidden border border-outline-variant">
+<div class="bg-gradient-to-r from-primary-container to-secondary-container h-full w-[72%] rounded-full animate-pulse"></div>
+</div>
+</div>
+</div>
+<!-- Stage 4 (Locked) -->
+<div class="flex items-start gap-3 p-2.5 rounded-DEFAULT bg-surface-container-low/60 border border-outline-variant opacity-60">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border-2 border-outline flex items-center justify-center text-outline flex-shrink-0 font-bold">
+                4
+              </div>
+<div class="flex-1">
+<div class="text-label-md font-label-md text-on-surface-variant font-bold flex justify-between">
+<span>STAGE 4: TRANS-LUNAR INJECTION</span>
+<span class="text-[11px] font-black uppercase text-outline">UPCOMING</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline text-[13px] leading-tight">Earth departure burn setting course for Moon base rendezvous.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. COMMANDER NOVA COMMS DISPATCH -->
+<div class="bg-surface rounded-DEFAULT border-2 border-secondary-container p-4 relative shadow-[0_6px_20px_rgba(254,179,0,0.15)] flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-secondary-container bg-surface-container-high shadow-[0_0_12px_rgba(254,179,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="Playful cartoon astronaut Commander Nova wearing a futuristic white space helmet with an iridescent electric cyan visor, smiling enthusiastically with communication headset microphone in deep space backdrop with stars" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKhWa16ThFM2lWSfZf4VBQjYWSmEFulsxW22MCrwYlm0kflQeUTbfILZ3oensNG-kJilVJqU62pUOkB_KgfKKrjbv5YQmgStaFAvgso5Y0OUjQZA5oRDe9GYMa5k98VvOWLWOteQoGTvnPKj5UOIiSIxW_1W6tnFXywHk-b6Cx20NrH7zigmQeRXi_G1zOfzhl1SxmuUIoIvP_KPpm9utSt75231GIrq_l2MJBXiql"/>
+</div>
+<span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-tertiary-container border-2 border-surface flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-surface animate-ping"></span>
+</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-secondary-container font-black tracking-wider uppercase">COMM DISPATCH • LIVE AUDIO</div>
+<h3 class="text-headline-sm font-headline-sm text-secondary">Commander Nova</h3>
+<div class="text-label-sm font-label-sm text-tertiary">Mission Specialist, Artemis Flight</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-low rounded-DEFAULT border border-outline-variant relative">
+<div class="text-on-surface text-body-md font-body-md leading-snug">
+              “Hang on tight, Cadet! All 4 RS-25 engines are roaring! We are escaping Earth's gravitational pull and setting course for <span class="text-primary-container font-extrabold bg-primary-container/10 px-1.5 py-0.5 rounded">Lunar Artemis Base Alpha</span>!”
+            </div>
+</div>
+<!-- Micro Radio Noise Visualizer -->
+<div class="flex items-center justify-between px-2 pt-1 border-t border-outline-variant">
+<span class="text-label-sm font-label-sm text-outline font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">sensors</span>
+              SIGNAL: 99.8 dB
+            </span>
+<div class="flex items-center gap-1 h-3">
+<span class="w-1 h-2 bg-primary-container rounded-full animate-bounce"></span>
+<span class="w-1 h-3 bg-secondary-container rounded-full animate-pulse"></span>
+<span class="w-1 h-2.5 bg-tertiary rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+<span class="w-1 h-1.5 bg-primary-container rounded-full animate-pulse"></span>
+<span class="w-1 h-3 bg-secondary-container rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- CENTER / RIGHT: 2D GAME CINEMATIC VIEWPORT & INSTRUMENTATION (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-4 order-1 lg:order-2">
+<!-- CINEMATIC ROCKET ASCENT VIEWPORT (Hero Illustration Canvas) -->
+<div class="relative w-full h-[360px] sm:h-[420px] rounded-DEFAULT border-3 border-primary-container overflow-hidden bg-surface-container-lowest shadow-[0_0_24px_rgba(0,229,255,0.3)] flex flex-col justify-between p-4">
+<!-- Background Scene Layer: Earth to Space Transition -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Vibrant 2D isometric arcade illustration of a giant white SLS Artemis Moon rocket ascending powerfully into the night sky, vibrant cyan and gold rocket exhaust plume with puffy clouds and particle sparks, with the glowing blue curve of Earth below and starry outer space with constellations above, in a child-friendly cosmic game art style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfq6OQhYdGhm-KemIpNAyek84CAArbK7L15yrbnzoXGXvRHJ8UhPecC5YXRfvvFkMz0Oq6sE4dk7uBAH--HsTY0O1ibQFSURGzT6YTI5pTjlFf6RNB3kx-IkmkrdY9xim3llOGAbjr4dPArZj0uAiXckkBK9TXA3N7qOmcDp2i2UFSRi9eimvGLaVAd3qKe4DUFoZbU4PcMDK-wsG9giCVS1uIs2S8AQsnmqRm0VSA"/>
+<!-- Sci-Fi Overlay Grid & Vignette -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-surface-container-lowest/70 pointer-events-none"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(0,229,255,0.15)_0%,transparent_60%)] pointer-events-none"></div>
+</div>
+<!-- Top Viewport Indicators -->
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-2 bg-surface-container-lowest/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-primary-container/60 shadow-[0_0_12px_rgba(0,229,255,0.2)]">
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
+<span class="text-label-md font-label-md text-primary font-black uppercase tracking-wider">LIVE ASCENT CAM • ORBITAL INCLINATION 28.5°</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-lowest/80 backdrop-blur-md text-secondary font-label-md font-extrabold px-3 py-1.5 rounded-full border border-secondary-container">
+                GRAVITY: 3.2 G-FORCE
+              </span>
+</div>
+</div>
+<!-- Dynamic Altitude Speed Overlay Indicators (HUD Reticles) -->
+<div class="relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-2">
+<!-- Box 1 -->
+<div class="bg-surface/85 backdrop-blur-md border border-outline-variant p-2 rounded-DEFAULT flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-on-surface-variant font-bold">ALTITUDE</span>
+<span class="text-headline-sm font-headline-sm text-primary-container font-black" id="alt-val">114.8 KM</span>
+<span class="text-[10px] text-tertiary font-bold tracking-wider">KARMAN LINE PASSED</span>
+</div>
+<!-- Box 2 -->
+<div class="bg-surface/85 backdrop-blur-md border border-outline-variant p-2 rounded-DEFAULT flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-on-surface-variant font-bold">VELOCITY</span>
+<span class="text-headline-sm font-headline-sm text-secondary font-black" id="speed-val">5,240 M/S</span>
+<span class="text-[10px] text-secondary font-bold tracking-wider">ACCELERATING</span>
+</div>
+<!-- Box 3 -->
+<div class="bg-surface/85 backdrop-blur-md border border-outline-variant p-2 rounded-DEFAULT flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-on-surface-variant font-bold">CORE TEMP</span>
+<span class="text-headline-sm font-headline-sm text-tertiary font-black">2,450 °C</span>
+<span class="text-[10px] text-tertiary font-bold tracking-wider">OPTIMAL BURN</span>
+</div>
+<!-- Box 4 -->
+<div class="bg-surface/85 backdrop-blur-md border border-outline-variant p-2 rounded-DEFAULT flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-on-surface-variant font-bold">DESTINATION</span>
+<span class="text-headline-sm font-headline-sm text-primary font-black">MOON CRATER</span>
+<span class="text-[10px] text-primary font-bold tracking-wider">384,400 KM REMAIN</span>
+</div>
+</div>
+</div>
+<!-- 2. COCKPIT FLIGHT INSTRUMENTATION PANEL (Interactive Arcade Controls) -->
+<div class="bg-surface rounded-DEFAULT border-2 border-outline-variant p-4 flex flex-col gap-4 shadow-[0_8px_20px_rgba(0,0,0,0.6)]">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container">tune</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Cockpit Flight Controls</h3>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-bold">CADET MANUAL OVERRIDE READY</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+<!-- TRAJECTORY ARC MAP -->
+<div class="bg-surface-container-low p-3 rounded-DEFAULT border border-outline-variant flex flex-col gap-2">
+<div class="text-label-md font-label-md text-primary font-bold flex items-center justify-between">
+<span>TRAJECTORY ARC</span>
+<span class="text-label-sm font-label-sm text-tertiary">LTO LOCKED</span>
+</div>
+<div class="h-24 bg-surface-container-lowest rounded-DEFAULT border border-outline-variant relative flex items-center justify-between px-4 overflow-hidden">
+<!-- Earth Node -->
+<div class="flex flex-col items-center z-10">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 border-2 border-primary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">public</span>
+</div>
+<span class="text-[10px] font-bold text-primary-container mt-1">EARTH</span>
+</div>
+<!-- Arc Line -->
+<div class="absolute inset-0 flex items-center justify-center px-12 pointer-events-none">
+<div class="w-full h-12 border-t-2 border-dashed border-primary-container rounded-t-full relative">
+<div class="w-3.5 h-3.5 rounded-full bg-secondary-container shadow-[0_0_8px_#ffb300] absolute -top-2 left-[55%] transform -translate-x-1/2" id="rocket-orbit-pip"></div>
+</div>
+</div>
+<!-- Moon Node -->
+<div class="flex flex-col items-center z-10">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 border-2 border-secondary-container flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined text-[18px]">dark_mode</span>
+</div>
+<span class="text-[10px] font-bold text-secondary-container mt-1">MOON</span>
+</div>
+</div>
+<div class="text-[11px] font-semibold text-on-surface-variant text-center">
+                Approaching Low Earth Orbit Apogee (240 km)
+              </div>
+</div>
+<!-- THROTTLE LEVER INTERACTIVE SLIDER -->
+<div class="bg-surface-container-low p-3 rounded-DEFAULT border border-outline-variant flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-label-md font-label-md text-secondary font-bold">THROTTLE LEVER</span>
+<span class="text-label-lg font-label-lg text-secondary-container font-black" id="throttle-disp">100%</span>
+</div>
+<div class="flex items-center gap-3 py-2">
+<span class="material-symbols-outlined text-outline">speed</span>
+<input class="w-full h-4 bg-surface-container-lowest rounded-lg appearance-none cursor-pointer accent-secondary-container" id="throttle-range" max="120" min="40" type="range" value="100"/>
+<span class="material-symbols-outlined text-secondary-container">local_fire_department</span>
+</div>
+<div class="flex justify-between text-[11px] font-extrabold text-outline uppercase">
+<span>ECO (40%)</span>
+<span>MAX (100%)</span>
+<span class="text-secondary">BOOST (120%)</span>
+</div>
+</div>
+<!-- CHUNKY IGNITION / BOOST PUSH BUTTON -->
+<div class="flex flex-col gap-2 items-center justify-center">
+<span class="text-label-sm font-label-sm text-tertiary font-black tracking-widest uppercase">INTERACTIVE MINIGAME</span>
+<button class="w-full py-4 px-4 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm rounded-DEFAULT border-t-2 border-primary shadow-[0_6px_0_#009bb0] active:translate-y-1 active:shadow-[0_2px_0_#009bb0] transition-all flex items-center justify-center gap-2 group" id="boost-btn">
+<span class="material-symbols-outlined group-hover:scale-125 transition-transform text-[28px]">electric_bolt</span>
+<span class="font-black tracking-wide">PULSE THRUSTERS!</span>
+</button>
+<div class="text-[11px] font-bold text-on-surface-variant text-center">
+                Tap repeatedly to build kinetic momentum!
+              </div>
+</div>
+</div>
+<!-- PRIMARY STAGE ACTION BUTTONS -->
+<div class="pt-3 border-t border-outline-variant flex flex-wrap items-center justify-between gap-3">
+<button class="px-5 py-3 rounded-DEFAULT bg-surface-container-high hover:bg-surface-variant text-on-surface-variant font-headline-sm text-label-md border-2 border-outline-variant active:translate-y-1 transition-transform flex items-center gap-2 shadow-[0_4px_0_#3b494c]">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+<span>Return to Training Hub</span>
+</button>
+<button class="flex-1 max-w-md py-4 px-6 rounded-DEFAULT bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm font-black border-t-2 border-secondary shadow-[0_6px_0_#c68400] active:translate-y-1 active:shadow-[0_2px_0_#c68400] transition-all flex items-center justify-center gap-3" id="next-stage-btn">
+<span class="material-symbols-outlined text-[26px]">rocket_launch</span>
+<span>COMMENCE LIFTOFF / NEXT STAGE</span>
+</button>
+<button class="px-5 py-3 rounded-DEFAULT bg-surface-container-high hover:bg-primary-container/20 text-primary-container font-headline-sm text-label-md border-2 border-primary-container active:translate-y-1 transition-transform flex items-center gap-2 shadow-[0_4px_0_#009bb0]">
+<span>Lunar Approach</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Shared Anchor Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md rounded-t-xl border-t-2 border-outline-variant shadow-[0_-4px_20px_rgba(0,229,255,0.25)]">
+<!-- Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform duration-100 hover:bg-surface-container rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="explore">explore</span>
+<span class="text-label-md font-label-md mt-0.5">Explore</span>
+</a>
+<!-- Base HQ -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform duration-100 hover:bg-surface-container rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="apartment">apartment</span>
+<span class="text-label-md font-label-md mt-0.5">Base HQ</span>
+</a>
+<!-- Rover (Active Tab for current Flight / Propulsion journey) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="electric_bolt">electric_bolt</span>
+<span class="text-label-md font-label-md mt-0.5 font-black">Rover</span>
+</a>
+<!-- Research -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform duration-100 hover:bg-surface-container rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="science">science</span>
+<span class="text-label-md font-label-md mt-0.5">Research</span>
+</a>
+<!-- Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold active:translate-y-1 transition-transform duration-100 hover:bg-surface-container rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="support_agent">support_agent</span>
+<span class="text-label-md font-label-md mt-0.5">Comms</span>
+</a>
+</nav>
+<!-- MICRO-INTERACTION SCRIPT -->
+<script>
+    // Audio Toggle Micro-interaction
+    const audioBtn = document.getElementById('audio-toggle-btn');
+    let soundOn = true;
+    audioBtn.addEventListener('click', () => {
+      soundOn = !soundOn;
+      const icon = audioBtn.querySelector('span');
+      if (soundOn) {
+        icon.textContent = 'volume_up';
+        audioBtn.classList.add('border-primary-container');
+      } else {
+        icon.textContent = 'volume_off';
+        audioBtn.classList.remove('border-primary-container');
+      }
+    });
+
+    // Throttle range listener
+    const throttleRange = document.getElementById('throttle-range');
+    const throttleDisp = document.getElementById('throttle-disp');
+    throttleRange.addEventListener('input', (e) => {
+      throttleDisp.textContent = `${e.target.value}%`;
+      if (e.target.value > 105) {
+        throttleDisp.classList.add('text-error');
+      } else {
+        throttleDisp.classList.remove('text-error');
+      }
+    });
+
+    // Interactive Boost Mini-Game
+    const boostBtn = document.getElementById('boost-btn');
+    const speedVal = document.getElementById('speed-val');
+    const altVal = document.getElementById('alt-val');
+    let currentSpeed = 5240;
+    let currentAlt = 114.8;
+
+    boostBtn.addEventListener('click', () => {
+      currentSpeed += 85;
+      currentAlt += 1.4;
+      speedVal.textContent = `${currentSpeed.toLocaleString()} M/S`;
+      altVal.textContent = `${currentAlt.toFixed(1)} KM`;
+      
+      // Visual feedback
+      boostBtn.classList.add('bg-tertiary-container');
+      setTimeout(() => {
+        boostBtn.classList.remove('bg-tertiary-container');
+      }, 150);
+    });
+
+    // Next Stage Action
+    const nextStageBtn = document.getElementById('next-stage-btn');
+    nextStageBtn.addEventListener('click', () => {
+      alert("🚀 Ignition Burst Confirmed! Stage 3 completed. Initializing Trans-Lunar Injection sequence!");
+    });
+  </script>
+</body></html>

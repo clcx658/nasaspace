@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon — Screen 11: Lunar Surface Exploration Map</title>
+<!-- Material Symbols Outlined font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Outfit Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e1e1f5",
+            "on-secondary-fixed": "#281900",
+            "inverse-on-surface": "#2e2f3f",
+            "tertiary-fixed-dim": "#00e475",
+            "primary-fixed": "#9cf0ff",
+            "on-error": "#690005",
+            "on-secondary-container": "#6a4800",
+            "primary-fixed-dim": "#00daf3",
+            "on-surface": "#e1e1f5",
+            "tertiary-fixed": "#62ff96",
+            "surface-container-low": "#191b29",
+            "surface-variant": "#323443",
+            "surface-tint": "#00daf3",
+            "on-tertiary-fixed-variant": "#005226",
+            "secondary-container": "#feb300",
+            "outline": "#849396",
+            "surface-container-lowest": "#0b0d1b",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#004f58",
+            "outline-variant": "#3b494c",
+            "on-primary-fixed": "#001f24",
+            "error-container": "#93000a",
+            "on-tertiary": "#003918",
+            "background": "#101221",
+            "tertiary": "#b1ffbf",
+            "surface-container-highest": "#323443",
+            "surface-bright": "#363848",
+            "on-surface-variant": "#bac9cc",
+            "secondary-fixed-dim": "#ffba38",
+            "surface-dim": "#101221",
+            "on-tertiary-fixed": "#00210b",
+            "error": "#ffb4ab",
+            "primary-container": "#00e5ff",
+            "primary": "#c3f5ff",
+            "surface": "#101221",
+            "on-primary-container": "#00626e",
+            "secondary": "#ffd799",
+            "on-secondary": "#432c00",
+            "inverse-primary": "#006875",
+            "surface-container-high": "#272938",
+            "on-background": "#e1e1f5",
+            "surface-container": "#1d1f2d",
+            "on-primary": "#00363d",
+            "secondary-fixed": "#ffdeac",
+            "on-secondary-fixed-variant": "#604100",
+            "on-tertiary-container": "#006731",
+            "tertiary-container": "#22ef7e"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-tablet": "1.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-2xl": "3rem",
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "gutter-tablet": "1.25rem",
+            "space-xl": "2rem",
+            "margin-desktop": "2rem"
+          },
+          "fontFamily": {
+            "label-md": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "body-md": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-md": ["Outfit"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800" }],
+            "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "800" }],
+            "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    /* Tactile 3D Extrusion Styles */
+    .btn-arcade-gold {
+      background-color: #feb300;
+      box-shadow: 0 6px 0 #a27200, 0 8px 18px rgba(254, 179, 0, 0.4);
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+    .btn-arcade-gold:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #a27200, 0 4px 10px rgba(254, 179, 0, 0.3);
+    }
+    .btn-arcade-cyan {
+      background-color: #00e5ff;
+      box-shadow: 0 6px 0 #008f9f, 0 8px 20px rgba(0, 229, 255, 0.35);
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+    .btn-arcade-cyan:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #008f9f, 0 4px 10px rgba(0, 229, 255, 0.25);
+    }
+    .btn-arcade-outline {
+      box-shadow: 0 4px 0 #3b494c;
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+    .btn-arcade-outline:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #3b494c;
+    }
+    
+    /* Radar Scanner Line Animation */
+    @keyframes radarScan {
+      0% { transform: translateY(-100%); opacity: 0; }
+      50% { opacity: 0.8; }
+      100% { transform: translateY(300px); opacity: 0; }
+    }
+    .scanner-sweep {
+      animation: radarScan 3.5s linear infinite;
+    }
+
+    /* Laser beam pulse */
+    @keyframes laserPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; filter: drop-shadow(0 0 8px #00e5ff); }
+    }
+    .laser-glow {
+      animation: laserPulse 1.8s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased min-h-screen flex flex-col pb-24 selection:bg-primary-container selection:text-on-primary-container">
+<!-- TOP APP BAR HUD (Shared Component Specification) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<!-- Brand Anchor & Sub-Title -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-DEFAULT bg-primary-container flex items-center justify-center shadow-[0_3px_0_#008f9f]">
+<span class="material-symbols-outlined fill-icon text-on-primary-fixed text-2xl">rocket_launch</span>
+</div>
+<div>
+<span class="text-headline-sm font-headline-sm font-extrabold text-primary-container dark:text-primary tracking-wider block leading-tight">
+          A Day on the Moon
+        </span>
+<span class="text-label-sm font-label-sm text-secondary-container">
+          NASA Space Apps Challenge 2026 • Team AstroPath
+        </span>
+</div>
+</div>
+<!-- HUD Telemetry Vitals Chips (JSON navigation_links) -->
+<div class="hidden lg:flex items-center gap-2">
+<!-- Sol & Time -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high border-2 border-outline-variant text-label-md font-label-md text-on-surface">
+<span class="material-symbols-outlined text-secondary-container text-base">schedule</span>
+<span>Sol 04 • 11:00</span>
+</div>
+<!-- Oxygen -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high border-2 border-tertiary-fixed-dim text-label-md font-label-md text-tertiary-fixed">
+<span class="material-symbols-outlined fill-icon text-base">air</span>
+<span>O2: 95%</span>
+</div>
+<!-- Power -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high border-2 border-secondary-container text-label-md font-label-md text-secondary">
+<span class="material-symbols-outlined fill-icon text-base">bolt</span>
+<span>Power: 80%</span>
+</div>
+<!-- Water -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high border-2 border-primary-container text-label-md font-label-md text-primary">
+<span class="material-symbols-outlined fill-icon text-base">water_drop</span>
+<span>Water: 88%</span>
+</div>
+<!-- Rad Shield -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high border-2 border-outline text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-base">shield</span>
+<span>Rad: 95%</span>
+</div>
+</div>
+<!-- Trailing Actions & Profile Mascot -->
+<div class="flex items-center gap-2">
+<span class="hidden md:inline-block px-2.5 py-1 rounded-full bg-error-container text-error text-label-sm font-label-sm border border-error">
+        SIMULATED GAMEPLAY VALUES — NOT REAL NASA MEASUREMENTS
+      </span>
+<button class="px-3 py-1.5 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant hover:border-primary-container text-label-md font-label-md text-on-surface active:translate-y-1 transition-transform duration-100 flex items-center gap-1">
+<span class="material-symbols-outlined text-base">pause</span>
+<span>Pause</span>
+</button>
+<button class="w-9 h-9 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant hover:border-primary-container flex items-center justify-center text-on-surface active:translate-y-1">
+<span class="material-symbols-outlined text-lg">volume_up</span>
+</button>
+<button class="w-9 h-9 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant hover:border-primary-container flex items-center justify-center text-on-surface active:translate-y-1">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</header>
+<!-- MAIN VIEWPORT CONTAINER -->
+<main class="mt-20 px-4 md:px-6 max-w-7xl mx-auto w-full flex flex-col gap-4">
+<!-- Mission Context Bar & Breadcrumbs -->
+<div class="flex flex-wrap items-center justify-between gap-3 bg-surface-container-low p-3 rounded-DEFAULT border-2 border-outline-variant shadow-md">
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-DEFAULT bg-surface-container-high hover:border-primary-container border-2 border-outline-variant text-label-md font-label-md text-on-surface active:translate-y-0.5">
+<span class="material-symbols-outlined text-base">arrow_back</span>
+<span>Base HQ</span>
+</button>
+<span class="text-on-surface-variant font-label-md text-label-md">/</span>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container/20 border border-primary-container text-primary-container text-label-sm font-label-sm">
+            Daily Task 4 of 7
+          </span>
+<h1 class="text-headline-sm font-headline-sm text-primary tracking-wide">
+            Lunar Surface Sortie
+          </h1>
+</div>
+</div>
+<!-- Quick Objective Highlight -->
+<div class="flex items-center gap-2 bg-surface-container px-3 py-1 rounded-full border border-outline-variant">
+<span class="material-symbols-outlined fill-icon text-secondary-container text-sm">explore</span>
+<span class="text-body-sm font-body-sm text-secondary">Objective: Select surface exploration sector</span>
+</div>
+</div>
+<!-- Commander Nova & Rover-01 Dialogue Prompt Card -->
+<div class="relative bg-surface-container border-3 border-primary-container rounded-DEFAULT p-4 pt-5 shadow-[0_0_18px_rgba(0,229,255,0.2)]">
+<!-- Mascot Medallion breaking border -->
+<div class="absolute -top-4 left-6 flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container text-on-primary-fixed shadow-[0_2px_8px_rgba(0,229,255,0.6)]">
+<span class="material-symbols-outlined fill-icon text-lg">smart_toy</span>
+<span class="text-label-md font-label-md">Commander Nova &amp; Rover-01</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mt-1">
+<p class="text-body-lg font-body-lg text-on-surface">
+          "Rover-01 is ready for research! Choose one of 4 surface exploration locations. Your choice affects battery usage and science discoveries!"
+        </p>
+<div class="flex items-center gap-2 shrink-0">
+<span class="text-label-sm font-label-sm text-tertiary-fixed bg-surface-container-high px-3 py-1 rounded-full border border-tertiary-container flex items-center gap-1">
+<span class="material-symbols-outlined fill-icon text-xs">battery_charging_full</span>
+            Rover Battery: 100%
+          </span>
+<span class="text-label-sm font-label-sm text-primary-fixed bg-surface-container-high px-3 py-1 rounded-full border border-primary-container flex items-center gap-1">
+<span class="material-symbols-outlined fill-icon text-xs">wifi_tethering</span>
+            Signal: Strong
+          </span>
+</div>
+</div>
+</div>
+<!-- BENTO GRID: 2D Lunar Exploration Map + Selected Detail Card -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+<!-- LEFT 7 COLS: Interactive Isometric Lunar Surface Map Canvas -->
+<div class="lg:col-span-7 flex flex-col gap-3">
+<div class="relative bg-surface-container-low rounded-DEFAULT border-3 border-outline-variant overflow-hidden shadow-[0_6px_24px_rgba(11,13,27,0.9)] aspect-[16/10] sm:aspect-[16/11]">
+<!-- Background Isometric Lunar Terrain Layer -->
+<div class="absolute inset-0 bg-cover bg-center opacity-85 transition-opacity" data-alt="Vibrant 2D isometric lunar surface terrain illustration for an educational kids game with stylized craters, neon cyan power conduits, pressurized bio-domes, solar arrays, and adorable astronaut characters under a starry deep space sky with Earth visible in the horizon." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAdzw6WZQdzOE4woHmZM7D82jiOM6lwWzy3ZCwVCjN017qXj6Pkby2b-pmvdWQ_nL2rJCxIBfY08Uz9znDDpWFkk7HykFzz7vQ8y646I9W4BsSMaXmID93Lf2VU0ihAFVpXuKDFFxOqDzz__9kv5rE27H8JvrsgDKQ1P8TXwfUefSiTbEc78ew1IE_Vx5nNcOtOmAL-zw3F79HIQoiYhmKAFPLq9TDiGU6S1m8-wrX7')">
+</div>
+<!-- Radar Grid & Sweep Overlay -->
+<div class="absolute inset-0 pointer-events-none bg-[radial-gradient(rgba(0,229,255,0.08)_1px,transparent_1px)] [background-size:24px_24px]"></div>
+<div class="absolute inset-x-0 h-12 bg-gradient-to-b from-primary-container/20 to-transparent scanner-sweep pointer-events-none"></div>
+<!-- Base Alpha Marker (Origin) -->
+<div class="absolute bottom-6 left-8 z-10 flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border-2 border-primary-container flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.5)]">
+<span class="material-symbols-outlined fill-icon text-primary-container text-2xl">home_pin</span>
+</div>
+<span class="mt-1 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 text-label-sm font-label-sm text-primary border border-outline-variant">
+              Base Alpha
+            </span>
+</div>
+<!-- Map Waypoint 1: Nearby Crater Rim -->
+<button class="loc-pin absolute top-12 left-10 z-20 group flex flex-col items-center transition-transform hover:scale-105 active:scale-95" id="node-rim" onclick="selectLocation('rim')">
+<div class="relative w-11 h-11 rounded-full bg-surface-container-high border-3 border-tertiary-container flex items-center justify-center shadow-[0_4px_12px_rgba(34,239,126,0.4)]">
+<span class="material-symbols-outlined fill-icon text-tertiary-container text-xl">landscape</span>
+<span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-tertiary-container rounded-full animate-ping"></span>
+</div>
+<div class="mt-1.5 px-2.5 py-1 rounded-DEFAULT bg-surface-container-lowest/95 border border-tertiary-container text-center shadow-lg">
+<span class="text-label-sm font-label-sm text-tertiary block leading-none">1. Crater Rim</span>
+<span class="text-[10px] font-bold text-tertiary-fixed">Low Risk • -5% Pwr</span>
+</div>
+</button>
+<!-- Map Waypoint 2: Rock Formation Ridge -->
+<button class="loc-pin absolute top-8 right-24 z-20 group flex flex-col items-center transition-transform hover:scale-105 active:scale-95" id="node-ridge" onclick="selectLocation('ridge')">
+<div class="relative w-11 h-11 rounded-full bg-surface-container-high border-3 border-secondary-container flex items-center justify-center shadow-[0_4px_12px_rgba(254,179,0,0.4)]">
+<span class="material-symbols-outlined fill-icon text-secondary-container text-xl">terrain</span>
+</div>
+<div class="mt-1.5 px-2.5 py-1 rounded-DEFAULT bg-surface-container-lowest/95 border border-secondary-container text-center shadow-lg">
+<span class="text-label-sm font-label-sm text-secondary block leading-none">2. Rock Ridge</span>
+<span class="text-[10px] font-bold text-secondary-fixed">Mod Risk • -10% Pwr</span>
+</div>
+</button>
+<!-- Map Waypoint 3: Permanently Shadowed Crater (CURRENTLY SELECTED ACTIVE PIN) -->
+<button class="loc-pin active-pin absolute bottom-12 right-12 z-20 group flex flex-col items-center transition-transform scale-110" id="node-shadow" onclick="selectLocation('shadow')">
+<!-- Pulsing Active Reticle -->
+<div class="absolute -inset-2 rounded-full border-2 border-dashed border-primary-container animate-spin pointer-events-none"></div>
+<div class="relative w-13 h-13 p-2 rounded-full bg-primary-container text-on-primary-fixed border-3 border-on-surface flex items-center justify-center shadow-[0_0_24px_rgba(0,229,255,0.85)]">
+<span class="material-symbols-outlined fill-icon text-on-primary-fixed text-2xl">ac_unit</span>
+</div>
+<div class="mt-2 px-3 py-1 rounded-DEFAULT bg-surface-container-lowest/95 border-2 border-primary-container text-center shadow-xl">
+<div class="flex items-center justify-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-label-sm font-label-sm text-primary-container block leading-none">3. Shadowed Crater</span>
+</div>
+<span class="text-[10px] font-bold text-error">High Risk / High Reward • -18% Pwr</span>
+</div>
+</button>
+<!-- Map Waypoint 4: Flat Surface Survey -->
+<button class="loc-pin absolute top-1/2 left-1/3 -translate-y-1/2 z-20 group flex flex-col items-center transition-transform hover:scale-105 active:scale-95" id="node-flat" onclick="selectLocation('flat')">
+<div class="relative w-11 h-11 rounded-full bg-surface-container-high border-3 border-outline-variant flex items-center justify-center shadow-[0_4px_12px_rgba(132,147,150,0.3)]">
+<span class="material-symbols-outlined fill-icon text-on-surface-variant text-xl">straighten</span>
+</div>
+<div class="mt-1.5 px-2.5 py-1 rounded-DEFAULT bg-surface-container-lowest/95 border border-outline-variant text-center shadow-lg">
+<span class="text-label-sm font-label-sm text-on-surface block leading-none">4. Flat Survey</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Lowest Risk • -3% Pwr</span>
+</div>
+</button>
+<!-- Isometric Rover Chibi on Map traveling toward target -->
+<div class="absolute bottom-28 left-48 z-10 hidden sm:flex items-center gap-2 bg-surface-container-lowest/90 px-3 py-1.5 rounded-full border border-primary-container shadow-md">
+<span class="material-symbols-outlined fill-icon text-primary-container text-lg">directions_car</span>
+<span class="text-label-sm font-label-sm text-primary">Rover-01 en route</span>
+<span class="material-symbols-outlined text-tertiary-fixed text-sm animate-pulse">radar</span>
+</div>
+<!-- Map Zoom / Layer Controls -->
+<div class="absolute top-3 right-3 z-30 flex flex-col gap-1.5">
+<button class="w-8 h-8 rounded-DEFAULT bg-surface-container-high/90 border border-outline-variant text-on-surface flex items-center justify-center hover:border-primary-container">
+<span class="material-symbols-outlined text-base">add</span>
+</button>
+<button class="w-8 h-8 rounded-DEFAULT bg-surface-container-high/90 border border-outline-variant text-on-surface flex items-center justify-center hover:border-primary-container">
+<span class="material-symbols-outlined text-base">remove</span>
+</button>
+<button class="w-8 h-8 rounded-DEFAULT bg-surface-container-high/90 border border-outline-variant text-on-surface flex items-center justify-center hover:border-primary-container">
+<span class="material-symbols-outlined text-base">layers</span>
+</button>
+</div>
+</div>
+<!-- 4 Location Fast-Selection Tabs for Kids (Touch-First Pills) -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+<!-- Loc 1 Tab -->
+<button class="p-2.5 rounded-DEFAULT bg-surface-container border-2 border-outline-variant hover:border-tertiary-container flex flex-col text-left transition-all" id="tab-rim" onclick="selectLocation('rim')">
+<span class="text-label-sm font-label-sm text-tertiary">Site 1: Rim</span>
+<span class="text-[11px] text-on-surface-variant mt-0.5">Basalt Layers</span>
+</button>
+<!-- Loc 2 Tab -->
+<button class="p-2.5 rounded-DEFAULT bg-surface-container border-2 border-outline-variant hover:border-secondary-container flex flex-col text-left transition-all" id="tab-ridge" onclick="selectLocation('ridge')">
+<span class="text-label-sm font-label-sm text-secondary">Site 2: Ridge</span>
+<span class="text-[11px] text-on-surface-variant mt-0.5">Breccia Rocks</span>
+</button>
+<!-- Loc 3 Tab (Active) -->
+<button class="p-2.5 rounded-DEFAULT bg-surface-container-high border-2 border-primary-container shadow-[0_0_10px_rgba(0,229,255,0.3)] flex flex-col text-left transition-all" id="tab-shadow" onclick="selectLocation('shadow')">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-primary-container">Site 3: Crater</span>
+<span class="material-symbols-outlined fill-icon text-primary-container text-xs">check_circle</span>
+</div>
+<span class="text-[11px] text-on-surface mt-0.5">Volatile Ice</span>
+</button>
+<!-- Loc 4 Tab -->
+<button class="p-2.5 rounded-DEFAULT bg-surface-container border-2 border-outline-variant hover:border-primary-container flex flex-col text-left transition-all" id="tab-flat" onclick="selectLocation('flat')">
+<span class="text-label-sm font-label-sm text-on-surface">Site 4: Survey</span>
+<span class="text-[11px] text-on-surface-variant mt-0.5">Dust Compaction</span>
+</button>
+</div>
+</div>
+<!-- RIGHT 5 COLS: Selected Location Detail Card & Rover Live Scanner Preview -->
+<div class="lg:col-span-5 flex flex-col gap-4">
+<!-- ACTIVE SELECTION DETAIL CARD -->
+<div class="bg-surface-container rounded-DEFAULT border-3 border-primary-container p-5 flex flex-col gap-4 shadow-[0_8px_30px_rgba(0,229,255,0.15)] relative">
+<!-- Badge and Header -->
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-error-container text-error text-label-sm font-label-sm border border-error">
+                  High Risk / High Reward
+                </span>
+<span class="text-label-sm font-label-sm text-primary-container">SECTOR 03-S</span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-surface mt-1" id="detail-title">
+                Permanently Shadowed Crater
+              </h2>
+</div>
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container-highest border-2 border-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined fill-icon text-primary-container text-3xl" id="detail-icon">ac_unit</span>
+</div>
+</div>
+<!-- Scientific Objective Box -->
+<div class="bg-surface-container-low rounded-DEFAULT p-3.5 border-2 border-outline-variant">
+<div class="flex items-center gap-1.5 text-secondary-container text-label-md font-label-md mb-1">
+<span class="material-symbols-outlined fill-icon text-base">psychology</span>
+<span>Scientific Objective</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface" id="detail-desc">
+              "Search for volatile deposits and trapped water ice in perpetual darkness (-240°C). Explore frigid shadowed crater floor, study potential signs of lunar water ice crystals without guaranteed discovery."
+            </p>
+</div>
+<!-- Chibi Rover Laser Scanner Live Preview Mini-Window -->
+<div class="relative bg-surface-container-lowest rounded-DEFAULT border-2 border-outline-variant p-3 overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined fill-icon text-xs">videocam</span>
+                Rover-01 Spectral Cam Feed
+              </span>
+<span class="text-label-sm font-label-sm text-tertiary-fixed">TARGET LOCKED</span>
+</div>
+<div class="relative h-28 bg-surface-container-high rounded-DEFAULT flex items-center justify-center overflow-hidden border border-outline-variant">
+<!-- Visual simulation of rover scanning with cyan beam -->
+<div class="absolute inset-0 bg-cover bg-center opacity-40" data-alt="Close up isometric cartoon illustration of a cute lunar rover with a robotic arm and camera eye emitting a glowing cyan laser sensor grid onto lunar regolith dust and ice crystals." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD2T564uPJBcZmgM7p6lMMEntmVtkL9_07OpzUAjfQsuHuBXeXB-ZZoLgFHaZSn9s6r8tZFZrBslAZZrSiVW14eVkbbi8JLgrJ6u_QABrfKCDUcQdhNh9s7uKgQnK7MQH6e6uRMpE6LS4sluGXfPEfNkOlQP_aW7tLG9eZ3mh_h6T61JYlXU288lg6FYaneGm1q-EFdj6EbW2lysFfkimpAw5ePyaDjP0lDw-EXyELJ')"></div>
+<!-- Rover Graphic Icon simulation -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 border-2 border-primary-container flex items-center justify-center shadow-[0_0_12px_#00e5ff]">
+<span class="material-symbols-outlined fill-icon text-primary-container text-3xl">directions_car</span>
+</div>
+<!-- Pulsing Laser Line onto Ground -->
+<div class="w-24 h-1 bg-primary-container laser-glow shadow-[0_0_10px_#00e5ff] rounded-full"></div>
+<div class="w-8 h-8 rounded-DEFAULT bg-surface-container-highest border border-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-container text-lg">grain</span>
+</div>
+</div>
+<span class="mt-2 text-label-sm font-label-sm text-primary-fixed bg-surface-container-lowest/80 px-2 py-0.5 rounded-full">
+                  Cyan Laser Spectrometer Active
+                </span>
+</div>
+</div>
+</div>
+<!-- Estimated Resource Cost & Reward Bento Sub-Grid -->
+<div class="grid grid-cols-3 gap-2">
+<!-- Power Cost -->
+<div class="bg-surface-container-low p-2.5 rounded-DEFAULT border-2 border-outline-variant flex flex-col items-center text-center">
+<span class="material-symbols-outlined fill-icon text-secondary-container text-lg">bolt</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Power Cost</span>
+<span class="text-label-lg font-label-lg text-secondary" id="cost-power">-18%</span>
+</div>
+<!-- O2 Cost -->
+<div class="bg-surface-container-low p-2.5 rounded-DEFAULT border-2 border-outline-variant flex flex-col items-center text-center">
+<span class="material-symbols-outlined fill-icon text-tertiary-container text-lg">air</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Suit O2</span>
+<span class="text-label-lg font-label-lg text-tertiary" id="cost-o2">-5%</span>
+</div>
+<!-- Science XP Gain -->
+<div class="bg-surface-container-low p-2.5 rounded-DEFAULT border-2 border-primary-container flex flex-col items-center text-center shadow-[0_0_8px_rgba(0,229,255,0.2)]">
+<span class="material-symbols-outlined fill-icon text-primary-container text-lg">military_tech</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Science XP</span>
+<span class="text-label-lg font-label-lg text-primary-container" id="cost-xp">+250 XP</span>
+</div>
+</div>
+</div>
+<!-- NASA EDUCATIONAL STEM SCIENCE BOX -->
+<div class="bg-surface-container-low rounded-DEFAULT border-2 border-secondary-container p-4 relative shadow-md">
+<div class="flex items-center gap-2 mb-2 text-secondary font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined fill-icon text-secondary-container">school</span>
+<span>NASA Lunar Fact</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface">
+            Permanently Shadowed Regions (PSRs) at the lunar South Pole haven't seen sunlight for billions of years! Scientists believe water ice might be frozen inside.
+          </p>
+<div class="mt-2 flex items-center justify-between text-label-sm font-label-sm text-secondary-fixed">
+<span>NASA Artemis Science Team</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">verified</span>
+              STEM Verified
+            </span>
+</div>
+</div>
+<!-- ACTION BUTTONS: Big Tactile 3D Arcade Push Buttons -->
+<div class="flex flex-col sm:flex-row gap-3">
+<!-- Primary CTA Button (Solar Gold Extrusion leading to 13:00 Power Inspection) -->
+<button class="btn-arcade-gold flex-1 min-h-[58px] rounded-full text-on-secondary-fixed font-headline-sm text-headline-sm flex items-center justify-center gap-2 px-6 border-t-2 border-yellow-200" onclick="confirmMission()">
+<span>CONFIRM RESEARCH SITE &amp; DEPLOY ROVER</span>
+<span class="material-symbols-outlined font-black text-2xl">arrow_forward</span>
+</button>
+</div>
+<div class="flex justify-center">
+<button class="btn-arcade-outline px-6 py-2.5 rounded-full bg-surface-container border-2 border-outline-variant text-label-md font-label-md text-on-surface-variant hover:text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-base">undo</span>
+<span>RETURN TO BASE HQ</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Shared Component Specification) -->
+<!-- Context State Logic: Current page is "Lunar Surface Sortie" -> Active Tab is "Explore" -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md rounded-t-xl shadow-[0_-4px_20px_rgba(0,229,255,0.25)] border-t-2 border-outline-variant">
+<!-- Tab 1: Explore (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-transform duration-100" href="#explore">
+<span class="material-symbols-outlined fill-icon text-2xl">explore</span>
+<span class="text-label-md font-label-md font-extrabold">Explore</span>
+</a>
+<!-- Tab 2: Base HQ -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform duration-100" href="#base">
+<span class="material-symbols-outlined text-2xl">apartment</span>
+<span class="text-label-md font-label-md">Base HQ</span>
+</a>
+<!-- Tab 3: Rover -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform duration-100" href="#rover">
+<span class="material-symbols-outlined text-2xl">electric_bolt</span>
+<span class="text-label-md font-label-md">Rover</span>
+</a>
+<!-- Tab 4: Research -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform duration-100" href="#research">
+<span class="material-symbols-outlined text-2xl">science</span>
+<span class="text-label-md font-label-md">Research</span>
+</a>
+<!-- Tab 5: Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform duration-100" href="#comms">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+<span class="text-label-md font-label-md">Comms</span>
+</a>
+</nav>
+<!-- Lightweight Interactive Site Selector Script -->
+<script>
+    const sites = {
+      rim: {
+        title: "Nearby Crater Rim",
+        icon: "landscape",
+        desc: "Low Risk • Basic geological observations, basalt rock layers created by ancient lunar lava flows billions of years ago.",
+        power: "-5%",
+        o2: "-2%",
+        xp: "+90 XP",
+        risk: "Low Risk",
+        badgeColor: "bg-tertiary-container text-on-tertiary-container border-tertiary-container"
+      },
+      ridge: {
+        title: "Rock Formation Ridge",
+        icon: "terrain",
+        desc: "Moderate Risk • Collect breccia and anorthosite rock samples thrown out during meteorite impact events.",
+        power: "-10%",
+        o2: "-4%",
+        xp: "+160 XP",
+        risk: "Moderate Risk",
+        badgeColor: "bg-secondary-container text-on-secondary-container border-secondary-container"
+      },
+      shadow: {
+        title: "Permanently Shadowed Crater",
+        icon: "ac_unit",
+        desc: "High Risk / High Reward • Search for volatile deposits and trapped water ice in perpetual darkness (-240°C). Explore frigid shadowed crater floor, study potential signs of lunar water ice crystals without guaranteed discovery.",
+        power: "-18%",
+        o2: "-5%",
+        xp: "+250 XP",
+        risk: "High Risk / High Reward",
+        badgeColor: "bg-error-container text-error border-error"
+      },
+      flat: {
+        title: "Flat Surface Survey",
+        icon: "straighten",
+        desc: "Lowest Risk • Wide-angle regolith dust compaction survey across smooth terrain. Zero obstacle hazards.",
+        power: "-3%",
+        o2: "-1%",
+        xp: "+60 XP",
+        risk: "Lowest Risk",
+        badgeColor: "bg-surface-container-highest text-on-surface border-outline-variant"
+      }
+    };
+
+    function selectLocation(key) {
+      const data = sites[key];
+      if (!data) return;
+
+      // Update Text Content
+      document.getElementById('detail-title').innerText = data.title;
+      document.getElementById('detail-desc').innerText = `"${data.desc}"`;
+      document.getElementById('detail-icon').innerText = data.icon;
+      document.getElementById('cost-power').innerText = data.power;
+      document.getElementById('cost-o2').innerText = data.o2;
+      document.getElementById('cost-xp').innerText = data.xp;
+
+      // Highlight corresponding map button pins
+      document.querySelectorAll('.loc-pin').forEach(el => {
+        el.classList.remove('active-pin', 'scale-110');
+      });
+      const currentPin = document.getElementById(`node-${key}`);
+      if (currentPin) {
+        currentPin.classList.add('active-pin', 'scale-110');
+      }
+
+      // Highlight lower tab buttons
+      ['rim', 'ridge', 'shadow', 'flat'].forEach(tabKey => {
+        const tabEl = document.getElementById(`tab-${tabKey}`);
+        if (tabKey === key) {
+          tabEl.classList.remove('bg-surface-container', 'border-outline-variant');
+          tabEl.classList.add('bg-surface-container-high', 'border-primary-container', 'shadow-[0_0_10px_rgba(0,229,255,0.3)]');
+        } else {
+          tabEl.classList.add('bg-surface-container', 'border-outline-variant');
+          tabEl.classList.remove('bg-surface-container-high', 'border-primary-container', 'shadow-[0_0_10px_rgba(0,229,255,0.3)]');
+        }
+      });
+    }
+
+    function confirmMission() {
+      alert("🚀 Mission Confirmed! Rover-01 dispatched to destination. Advancing Sol timeline to 13:00 Power Inspection.");
+    }
+  </script>
+</body></html>
