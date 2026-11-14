@@ -490,13 +490,54 @@
       var k = /Full Mission/i.test(t) ? 'A' : /Safety Priority/i.test(t) ? 'B' : /Scientific Research/i.test(t) ? 'C' : null;
       if(k) cards[k] = h.closest('div.flex-col, div[class*="p-"]') || h.parentElement;
     });
-    function mark(){ Object.keys(cards).forEach(function(k){ if(cards[k]) cards[k].style.outline = (k === sel) ? '4px solid #00e5ff' : 'none'; }); }
-    mark();
-    J.bindText(root, /Select Full Report/i, function(){ sel = 'A'; mark(); J.toast('Full report selected (-12% Power).'); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }, 'button');
-    J.bindText(root, /Select Science Only/i, function(){ sel = 'C'; mark(); J.toast('Science report selected (-16% Power).'); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }, 'button');
-    Array.prototype.forEach.call(root.querySelectorAll('h4'), function(h){
-      if(/Safety Priority/i.test(h.textContent)){ h.style.cursor = 'pointer'; h.addEventListener('click', function(){ sel = 'B'; mark(); J.toast('Safety report selected (-4% Power).'); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }); }
+    // The three cards: the chosen one gets the "selected" look (ring, tick, READY TO SEND) and the others go back to "Select ...".
+    var INFO = {A:{lab:'Select Full Report', msg:'Full report selected (-12% Power).'},
+                B:{lab:'Select Safety Report', msg:'Safety report selected (-4% Power).'},
+                C:{lab:'Select Science Only', msg:'Science report selected (-16% Power).'}};
+    var BTN_ON  = 'mt-4 w-full py-2.5 rounded-DEFAULT bg-primary-container text-on-primary-container text-label-md font-label-md text-center font-extrabold shadow-[0_4px_0_#009bb0] flex items-center justify-center gap-1';
+    var BTN_OFF = 'mt-4 w-full py-2.5 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant hover:border-primary-container text-on-surface text-label-md font-label-md transition-all active:translate-y-1 shadow-[0_3px_0_#3b494c]';
+    var BADGE_ON = 'px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-primary-container/20 text-primary-container border border-primary-container/40';
+    var BADGE_OFF = 'px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface-variant border border-outline-variant';
+    function pieces(card){
+      var kids = Array.prototype.slice.call(card.children);
+      var body = kids.filter(function(e){ return e.tagName === 'DIV' && !/absolute/.test(e.className); })[0];
+      var head = body && body.firstElementChild;
+      return {head:head, badge: head && head.children[0], side: head && head.children[1], title: body && body.querySelector('h4'), desc: body && body.querySelector('p'), action: kids[kids.length - 1]};
+    }
+    Object.keys(cards).forEach(function(k){
+      var card = cards[k]; if(!card) return;
+      var p = pieces(card); if(!p.action) return;
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.setAttribute('data-report', k);
+      p.action.parentNode.replaceChild(btn, p.action);
+      btn.addEventListener('click', function(){ J.sfx.tap(); choose(k, false); });
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function(e){ if(e.target.closest('button')) return; if(sel !== k){ J.sfx.tap(); choose(k, false); } });
     });
+    function mark(){
+      Object.keys(cards).forEach(function(k){
+        var card = cards[k]; if(!card) return;
+        var on = (k === sel), p = pieces(card);
+        card.style.outline = 'none';
+        ['ring-2','ring-primary-container','border-primary-container','shadow-[0_0_24px_rgba(0,229,255,0.25)]'].forEach(function(c){ card.classList.toggle(c, on); });
+        card.classList.toggle('border-outline-variant', !on); card.classList.toggle('border-2', !on); card.classList.toggle('border-3', on);
+        if(p.badge){ p.badge.className = on ? BADGE_ON : BADGE_OFF; p.badge.textContent = 'Option ' + k + (on ? ' (Selected)' : ''); }
+        if(p.title){ p.title.classList.toggle('text-primary-container', on); p.title.classList.toggle('text-primary', !on); }
+        if(p.desc){ p.desc.classList.toggle('text-on-surface', on); p.desc.classList.toggle('text-on-surface-variant', !on); }
+        var b = card.querySelector('button[data-report]');
+        if(b){
+          b.className = on ? BTN_ON : BTN_OFF;
+          b.innerHTML = on ? '<span class="material-symbols-outlined text-[18px]">radio_button_checked</span><span>READY TO SEND</span>' : '';
+          if(!on) b.textContent = INFO[k].lab;
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        }
+      });
+    }
+    function choose(k, quiet){
+      sel = k; mark();
+      if(!quiet){ J.toast(INFO[k].msg); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }
+    }
+    mark();
     J.bindText(root, /TRANSMIT REPORT/i, async function(){
       if(busy) return; busy = true;
       var fx = {p:COST[sel].p}, extraHtml = '';
@@ -564,6 +605,12 @@
   J.screen('wA', 15, function(root){
     var g = ensureGame(); g.time = '14:30'; J.refreshHeader(false);
     J.setText(root, /Projected Outcome:.*$/, 'Projected Outcome:');
+    // The design shows Choice A as already selected, but nothing is chosen yet. Show all three as "not chosen" until the child picks one.
+    Array.prototype.forEach.call(root.querySelectorAll('#choiceGrid > *'), function(c){
+      Array.prototype.forEach.call(c.querySelectorAll('div'), function(d){ if(/SELECTED ACTION/i.test(d.textContent) && !d.querySelector('div') && !d.classList.contains('action-badge') && /absolute/.test(d.className)) d.remove(); });
+      c.classList.remove('border-3', 'border-primary-container', 'shadow-[0_0_20px_rgba(0,229,255,0.3)]');
+      c.classList.add('border-2', 'border-outline-variant');
+    });
     var choice = null, origSel = window.selectChoice;
     window.selectChoice = function(el, k){ choice = k; origSel.apply(this, arguments); J.coachSet('Nice! Now press <b>CONTINUE THE MISSION</b>.', /CONTINUE (THE )?MISSION/i, {scroll:true}); };
     J.bindText(root, /Inspect Sector/i, function(){ J.toast('Scan finished: everything is working.'); });
@@ -586,6 +633,18 @@
     J.setText(root, /\+?10 Resource Mgmt Points/, '+10 Power');
     if(!g.wbAnnounced){ g.wbAnnounced = true; J.apply({p:-15}); J.sfx.alarm(); J.toast('Power dropped by 15%!'); }
     Array.prototype.forEach.call(root.querySelectorAll('input[name="powerChoice"]'), function(r){ r.addEventListener('change', function(){ J.coachSet('Choice picked. Now press the big <b>RESTORE</b> button.', '#restoreBtn', {scroll:true}); }); });
+    // show a clear tick on the chosen plan (the design only had an empty circle)
+    var radios = root.querySelectorAll('input[name="powerChoice"]');
+    function paintTicks(){
+      Array.prototype.forEach.call(radios, function(r){
+        var lab = r.closest('label'), ind = lab && lab.querySelector('.w-6.h-6.rounded-full');
+        if(!ind) return;
+        ind.innerHTML = r.checked ? '<span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:\'FILL\' 1">check_circle</span>' : '';
+        ind.style.color = r.checked ? '#00e5ff' : ''; ind.style.borderColor = r.checked ? '#00e5ff' : '';
+      });
+    }
+    Array.prototype.forEach.call(radios, function(r){ r.addEventListener('change', paintTicks); });
+    paintTicks();
     var busy = false;
     var btn = root.querySelector('#restoreBtn');
     if(btn){
