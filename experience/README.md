@@ -1,7 +1,7 @@
 # A Day on the Moon: interactive learning experience (Stitch UI)
 
-An interactive learning experience built on the **Google Stitch designs** (`../stitch_moonbase_mission_game_ui`). Explore it by opening
-`game/index.html` (or `https://<user>.github.io/<repo>/game/` on GitHub Pages). No build is needed.
+An interactive learning experience built on the **Google Stitch designs** (`../stitch_moonbase_mission_game_ui` (the original Stitch export, kept for reference)). Explore it by opening
+`experience/index.html` (or `https://<user>.github.io/<repo>/experience/` on GitHub Pages). No build is needed.
 The original, simpler version is still at the repository root and is untouched.
 
 This is **not a game to win**: it is a guided, hands-on way to learn about life on the Moon. Every task is built around the
@@ -23,7 +23,7 @@ the weather branches, calculated endings, a certificate, and optional hands-on a
 | `js/minis.js` | The optional hands-on activities (rocks, power puzzle, shelter, antenna, breakfast, dress-up ...) |
 | `css/tailwind.css` | **Generated** static Tailwind build (no CDN needed) |
 | `css/fonts.css`, `assets/fonts/` | Self-hosted Outfit + Material Symbols |
-| `css/game.css`, `css/minis.css` | Modal/toast/button styles and scoped activity styles |
+| `css/experience.css`, `css/minis.css` | Modal/toast/button styles and scoped activity styles |
 
 ## Useful URLs
 - `?demo=1` skips straight to the Moon base (for judges and testing)
@@ -31,7 +31,7 @@ the weather branches, calculated endings, a certificate, and optional hands-on a
 
 ## Rebuilding (only if the Stitch export changes)
 ```bash
-cd game
+cd experience
 npm install
 npm run build            # regenerates js/screens-data.js, tailwind.config.js and css/tailwind.css
 node tools/fetch-fonts.js        # re-download the fonts (optional)
