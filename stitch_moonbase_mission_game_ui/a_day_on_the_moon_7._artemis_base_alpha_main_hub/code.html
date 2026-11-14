@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>A Day on the Moon — Artemis Base Alpha Hub</title>
+<!-- Fonts & Google Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e1e1f5",
+            "on-secondary-fixed": "#281900",
+            "inverse-on-surface": "#2e2f3f",
+            "tertiary-fixed-dim": "#00e475",
+            "primary-fixed": "#9cf0ff",
+            "on-error": "#690005",
+            "on-secondary-container": "#6a4800",
+            "primary-fixed-dim": "#00daf3",
+            "on-surface": "#e1e1f5",
+            "tertiary-fixed": "#62ff96",
+            "surface-container-low": "#191b29",
+            "surface-variant": "#323443",
+            "surface-tint": "#00daf3",
+            "on-tertiary-fixed-variant": "#005226",
+            "secondary-container": "#feb300",
+            "outline": "#849396",
+            "surface-container-lowest": "#0b0d1b",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#004f58",
+            "outline-variant": "#3b494c",
+            "on-primary-fixed": "#001f24",
+            "error-container": "#93000a",
+            "on-tertiary": "#003918",
+            "background": "#101221",
+            "tertiary": "#b1ffbf",
+            "surface-container-highest": "#323443",
+            "surface-bright": "#363848",
+            "on-surface-variant": "#bac9cc",
+            "secondary-fixed-dim": "#ffba38",
+            "surface-dim": "#101221",
+            "on-tertiary-fixed": "#00210b",
+            "error": "#ffb4ab",
+            "primary-container": "#00e5ff",
+            "primary": "#c3f5ff",
+            "surface": "#101221",
+            "on-primary-container": "#00626e",
+            "secondary": "#ffd799",
+            "on-secondary": "#432c00",
+            "inverse-primary": "#006875",
+            "surface-container-high": "#272938",
+            "on-background": "#e1e1f5",
+            "surface-container": "#1d1f2d",
+            "on-primary": "#00363d",
+            "secondary-fixed": "#ffdeac",
+            "on-secondary-fixed-variant": "#604100",
+            "on-tertiary-container": "#006731",
+            "tertiary-container": "#22ef7e"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-tablet": "1.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-2xl": "3rem",
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "gutter-tablet": "1.25rem",
+            "space-xl": "2rem",
+            "margin-desktop": "2rem"
+          },
+          "fontFamily": {
+            "label-md": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "body-md": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-md": ["Outfit"]
+          },
+          "fontSize": {
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800" }],
+            "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "800" }],
+            "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Material Symbols base styling */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    /* Tactile 3D Button Extrusions */
+    .btn-tactile-cyan {
+      box-shadow: 0 5px 0 #009bb0, 0 10px 18px rgba(0, 229, 255, 0.35);
+      transition: all 0.08s ease-in-out;
+    }
+    .btn-tactile-cyan:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #009bb0, 0 4px 8px rgba(0, 229, 255, 0.2);
+    }
+    
+    .btn-tactile-gold {
+      box-shadow: 0 5px 0 #c68400, 0 10px 18px rgba(254, 179, 0, 0.35);
+      transition: all 0.08s ease-in-out;
+    }
+    .btn-tactile-gold:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #c68400, 0 4px 8px rgba(254, 179, 0, 0.2);
+    }
+
+    /* Custom subtle pulsing radar animations */
+    @keyframes radarPing {
+      0% { transform: scale(0.9); opacity: 0.9; }
+      50% { transform: scale(1.15); opacity: 0.4; }
+      100% { transform: scale(0.9); opacity: 0.9; }
+    }
+    .animate-radar {
+      animation: radarPing 2.5s infinite ease-in-out;
+    }
+
+    /* Regolith grid starfield pattern */
+    .stars-bg {
+      background-image: 
+        radial-gradient(1px 1px at 25px 35px, #c3f5ff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 140px 80px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 280px 190px, #feb300, rgba(0,0,0,0)),
+        radial-gradient(1.2px 1.2px at 450px 70px, #62ff96, rgba(0,0,0,0));
+      background-repeat: repeat;
+      background-size: 500px 300px;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md overflow-x-hidden min-h-screen flex flex-col select-none antialiased">
+<!-- ========================================================================= -->
+<!-- TOP GLOBAL NAV BAR (Shared Component Anchor)                             -->
+<!-- ========================================================================= -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<!-- Brand / Title -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-extrabold shadow-[0_2px_8px_rgba(0,229,255,0.5)]">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<h1 class="text-headline-sm font-headline-sm font-extrabold text-primary-container dark:text-primary tracking-wider leading-none">
+          A Day on the Moon
+        </h1>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="bg-secondary-container/20 text-secondary-container px-2 py-0.5 rounded-full text-label-sm font-label-sm border border-secondary-container/40">
+            ARTEMIS BASE ALPHA
+          </span>
+<span class="hidden sm:inline text-on-surface-variant text-label-sm font-label-sm">
+            NASA Space Apps Challenge 2026
+          </span>
+</div>
+</div>
+</div>
+<!-- Persistent Telemetry Link Chips (Shared JSON Specs) -->
+<div class="hidden lg:flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high border-2 border-outline-variant">
+<span class="material-symbols-outlined text-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+<span class="text-primary-container dark:text-primary font-extrabold text-label-md font-label-md">Sol 04 • 10:30</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high border-2 border-tertiary-container/50">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">air</span>
+<span class="text-tertiary-container font-extrabold text-label-md font-label-md">O2: 98%</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high border-2 border-secondary-container/50">
+<span class="material-symbols-outlined text-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-secondary font-extrabold text-label-md font-label-md">Power: 85%</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high border-2 border-primary-container/50">
+<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="text-primary font-extrabold text-label-md font-label-md">Water: 92%</span>
+</div>
+</div>
+<!-- Trailing Actions (JSON Anchors) -->
+<div class="flex items-center gap-2">
+<span class="hidden md:inline-block px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-highest text-on-surface-variant font-bold border border-outline-variant">
+        SIMULATED MISSION
+      </span>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container-high text-primary-container hover:bg-surface-container border border-primary-container/40 active:translate-y-1 transition-transform text-label-md font-label-md">
+<span class="material-symbols-outlined text-base">pause</span>
+<span>Pause</span>
+</button>
+<button class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">volume_up</span>
+</button>
+<button class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+<!-- Cadet Profile Image Alt -->
+<div class="w-9 h-9 rounded-full border-2 border-secondary-container overflow-hidden bg-surface-bright flex items-center justify-center shadow-[0_0_8px_rgba(254,179,0,0.5)]">
+<span class="material-symbols-outlined text-secondary-container text-2xl" style="font-variation-settings: 'FILL' 1;">face_6</span>
+</div>
+</div>
+</header>
+<!-- Educational NASA Safety Disclaimer Stripe -->
+<aside class="fixed top-[58px] left-0 w-full z-40 bg-secondary-container/90 text-on-secondary-fixed py-1 px-4 text-center text-label-sm font-label-sm tracking-wider uppercase backdrop-blur-sm shadow-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm font-bold">info</span>
+<span>Simulated Gameplay Values — Not Real NASA Measurements • Team AstroPath Educational Cadet System</span>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN ISOMETRIC VIEWPORT & INTERACTION ARENA                              -->
+<!-- ========================================================================= -->
+<main class="relative flex-1 pt-24 pb-28 md:pb-24 px-3 md:px-6 w-full max-w-[1600px] mx-auto grid grid-cols-1 xl:grid-cols-12 gap-5 items-start">
+<!-- LEFT COLUMN: Daily Mission Schedule Drawer (Bento Hub Card) -->
+<section class="xl:col-span-3 w-full bg-surface-container/95 border-2 border-primary-container/40 rounded-DEFAULT p-4 shadow-[0_8px_24px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col gap-4">
+<!-- Commander Nova Dispatch Header -->
+<div class="flex items-center gap-3 bg-surface-container-low p-3 rounded-DEFAULT border border-outline-variant relative overflow-hidden">
+<div class="relative">
+<div class="w-14 h-14 rounded-full bg-gradient-to-tr from-secondary-container to-primary-container p-0.5 shadow-[0_0_12px_rgba(254,179,0,0.6)]">
+<div class="w-full h-full rounded-full bg-surface-container-lowest flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-3xl text-secondary-container" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+</div>
+<span class="absolute -bottom-1 -right-1 w-5 h-5 bg-tertiary-container rounded-full border-2 border-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-xs text-on-tertiary-container font-black">check</span>
+</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-secondary-container uppercase">Station Chief</span>
+<span class="text-label-sm font-label-sm text-tertiary-container font-bold">ONLINE</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary leading-tight">Commander Nova</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs mt-0.5 leading-snug">"Rise and shine, Cadet! Sol 04 protocols are initialized."</p>
+</div>
+</div>
+<!-- Schedule Tracker Header -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container">format_list_bulleted</span>
+            Sol 04 Routine
+          </span>
+<span class="text-label-md font-label-md px-2 py-0.5 bg-primary-container/10 text-primary-container border border-primary-container/30 rounded-full">
+            0 / 7 Completed
+          </span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-3.5 bg-surface-container-lowest rounded-full overflow-hidden border border-outline-variant p-0.5">
+<div class="h-full bg-gradient-to-r from-primary-container via-tertiary-container to-secondary-container rounded-full w-[14%] relative shadow-[0_0_8px_#00e5ff]"></div>
+</div>
+</div>
+<!-- Task Items List -->
+<div class="space-y-2.5 max-h-[360px] xl:max-h-[460px] overflow-y-auto pr-1">
+<!-- Task 1: Active -->
+<div class="bg-surface-container-high border-2 border-primary-container p-3 rounded-DEFAULT flex items-center gap-3 shadow-[0_0_12px_rgba(0,229,255,0.25)] relative">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm shrink-0">
+<span class="material-symbols-outlined text-base">medical_services</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-primary-container">08:00 • CURRENT</span>
+<span class="text-label-sm font-label-sm bg-tertiary-container/20 text-tertiary-container border border-tertiary-container/40 px-1.5 py-0.2 rounded">READY</span>
+</div>
+<p class="text-label-lg font-label-lg text-on-surface truncate">Morning Health Check</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs">Vitals, biometric calibration</p>
+</div>
+</div>
+<!-- Task 2: Upcoming -->
+<div class="bg-surface-container-low/70 border border-outline-variant p-2.5 rounded-DEFAULT flex items-center gap-3 opacity-80 hover:opacity-100 transition-opacity">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-sm shrink-0">
+<span class="material-symbols-outlined text-base">restaurant</span>
+</div>
+<div class="flex-1 min-w-0">
+<span class="text-label-sm font-label-sm text-on-surface-variant">09:00 • UPCOMING</span>
+<p class="text-label-md font-label-md text-on-surface truncate">Breakfast Time</p>
+</div>
+</div>
+<!-- Task 3: Upcoming -->
+<div class="bg-surface-container-low/70 border border-outline-variant p-2.5 rounded-DEFAULT flex items-center gap-3 opacity-75">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-sm shrink-0">
+<span class="material-symbols-outlined text-base">sports_motorsports</span>
+</div>
+<div class="flex-1 min-w-0">
+<span class="text-label-sm font-label-sm text-on-surface-variant">10:00 • UPCOMING</span>
+<p class="text-label-md font-label-md text-on-surface truncate">Suit Up Protocol</p>
+</div>
+</div>
+<!-- Task 4: Upcoming -->
+<div class="bg-surface-container-low/70 border border-outline-variant p-2.5 rounded-DEFAULT flex items-center gap-3 opacity-75">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-sm shrink-0">
+<span class="material-symbols-outlined text-base">explore</span>
+</div>
+<div class="flex-1 min-w-0">
+<span class="text-label-sm font-label-sm text-on-surface-variant">11:00 • UPCOMING</span>
+<p class="text-label-md font-label-md text-on-surface truncate">Lunar Exploration EVA</p>
+</div>
+</div>
+<!-- Task 5: Upcoming -->
+<div class="bg-surface-container-low/70 border border-outline-variant p-2.5 rounded-DEFAULT flex items-center gap-3 opacity-75">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-sm shrink-0">
+<span class="material-symbols-outlined text-base">solar_power</span>
+</div>
+<div class="flex-1 min-w-0">
+<span class="text-label-sm font-label-sm text-on-surface-variant">13:00 • UPCOMING</span>
+<p class="text-label-md font-label-md text-on-surface truncate">Power Array Inspection</p>
+</div>
+</div>
+<!-- Task 6: Upcoming -->
+<div class="bg-surface-container-low/70 border border-outline-variant p-2.5 rounded-DEFAULT flex items-center gap-3 opacity-75">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-sm shrink-0">
+<span class="material-symbols-outlined text-base">cell_tower</span>
+</div>
+<div class="flex-1 min-w-0">
+<span class="text-label-sm font-label-sm text-on-surface-variant">15:00 • UPCOMING</span>
+<p class="text-label-md font-label-md text-on-surface truncate">Direct Report to Earth</p>
+</div>
+</div>
+<!-- Task 7: Upcoming -->
+<div class="bg-surface-container-low/70 border border-outline-variant p-2.5 rounded-DEFAULT flex items-center gap-3 opacity-75">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-sm shrink-0">
+<span class="material-symbols-outlined text-base">bedtime</span>
+</div>
+<div class="flex-1 min-w-0">
+<span class="text-label-sm font-label-sm text-on-surface-variant">17:00 • UPCOMING</span>
+<p class="text-label-md font-label-md text-on-surface truncate">Return &amp; Airlock Rest</p>
+</div>
+</div>
+</div>
+<!-- Quick Action Button in Task Card -->
+<button class="w-full py-3 px-4 rounded-DEFAULT bg-primary-container text-on-primary-container font-headline-sm text-headline-sm font-extrabold flex items-center justify-center gap-2 btn-tactile-cyan">
+<span>BEGIN 08:00 ROUTINE</span>
+<span class="material-symbols-outlined font-black">arrow_forward</span>
+</button>
+</section>
+<!-- CENTER COLUMN: Interactive 2D Isometric Colony Stage & Building Pins -->
+<section class="xl:col-span-6 w-full flex flex-col gap-3">
+<!-- Stage Outer Frame -->
+<div class="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-surface-container-lowest rounded-lg border-2 border-primary-container/50 overflow-hidden shadow-[0_0_30px_rgba(0,229,255,0.2)] stars-bg">
+<!-- Background Isometric Lunar Canvas Map Graphic -->
+<img class="w-full h-full object-cover object-center select-none pointer-events-none" data-alt="A vibrant 2D isometric cartoon illustration of Artemis Base Alpha on a purple-tinted lunar regolith surface with glowing crystal clusters. Featuring a central golden-domed command center, a luminous cyan hydroponic biodome filled with space greens, modular tubular astronaut living quarters, hexagonal solar panel arrays, and parked robotic lunar rovers. Earth with glowing auroras shines in the starry sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSVvp-sl2gt80NOM29KiyRgYWPm_ScyzioHsw5BllXpbXANCSlSzRgpjQHaKKQpem6Tf5K7fMjyaX8rIyXd_6rlbPN3-jdYD1WODbmn1tBiyMpicxk0gNpkzlQUJFEUaC8Lo1F1ecshDoZZbbaF4SLOJhlzx1n_ua3obVDrvFZZyGdy4Nc2v4OP68zkryR5JXLY-ta2a0DN__x6OT27m3dDOGm0vMUSeDGjxHFGBxa"/>
+<!-- Ambient Vignette & Neon Edge Glow -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-surface-container-lowest/40 pointer-events-none"></div>
+<!-- Earth Indicator in Sky -->
+<div class="absolute top-4 left-4 flex items-center gap-2 bg-surface-container-low/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-outline-variant shadow-lg">
+<span class="w-3 h-3 rounded-full bg-primary-container animate-pulse shadow-[0_0_8px_#00e5ff]"></span>
+<span class="text-label-sm font-label-sm text-primary uppercase">Direct Earth Link: Active (384,400 km)</span>
+</div>
+<!-- ========================================================================= -->
+<!-- 7 CLICKABLE BUILDING PINS (Isometric Hotspots)                            -->
+<!-- ========================================================================= -->
+<!-- PIN 1: Command & Control Dome -->
+<button class="absolute top-[32%] left-[54%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer focus:outline-none transition-transform active:scale-95" id="pin-command" onclick="selectBuilding('command')">
+<div class="relative flex flex-col items-center">
+<!-- Pulsing Halo -->
+<span class="absolute -top-1 w-10 h-10 rounded-full bg-secondary-container/40 animate-radar"></span>
+<!-- Badge -->
+<div class="relative z-10 px-3 py-1 bg-surface-container-high/90 border-2 border-secondary-container rounded-full flex items-center gap-1.5 shadow-[0_4px_12px_rgba(254,179,0,0.5)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-container text-base" style="font-variation-settings: 'FILL' 1;">hub</span>
+<span class="text-label-sm font-label-sm text-secondary-fixed font-black">Base HQ</span>
+</div>
+<!-- Pointer Pin Arrow -->
+<div class="w-2 h-2 bg-secondary-container rotate-45 -mt-1 shadow-sm"></div>
+</div>
+</button>
+<!-- PIN 2: Living Quarters -->
+<button class="absolute top-[48%] left-[34%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer focus:outline-none transition-transform active:scale-95" id="pin-quarters" onclick="selectBuilding('quarters')">
+<div class="relative flex flex-col items-center">
+<div class="px-2.5 py-1 bg-surface-container-high/90 border-2 border-primary-container rounded-full flex items-center gap-1 shadow-[0_4px_10px_rgba(0,229,255,0.4)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">hotel</span>
+<span class="text-label-sm font-label-sm text-primary font-bold">Quarters</span>
+</div>
+<div class="w-2 h-2 bg-primary-container rotate-45 -mt-1"></div>
+</div>
+</button>
+<!-- PIN 3: Hydroponic Greenhouse -->
+<button class="absolute top-[62%] left-[84%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer focus:outline-none transition-transform active:scale-95" id="pin-greenhouse" onclick="selectBuilding('greenhouse')">
+<div class="relative flex flex-col items-center">
+<span class="absolute -top-1 w-10 h-10 rounded-full bg-tertiary-container/40 animate-radar"></span>
+<div class="relative z-10 px-3 py-1 bg-surface-container-high/90 border-2 border-tertiary-container rounded-full flex items-center gap-1.5 shadow-[0_4px_12px_rgba(34,239,126,0.5)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary-container text-base" style="font-variation-settings: 'FILL' 1;">potted_plant</span>
+<span class="text-label-sm font-label-sm text-tertiary-fixed font-black">Greenhouse</span>
+</div>
+<div class="w-2 h-2 bg-tertiary-container rotate-45 -mt-1"></div>
+</div>
+</button>
+<!-- PIN 4: Solar Power Array -->
+<button class="absolute top-[22%] left-[82%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer focus:outline-none transition-transform active:scale-95" id="pin-solar" onclick="selectBuilding('solar')">
+<div class="relative flex flex-col items-center">
+<div class="px-2.5 py-1 bg-surface-container-high/90 border-2 border-secondary-container rounded-full flex items-center gap-1 shadow-[0_4px_10px_rgba(254,179,0,0.4)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">solar_power</span>
+<span class="text-label-sm font-label-sm text-secondary font-bold">Solar Array</span>
+</div>
+<div class="w-2 h-2 bg-secondary-container rotate-45 -mt-1"></div>
+</div>
+</button>
+<!-- PIN 5: Research Laboratory -->
+<button class="absolute top-[24%] left-[38%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer focus:outline-none transition-transform active:scale-95" id="pin-lab" onclick="selectBuilding('lab')">
+<div class="relative flex flex-col items-center">
+<div class="px-2.5 py-1 bg-surface-container-high/90 border-2 border-primary-container rounded-full flex items-center gap-1 shadow-[0_4px_10px_rgba(0,229,255,0.4)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">science</span>
+<span class="text-label-sm font-label-sm text-primary font-bold">Research Lab</span>
+</div>
+<div class="w-2 h-2 bg-primary-container rotate-45 -mt-1"></div>
+</div>
+</button>
+<!-- PIN 6: Airlock & Suit Station -->
+<button class="absolute top-[72%] left-[24%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer focus:outline-none transition-transform active:scale-95" id="pin-airlock" onclick="selectBuilding('airlock')">
+<div class="relative flex flex-col items-center">
+<div class="px-2.5 py-1 bg-surface-container-high/90 border-2 border-primary-fixed-dim rounded-full flex items-center gap-1 shadow-[0_4px_10px_rgba(0,218,243,0.4)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">sensor_door</span>
+<span class="text-label-sm font-label-sm text-primary-fixed font-bold">Airlock Cave</span>
+</div>
+<div class="w-2 h-2 bg-primary-fixed-dim rotate-45 -mt-1"></div>
+</div>
+</button>
+<!-- PIN 7: Rover Parking Bay -->
+<button class="absolute top-[82%] left-[58%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer focus:outline-none transition-transform active:scale-95" id="pin-rover" onclick="selectBuilding('rover')">
+<div class="relative flex flex-col items-center">
+<span class="absolute -top-1 w-9 h-9 rounded-full bg-secondary-container/30 animate-radar"></span>
+<div class="relative z-10 px-2.5 py-1 bg-surface-container-high/90 border-2 border-secondary-container rounded-full flex items-center gap-1 shadow-[0_4px_10px_rgba(254,179,0,0.4)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">electric_bolt</span>
+<span class="text-label-sm font-label-sm text-secondary-fixed font-black">Rover-01</span>
+</div>
+<div class="w-2 h-2 bg-secondary-container rotate-45 -mt-1"></div>
+</div>
+</button>
+<!-- Stage Bottom HUD Control Bar overlay -->
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-auto">
+<div class="flex items-center gap-2 bg-surface-container-low/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-primary-container text-sm">touch_app</span>
+<span class="text-label-sm font-label-sm text-on-surface">Tap any building or rover pin to inspect modules</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface hover:text-primary active:scale-90">
+<span class="material-symbols-outlined text-sm">zoom_in</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface hover:text-primary active:scale-90">
+<span class="material-symbols-outlined text-sm">zoom_out</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface hover:text-primary active:scale-90">
+<span class="material-symbols-outlined text-sm">filter_center_focus</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Telemetry Micro-Cards underneath the isometric map -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+<div class="bg-surface-container/90 border border-outline-variant p-2.5 rounded-DEFAULT flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-DEFAULT bg-tertiary-container/20 text-tertiary-container flex items-center justify-center border border-tertiary-container/40">
+<span class="material-symbols-outlined text-xl">air</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">O2 GENERATOR</div>
+<div class="text-label-lg font-label-lg text-tertiary-container font-black">98.4% Normal</div>
+</div>
+</div>
+<div class="bg-surface-container/90 border border-outline-variant p-2.5 rounded-DEFAULT flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-DEFAULT bg-secondary-container/20 text-secondary-container flex items-center justify-center border border-secondary-container/40">
+<span class="material-symbols-outlined text-xl">solar_power</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">SOLAR HARVEST</div>
+<div class="text-label-lg font-label-lg text-secondary-container font-black">42.8 kWh</div>
+</div>
+</div>
+<div class="bg-surface-container/90 border border-outline-variant p-2.5 rounded-DEFAULT flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-DEFAULT bg-primary-container/20 text-primary-container flex items-center justify-center border border-primary-container/40">
+<span class="material-symbols-outlined text-xl">water_drop</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">WATER RECYCLE</div>
+<div class="text-label-lg font-label-lg text-primary-container font-black">92% In Loop</div>
+</div>
+</div>
+<div class="bg-surface-container/90 border border-outline-variant p-2.5 rounded-DEFAULT flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-DEFAULT bg-primary-fixed/20 text-primary-fixed flex items-center justify-center border border-primary-fixed/40">
+<span class="material-symbols-outlined text-xl">shield</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">RAD SHIELD</div>
+<div class="text-label-lg font-label-lg text-primary-fixed font-black">100% Secure</div>
+</div>
+</div>
+</div>
+</section>
+<!-- RIGHT COLUMN: Interactive Building Inspector Drawer (Bento Hub Card) -->
+<section class="xl:col-span-3 w-full bg-surface-container/95 border-2 border-secondary-container/40 rounded-DEFAULT p-4 shadow-[0_8px_24px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col gap-4">
+<!-- Panel Header -->
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container">domain_verification</span>
+<span class="text-label-lg font-label-lg text-on-surface">Base Telemetry Inspector</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant px-2 py-0.5 rounded bg-surface-container-high">
+          LIVE FEED
+        </span>
+</div>
+<!-- Dynamic Building Inspector Content Area -->
+<div class="bg-surface-container-low border-2 border-primary-container rounded-DEFAULT p-4 space-y-3.5 shadow-inner" id="inspector-card">
+<!-- Header Info -->
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-primary-container/20 border-2 border-primary-container flex items-center justify-center text-primary-container" id="inspect-icon-box">
+<span class="material-symbols-outlined text-3xl" id="inspect-icon" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-secondary-container uppercase" id="inspect-category">Command &amp; Operations</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-extrabold" id="inspect-title">Command &amp; Control Dome</h2>
+</div>
+</div>
+</div>
+<!-- Status Tag -->
+<div class="flex items-center justify-between p-2 rounded-DEFAULT bg-surface-container-high border border-outline-variant">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Operational Status:</span>
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-container/20 text-tertiary-container font-extrabold border border-tertiary-container/50 flex items-center gap-1" id="inspect-status">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-ping"></span>
+            Operational (100%)
+          </span>
+</div>
+<!-- Role & Science Fact -->
+<div>
+<h4 class="text-label-sm font-label-sm text-primary uppercase mb-1">Cadet Mission Role:</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant" id="inspect-desc">
+            Houses long-range communication lasers connecting Artemis Base Alpha to NASA Mission Control in Houston, Texas. High-gain parabolic antenna monitors orbital relays.
+          </p>
+</div>
+<!-- Modular Specifications Grid -->
+<div class="grid grid-cols-2 gap-2 text-center pt-1">
+<div class="bg-surface-container p-2 rounded-DEFAULT border border-outline-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Atmosphere</span>
+<span class="text-label-lg font-label-lg text-primary font-bold" id="inspect-stat-1">14.7 psi</span>
+</div>
+<div class="bg-surface-container p-2 rounded-DEFAULT border border-outline-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Temp</span>
+<span class="text-label-lg font-label-lg text-secondary-container font-bold" id="inspect-stat-2">21.5 °C</span>
+</div>
+</div>
+<!-- Primary Action Button for this Building -->
+<button class="w-full py-3 px-4 rounded-DEFAULT bg-secondary-container text-on-secondary-fixed font-headline-sm text-headline-sm font-black flex items-center justify-center gap-2 btn-tactile-gold mt-2" id="inspect-btn">
+<span class="material-symbols-outlined">input</span>
+<span id="inspect-btn-label">ENTER COMMAND DOME</span>
+</button>
+</div>
+<!-- Quick Astronaut Mascot Dispatch Tip -->
+<div class="bg-surface-container-high/70 border border-outline-variant p-3 rounded-DEFAULT flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary-container text-xl mt-0.5">lightbulb</span>
+<div>
+<span class="text-label-sm font-label-sm text-secondary-container uppercase">Science Cadet Note:</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-xs mt-0.5">
+            Lunar habitats use regolith layering on top of pressure hulls to protect astronauts from solar flares, micrometeorites, and extreme temperature fluctuations!
+          </p>
+</div>
+</div>
+<!-- Quick Switch Buildings Carousel Chips -->
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block mb-1.5 uppercase">Quick Access:</span>
+<div class="flex flex-wrap gap-1.5">
+<button class="px-2 py-1 bg-surface-container-high rounded-full text-label-sm font-label-sm text-primary hover:bg-surface-bright border border-outline-variant" onclick="selectBuilding('command')">HQ Dome</button>
+<button class="px-2 py-1 bg-surface-container-high rounded-full text-label-sm font-label-sm text-tertiary hover:bg-surface-bright border border-outline-variant" onclick="selectBuilding('greenhouse')">Greenhouse</button>
+<button class="px-2 py-1 bg-surface-container-high rounded-full text-label-sm font-label-sm text-secondary hover:bg-surface-bright border border-outline-variant" onclick="selectBuilding('rover')">Rover-01</button>
+<button class="px-2 py-1 bg-surface-container-high rounded-full text-label-sm font-label-sm text-primary-fixed hover:bg-surface-bright border border-outline-variant" onclick="selectBuilding('airlock')">Airlock</button>
+<button class="px-2 py-1 bg-surface-container-high rounded-full text-label-sm font-label-sm text-secondary-fixed hover:bg-surface-bright border border-outline-variant" onclick="selectBuilding('solar')">Solar Farm</button>
+<button class="px-2 py-1 bg-surface-container-high rounded-full text-label-sm font-label-sm text-primary-fixed-dim hover:bg-surface-bright border border-outline-variant" onclick="selectBuilding('lab')">Science Lab</button>
+</div>
+</div>
+</section>
+</main>
+<!-- ========================================================================= -->
+<!-- BOTTOM NAVIGATION BAR (Shared Component Anchor)                           -->
+<!-- ========================================================================= -->
+<!-- Contextual Lock: Active Tab = "Base HQ" as this screen is the Main Base Hub -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md rounded-t-xl border-t-2 border-outline-variant dark:border-outline-variant shadow-[0_-4px_20px_rgba(0,229,255,0.25)]">
+<!-- Item 1: Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:text-primary transition-colors active:translate-y-1" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="explore">explore</span>
+<span class="text-label-md font-label-md mt-0.5">Explore</span>
+</a>
+<!-- Item 2: Base HQ (CURRENT ACTIVE TARGET) -->
+<!-- Executing JSON: style_active_navigation: flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="apartment" style="font-variation-settings: 'FILL' 1;">apartment</span>
+<span class="text-label-md font-label-md mt-0.5">Base HQ</span>
+</a>
+<!-- Item 3: Rover -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:text-primary transition-colors active:translate-y-1" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="electric_bolt">electric_bolt</span>
+<span class="text-label-md font-label-md mt-0.5">Rover</span>
+</a>
+<!-- Item 4: Research -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:text-primary transition-colors active:translate-y-1" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="science">science</span>
+<span class="text-label-md font-label-md mt-0.5">Research</span>
+</a>
+<!-- Item 5: Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:text-primary transition-colors active:translate-y-1" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="support_agent">support_agent</span>
+<span class="text-label-md font-label-md mt-0.5">Comms</span>
+</a>
+</nav>
+<!-- ========================================================================= -->
+<!-- INLINE INTERACTION CONTROLLER (Vanilla JS)                                -->
+<!-- ========================================================================= -->
+<script>
+    // Building database representation matching the prompt requirements
+    const colonyData = {
+      command: {
+        title: "Command & Control Centre",
+        category: "Central Operations",
+        icon: "hub",
+        status: "Operational (100%)",
+        statusColor: "text-tertiary-container bg-tertiary-container/20 border-tertiary-container/50",
+        desc: "Observation dome with high-frequency lunar comms dish. Blinking blue telemetry maintains contact with the Lunar Gateway and Earth command.",
+        stat1: "14.7 psi",
+        stat2: "21.5 °C",
+        btnLabel: "ENTER BASE HQ",
+        theme: "gold"
+      },
+      quarters: {
+        title: "Astronaut Living Quarters",
+        category: "Crew Habitat",
+        icon: "hotel",
+        status: "Ready for Routine",
+        statusColor: "text-primary bg-primary-container/20 border-primary-container/50",
+        desc: "Pressurized habitat module featuring warm yellow ambient windows, private acoustic sleeping berths, exercise equipment, and dining spaces.",
+        stat1: "4 Bunks",
+        stat2: "O2: 99%",
+        btnLabel: "VISIT HABITAT",
+        theme: "cyan"
+      },
+      greenhouse: {
+        title: "Hydroponic Greenhouse",
+        category: "Life Support Bio-Dome",
+        icon: "potted_plant",
+        status: "Photosynthesis Optimal",
+        statusColor: "text-tertiary-container bg-tertiary-container/20 border-tertiary-container/50",
+        desc: "Translucent curved biodome sheltering lush space vegetables, radishes, and dwarf wheat under specialized neon LED growth strips.",
+        stat1: "+45 kg O2",
+        stat2: "Food: 95%",
+        btnLabel: "HARVEST CROPS",
+        theme: "green"
+      },
+      solar: {
+        title: "Solar Power Station",
+        category: "Energy Generation",
+        icon: "solar_power",
+        status: "Peak Sun Angle",
+        statusColor: "text-secondary-container bg-secondary-container/20 border-secondary-container/50",
+        desc: "Hexagonal photovoltaic panels actively aligned toward the sun, feeding dual hydrogen fuel cells and lithium storage banks.",
+        stat1: "42.8 kW",
+        stat2: "85% Stored",
+        btnLabel: "ALIGN ARRAYS",
+        theme: "gold"
+      },
+      lab: {
+        title: "Research Laboratory",
+        category: "Lunar Geology & Physics",
+        icon: "science",
+        status: "Analysis in Progress",
+        statusColor: "text-primary-container bg-primary-container/20 border-primary-container/50",
+        desc: "Equipped with isotope mass spectrometers and sample airlocks to test moon crystals, ice cores, and anorthosite rocks.",
+        stat1: "12 Samples",
+        stat2: "Cleanroom 5",
+        btnLabel: "ANALYZE SAMPLES",
+        theme: "cyan"
+      },
+      airlock: {
+        title: "Airlock & Spacesuit Station",
+        category: "EVA Departure Hub",
+        icon: "sensor_door",
+        status: "Pressurized & Locked",
+        statusColor: "text-primary-fixed bg-primary-fixed/20 border-primary-fixed/50",
+        desc: "Heavy reinforced circular pressure doors with automatic regolith vacuum brushes and suit recharging docks for outdoor exploration.",
+        stat1: "Decon: Ready",
+        stat2: "4 Suits Full",
+        btnLabel: "SUIT UP NOW",
+        theme: "cyan"
+      },
+      rover: {
+        title: "Lunar Rover Parking Pad",
+        category: "Robotics & Mobility",
+        icon: "electric_bolt",
+        status: "Rover-01 Docked (98%)",
+        statusColor: "text-tertiary-container bg-tertiary-container/20 border-tertiary-container/50",
+        desc: "Friendly robotic scout rover 'Rover-01' with interactive digital emote screen, robotic sampling arm, and all-terrain mesh wheels.",
+        stat1: "Range 15km",
+        stat2: "Battery 98%",
+        btnLabel: "DEPLOY ROVER-01",
+        theme: "gold"
+      }
+    };
+
+    function selectBuilding(key) {
+      const data = colonyData[key];
+      if (!data) return;
+
+      // Update Inspector card DOM
+      document.getElementById('inspect-title').textContent = data.title;
+      document.getElementById('inspect-category').textContent = data.category;
+      document.getElementById('inspect-icon').textContent = data.icon;
+      document.getElementById('inspect-desc').textContent = data.desc;
+      document.getElementById('inspect-stat-1').textContent = data.stat1;
+      document.getElementById('inspect-stat-2').textContent = data.stat2;
+      document.getElementById('inspect-btn-label').textContent = data.btnLabel;
+      
+      const statusEl = document.getElementById('inspect-status');
+      statusEl.className = `px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-extrabold border flex items-center gap-1 ${data.statusColor}`;
+      statusEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-current animate-ping"></span> ${data.status}`;
+
+      // Tactile button styling switch
+      const btn = document.getElementById('inspect-btn');
+      if (data.theme === 'cyan') {
+        btn.className = "w-full py-3 px-4 rounded-DEFAULT bg-primary-container text-on-primary-container font-headline-sm text-headline-sm font-black flex items-center justify-center gap-2 btn-tactile-cyan mt-2";
+      } else {
+        btn.className = "w-full py-3 px-4 rounded-DEFAULT bg-secondary-container text-on-secondary-fixed font-headline-sm text-headline-sm font-black flex items-center justify-center gap-2 btn-tactile-gold mt-2";
+      }
+    }
+  </script>
+</body></html>

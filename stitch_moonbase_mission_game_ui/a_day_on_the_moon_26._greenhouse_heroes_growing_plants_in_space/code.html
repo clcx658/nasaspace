@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Greenhouse Heroes! — A Day on the Moon</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Font: Outfit -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary": "#003918",
+            "outline-variant": "#3b494c",
+            "surface-container-highest": "#323443",
+            "secondary": "#ffd799",
+            "on-secondary-fixed": "#281900",
+            "outline": "#849396",
+            "error": "#ffb4ab",
+            "on-surface-variant": "#bac9cc",
+            "on-secondary-container": "#6a4800",
+            "on-primary-fixed-variant": "#004f58",
+            "primary-fixed-dim": "#00daf3",
+            "on-primary": "#00363d",
+            "inverse-primary": "#006875",
+            "primary": "#c3f5ff",
+            "primary-fixed": "#9cf0ff",
+            "tertiary-container": "#22ef7e",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#604100",
+            "surface-container-high": "#272938",
+            "surface-variant": "#323443",
+            "on-primary-fixed": "#001f24",
+            "surface-dim": "#101221",
+            "error-container": "#93000a",
+            "secondary-container": "#feb300",
+            "surface-container": "#1d1f2d",
+            "inverse-on-surface": "#2e2f3f",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#005226",
+            "on-tertiary-fixed": "#00210b",
+            "surface": "#101221",
+            "primary-container": "#00e5ff",
+            "tertiary-fixed-dim": "#00e475",
+            "background": "#101221",
+            "surface-container-low": "#191b29",
+            "surface-tint": "#00daf3",
+            "tertiary": "#b1ffbf",
+            "on-secondary": "#432c00",
+            "on-surface": "#e1e1f5",
+            "on-tertiary-container": "#006731",
+            "secondary-fixed-dim": "#ffba38",
+            "secondary-fixed": "#ffdeac",
+            "inverse-surface": "#e1e1f5",
+            "on-primary-container": "#00626e",
+            "surface-container-lowest": "#0b0d1b",
+            "surface-bright": "#363848",
+            "tertiary-fixed": "#62ff96",
+            "on-background": "#e1e1f5"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-desktop": "2rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "gutter-desktop": "1.5rem",
+            "margin-tablet": "1.5rem",
+            "space-xl": "2rem",
+            "space-2xl": "3rem",
+            "space-md": "1rem",
+            "gutter-tablet": "1.25rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Outfit"],
+            "body-md": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "headline-md": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "label-md": ["Outfit"],
+            "headline-sm": ["Outfit"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "800" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    /* Tactile Arcade Extrusions */
+    .btn-arcade-cyan {
+      box-shadow: 0 6px 0 #009bb0, 0 10px 20px rgba(0, 229, 255, 0.35);
+      transition: all 0.1s ease-in-out;
+    }
+    .btn-arcade-cyan:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #009bb0, 0 4px 10px rgba(0, 229, 255, 0.25);
+    }
+
+    .btn-arcade-gold {
+      box-shadow: 0 6px 0 #c68400, 0 10px 20px rgba(254, 179, 0, 0.35);
+      transition: all 0.1s ease-in-out;
+    }
+    .btn-arcade-gold:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #c68400, 0 4px 10px rgba(254, 179, 0, 0.25);
+    }
+
+    .btn-arcade-tertiary {
+      box-shadow: 0 6px 0 #009e4f, 0 10px 20px rgba(34, 239, 126, 0.3);
+      transition: all 0.1s ease-in-out;
+    }
+    .btn-arcade-tertiary:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #009e4f, 0 4px 10px rgba(34, 239, 126, 0.2);
+    }
+
+    /* Grow Light Glow animation */
+    @keyframes grow-pulse {
+      0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 18px rgba(226, 32, 230, 0.45)); }
+      50% { opacity: 1; filter: drop-shadow(0 0 28px rgba(226, 32, 230, 0.75)); }
+    }
+    .grow-light-glow {
+      animation: grow-pulse 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface min-h-screen selection:bg-primary-container selection:text-on-primary-container font-body-md antialiased pb-28 md:pb-16 overflow-x-hidden">
+<!-- TOP SHARED NAVBAR (TopNavBar Component from JSON) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container bg-surface-container flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.4)]">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<span class="text-headline-sm font-headline-sm font-extrabold text-primary-container dark:text-primary tracking-wider">A Day on the Moon</span>
+<div class="hidden sm:flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-tertiary-fixed-dim">NASA Space Apps Challenge 2026</span>
+<span class="text-label-sm font-label-sm text-outline">•</span>
+<span class="text-label-sm font-label-sm text-secondary">Greenhouse Harvest: Optimal</span>
+</div>
+</div>
+</div>
+<!-- HUD Telemetry Pill Nav -->
+<div class="hidden lg:flex items-center gap-3">
+<div class="px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant flex items-center gap-1.5 shadow-inner">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Sol 04 • 10:30</span>
+</div>
+<div class="px-3 py-1 rounded-full bg-surface-container-high border border-tertiary-container/40 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">air</span>
+<span class="text-label-md font-label-md text-tertiary-fixed">O2: 98%</span>
+</div>
+<div class="px-3 py-1 rounded-full bg-surface-container-high border border-secondary-container/40 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-label-md font-label-md text-secondary">Power: 85%</span>
+</div>
+<div class="px-3 py-1 rounded-full bg-surface-container-high border border-primary-container/40 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="text-label-md font-label-md text-primary">Water: 92%</span>
+</div>
+</div>
+<!-- Trailing Actions & Warning Pill -->
+<div class="flex items-center gap-2 sm:gap-3">
+<div class="hidden md:flex items-center px-2.5 py-1 rounded-full bg-error-container/40 border border-error/50">
+<span class="material-symbols-outlined text-error text-xs mr-1 animate-pulse" style="font-variation-settings: 'FILL' 1;">info</span>
+<span class="text-label-sm font-label-sm text-error">SIMULATED GAMEPLAY VALUES — NOT REAL NASA MEASUREMENTS</span>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-high hover:bg-surface-bright text-primary text-label-md font-label-md border border-outline-variant transition-transform active:translate-y-1">
+        Pause
+      </button>
+<button class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">volume_up</span>
+</button>
+<button class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</header>
+<!-- MAIN CANVAS CONTAINER -->
+<main class="mt-20 pt-4 px-4 max-w-7xl mx-auto space-y-6">
+<!-- Sub-header Breadcrumb & Quest Meta -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant flex-wrap">
+<span class="material-symbols-outlined text-primary-container text-sm">rocket_launch</span>
+<span class="text-label-sm font-label-sm tracking-wider uppercase text-outline">NASA Science Quests</span>
+<span class="text-outline">/</span>
+<span class="text-label-sm font-label-sm text-primary font-bold">Screen 26: Greenhouse Heroes! (Growing Plants in Space)</span>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary-container/15 border-2 border-tertiary-container/50 shadow-[0_0_12px_rgba(34,239,126,0.3)]">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-ping"></span>
+<span class="text-label-sm font-label-sm text-tertiary-fixed tracking-wide uppercase font-extrabold">
+          SCIENCE QUEST 4 OF 5 • ESTIMATED TIME: 3 MINS • STATUS: ACTIVE
+        </span>
+</div>
+</div>
+<!-- HERO BANNER: Commander Nova & Habitat Window -->
+<div class="relative overflow-hidden rounded-DEFAULT border-2 border-primary-container/40 bg-surface-container-low p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+<!-- Ambient Hydroponic LED Spectrum Backdrop Glow -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-[#e220e6]/20 rounded-full blur-3xl pointer-events-none grow-light-glow"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-primary-container/15 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row items-center gap-6">
+<!-- Cartoon Mascot Avatar -->
+<div class="relative flex-shrink-0">
+<div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-primary-container bg-surface-container-high p-1 shadow-[0_0_24px_rgba(0,229,255,0.6)] flex items-center justify-center">
+<img class="w-full h-full object-cover rounded-full" data-alt="A charming, child-friendly 3D cartoon astronaut mascot named Commander Nova wearing a crisp white lunar spacesuit with electric cyan glowing trim, a glass reflective bubble helmet revealing a smiling friendly cadet face, surrounded by floating green leaves and bright hydroponic glow lights in a high-tech lunar laboratory setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9j_0tg-jaSOCR2EhQBzJdPjfYIAh36N7Qg1xtwh_Ey7xD_FD_24iXr1S6uXezvBh8Pqw6yDI5UlNqC6RnDZakQaajC2yHTQPmlwEl5df92Ltkp_VFKXaob7IAc8b367swxQHFkUqbDVxxvnOz0gF2DE6U9OkwKqqbKICGnb4Zfw1E5svZjw92g7PpSfz3R1Q1GG_tXN6Lbvtb6MAKg_CrfBeu1sk3Gu6vijTk_Rll"/>
+</div>
+<span class="absolute -bottom-1 -right-1 bg-tertiary-container text-on-tertiary px-2 py-0.5 rounded-full text-label-sm font-label-sm shadow-md font-black">
+            NOVA
+          </span>
+</div>
+<!-- Dialogue Bubble -->
+<div class="flex-1 bg-surface/90 border-2 border-outline-variant/60 rounded-DEFAULT p-5 relative shadow-inner">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-md font-label-md text-secondary font-extrabold uppercase tracking-wider">Astro-Guide Transmission</span>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
+            "Welcome to our space greenhouse, Cadet! Growing plants away from Earth is challenging, but it can help future explorers learn how to produce fresh food during long missions. Let's inspect our hydroponic seed bays and unlock the secret of space farming!"
+          </p>
+</div>
+<!-- Mini Quick Status -->
+<div class="flex flex-row lg:flex-col gap-3 w-full lg:w-auto justify-around lg:justify-center border-t lg:border-t-0 lg:border-l-2 border-outline-variant/40 pt-4 lg:pt-0 lg:pl-6">
+<div class="text-center">
+<div class="text-label-sm font-label-sm text-outline">CHAMBER TEMP</div>
+<div class="text-headline-sm font-headline-sm text-primary font-black">22.5°C</div>
+</div>
+<div class="text-center">
+<div class="text-label-sm font-label-sm text-outline">HUMIDITY</div>
+<div class="text-headline-sm font-headline-sm text-tertiary-fixed font-black">68%</div>
+</div>
+<div class="text-center">
+<div class="text-label-sm font-label-sm text-outline">GRAVITY</div>
+<div class="text-headline-sm font-headline-sm text-secondary font-black">0.166 G</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 1. FOUR EDUCATIONAL SCIENCE MODULES (Bento Grid) -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-headline-md font-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-2xl" style="font-variation-settings: 'FILL' 1;">science</span>
+          Mission Knowledge Files
+        </h2>
+<span class="text-label-md font-label-md text-outline">Interactive NASA Dossier</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Module A -->
+<div class="bg-surface-container rounded-DEFAULT border-2 border-outline-variant hover:border-primary-container p-5 transition-all duration-200 flex flex-col justify-between group shadow-lg">
+<div>
+<div class="w-12 h-12 rounded-DEFAULT bg-primary-container/20 border border-primary-container flex items-center justify-center mb-4 text-primary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">light_mode</span>
+</div>
+<div class="text-label-sm font-label-sm text-primary uppercase font-extrabold mb-1">Module 01</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2 font-bold">Plants Need Right Conditions</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Controlled light spectrum, pure recirculated water, balanced mineral nutrients, and stable cabin air pressure keep roots happy in airtight lunar domes.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/50 flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-tertiary-fixed font-bold">SPECTRUM: TUNED</span>
+<span class="material-symbols-outlined text-tertiary-fixed text-sm">check_circle</span>
+</div>
+</div>
+<!-- Module B -->
+<div class="bg-surface-container rounded-DEFAULT border-2 border-outline-variant hover:border-secondary-container p-5 transition-all duration-200 flex flex-col justify-between group shadow-lg">
+<div>
+<div class="w-12 h-12 rounded-DEFAULT bg-secondary-container/20 border border-secondary-container flex items-center justify-center mb-4 text-secondary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">psychology_alt</span>
+</div>
+<div class="text-label-sm font-label-sm text-secondary uppercase font-extrabold mb-1">Module 02</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2 font-bold">Growing in Space (Veggie &amp; APH)</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              NASA's Veggie unit and the Advanced Plant Habitat (APH) on the ISS test how microgravity affects growth, clearing the path for permanent Moon farming.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/50 flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-secondary font-bold">TESTED ON ISS</span>
+<span class="material-symbols-outlined text-secondary text-sm">satellite_alt</span>
+</div>
+</div>
+<!-- Module C -->
+<div class="bg-surface-container rounded-DEFAULT border-2 border-outline-variant hover:border-tertiary-container p-5 transition-all duration-200 flex flex-col justify-between group shadow-lg">
+<div>
+<div class="w-12 h-12 rounded-DEFAULT bg-tertiary-container/20 border border-tertiary-container flex items-center justify-center mb-4 text-tertiary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">water_ph</span>
+</div>
+<div class="text-label-sm font-label-sm text-tertiary-container uppercase font-extrabold mb-1">Module 03</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2 font-bold">Water &amp; Nutrients: Hydroponics</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Without heavy soil, plants drink a dissolved mineral solution using absorbent capillary root pillows that hold liquids safely in low lunar gravity.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/50 flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-tertiary-fixed font-bold">ZERO SOIL NEEDED</span>
+<span class="material-symbols-outlined text-tertiary-fixed text-sm">water_drop</span>
+</div>
+</div>
+<!-- Module D -->
+<div class="bg-surface-container rounded-DEFAULT border-2 border-outline-variant hover:border-primary p-5 transition-all duration-200 flex flex-col justify-between group shadow-lg">
+<div>
+<div class="w-12 h-12 rounded-DEFAULT bg-primary/20 border border-primary flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">vital_signs</span>
+</div>
+<div class="text-label-sm font-label-sm text-primary uppercase font-extrabold mb-1">Module 04</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2 font-bold">Why Grow Plants in Deep Space?</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Fresh food provides crunchy vitamins (C, K, potassium), scrubs carbon dioxide, creates fresh oxygen, and boosts crew mood and psychological comfort!
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/50 flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-primary font-bold">CREW HAPPINESS</span>
+<span class="material-symbols-outlined text-primary text-sm">mood</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. INTERACTIVE GREENHOUSE PLANTING CHALLENGE -->
+<section class="bg-surface-container-high rounded-DEFAULT border-2 border-outline-variant p-6 lg:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+<!-- Glow ambient backdrop for growth chamber -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b-2 border-outline-variant pb-4">
+<div>
+<span class="text-label-sm font-label-sm text-primary font-black uppercase tracking-wider">LABORATORY EXPERIMENT</span>
+<h2 class="text-headline-md font-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">potted_plant</span>
+            Interactive Greenhouse Planting Challenge
+          </h2>
+</div>
+<div class="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-primary-container text-sm">lightbulb</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Perform Steps 1 to 4 to harvest space crops!</span>
+</div>
+</div>
+<!-- Main Interactive Workbench -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+<!-- Control Steps (Steps 1 to 4) -->
+<div class="lg:col-span-7 space-y-4">
+<!-- Step 1 -->
+<div class="p-4 rounded-DEFAULT bg-surface-container border-2 border-primary-container/80 flex items-center justify-between transition-all" id="step-card-1">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container font-black flex items-center justify-center text-label-lg font-label-lg">
+                1
+              </div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface font-bold">Select Plant Pillow Container</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Aerated root envelope with clay &amp; controlled wick</p>
+</div>
+</div>
+<button class="btn-arcade-cyan bg-primary-container text-on-primary-container px-4 py-2 rounded-full text-label-md font-label-md font-black flex items-center gap-1" id="btn-step-1" onclick="activateStep(1)">
+<span>ATTACH</span>
+<span class="material-symbols-outlined text-sm">done</span>
+</button>
+</div>
+<!-- Step 2 -->
+<div class="p-4 rounded-DEFAULT bg-surface-container border-2 border-outline-variant flex items-center justify-between transition-all opacity-80" id="step-card-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface font-black flex items-center justify-center text-label-lg font-label-lg" id="step-badge-2">
+                2
+              </div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface font-bold">Set LED Grow Spectrum</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Calibrate Red (660nm) &amp; Blue (450nm) lights</p>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full text-label-md font-label-md font-black flex items-center gap-1 cursor-pointer" id="btn-step-2" onclick="activateStep(2)">
+<span>CALIBRATE</span>
+<span class="material-symbols-outlined text-sm">tune</span>
+</button>
+</div>
+<!-- Step 3 -->
+<div class="p-4 rounded-DEFAULT bg-surface-container border-2 border-outline-variant flex items-center justify-between transition-all opacity-80" id="step-card-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface font-black flex items-center justify-center text-label-lg font-label-lg" id="step-badge-3">
+                3
+              </div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface font-bold">Inject Water &amp; Nutrients</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Deliver 50ml nitrogen-phosphorus solution via capillary syringe</p>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full text-label-md font-label-md font-black flex items-center gap-1 cursor-pointer" id="btn-step-3" onclick="activateStep(3)">
+<span>INJECT</span>
+<span class="material-symbols-outlined text-sm">water</span>
+</button>
+</div>
+<!-- Step 4 -->
+<div class="p-4 rounded-DEFAULT bg-surface-container border-2 border-outline-variant flex items-center justify-between transition-all opacity-80" id="step-card-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface font-black flex items-center justify-center text-label-lg font-label-lg" id="step-badge-4">
+                4
+              </div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface font-bold">Sprout Space Tomatoes &amp; Greens!</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Accelerate growth cycle in 1/6th gravity chamber</p>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full text-label-md font-label-md font-black flex items-center gap-1 cursor-pointer" id="btn-step-4" onclick="activateStep(4)">
+<span>HARVEST</span>
+<span class="material-symbols-outlined text-sm">agriculture</span>
+</button>
+</div>
+</div>
+<!-- Visual Chamber Feedback Canvas -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-DEFAULT border-3 border-outline-variant p-5 flex flex-col items-center justify-between min-h-[360px] relative overflow-hidden shadow-inner">
+<div class="w-full flex justify-between items-center z-10">
+<span class="text-label-sm font-label-sm text-outline flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+              LUNAR GROWTH BIO-CHAMBER 01
+            </span>
+<span class="text-label-md font-label-md text-tertiary-fixed font-black" id="growth-percentage">25% READY</span>
+</div>
+<!-- Dynamic Plant Chamber Graphic -->
+<div class="relative my-4 flex flex-col items-center justify-center w-full">
+<!-- Simulated LED Grow Light Overhead -->
+<div class="w-3/4 h-3 rounded-full bg-outline-variant shadow-md flex justify-around px-2 py-0.5 mb-6 transition-colors duration-500" id="led-overhead">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+</div>
+<!-- Plant Graphic Container -->
+<div class="w-40 h-40 rounded-DEFAULT bg-surface-container/60 border-2 border-outline-variant/60 flex flex-col items-center justify-center p-3 relative transition-all duration-500" id="plant-stage-visual">
+<div class="transform transition-transform duration-500 scale-100" id="plant-icon-box">
+<span class="material-symbols-outlined text-6xl text-primary-container" style="font-variation-settings: 'FILL' 1;">package_2</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-extrabold mt-2 text-center" id="plant-stage-title">
+                Plant Pillow Mounted
+              </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-center mt-3 max-w-xs" id="chamber-narrative">
+              Porous ceramic calcined clay envelope locked into hydro-tray. Ready for photon activation.
+            </p>
+</div>
+<!-- Before/After Growth Progress Bar -->
+<div class="w-full space-y-1.5 z-10">
+<div class="flex justify-between text-label-sm font-label-sm">
+<span class="text-outline">STAGE: SEED CONTAINER</span>
+<span class="text-tertiary-container font-extrabold" id="status-tag">HYDROPONIC SYSTEM ARMED</span>
+</div>
+<div class="w-full h-4 bg-surface-container-high rounded-full overflow-hidden p-0.5 border border-outline-variant">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container via-secondary-container to-tertiary-container w-1/4 transition-all duration-700" id="growth-progress-fill"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. KNOWLEDGE CHALLENGE & 4. SCIENCE ACCURACY CARD -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Interactive Quiz Section -->
+<div class="lg:col-span-7 bg-surface-container rounded-DEFAULT border-2 border-outline-variant p-6 space-y-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 border-2 border-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">quiz</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-secondary font-extrabold uppercase">Mission Quiz Challenge</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-bold">Why do NASA researchers grow plants in space habitats?</h3>
+</div>
+</div>
+<div class="space-y-3" id="quiz-options-container">
+<!-- Option A -->
+<button class="w-full p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-outline text-left flex items-center gap-3 transition-all active:translate-y-1" id="option-btn-A" onclick="handleQuizAnswer('A', false)">
+<span class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center text-label-md font-label-md font-extrabold">A</span>
+<span class="text-body-md font-body-md text-on-surface">To feed alien visitors visiting the lunar station</span>
+</button>
+<!-- Option B (Correct) -->
+<button class="w-full p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-outline text-left flex items-center gap-3 transition-all active:translate-y-1" id="option-btn-B" onclick="handleQuizAnswer('B', true)">
+<span class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center text-label-md font-label-md font-extrabold">B</span>
+<span class="text-body-md font-body-md text-on-surface font-semibold">To study plant biology and provide fresh nutritious food on long missions</span>
+</button>
+<!-- Option C -->
+<button class="w-full p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-outline text-left flex items-center gap-3 transition-all active:translate-y-1" id="option-btn-C" onclick="handleQuizAnswer('C', false)">
+<span class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center text-label-md font-label-md font-extrabold">C</span>
+<span class="text-body-md font-body-md text-on-surface">To replace heavy rocket fuel tanks with vegetable oil</span>
+</button>
+<!-- Option D -->
+<button class="w-full p-4 rounded-DEFAULT border-2 border-outline-variant hover:border-outline bg-surface-container-low text-left flex items-center gap-3 transition-all active:translate-y-1" id="option-btn-D" onclick="handleQuizAnswer('D', false)">
+<span class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center text-label-md font-label-md font-extrabold">D</span>
+<span class="text-body-md font-body-md text-on-surface">Because seeds do not like Earth soil anymore</span>
+</button>
+</div>
+<!-- Quiz Feedback Display -->
+<div class="hidden p-4 rounded-DEFAULT border-2 transition-all" id="quiz-feedback">
+<div class="flex items-center gap-2 font-bold mb-1" id="quiz-feedback-title"></div>
+<p class="text-body-sm font-body-sm" id="quiz-feedback-body"></p>
+</div>
+</div>
+<!-- 4. Science Accuracy & Fact Card -->
+<div class="lg:col-span-5 bg-gradient-to-br from-surface-container to-surface-container-low rounded-DEFAULT border-2 border-primary-container/40 p-6 flex flex-col justify-between space-y-4 shadow-xl">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2.5 py-1 rounded-full bg-primary-container/15 text-primary text-label-sm font-label-sm font-black border border-primary-container/40">
+              NASA SCIENCE FACT
+            </span>
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary font-bold mb-3">Space Salad On Orbit!</h3>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+            NASA's Veggie experiments aboard the ISS tested space salads like red romaine lettuce and zinnia flowers. ISS research helps us design future greenhouses on the Moon! Astronauts even tasted their fresh space-grown harvests with extra virgin olive oil and balsamic glaze!
+          </p>
+</div>
+<div class="bg-surface-container-lowest/80 rounded-DEFAULT p-4 border border-outline-variant/60 flex items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-tertiary-container/20 border-2 border-tertiary-container flex items-center justify-center text-tertiary-container flex-shrink-0">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">nutrition</span>
+</div>
+<div>
+<div class="text-label-md font-label-md text-tertiary-fixed font-black">NUTRIENT BONUS</div>
+<p class="text-body-sm font-body-sm text-on-surface">Fresh microgreens preserve light-sensitive vitamins that degrade in sealed ration bags over months in transit.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 5. REWARD & BADGE CARD & OFFICIAL NASA LINK -->
+<section class="bg-surface-container-low rounded-DEFAULT border-2 border-secondary-container/60 p-6 md:p-8 shadow-[0_8px_30px_rgba(254,179,0,0.15)] flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-5">
+<!-- Golden Sprout Emblem Badge -->
+<div class="relative">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-b from-secondary-container to-[#875b00] border-4 border-secondary p-1 flex items-center justify-center shadow-[0_0_25px_rgba(254,179,0,0.5)]">
+<span class="material-symbols-outlined text-5xl sm:text-6xl text-on-secondary-fixed" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<span class="absolute -top-1 -right-1 bg-tertiary-container text-on-tertiary px-2 py-0.5 rounded-full text-label-sm font-label-sm font-black shadow">
+            NEW!
+          </span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-secondary-fixed font-black uppercase tracking-wider">COLLECTIBLE BADGE UNLOCKED</span>
+<h3 class="text-headline-md font-headline-md text-on-surface font-extrabold">SPACE GREENHOUSE GARDENER</h3>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-xl">
+            You've demonstrated how astronauts manage aerated plant pillows, LED wavelengths, and capillary root feeding in lunar environments!
+          </p>
+</div>
+</div>
+<!-- NASA Resource Link Button -->
+<a class="btn-arcade-cyan inline-flex items-center gap-2 bg-primary-container text-on-primary-container px-6 py-4 rounded-full text-label-lg font-label-lg font-extrabold whitespace-nowrap text-center" href="https://www.nasa.gov/exploration-research-and-technology/growing-plants-in-space/" rel="noopener noreferrer" target="_blank">
+<span>Official NASA Space Crops &amp; Veggie Research</span>
+<span class="material-symbols-outlined text-xl">open_in_new</span>
+</a>
+</section>
+<!-- 6. ACTIONS (FOOTER CONTROLS) -->
+<div class="pt-4 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t-2 border-outline-variant/60">
+<button class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface border-2 border-outline-variant font-label-lg text-label-lg font-extrabold flex items-center justify-center gap-2 transition-transform active:translate-y-1">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+<span>RETURN TO SCIENCE QUEST HUB</span>
+</button>
+<button class="w-full sm:w-auto btn-arcade-gold px-8 py-4 rounded-full bg-secondary-container text-on-secondary font-label-lg text-label-lg font-black flex items-center justify-center gap-2">
+<span>NEXT QUEST: MOON RESOURCE EXPLORER!</span>
+<span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- BOTTOM SHARED NAVBAR (BottomNavBar Component from JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md rounded-t-xl shadow-[0_-4px_20px_rgba(0,229,255,0.25)] md:hidden">
+<!-- Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold" href="#">
+<span class="material-symbols-outlined text-xl">explore</span>
+<span class="text-label-sm font-label-sm">Explore</span>
+</a>
+<!-- Base HQ -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold" href="#">
+<span class="material-symbols-outlined text-xl">apartment</span>
+<span class="text-label-sm font-label-sm">Base HQ</span>
+</a>
+<!-- Rover -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold" href="#">
+<span class="material-symbols-outlined text-xl">electric_bolt</span>
+<span class="text-label-sm font-label-sm">Rover</span>
+</a>
+<!-- Research (ACTIVE: mapped to Science / Plant biology mission) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0]" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">science</span>
+<span class="text-label-sm font-label-sm">Research</span>
+</a>
+<!-- Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold" href="#">
+<span class="material-symbols-outlined text-xl">support_agent</span>
+<span class="text-label-sm font-label-sm">Comms</span>
+</a>
+</nav>
+<!-- INTERACTIVE LOGIC SCRIPT -->
+<script>
+    // State machine for greenhouse planting challenge
+    let currentStep = 1;
+
+    const stepConfigs = {
+      1: {
+        percent: '25%',
+        barWidth: 'w-1/4',
+        icon: 'package_2',
+        colorClass: 'text-primary-container',
+        title: 'Plant Pillow Mounted',
+        narrative: 'Porous ceramic calcined clay envelope locked into hydro-tray. Ready for photon activation.',
+        status: 'ENVELOPE MOUNTED',
+        ledLight: 'bg-outline-variant',
+        glow: false
+      },
+      2: {
+        percent: '50%',
+        barWidth: 'w-2/4',
+        icon: 'wb_iridescent',
+        colorClass: 'text-[#e220e6]',
+        title: 'LED Grow Spectrum Active',
+        narrative: 'Red and deep blue wavelengths pulsing at 300 µmol/m²/s to accelerate photosynthesis.',
+        status: 'SPECTRUM TUNED (RED/BLUE)',
+        ledLight: 'bg-[#e220e6] shadow-[0_0_15px_#e220e6]',
+        glow: true
+      },
+      3: {
+        percent: '75%',
+        barWidth: 'w-3/4',
+        icon: 'opacity',
+        colorClass: 'text-primary-fixed-dim',
+        title: 'Capillary Hydration Delivered',
+        narrative: '50ml nutrient elixir injected directly into the seed envelope! Water hugs roots in 1/6 gravity.',
+        status: 'NUTRIENTS & WATER BALANCED',
+        ledLight: 'bg-[#e220e6] shadow-[0_0_20px_#e220e6]',
+        glow: true
+      },
+      4: {
+        percent: '100%',
+        barWidth: 'w-full',
+        icon: 'yard',
+        colorClass: 'text-tertiary-container',
+        title: 'Space Tomatoes & Greens Sprouted!',
+        narrative: 'Success! Bountiful lunar microgreens and dwarf space tomatoes ready for crew nutrition!',
+        status: 'OPTIMAL HARVEST REACHED!',
+        ledLight: 'bg-tertiary-container shadow-[0_0_25px_#22ef7e]',
+        glow: true
+      }
+    };
+
+    function activateStep(stepNum) {
+      currentStep = stepNum;
+      const config = stepConfigs[stepNum];
+
+      // Update feedback elements
+      document.getElementById('growth-percentage').innerText = config.percent + ' READY';
+      
+      const bar = document.getElementById('growth-progress-fill');
+      bar.className = 'h-full rounded-full bg-gradient-to-r from-primary-container via-secondary-container to-tertiary-container transition-all duration-700 ' + config.barWidth;
+
+      const iconBox = document.getElementById('plant-icon-box');
+      iconBox.innerHTML = `<span class="material-symbols-outlined text-6xl ${config.colorClass}" style="font-variation-settings: 'FILL' 1;">${config.icon}</span>`;
+
+      document.getElementById('plant-stage-title').innerText = config.title;
+      document.getElementById('chamber-narrative').innerText = config.narrative;
+      document.getElementById('status-tag').innerText = config.status;
+
+      // Update overhead LED bar
+      const ledBar = document.getElementById('led-overhead');
+      ledBar.className = `w-3/4 h-3 rounded-full flex justify-around px-2 py-0.5 mb-6 transition-all duration-500 ${config.ledLight}`;
+
+      // Update interactive cards styling
+      for (let i = 1; i <= 4; i++) {
+        const card = document.getElementById(`step-card-${i}`);
+        const btn = document.getElementById(`btn-step-${i}`);
+        const badge = document.getElementById(`step-badge-${i}`);
+
+        if (i <= stepNum) {
+          card.classList.remove('opacity-80', 'border-outline-variant');
+          card.classList.add('border-primary-container/80');
+          if (btn) {
+            btn.className = 'btn-arcade-cyan bg-primary-container text-on-primary-container px-4 py-2 rounded-full text-label-md font-label-md font-black flex items-center gap-1';
+          }
+          if (badge) {
+            badge.className = 'w-10 h-10 rounded-full bg-primary-container text-on-primary-container font-black flex items-center justify-center text-label-lg font-label-lg';
+          }
+        }
+      }
+    }
+
+    // Quiz evaluation
+    function handleQuizAnswer(option, isCorrect) {
+      const feedbackBox = document.getElementById('quiz-feedback');
+      const feedbackTitle = document.getElementById('quiz-feedback-title');
+      const feedbackBody = document.getElementById('quiz-feedback-body');
+
+      feedbackBox.classList.remove('hidden');
+
+      // Reset options visual
+      ['A', 'B', 'C', 'D'].forEach(opt => {
+        const btn = document.getElementById(`option-btn-${opt}`);
+        btn.classList.remove('border-tertiary-container', 'bg-tertiary-container/10', 'border-error', 'bg-error/10');
+      });
+
+      const selectedBtn = document.getElementById(`option-btn-${option}`);
+
+      if (isCorrect) {
+        selectedBtn.classList.add('border-tertiary-container', 'bg-tertiary-container/15');
+        feedbackBox.className = 'p-4 rounded-DEFAULT border-2 border-tertiary-container bg-tertiary-container/10 text-on-surface';
+        feedbackTitle.innerHTML = '<span class="material-symbols-outlined text-tertiary-container">check_circle</span> Correct, Space Cadet!';
+        feedbackBody.innerText = 'NASA grows plants aboard spacecraft and lunar bases to provide fresh vitamins (A, C, K) that degrade in packaged meals, as well as to study cellular responses to microgravity and boost astronaut morale.';
+      } else {
+        selectedBtn.classList.add('border-error', 'bg-error/15');
+        feedbackBox.className = 'p-4 rounded-DEFAULT border-2 border-error bg-error/10 text-on-surface';
+        feedbackTitle.innerHTML = '<span class="material-symbols-outlined text-error">cancel</span> Not quite right!';
+        feedbackBody.innerText = 'Remember: while space is wild, plants are grown primarily for astronaut nutrition, psychological well-being, and scientific biology research!';
+      }
+    }
+  </script>
+</body></html>

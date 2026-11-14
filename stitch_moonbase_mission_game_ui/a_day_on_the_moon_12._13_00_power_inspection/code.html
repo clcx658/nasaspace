@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon — Screen 12: 13:00 Power Inspection</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e1e1f5",
+            "on-secondary-fixed": "#281900",
+            "inverse-on-surface": "#2e2f3f",
+            "tertiary-fixed-dim": "#00e475",
+            "primary-fixed": "#9cf0ff",
+            "on-error": "#690005",
+            "on-secondary-container": "#6a4800",
+            "primary-fixed-dim": "#00daf3",
+            "on-surface": "#e1e1f5",
+            "tertiary-fixed": "#62ff96",
+            "surface-container-low": "#191b29",
+            "surface-variant": "#323443",
+            "surface-tint": "#00daf3",
+            "on-tertiary-fixed-variant": "#005226",
+            "secondary-container": "#feb300",
+            "outline": "#849396",
+            "surface-container-lowest": "#0b0d1b",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#004f58",
+            "outline-variant": "#3b494c",
+            "on-primary-fixed": "#001f24",
+            "error-container": "#93000a",
+            "on-tertiary": "#003918",
+            "background": "#101221",
+            "tertiary": "#b1ffbf",
+            "surface-container-highest": "#323443",
+            "surface-bright": "#363848",
+            "on-surface-variant": "#bac9cc",
+            "secondary-fixed-dim": "#ffba38",
+            "surface-dim": "#101221",
+            "on-tertiary-fixed": "#00210b",
+            "error": "#ffb4ab",
+            "primary-container": "#00e5ff",
+            "primary": "#c3f5ff",
+            "surface": "#101221",
+            "on-primary-container": "#00626e",
+            "secondary": "#ffd799",
+            "on-secondary": "#432c00",
+            "inverse-primary": "#006875",
+            "surface-container-high": "#272938",
+            "on-background": "#e1e1f5",
+            "surface-container": "#1d1f2d",
+            "on-primary": "#00363d",
+            "secondary-fixed": "#ffdeac",
+            "on-secondary-fixed-variant": "#604100",
+            "on-tertiary-container": "#006731",
+            "tertiary-container": "#22ef7e"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "label-md": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "body-md": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-md": ["Outfit"]
+          },
+          "fontSize": {
+            "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800"}],
+            "label-lg": ["16px", {"lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+            "display-hero-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "800"}],
+            "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}],
+            "display-hero": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    /* Tactile Arcade Buttons Travel */
+    .btn-3d-gold {
+      background-color: #feb300;
+      box-shadow: 0 6px 0 #9a6500, 0 10px 20px rgba(254, 179, 0, 0.35);
+      transition: all 0.1s ease;
+    }
+    .btn-3d-gold:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #9a6500, 0 4px 10px rgba(254, 179, 0, 0.25);
+    }
+    
+    .btn-3d-cyan {
+      background-color: #00e5ff;
+      box-shadow: 0 6px 0 #008796, 0 10px 20px rgba(0, 229, 255, 0.35);
+      transition: all 0.1s ease;
+    }
+    .btn-3d-cyan:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #008796, 0 4px 10px rgba(0, 229, 255, 0.25);
+    }
+
+    .btn-3d-subtle {
+      background-color: #272938;
+      box-shadow: 0 4px 0 #14151e;
+      transition: all 0.1s ease;
+    }
+    .btn-3d-subtle:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #14151e;
+    }
+
+    /* Dust clearing simulation cell */
+    .hex-cell {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      transition: all 0.3s ease;
+    }
+
+    /* Animated star twinkles */
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.05); }
+    }
+    .glow-aura {
+      animation: pulse-glow 3s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TOP APP BAR (Shared Components JSON Anchor) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<!-- Brand / Title -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary-container flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.4)]">
+<span class="material-symbols-outlined text-primary-container text-2xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<span class="text-headline-sm font-headline-sm font-extrabold text-primary-container dark:text-primary tracking-wider block leading-tight">
+          A Day on the Moon
+        </span>
+<span class="text-label-sm font-label-sm text-secondary tracking-widest uppercase">NASA Space Apps 2026 • Team AstroPath</span>
+</div>
+</div>
+<!-- Navigation / Telemetry Links in Top Bar -->
+<div class="hidden md:flex items-center gap-4 bg-surface-container px-3 py-1.5 rounded-full border border-outline-variant">
+<span class="text-primary-container dark:text-primary font-extrabold border-b-2 border-primary-container pb-1 text-label-md font-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> Sol 04 • 10:30
+      </span>
+<span class="text-on-surface-variant dark:text-on-surface-variant font-bold text-label-md font-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-tertiary-container">air</span> O2: 98%
+      </span>
+<span class="text-on-surface-variant dark:text-on-surface-variant font-bold text-label-md font-label-md flex items-center gap-1 text-secondary-container">
+<span class="material-symbols-outlined text-sm">bolt</span> Power: 85%
+      </span>
+<span class="text-on-surface-variant dark:text-on-surface-variant font-bold text-label-md font-label-md flex items-center gap-1 text-primary-fixed">
+<span class="material-symbols-outlined text-sm">water_drop</span> Water: 92%
+      </span>
+</div>
+<!-- Trailing Actions & Mission Tag -->
+<div class="flex items-center gap-3">
+<div class="hidden lg:flex flex-col items-end">
+<span class="text-label-sm font-label-sm text-on-surface-variant">SIMULATED MISSION</span>
+<span class="text-label-md font-label-md text-secondary font-black">Artemis Base Alpha</span>
+</div>
+<button class="bg-surface-container-high hover:bg-surface-container border-2 border-outline-variant active:translate-y-1 transition-transform duration-100 text-on-surface font-label-md text-label-md px-3 py-1.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-base">pause</span>
+<span>Pause</span>
+</button>
+<button aria-label="Audio controls" class="w-9 h-9 rounded-full bg-surface-container-high hover:bg-surface-container border border-outline-variant flex items-center justify-center text-on-surface active:translate-y-1">
+<span class="material-symbols-outlined text-lg">volume_up</span>
+</button>
+<button aria-label="Settings" class="w-9 h-9 rounded-full bg-surface-container-high hover:bg-surface-container border border-outline-variant flex items-center justify-center text-on-surface active:translate-y-1">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+<!-- Cadet Profile Medallion -->
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">face_6</span>
+</div>
+</div>
+</header>
+<!-- SCREEN MAIN CONTENT AREA (Offset for fixed header and bottom nav) -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 pt-20 pb-28 md:pb-24 flex flex-col gap-6">
+<!-- Screen Sub-header: Breadcrumbs & Game Phase -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+<div class="flex items-center gap-2">
+<a class="btn-3d-subtle px-3 py-1.5 rounded-full flex items-center gap-1 text-on-surface-variant hover:text-on-surface text-label-md font-label-md border border-outline-variant" href="#base-hq">
+<span class="material-symbols-outlined text-base">arrow_back</span>
+<span>Base HQ</span>
+</a>
+<span class="text-outline-variant">•</span>
+<div class="bg-surface-container-high px-3 py-1 rounded-full border border-primary-container/40 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+<span class="text-label-md font-label-md text-secondary-container uppercase">Daily Task 5 of 7</span>
+</div>
+<span class="text-outline-variant hidden sm:inline">•</span>
+<span class="text-label-md font-label-md text-on-surface-variant hidden sm:inline">Screen 12: 13:00 Solar Array Maintenance</span>
+</div>
+<!-- Real NASA Measurement Disclaimer Pill -->
+<div class="bg-surface-container-lowest/80 border border-secondary-container/40 px-3 py-1 rounded-full flex items-center gap-1.5 text-label-sm font-label-sm text-secondary">
+<span class="material-symbols-outlined text-sm">science</span>
+<span>SIMULATED GAMEPLAY VALUES — NOT REAL NASA MEASUREMENTS</span>
+</div>
+</div>
+<!-- Live Telemetry Status Bar for Sol 04 • 13:00 Inspection -->
+<section class="bg-surface-container-low rounded-DEFAULT p-4 border-2 border-outline-variant/60 shadow-[0_4px_24px_rgba(0,0,0,0.5)] flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 border-2 border-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary-container text-2xl" style="font-variation-settings: 'FILL' 1;">solar_power</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Artemis Alpha Solar Farm</h2>
+<span class="bg-error-container text-on-error-container text-label-sm font-label-sm px-2 py-0.5 rounded-full uppercase tracking-wider">Dust Alert!</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Time: 13:00 Peak Solar Meridian • Solar Incident Angle: 42.4°</p>
+</div>
+</div>
+<!-- Live Meter Badges -->
+<div class="flex flex-wrap items-center gap-3">
+<!-- Power Badge -->
+<div class="flex items-center gap-2 bg-surface-container px-3 py-2 rounded-DEFAULT border-2 border-secondary-container/80 shadow-[0_0_12px_rgba(254,179,0,0.25)]">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<div>
+<div class="text-label-sm font-label-sm text-secondary-container">POWER OUTPUT</div>
+<div class="text-headline-sm font-headline-sm font-extrabold text-on-surface leading-none" id="power-val">72% <span class="text-error text-body-sm font-body-sm">(Dusty)</span></div>
+</div>
+</div>
+<!-- Base Power Demand -->
+<div class="bg-surface-container px-3 py-2 rounded-DEFAULT border border-outline-variant">
+<div class="text-label-sm font-label-sm text-on-surface-variant">BASE DEMAND</div>
+<div class="text-headline-sm font-headline-sm text-on-surface leading-none">14.2 <span class="text-body-sm text-outline">kW</span></div>
+</div>
+<!-- Current Solar Harvest -->
+<div class="bg-surface-container px-3 py-2 rounded-DEFAULT border border-outline-variant">
+<div class="text-label-sm font-label-sm text-on-surface-variant">HARVEST RATE</div>
+<div class="text-headline-sm font-headline-sm text-tertiary-fixed leading-none" id="harvest-val">25.6 <span class="text-body-sm text-outline">kW</span></div>
+</div>
+<!-- Battery Status -->
+<div class="bg-surface-container px-3 py-2 rounded-DEFAULT border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">battery_charging_80</span>
+<div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">BATTERY BANK</div>
+<div class="text-body-sm font-body-sm font-bold text-tertiary-fixed">85% Charging</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Commander Nova & Rover-01 Dialogue Box -->
+<div class="relative bg-surface-container-high/90 border-3 border-primary-container rounded-DEFAULT p-5 shadow-[0_8px_30px_rgba(0,229,255,0.2)]">
+<!-- Mascot Medallion floating on top border -->
+<div class="absolute -top-7 left-6 flex items-center gap-2">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest border-3 border-primary-container flex items-center justify-center shadow-[0_0_16px_rgba(0,229,255,0.5)]">
+<span class="material-symbols-outlined text-primary-container text-3xl" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="bg-primary-container text-on-primary-container font-extrabold text-label-md font-label-md px-3 py-1 rounded-full shadow-[0_2px_0_#008796]">
+          ROVER-01 &amp; COMMANDER NOVA
+        </div>
+</div>
+<div class="pt-3 sm:flex items-center justify-between gap-4">
+<div class="space-y-1">
+<p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
+<span class="text-primary-container font-extrabold">"Warning Cadet!</span> Electrostatic lunar dust has settled on our photovoltaic panels, blocking sunlight and reducing base power! Let's activate the <span class="text-secondary-container font-bold">electrostatic wiper tool</span> to clean the panels."
+          </p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+            Interactive mission: Touch or click the dusty hexagonal cells below to initiate charge-dissipation cleaning.
+          </p>
+</div>
+<div class="mt-4 sm:mt-0 flex-shrink-0 flex items-center gap-2">
+<button class="btn-3d-cyan px-4 py-2.5 rounded-full text-on-primary-container font-label-md text-label-md flex items-center gap-2 font-extrabold cursor-pointer" id="auto-clean-btn" onclick="cleanAllPanels()">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">cleaning_services</span>
+<span>AUTO-WIPE ALL</span>
+</button>
+</div>
+</div>
+</div>
+<!-- MAIN INTERACTIVE SECTION: Bento Grid of Solar Wings & Cleaning Bay -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- LEFT 8 COLS: 3 Hexagonal Solar Wings Bay -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Inspection Bay Card -->
+<div class="bg-surface-container-low rounded-DEFAULT border-2 border-outline-variant p-5 shadow-lg relative overflow-hidden">
+<div class="flex flex-wrap items-center justify-between gap-2 border-b border-outline-variant pb-4 mb-4">
+<div>
+<span class="text-label-sm font-label-sm text-primary-container uppercase tracking-wider">Tactile Telemetry Bay</span>
+<h3 class="text-headline-md font-headline-md text-on-surface">Photovoltaic Array Wings</h3>
+</div>
+<!-- Wiper Tool Status Mode -->
+<div class="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-full border border-primary-container/40">
+<span class="material-symbols-outlined text-primary-container animate-spin text-base">progress_activity</span>
+<span class="text-label-md font-label-md text-primary-fixed">Wiper Tool: Active &amp; Charged</span>
+</div>
+</div>
+<!-- 3 Panel Arrays (Alpha, Beta, Gamma) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- ARRAY ALPHA (Cleaned) -->
+<div class="bg-surface-container rounded-DEFAULT p-4 border-2 border-tertiary-container/80 flex flex-col justify-between shadow-[0_0_16px_rgba(34,239,126,0.15)]">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-label-md text-on-surface">ARRAY ALPHA</span>
+<span class="bg-tertiary-container/20 text-tertiary-fixed text-label-sm font-label-sm px-2 py-0.5 rounded-full font-bold">CLEANED ✓</span>
+</div>
+<!-- Hexagon visual cluster (simulated clean) -->
+<div class="py-4 flex justify-center">
+<div class="grid grid-cols-3 gap-1.5 p-2 bg-surface-container-lowest rounded-DEFAULT border border-tertiary-container/40">
+<div class="hex-cell w-9 h-9 bg-primary-container/90 flex items-center justify-center text-xs font-bold text-on-primary-container shadow-[0_0_8px_#00e5ff]">✓</div>
+<div class="hex-cell w-9 h-9 bg-primary-container/90 flex items-center justify-center text-xs font-bold text-on-primary-container shadow-[0_0_8px_#00e5ff]">✓</div>
+<div class="hex-cell w-9 h-9 bg-primary-container/90 flex items-center justify-center text-xs font-bold text-on-primary-container shadow-[0_0_8px_#00e5ff]">✓</div>
+<div class="hex-cell w-9 h-9 bg-primary-container/90 flex items-center justify-center text-xs font-bold text-on-primary-container shadow-[0_0_8px_#00e5ff]">✓</div>
+<div class="hex-cell w-9 h-9 bg-primary-container/90 flex items-center justify-center text-xs font-bold text-on-primary-container shadow-[0_0_8px_#00e5ff]">✓</div>
+<div class="hex-cell w-9 h-9 bg-primary-container/90 flex items-center justify-center text-xs font-bold text-on-primary-container shadow-[0_0_8px_#00e5ff]">✓</div>
+</div>
+</div>
+<div class="space-y-1.5 mt-2">
+<div class="flex justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Dust Coverage:</span>
+<span class="text-tertiary-fixed font-bold">0% (Clear)</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2.5 rounded-full overflow-hidden border border-outline-variant">
+<div class="bg-tertiary-container h-full w-[100%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface-variant">Output:</span>
+<span class="text-tertiary-container font-extrabold text-headline-sm">12.5 kW</span>
+</div>
+</div>
+<!-- ARRAY BETA (In Progress - Interactive Clickable Cells) -->
+<div class="bg-surface-container rounded-DEFAULT p-4 border-2 border-secondary-container flex flex-col justify-between shadow-[0_0_20px_rgba(254,179,0,0.25)] relative" id="array-beta-card">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-label-md text-on-surface">ARRAY BETA</span>
+<span class="bg-secondary-container/20 text-secondary-fixed text-label-sm font-label-sm px-2 py-0.5 rounded-full font-bold" id="beta-status-badge">IN PROGRESS...</span>
+</div>
+<!-- Hexagon visual cluster (Interactive dust clearing) -->
+<div class="py-4 flex flex-col items-center">
+<div class="text-label-sm font-label-sm text-secondary mb-2 animate-bounce flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">touch_app</span> Tap cells to wipe!
+                  </div>
+<div class="grid grid-cols-3 gap-1.5 p-2 bg-surface-container-lowest rounded-DEFAULT border-2 border-secondary-container/50">
+<button class="hex-cell w-9 h-9 bg-stone-700 hover:bg-stone-600 flex items-center justify-center text-xs font-bold text-amber-200 border border-amber-600 transition-all cursor-pointer" onclick="cleanCell(this)" title="Dusty Cell">✦</button>
+<button class="hex-cell w-9 h-9 bg-primary-container/90 flex items-center justify-center text-xs font-bold text-on-primary-container shadow-[0_0_8px_#00e5ff] cursor-pointer" onclick="cleanCell(this)">✓</button>
+<button class="hex-cell w-9 h-9 bg-stone-700 hover:bg-stone-600 flex items-center justify-center text-xs font-bold text-amber-200 border border-amber-600 transition-all cursor-pointer" onclick="cleanCell(this)" title="Dusty Cell">✦</button>
+<button class="hex-cell w-9 h-9 bg-stone-700 hover:bg-stone-600 flex items-center justify-center text-xs font-bold text-amber-200 border border-amber-600 transition-all cursor-pointer" onclick="cleanCell(this)" title="Dusty Cell">✦</button>
+<button class="hex-cell w-9 h-9 bg-primary-container/90 flex items-center justify-center text-xs font-bold text-on-primary-container shadow-[0_0_8px_#00e5ff] cursor-pointer" onclick="cleanCell(this)">✓</button>
+<button class="hex-cell w-9 h-9 bg-stone-700 hover:bg-stone-600 flex items-center justify-center text-xs font-bold text-amber-200 border border-amber-600 transition-all cursor-pointer" onclick="cleanCell(this)" title="Dusty Cell">✦</button>
+</div>
+</div>
+<div class="space-y-1.5 mt-2">
+<div class="flex justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Dust Coverage:</span>
+<span class="text-secondary-fixed font-bold" id="beta-coverage-text">15% Coverage</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2.5 rounded-full overflow-hidden border border-outline-variant">
+<div class="bg-secondary-container h-full w-[65%] rounded-full transition-all duration-300" id="beta-progress"></div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface-variant">Output:</span>
+<span class="text-secondary-container font-extrabold text-headline-sm" id="beta-output-val">8.9 kW</span>
+</div>
+</div>
+<!-- ARRAY GAMMA (Needs Maintenance) -->
+<div class="bg-surface-container rounded-DEFAULT p-4 border-2 border-outline-variant flex flex-col justify-between" id="array-gamma-card">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-label-md text-on-surface">ARRAY GAMMA</span>
+<span class="bg-outline-variant text-on-surface-variant text-label-sm font-label-sm px-2 py-0.5 rounded-full font-bold" id="gamma-status-badge">45% DUSTY</span>
+</div>
+<!-- Hexagon visual cluster (simulated dusty) -->
+<div class="py-4 flex justify-center">
+<div class="grid grid-cols-3 gap-1.5 p-2 bg-surface-container-lowest rounded-DEFAULT border border-outline-variant">
+<button class="hex-cell w-9 h-9 bg-stone-700 hover:bg-stone-600 flex items-center justify-center text-xs font-bold text-amber-200 border border-amber-600 transition-all cursor-pointer" onclick="cleanCell(this)" title="Click to clean">✦</button>
+<button class="hex-cell w-9 h-9 bg-stone-700 hover:bg-stone-600 flex items-center justify-center text-xs font-bold text-amber-200 border border-amber-600 transition-all cursor-pointer" onclick="cleanCell(this)" title="Click to clean">✦</button>
+<button class="hex-cell w-9 h-9 bg-stone-700 hover:bg-stone-600 flex items-center justify-center text-xs font-bold text-amber-200 border border-amber-600 transition-all cursor-pointer" onclick="cleanCell(this)" title="Click to clean">✦</button>
+<button class="hex-cell w-9 h-9 bg-stone-700 hover:bg-stone-600 flex items-center justify-center text-xs font-bold text-amber-200 border border-amber-600 transition-all cursor-pointer" onclick="cleanCell(this)" title="Click to clean">✦</button>
+<button class="hex-cell w-9 h-9 bg-stone-700 hover:bg-stone-600 flex items-center justify-center text-xs font-bold text-amber-200 border border-amber-600 transition-all cursor-pointer" onclick="cleanCell(this)" title="Click to clean">✦</button>
+<button class="hex-cell w-9 h-9 bg-primary-container/90 flex items-center justify-center text-xs font-bold text-on-primary-container shadow-[0_0_8px_#00e5ff] cursor-pointer" onclick="cleanCell(this)">✓</button>
+</div>
+</div>
+<div class="space-y-1.5 mt-2">
+<div class="flex justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Dust Coverage:</span>
+<span class="text-error font-bold" id="gamma-coverage-text">45% Coverage</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2.5 rounded-full overflow-hidden border border-outline-variant">
+<div class="bg-error h-full w-[40%] rounded-full transition-all duration-300" id="gamma-progress"></div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface-variant">Output:</span>
+<span class="text-error font-extrabold text-headline-sm" id="gamma-output-val">4.2 kW</span>
+</div>
+</div>
+</div>
+<!-- Visual Inspection Preview / Station Canvas View -->
+<div class="mt-6 p-4 rounded-DEFAULT bg-surface-container-lowest border-2 border-outline-variant/60 flex flex-col md:flex-row items-center gap-4">
+<div class="relative w-full md:w-48 h-32 rounded-DEFAULT overflow-hidden border-2 border-primary-container/50 flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A vivid 2D isometric video game art illustration of a futuristic lunar solar power farm with hexagonal crystalline solar panels glowing with electric cyan energy, situated on a purple-tinted lunar surface with astronauts in bubble helmets and a cute companion rover holding an electrostatic cleaning tool under a star-filled cosmos." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOBt3WdHlAqyfEe5erutBFEbUfpRjX8NvY3-8pOglhUf9l-qVxpql59EyJVAQFZhQ-w8qhpENldK_HmfMH-LV1k3kH5-HjFH8_cFsn7SUVTABg-8GAEcqjL5ANYthZ6M3DW5ti0WGrNLpcU1qzwChl4hRqpGCbQLOlcMavz8hkLRIuXpOa0ZwB6sOrc7qAf8XFGcaGdb-sIwpj0q32E3ERHDCHidkXi090aXzy_CFR"/>
+<div class="absolute bottom-1 left-1 bg-surface-container-lowest/80 text-primary-container text-label-sm font-label-sm px-1.5 py-0.5 rounded">
+                LIVE CAM 04
+              </div>
+</div>
+<div class="flex-1 space-y-1">
+<h4 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">sensors</span>
+                Electrostatic Wiper Technology
+              </h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
+                Rather than using precious lunar water, our high-voltage electron emitters produce an electrostatic charge wave that gently repels the charged basalt regolith particles away from the mirrors!
+              </p>
+</div>
+</div>
+</div>
+<!-- Before & After Comparison Gauge (Jump from 68% to 96%) -->
+<div class="bg-surface-container-low rounded-DEFAULT border-2 border-outline-variant p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container">query_stats</span>
+              Efficiency Boost Analytics
+            </h3>
+<span class="text-label-md font-label-md text-tertiary-fixed font-bold bg-tertiary-container/10 px-3 py-1 rounded-full border border-tertiary-container/30">
+              Potential Gain: +20% Base Power
+            </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Before Box -->
+<div class="bg-surface-container p-4 rounded-DEFAULT border border-outline-variant">
+<div class="flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant mb-1">
+<span>BEFORE CLEANING (DUSTY)</span>
+<span class="text-error font-bold">68% EFFICIENCY</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-4 rounded-full overflow-hidden p-0.5 border border-outline-variant">
+<div class="bg-gradient-to-r from-error to-secondary-container h-full rounded-full w-[68%]"></div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">Sunlight scattered by jagged silicate minerals.</p>
+</div>
+<!-- After Box -->
+<div class="bg-surface-container p-4 rounded-DEFAULT border-2 border-tertiary-container shadow-[0_0_16px_rgba(34,239,126,0.15)]">
+<div class="flex items-center justify-between text-label-sm font-label-sm text-tertiary-fixed mb-1">
+<span>AFTER WIPER ACTIVATION</span>
+<span class="text-tertiary-container font-extrabold text-label-lg">96% PEAK HARVEST</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-4 rounded-full overflow-hidden p-0.5 border border-tertiary-container/40">
+<div class="bg-gradient-to-r from-primary-container to-tertiary-container h-full rounded-full w-[96%]"></div>
+</div>
+<p class="text-body-sm font-body-sm text-tertiary-fixed mt-2">+28% Photon Absorption • Ready for Sol 04 Night Cycle</p>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT 4 COLS: Educational STEM Box & Action Launchers -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Educational STEM Science Box (Designed for ages 7-12) -->
+<div class="bg-gradient-to-b from-surface-container to-surface-container-low rounded-DEFAULT border-3 border-secondary-container p-5 shadow-[0_8px_24px_rgba(254,179,0,0.15)] relative">
+<!-- Science Badge -->
+<div class="flex items-center gap-2 mb-3">
+<span class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-black">
+<span class="material-symbols-outlined text-lg">lightbulb</span>
+</span>
+<span class="text-label-md font-label-md text-secondary-container uppercase tracking-wider font-extrabold">NASA Science Classroom</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2 font-extrabold">
+            Why Lunar Dust is a Big Deal!
+          </h3>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed mb-4">
+            Moon dust (called <span class="text-primary-container font-bold">regolith</span>) isn't like soft dirt on Earth. Because there is no wind or water erosion on the Moon, dust particles remain <strong class="text-secondary-container">as sharp as tiny shards of glass!</strong>
+</p>
+<div class="space-y-3 bg-surface-container-lowest/80 p-3.5 rounded-DEFAULT border border-outline-variant">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary-container text-lg mt-0.5">electric_bolt</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+<strong class="text-on-surface">Electrostatic Charge:</strong> Solar ultraviolet rays charge the dust, making it stick magnetically to spacesuits and solar mirrors.
+              </p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary-container text-lg mt-0.5">brightness_low</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+<strong class="text-on-surface">Power Blocker:</strong> Just a thin film of lunar dust can block up to 50% of our clean solar electricity!
+              </p>
+</div>
+</div>
+<!-- Kid-Friendly Fun Fact Chip -->
+<div class="mt-4 pt-3 border-t border-outline-variant/60 flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed text-2xl">school</span>
+<span class="text-label-sm font-label-sm text-tertiary-fixed">Did you know? Apollo astronauts reported that lunar dust smelled like spent gunpowder!</span>
+</div>
+</div>
+<!-- Task Checklist & Maintenance Confirmation -->
+<div class="bg-surface-container-low rounded-DEFAULT border-2 border-outline-variant p-5 flex flex-col gap-4 shadow-lg">
+<h4 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">checklist</span>
+            Task Completion Log
+          </h4>
+<div class="space-y-2.5">
+<label class="flex items-center gap-3 p-2.5 bg-surface-container rounded-DEFAULT border border-outline-variant cursor-pointer hover:border-primary-container transition-colors">
+<input checked="" class="w-6 h-6 rounded text-primary-container bg-surface-container-lowest border-2 border-primary-container focus:ring-0" disabled="" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface font-semibold">Inspect Panel Tilt &amp; Heading</span>
+</label>
+<label class="flex items-center gap-3 p-2.5 bg-surface-container rounded-DEFAULT border border-outline-variant cursor-pointer hover:border-primary-container transition-colors">
+<input checked="" class="w-6 h-6 rounded text-primary-container bg-surface-container-lowest border-2 border-primary-container focus:ring-0" id="check-beta" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface font-semibold">Clear Array Beta Silicates</span>
+</label>
+<label class="flex items-center gap-3 p-2.5 bg-surface-container rounded-DEFAULT border border-outline-variant cursor-pointer hover:border-primary-container transition-colors">
+<input class="w-6 h-6 rounded text-primary-container bg-surface-container-lowest border-2 border-outline-variant focus:ring-0" id="check-gamma" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface font-semibold">Dissipate Charge on Array Gamma</span>
+</label>
+</div>
+<!-- PRIMARY ACTION BUTTON: 3D Solar Gold Extruded Button -->
+<div class="pt-2 flex flex-col gap-3">
+<button class="w-full btn-3d-gold min-h-[58px] rounded-full text-on-secondary-fixed text-label-lg font-label-lg font-black uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer border-t-2 border-white/40" onclick="boostPower()">
+<span>CONFIRM POWER MAINTENANCE &amp; BOOST BASE POWER</span>
+<span class="material-symbols-outlined font-black text-xl">arrow_forward</span>
+</button>
+<!-- Secondary Action: Return to HQ -->
+<button class="w-full btn-3d-subtle min-h-[48px] rounded-full text-on-surface-variant hover:text-on-surface text-label-md font-label-md font-bold uppercase tracking-wider flex items-center justify-center gap-2 border border-outline-variant">
+<span class="material-symbols-outlined text-lg">apartment</span>
+<span>RETURN TO BASE HQ</span>
+</button>
+</div>
+<!-- Schedule Footer note -->
+<div class="text-center text-label-sm font-label-sm text-outline">
+            Next Mission Phase: <strong class="text-on-surface">15:00 Sol 04 Report to Earth</strong>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Shared Components JSON Anchor) -->
+<!-- Note: Active navigation is selected contextually. Since this is Solar Power Station Maintenance under Rover/Outpost tasks, 'Rover' or 'Base HQ' maps to destination. Based on schema: labels: ["Explore", "Base HQ", "Rover", "Research", "Comms"] -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md rounded-t-xl shadow-[0_-4px_20px_rgba(0,229,255,0.25)] border-t-2 border-outline-variant dark:border-outline-variant">
+<!-- Item 1: Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform duration-100" href="#explore">
+<span class="material-symbols-outlined text-2xl">explore</span>
+<span class="text-label-md font-label-md">Explore</span>
+</a>
+<!-- Item 2: Base HQ -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform duration-100" href="#base-hq">
+<span class="material-symbols-outlined text-2xl">apartment</span>
+<span class="text-label-md font-label-md">Base HQ</span>
+</a>
+<!-- Item 3: Rover (ACTIVE SELECTION FOR POWER STATION MAINTENANCE) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-transform duration-100" href="#rover">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">electric_bolt</span>
+<span class="text-label-md font-label-md font-black">Rover</span>
+</a>
+<!-- Item 4: Research -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform duration-100" href="#research">
+<span class="material-symbols-outlined text-2xl">science</span>
+<span class="text-label-md font-label-md">Research</span>
+</a>
+<!-- Item 5: Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container rounded-DEFAULT active:translate-y-1 transition-transform duration-100" href="#comms">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+<span class="text-label-md font-label-md">Comms</span>
+</a>
+</nav>
+<!-- Interactive Script for Dust Cleaning & Energy Telemetry Bump -->
+<script>
+    let cleanedCells = 0;
+    
+    function cleanCell(btn) {
+      if (btn.innerText === '✓') return;
+      
+      // Clean animation
+      btn.innerText = '✓';
+      btn.classList.remove('bg-stone-700', 'hover:bg-stone-600', 'text-amber-200', 'border-amber-600');
+      btn.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_8px_#00e5ff]');
+      
+      cleanedCells++;
+      
+      // Update values
+      const powerVal = document.getElementById('power-val');
+      const harvestVal = document.getElementById('harvest-val');
+      
+      if (cleanedCells >= 2) {
+        document.getElementById('beta-status-badge').innerText = 'CLEANED ✓';
+        document.getElementById('beta-status-badge').className = 'bg-tertiary-container/20 text-tertiary-fixed text-label-sm font-label-sm px-2 py-0.5 rounded-full font-bold';
+        document.getElementById('beta-coverage-text').innerText = '0% (Clear)';
+        document.getElementById('beta-coverage-text').className = 'text-tertiary-fixed font-bold';
+        document.getElementById('beta-progress').className = 'bg-tertiary-container h-full w-[100%] rounded-full transition-all duration-300';
+        document.getElementById('beta-output-val').innerText = '12.5 kW';
+        document.getElementById('beta-output-val').className = 'text-tertiary-container font-extrabold text-headline-sm';
+        document.getElementById('check-beta').checked = true;
+      }
+      
+      if (cleanedCells >= 5) {
+        document.getElementById('gamma-status-badge').innerText = 'OPTIMAL ✓';
+        document.getElementById('gamma-status-badge').className = 'bg-tertiary-container/20 text-tertiary-fixed text-label-sm font-label-sm px-2 py-0.5 rounded-full font-bold';
+        document.getElementById('gamma-coverage-text').innerText = '0% (Clear)';
+        document.getElementById('gamma-coverage-text').className = 'text-tertiary-fixed font-bold';
+        document.getElementById('gamma-progress').className = 'bg-tertiary-container h-full w-[100%] rounded-full transition-all duration-300';
+        document.getElementById('gamma-output-val').innerText = '12.5 kW';
+        document.getElementById('gamma-output-val').className = 'text-tertiary-container font-extrabold text-headline-sm';
+        document.getElementById('check-gamma').checked = true;
+        
+        powerVal.innerHTML = '96% <span class="text-tertiary-fixed text-body-sm font-body-sm">(OPTIMAL)</span>';
+        harvestVal.innerHTML = '37.5 <span class="text-body-sm text-outline">kW</span>';
+      } else {
+        powerVal.innerHTML = '84% <span class="text-secondary text-body-sm font-body-sm">(IMPROVED)</span>';
+        harvestVal.innerHTML = '31.2 <span class="text-body-sm text-outline">kW</span>';
+      }
+    }
+
+    function cleanAllPanels() {
+      const dustyButtons = document.querySelectorAll('.hex-cell');
+      dustyButtons.forEach(btn => {
+        btn.innerText = '✓';
+        btn.classList.remove('bg-stone-700', 'hover:bg-stone-600', 'text-amber-200', 'border-amber-600');
+        btn.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_8px_#00e5ff]');
+      });
+
+      document.getElementById('beta-status-badge').innerText = 'CLEANED ✓';
+      document.getElementById('beta-status-badge').className = 'bg-tertiary-container/20 text-tertiary-fixed text-label-sm font-label-sm px-2 py-0.5 rounded-full font-bold';
+      document.getElementById('beta-coverage-text').innerText = '0% (Clear)';
+      document.getElementById('beta-coverage-text').className = 'text-tertiary-fixed font-bold';
+      document.getElementById('beta-progress').className = 'bg-tertiary-container h-full w-[100%] rounded-full';
+      document.getElementById('beta-output-val').innerText = '12.5 kW';
+      document.getElementById('beta-output-val').className = 'text-tertiary-container font-extrabold text-headline-sm';
+
+      document.getElementById('gamma-status-badge').innerText = 'OPTIMAL ✓';
+      document.getElementById('gamma-status-badge').className = 'bg-tertiary-container/20 text-tertiary-fixed text-label-sm font-label-sm px-2 py-0.5 rounded-full font-bold';
+      document.getElementById('gamma-coverage-text').innerText = '0% (Clear)';
+      document.getElementById('gamma-coverage-text').className = 'text-tertiary-fixed font-bold';
+      document.getElementById('gamma-progress').className = 'bg-tertiary-container h-full w-[100%] rounded-full';
+      document.getElementById('gamma-output-val').innerText = '12.5 kW';
+      document.getElementById('gamma-output-val').className = 'text-tertiary-container font-extrabold text-headline-sm';
+
+      document.getElementById('check-beta').checked = true;
+      document.getElementById('check-gamma').checked = true;
+
+      document.getElementById('power-val').innerHTML = '96% <span class="text-tertiary-fixed text-body-sm font-body-sm">(OPTIMAL)</span>';
+      document.getElementById('harvest-val').innerHTML = '37.5 <span class="text-body-sm text-outline">kW</span>';
+    }
+
+    function boostPower() {
+      cleanAllPanels();
+      alert("✨ MISSION SUCCESS! Electrostatic cleaning sequence complete. Base Power boosted by +20%! Moving to 15:00 Sol 04 Report to Earth.");
+    }
+  </script>
+</body></html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon - Outstanding Moon Explorer</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Outfit -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-low": "#191b29",
+            "inverse-surface": "#e1e1f5",
+            "tertiary": "#b1ffbf",
+            "on-error-container": "#ffdad6",
+            "on-secondary": "#432c00",
+            "primary": "#c3f5ff",
+            "on-secondary-container": "#6a4800",
+            "on-tertiary": "#003918",
+            "on-surface": "#e1e1f5",
+            "primary-fixed": "#9cf0ff",
+            "on-secondary-fixed-variant": "#604100",
+            "background": "#101221",
+            "on-tertiary-fixed-variant": "#005226",
+            "on-primary-fixed": "#001f24",
+            "secondary-fixed-dim": "#ffba38",
+            "on-tertiary-container": "#006731",
+            "surface-container": "#1d1f2d",
+            "error": "#ffb4ab",
+            "surface-dim": "#101221",
+            "on-surface-variant": "#bac9cc",
+            "outline-variant": "#3b494c",
+            "error-container": "#93000a",
+            "on-primary-container": "#00626e",
+            "outline": "#849396",
+            "on-background": "#e1e1f5",
+            "primary-fixed-dim": "#00daf3",
+            "surface": "#101221",
+            "on-error": "#690005",
+            "tertiary-fixed": "#62ff96",
+            "surface-container-lowest": "#0b0d1b",
+            "tertiary-container": "#22ef7e",
+            "on-primary-fixed-variant": "#004f58",
+            "secondary": "#ffd799",
+            "surface-variant": "#323443",
+            "secondary-fixed": "#ffdeac",
+            "on-primary": "#00363d",
+            "surface-bright": "#363848",
+            "inverse-on-surface": "#2e2f3f",
+            "surface-container-high": "#272938",
+            "tertiary-fixed-dim": "#00e475",
+            "secondary-container": "#feb300",
+            "primary-container": "#00e5ff",
+            "surface-tint": "#00daf3",
+            "inverse-primary": "#006875",
+            "on-secondary-fixed": "#281900",
+            "surface-container-highest": "#323443",
+            "on-tertiary-fixed": "#00210b"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "space-2xl": "3rem",
+            "gutter-tablet": "1.25rem",
+            "gutter-desktop": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "margin": "1rem",
+            "margin-tablet": "1.5rem",
+            "gutter": "1rem",
+            "margin-desktop": "2rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "body-md": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "label-md": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "display-hero": ["Outfit"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "800" }],
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Custom star twinkling & arcade confetti keyframes */
+    @keyframes floatParticle {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(8deg); }
+    }
+    .animate-float {
+      animation: floatParticle 4s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 16px rgba(0, 229, 255, 0.45)); }
+      50% { opacity: 1; filter: drop-shadow(0 0 28px rgba(255, 179, 0, 0.7)); }
+    }
+    .animate-glow {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+    .holo-sheen {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(0,229,255,0.08) 50%, rgba(254,179,0,0.15) 100%);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased min-h-screen pb-32 pt-20 selection:bg-primary-container selection:text-on-primary-container relative overflow-x-hidden">
+<!-- ================= TOP HUD NAVBAR (Shared Component) ================= -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md border-b-2 border-outline-variant shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<!-- Brand Title & Mascot -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container bg-surface-container-high flex items-center justify-center shadow-[0_0_12px_rgba(0,229,255,0.4)]">
+<span class="material-symbols-outlined text-primary-container text-2xl">rocket_launch</span>
+</div>
+<div>
+<span class="text-headline-sm font-headline-sm font-extrabold text-primary-container tracking-wider block leading-none">A Day on the Moon</span>
+<span class="text-label-sm font-label-sm text-secondary-container tracking-widest uppercase">Team AstroPath • Space Apps 2026</span>
+</div>
+</div>
+<!-- Persistent Mission Status Telemetry Chips -->
+<div class="hidden lg:flex items-center gap-2">
+<div class="bg-surface-container px-3 py-1 rounded-full border-2 border-primary/40 flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-primary text-base">calendar_today</span>
+<span class="text-label-md font-label-md text-primary font-bold">Sol 04 • 10:30</span>
+</div>
+<div class="bg-surface-container px-3 py-1 rounded-full border-2 border-tertiary-container/60 flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-tertiary-container text-base">air</span>
+<span class="text-label-md font-label-md text-tertiary-container font-extrabold">O2: 98%</span>
+</div>
+<div class="bg-surface-container px-3 py-1 rounded-full border-2 border-secondary-container/60 flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-secondary-container text-base">bolt</span>
+<span class="text-label-md font-label-md text-secondary-container font-extrabold">Power: 85%</span>
+</div>
+<div class="bg-surface-container px-3 py-1 rounded-full border-2 border-primary-container/60 flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-base">water_drop</span>
+<span class="text-label-md font-label-md text-primary-container font-extrabold">Water: 92%</span>
+</div>
+<div class="bg-surface-container px-3 py-1 rounded-full border-2 border-tertiary/60 flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-base">shield</span>
+<span class="text-label-md font-label-md text-tertiary font-extrabold">Rad: 100% SAFE</span>
+</div>
+</div>
+<!-- Trailing Actions & Notification -->
+<div class="flex items-center gap-2 sm:gap-3">
+<span class="hidden sm:inline-block px-2.5 py-1 rounded bg-secondary-container/20 text-secondary-container border border-secondary-container/40 text-label-sm font-label-sm font-black tracking-wide">
+        SIMULATED MISSION
+      </span>
+<button class="bg-surface-container-high hover:bg-surface-variant text-on-surface p-2 rounded-full border border-outline-variant active:translate-y-1 transition-transform" title="Audio">
+<span class="material-symbols-outlined text-lg">volume_up</span>
+</button>
+<button class="bg-surface-container-high hover:bg-surface-variant text-on-surface p-2 rounded-full border border-outline-variant active:translate-y-1 transition-transform" title="Settings">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+<button class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-full font-label-md text-label-md font-extrabold shadow-[0_3px_0_#009bb0] active:translate-y-1 transition-transform flex items-center gap-1">
+<span class="material-symbols-outlined text-base">pause</span>
+<span>Pause</span>
+</button>
+</div>
+</header>
+<!-- Notice Bar -->
+<div class="w-full bg-surface-container-lowest/80 border-b border-outline-variant/40 py-1 px-4 text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant tracking-wider uppercase">
+      ⚡ SIMULATED GAMEPLAY VALUES — NOT REAL NASA MEASUREMENTS • ARTEMIS BASE ALPHA TRAINING SIMULATOR
+    </p>
+</div>
+<!-- ================= MAIN CANVAS STAGE ================= -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+<!-- Top Celebration Hero Banner -->
+<div class="relative overflow-hidden rounded-xl border-3 border-secondary-container bg-surface-container-low p-6 sm:p-8 shadow-[0_0_35px_rgba(254,179,0,0.3)] text-center">
+<!-- Ambient Sparkle Icons in Background -->
+<div class="absolute -top-4 -left-4 w-28 h-28 bg-secondary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-6 -right-6 w-36 h-36 bg-primary-container/15 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Ending S Tagline -->
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-container/20 border-2 border-secondary-container text-secondary-container font-label-lg text-label-lg shadow-sm mb-3">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span>ENDING S // TIER 1 HIGHEST HONOUR</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<h1 class="font-display-hero text-display-hero-mobile md:text-display-hero font-black text-transparent bg-clip-text bg-gradient-to-r from-secondary-container via-secondary to-primary-container tracking-tight drop-shadow-md">
+        OUTSTANDING MOON EXPLORER!
+      </h1>
+<!-- Score Capsule Pill -->
+<div class="mt-4 inline-flex items-center gap-3 bg-surface-container-highest px-6 py-2.5 rounded-full border-2 border-secondary-container shadow-[0_4px_0_#c68400]">
+<span class="material-symbols-outlined text-secondary-container text-2xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-extrabold tracking-wide">
+          FINAL SCORE: <span class="text-secondary-container font-black">49 / 50 POINTS</span>
+</span>
+<span class="bg-secondary-container text-on-secondary-container px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-black">
+          LEGENDARY TIER
+        </span>
+</div>
+</div>
+<!-- Bento Grid Section: Commander Nova & Lunar Celebration Scene -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+<!-- Left Column: Mission Artwork & Victory Diorama (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container rounded-DEFAULT border-2 border-outline-variant p-4 flex flex-col justify-between shadow-lg relative overflow-hidden group">
+<!-- Golden Star Confetti & Hologram Top Bar -->
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-2">
+<span class="flex h-3 w-3 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-secondary-container"></span>
+</span>
+<span class="text-label-md font-label-md text-secondary font-black uppercase tracking-wider">Artemis Alpha Outpost • Live Sol Celebrations</span>
+</div>
+<div class="flex items-center gap-1 text-secondary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">grade</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">grade</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">grade</span>
+</div>
+</div>
+<!-- Diorama Viewport / Image Container -->
+<div class="relative w-full aspect-video rounded-DEFAULT overflow-hidden border-2 border-primary-container/40 bg-surface-container-lowest flex items-center justify-center">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A playful and vibrant 2D isometric video game view of a triumphant lunar celebration at Artemis Base Alpha on the Moon. In the foreground, cute cartoon astronaut Commander Nova and the companion robot Rover-01 celebrate with raised hands amidst golden sparkling confetti and luminous blue ice crystals. In the background, the pressurized bio-dome, water extractors, and sleek lunar landers shine under the black cosmic sky with Earth radiant in the distance. Deep space navy background with neon cyan and warm gold highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANS4rRmWM-nCOEJuMQB4IHTZNze4Posi4vEnEkpxn86rT-bNUuJPpcD-wjFYppN9UYro3R1adJoNQErkrJNI91NMCONReOjgmznUltLxwOft-OKrtZPp-D8ayt7Uirenbpl-b7UHaXn_kcBJoCZ7NHT_rkyym2iUqdq77mTh-BR9lhw2HA_l5M4h0zjVY4DAPWffFwVHECedrQeubVz_mGOcJnlHQ-BKHs_NxjL6t-"/>
+<!-- Floating In-game Trophy Overlay Badge -->
+<div class="absolute bottom-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-2 rounded-DEFAULT border-2 border-secondary-container flex items-center gap-2.5 shadow-[0_0_15px_rgba(255,179,0,0.5)]">
+<div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary-container leading-tight">PERFECT MISSION RUN</p>
+<p class="text-label-md font-label-md text-on-surface font-extrabold leading-tight">Sol 04 Master Cadet</p>
+</div>
+</div>
+</div>
+<!-- Telemetry Highlights Grid inside Visual Frame -->
+<div class="grid grid-cols-3 gap-2 mt-4">
+<div class="bg-surface-container-low p-2.5 rounded-DEFAULT border border-outline-variant text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant font-bold">SOLAR EFFICIENCY</p>
+<p class="text-headline-sm font-headline-sm text-secondary-container font-black">99.4%</p>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-DEFAULT border border-outline-variant text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant font-bold">O2 LOOP INTEGRITY</p>
+<p class="text-headline-sm font-headline-sm text-tertiary-container font-black">98.0%</p>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-DEFAULT border border-outline-variant text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant font-bold">LUNAR LAB SAMPLES</p>
+<p class="text-headline-sm font-headline-sm text-primary-container font-black">15 / 15</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Commander Nova Dialogue & Feedback Card (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+<!-- Commander Nova Speech Card -->
+<div class="bg-surface-container-low rounded-DEFAULT border-3 border-primary-container p-6 relative shadow-[0_0_20px_rgba(0,229,255,0.25)] flex-1">
+<!-- Mascot Seal -->
+<div class="flex items-center gap-3 mb-4 border-b border-outline-variant pb-3">
+<div class="w-14 h-14 rounded-full border-3 border-secondary-container bg-surface-container flex items-center justify-center shadow-[0_0_12px_rgba(255,179,0,0.4)]">
+<span class="material-symbols-outlined text-secondary-container text-3xl">face_6</span>
+</div>
+<div>
+<span class="bg-primary-container/20 text-primary-container px-2 py-0.5 rounded text-label-sm font-label-sm font-extrabold uppercase">Mission Debriefing</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-extrabold">Commander Nova</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Artemis Base Alpha Station Chief</p>
+</div>
+</div>
+<!-- Speech Content -->
+<div class="space-y-3">
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed">
+              “Phenomenal work, Cadet! Your excellent scientific thinking, responsible resource management and safe decisions made this an outstanding lunar mission. You've shown the qualities of a great space explorer!”
+            </p>
+<div class="bg-surface-container p-3 rounded-DEFAULT border border-primary-container/30 space-y-1.5">
+<div class="flex items-center gap-2 text-primary-container">
+<span class="material-symbols-outlined text-base">verified</span>
+<span class="text-label-md font-label-md font-extrabold">Mission Log Evaluation</span>
+</div>
+<ul class="text-body-sm font-body-sm text-on-surface-variant space-y-1">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-sm">check_circle</span>
+<span>Flawless ECLSS Life-Support Recycling response.</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-sm">check_circle</span>
+<span>Cleaned regolith dust from Solar Array Array 4.</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-sm">check_circle</span>
+<span>Safely guided Rover-01 back during micrometeoroid alert.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Mission Rank Highlights Card -->
+<div class="bg-surface-container-high rounded-DEFAULT border-2 border-outline-variant p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 border-2 border-secondary-container flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">EXPLORER ACCREDITATION</p>
+<p class="text-headline-sm font-headline-sm text-on-surface font-extrabold">Grade: S+ (Gold Star)</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm font-black">
+            TOP 1% CADETS
+          </span>
+</div>
+</div>
+</div>
+<!-- ================= SIMULATED EDUCATIONAL GAME CERTIFICATE ================= -->
+<section class="mt-10">
+<div class="text-center mb-4">
+<span class="text-label-md font-label-md text-primary-container font-black tracking-widest uppercase">Official Cadet Credential</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-black">Simulated Educational Achievement</h2>
+</div>
+<!-- The Certificate Plaque Container -->
+<div class="relative mx-auto max-w-4xl rounded-2xl p-2 sm:p-4 bg-gradient-to-b from-secondary-container via-outline-variant to-secondary-container shadow-[0_10px_40px_rgba(0,0,0,0.8)]">
+<!-- Inner Certificate Sheet with Holographic Texture & Decorative Border -->
+<div class="relative rounded-xl bg-surface-container-lowest border-4 border-secondary-container/80 p-6 sm:p-10 holo-sheen overflow-hidden shadow-inner">
+<!-- Corner Flourishes / Rosettes -->
+<div class="absolute top-2 left-2 text-secondary-container opacity-70">
+<span class="material-symbols-outlined text-2xl">star</span>
+</div>
+<div class="absolute top-2 right-2 text-secondary-container opacity-70">
+<span class="material-symbols-outlined text-2xl">star</span>
+</div>
+<div class="absolute bottom-2 left-2 text-secondary-container opacity-70">
+<span class="material-symbols-outlined text-2xl">star</span>
+</div>
+<div class="absolute bottom-2 right-2 text-secondary-container opacity-70">
+<span class="material-symbols-outlined text-2xl">star</span>
+</div>
+<!-- Top Certificate Header -->
+<div class="text-center space-y-1 mb-6">
+<div class="inline-block px-3 py-0.5 rounded bg-surface-container-high border border-outline-variant text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest font-black">
+              SIMULATED EDUCATIONAL GAME CERTIFICATE
+            </div>
+<h3 class="font-headline-md sm:font-headline-lg text-headline-md sm:text-headline-lg text-secondary-container font-extrabold tracking-wide uppercase pt-1">
+              A Day on the Moon
+            </h3>
+<p class="text-label-md font-label-md text-primary font-bold">
+              Team AstroPath • NASA Space Apps Challenge 2026
+            </p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">
+              Junior Astronaut Mission Trainer (Ages 7–12)
+            </p>
+</div>
+<!-- Certificate Recipient Body -->
+<div class="text-center space-y-4 my-6">
+<p class="font-body-sm text-body-sm text-on-surface-variant tracking-wider uppercase">This is proudly presented to:</p>
+<div class="inline-block border-b-2 border-secondary-container pb-1 px-8">
+<h4 class="font-headline-lg text-headline-lg text-primary-container font-black tracking-wide">
+                Cadet Explorer Nova-Lead
+              </h4>
+</div>
+<div class="pt-2">
+<span class="px-4 py-1.5 rounded-full bg-secondary-container/20 border-2 border-secondary-container text-secondary-container text-label-lg font-label-lg font-black tracking-wider uppercase inline-block">
+                OUTSTANDING MOON EXPLORER — LEGENDARY CADET
+              </span>
+</div>
+<p class="font-headline-sm text-headline-sm text-tertiary-container font-extrabold">
+              Final Score: 49 / 50 Points • 98% Mission Excellence
+            </p>
+<p class="max-w-2xl mx-auto font-body-md text-body-md text-on-surface leading-relaxed px-4">
+              “Recognized for flawless ECLSS safety protocols, proactive solar maintenance, and exemplary lunar surface exploration during Sol 04 simulation at Artemis Base Alpha.”
+            </p>
+</div>
+<!-- Artemis Alpha Seal & Official Signatures Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center pt-6 border-t-2 border-outline-variant/60 mt-8">
+<!-- Signature 1: Commander Nova -->
+<div class="text-center space-y-1">
+<div class="font-headline-sm text-headline-sm text-secondary italic font-extrabold tracking-wider">
+                Commander Nova
+              </div>
+<div class="w-40 h-0.5 bg-outline-variant mx-auto"></div>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-extrabold">Commander Nova, Station Chief</p>
+</div>
+<!-- Artemis Base Alpha Stamp / Seal -->
+<div class="flex flex-col items-center justify-center">
+<div class="w-20 h-20 rounded-full border-4 border-dashed border-secondary-container bg-surface-container flex flex-col items-center justify-center p-2 text-center shadow-[0_0_20px_rgba(254,179,0,0.4)]">
+<span class="material-symbols-outlined text-secondary-container text-2xl">verified_user</span>
+<span class="text-[9px] font-extrabold text-secondary tracking-tighter uppercase leading-none mt-1">ARTEMIS ALPHA SEAL</span>
+</div>
+</div>
+<!-- Signature 2: Rover-01 -->
+<div class="text-center space-y-1">
+<div class="font-headline-sm text-headline-sm text-primary-container italic font-extrabold tracking-wider">
+                [ AI ROVER-01 SIG // #884 ]
+              </div>
+<div class="w-40 h-0.5 bg-outline-variant mx-auto"></div>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-extrabold">Rover-01 AI Sensor Lead</p>
+</div>
+</div>
+<!-- Small Legal / Educational Note inside certificate -->
+<div class="mt-8 text-center border-t border-outline-variant/40 pt-3">
+<p class="text-[10px] text-on-surface-variant/70 tracking-widest uppercase">
+              Simulated educational game certificate — not an official NASA credential. Created for STEM space science exploration.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= ACTION BUTTON CLUSTERS (Tactile Arcade 3D Buttons) ================= -->
+<div class="mt-8 space-y-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Primary Action: Print / Save Certificate -->
+<button class="h-14 sm:h-16 rounded-full bg-secondary-container text-on-secondary-container border-2 border-yellow-200 shadow-[0_6px_0_#c68400] active:translate-y-1 active:shadow-[0_2px_0_#c68400] transition-all flex items-center justify-center gap-2 px-6 font-label-lg text-label-lg font-black group" onclick="window.print()">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-12 transition-transform">print</span>
+<span>PRINT / SAVE CERTIFICATE</span>
+</button>
+<!-- Secondary Action: Explore NASA Quests -->
+<button class="h-14 sm:h-16 rounded-full bg-primary-container text-on-primary-container border-2 border-cyan-100 shadow-[0_6px_0_#009bb0] active:translate-y-1 active:shadow-[0_2px_0_#009bb0] transition-all flex items-center justify-center gap-2 px-6 font-label-lg text-label-lg font-black group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">science</span>
+<span>NASA SCIENCE QUESTS</span>
+</button>
+<!-- Tertiary Action: Replay Mission -->
+<button class="h-14 sm:h-16 rounded-full bg-surface-container-high text-on-surface border-2 border-outline shadow-[0_6px_0_#191b29] active:translate-y-1 active:shadow-[0_2px_0_#191b29] transition-all flex items-center justify-center gap-2 px-6 font-label-lg text-label-lg font-black group">
+<span class="material-symbols-outlined text-2xl text-tertiary-container group-hover:rotate-45 transition-transform">replay</span>
+<span>REPLAY MISSION</span>
+</button>
+<!-- Return to Main Menu -->
+<button class="h-14 sm:h-16 rounded-full bg-surface-container-high text-on-surface border-2 border-outline shadow-[0_6px_0_#191b29] active:translate-y-1 active:shadow-[0_2px_0_#191b29] transition-all flex items-center justify-center gap-2 px-6 font-label-lg text-label-lg font-black group">
+<span class="material-symbols-outlined text-2xl text-secondary-container group-hover:-translate-y-0.5 transition-transform">home</span>
+<span>RETURN TO MAIN MENU</span>
+</button>
+</div>
+<!-- Quick Interactive Share / Share Sound Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-DEFAULT bg-surface-container-low border border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-xl">share</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface font-extrabold">Show Your Achievement to Your Class or Family!</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Export as high-resolution PNG or printable PDF badge.</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 rounded-full bg-surface-container border border-outline-variant text-label-sm font-label-sm font-extrabold hover:border-primary-container text-on-surface transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">download</span>
+<span>Download PNG</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container border border-outline-variant text-label-sm font-label-sm font-extrabold hover:border-primary-container text-on-surface transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">qr_code_2</span>
+<span>Scan QR Code</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- ================= BOTTOM NAV BAR DOCK (Shared Component) ================= -->
+<!-- Contextual lock: Screen is the final Ending/Mission summary screen under Base HQ category -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md rounded-t-xl border-t-2 border-outline-variant shadow-[0_-4px_20px_rgba(0,229,255,0.25)]">
+<!-- Item 1: Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#explore">
+<span class="material-symbols-outlined text-2xl">explore</span>
+<span class="text-label-md font-label-md">Explore</span>
+</a>
+<!-- Item 2: Base HQ (ACTIVE TAB: Debriefing & Station Status) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-transform" href="#base-hq">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">apartment</span>
+<span class="text-label-md font-label-md font-extrabold">Base HQ</span>
+</a>
+<!-- Item 3: Rover -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#rover">
+<span class="material-symbols-outlined text-2xl">electric_bolt</span>
+<span class="text-label-md font-label-md">Rover</span>
+</a>
+<!-- Item 4: Research -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#research">
+<span class="material-symbols-outlined text-2xl">science</span>
+<span class="text-label-md font-label-md">Research</span>
+</a>
+<!-- Item 5: Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#comms">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+<span class="text-label-md font-label-md">Comms</span>
+</a>
+</nav>
+<!-- Lightweight Audio Cue & Particle Micro-interaction for arcade click tactile feel -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('button, a');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Subtle audio frequency synthesized for arcade button click
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5 lunar chirp
+            osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.08); // A5
+            gain.gain.setValueAtTime(0.08, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.09);
+          } catch(e) {
+            // Audio context fallback if muted
+          }
+        });
+      });
+    });
+  </script>
+</body></html>

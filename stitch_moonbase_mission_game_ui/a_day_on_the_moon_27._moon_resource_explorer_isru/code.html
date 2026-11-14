@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon — Screen 27: Moon Resource Explorer! (ISRU)</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary": "#003918",
+            "outline-variant": "#3b494c",
+            "surface-container-highest": "#323443",
+            "secondary": "#ffd799",
+            "on-secondary-fixed": "#281900",
+            "outline": "#849396",
+            "error": "#ffb4ab",
+            "on-surface-variant": "#bac9cc",
+            "on-secondary-container": "#6a4800",
+            "on-primary-fixed-variant": "#004f58",
+            "primary-fixed-dim": "#00daf3",
+            "on-primary": "#00363d",
+            "inverse-primary": "#006875",
+            "primary": "#c3f5ff",
+            "primary-fixed": "#9cf0ff",
+            "tertiary-container": "#22ef7e",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#604100",
+            "surface-container-high": "#272938",
+            "surface-variant": "#323443",
+            "on-primary-fixed": "#001f24",
+            "surface-dim": "#101221",
+            "error-container": "#93000a",
+            "secondary-container": "#feb300",
+            "surface-container": "#1d1f2d",
+            "inverse-on-surface": "#2e2f3f",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#005226",
+            "on-tertiary-fixed": "#00210b",
+            "surface": "#101221",
+            "primary-container": "#00e5ff",
+            "tertiary-fixed-dim": "#00e475",
+            "background": "#101221",
+            "surface-container-low": "#191b29",
+            "surface-tint": "#00daf3",
+            "tertiary": "#b1ffbf",
+            "on-secondary": "#432c00",
+            "on-surface": "#e1e1f5",
+            "on-tertiary-container": "#006731",
+            "secondary-fixed-dim": "#ffba38",
+            "secondary-fixed": "#ffdeac",
+            "inverse-surface": "#e1e1f5",
+            "on-primary-container": "#00626e",
+            "surface-container-lowest": "#0b0d1b",
+            "surface-bright": "#363848",
+            "tertiary-fixed": "#62ff96",
+            "on-background": "#e1e1f5"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-desktop": "2rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "gutter-desktop": "1.5rem",
+            "margin-tablet": "1.5rem",
+            "space-xl": "2rem",
+            "space-2xl": "3rem",
+            "space-md": "1rem",
+            "gutter-tablet": "1.25rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Outfit"],
+            "body-md": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "headline-md": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "label-md": ["Outfit"],
+            "headline-sm": ["Outfit"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "800" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+            "label-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Arcade tactile 3D extrusions */
+    .arcade-btn-primary {
+      box-shadow: 0 6px 0 #009bb0;
+      transition: all 0.08s ease-in-out;
+    }
+    .arcade-btn-primary:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #009bb0;
+    }
+    .arcade-btn-secondary {
+      box-shadow: 0 6px 0 #c68400;
+      transition: all 0.08s ease-in-out;
+    }
+    .arcade-btn-secondary:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #c68400;
+    }
+    .arcade-btn-tertiary {
+      box-shadow: 0 6px 0 #00994d;
+      transition: all 0.08s ease-in-out;
+    }
+    .arcade-btn-tertiary:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #00994d;
+    }
+    .arcade-btn-neutral {
+      box-shadow: 0 5px 0 #191b29;
+      transition: all 0.08s ease-in-out;
+    }
+    .arcade-btn-neutral:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #191b29;
+    }
+    .glow-cyan {
+      box-shadow: 0 0 24px rgba(0, 229, 255, 0.35);
+    }
+    .glow-gold {
+      box-shadow: 0 0 24px rgba(254, 179, 0, 0.4);
+    }
+    .scanline-overlay {
+      background: linear-gradient(rgba(18, 16, 33, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 4px 100%;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden pb-28">
+<!-- TOP HUD NAVBAR (Shared Component: TopNavBar with JSON Execution & Active Telemetry) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md border-b-2 border-outline-variant shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<!-- Brand Title Anchor -->
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-DEFAULT bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_3px_0_#009bb0]">
+<span class="material-symbols-outlined fill text-2xl">explore</span>
+</div>
+<div>
+<div class="text-headline-sm font-headline-sm font-extrabold text-primary-container tracking-wider flex items-center gap-2">
+          A Day on the Moon
+          <span class="text-label-sm font-label-sm bg-surface-container-high border border-outline-variant px-2 py-0.5 rounded-full text-secondary">NASA Space Apps Challenge 2026</span>
+</div>
+<p class="text-[10px] text-error font-extrabold tracking-widest uppercase">SIMULATED MISSION • NOT REAL NASA MEASUREMENTS</p>
+</div>
+</div>
+<!-- Telemetry Badges (Desktop & Tablet) -->
+<div class="hidden lg:flex items-center space-x-3">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant text-label-md font-label-md text-primary">
+<span class="material-symbols-outlined text-sm text-primary-container">calendar_today</span>
+<span>Sol 04 • 10:30</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-tertiary/40 text-label-md font-label-md text-tertiary">
+<span class="material-symbols-outlined text-sm text-tertiary-container fill">air</span>
+<span>O2: 98%</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-secondary-container/40 text-label-md font-label-md text-secondary">
+<span class="material-symbols-outlined text-sm text-secondary-container fill">bolt</span>
+<span>Power: 85%</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-primary-container/40 text-label-md font-label-md text-primary-container">
+<span class="material-symbols-outlined text-sm text-primary-container fill">water_drop</span>
+<span>Water: 92%</span>
+</div>
+</div>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center space-x-2">
+<button class="arcade-btn-neutral px-3 py-1.5 rounded-DEFAULT bg-surface-container-high text-on-surface hover:bg-surface-bright flex items-center gap-1.5 text-label-md font-label-md border border-outline-variant" title="Audio Controls">
+<span class="material-symbols-outlined text-lg">volume_up</span>
+</button>
+<button class="arcade-btn-neutral px-3 py-1.5 rounded-DEFAULT bg-surface-container-high text-on-surface hover:bg-surface-bright flex items-center gap-1.5 text-label-md font-label-md border border-outline-variant" title="Settings">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+<button class="arcade-btn-primary px-4 py-1.5 rounded-DEFAULT bg-primary-container text-on-primary-container text-label-md font-label-md font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">pause</span>
+<span>Pause</span>
+</button>
+<div class="w-9 h-9 rounded-full border-2 border-primary-container bg-surface-container overflow-hidden ml-1 flex-shrink-0" title="Astro-Guide Cadet Mascot Portrait">
+<img class="w-full h-full object-cover" data-alt="A stylized cartoon astronaut mascot portrait wearing a sleek white pressurized spacesuit with a glowing electric cyan visor reflecting stars and lunar craters, vibrant comic game vector style with thick outlines and friendly expression on a deep cosmic navy background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmOEA71bZX1SJ0XjNm7zmgx3GZfnE6gvD5lOq1gghC5H4gkkaygbLcG6Epk-JP7ZNPwifYJwk1-RH2aXbuDst_qYv4iBtj85AiPhGs0_qEGdlf0v_9GI6tg0iTI2AN9rxwka0CKmWpVozYVHrwtIU9rjjOAEoCfZ3LuoqVYpXoZSvnqHlwBdvIskkApwu5DF5unHYqOTSDyd9fyildXkw17cxL6p46APxTbFjuKDig"/>
+</div>
+</div>
+</header>
+<!-- MAIN VIEWPORT CONTAINER -->
+<main class="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+<!-- BREADCRUMBS & QUEST STATUS -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-2">
+<div>
+<nav class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">
+<span class="hover:text-primary cursor-pointer flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">rocket_launch</span> NASA Science Quests
+          </span>
+<span class="text-outline">/</span>
+<span class="text-primary-container font-extrabold">Screen 27: Moon Resource Explorer! (ISRU)</span>
+</nav>
+<h1 class="text-display-hero-mobile md:text-display-hero font-display-hero text-primary tracking-tight mt-1 flex items-center gap-3">
+          Moon Resource Explorer!
+          <span class="inline-block px-3 py-1 rounded-DEFAULT bg-secondary-container/20 border-2 border-secondary-container text-secondary text-label-md font-label-md uppercase tracking-wider">ISRU Mode</span>
+</h1>
+</div>
+<!-- Quest Progress Badge Header -->
+<div class="bg-surface-container border-2 border-primary-container/60 rounded-DEFAULT p-3.5 flex items-center gap-3 shadow-[0_0_16px_rgba(0,229,255,0.25)]">
+<div class="w-12 h-12 rounded-DEFAULT bg-secondary-container/20 border-2 border-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined fill text-3xl">military_tech</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-secondary uppercase font-extrabold tracking-wider">
+            SCIENCE QUEST 5 OF 5 • ESTIMATED TIME: 3 MINS
+          </div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="text-label-md font-label-md text-on-surface font-extrabold uppercase">STATUS: ACTIVE • FINAL FRONTIER</span>
+</div>
+</div>
+</div>
+</section>
+<!-- COMMANDER NOVA MASCOT DIALOGUE CARD -->
+<section class="relative bg-surface-container-low border-3 border-primary-container rounded-lg p-5 md:p-6 glow-cyan overflow-hidden">
+<div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full bg-primary-container/5 blur-2xl pointer-events-none"></div>
+<div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+<!-- Mascot Avatar -->
+<div class="relative flex-shrink-0">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-3 border-secondary-container bg-surface-container-high overflow-hidden shadow-[0_0_18px_rgba(254,179,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="Commander Nova, a cheerful cartoon astronaut guide with a golden visor and futuristic lunar headset, giving a friendly thumbs-up in an isometric high-tech lunar base control room with glowing consoles in deep navy and electric cyan aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2ompqBy9gA0063TZXfkJfXOcPWd9FHXSQBwoFr-cl2HU7mJPNI6egtshoTO2zN5t6H9xFqnPUR1YDllja0RgnizWq1UCZgsCMPr0hTU7ifQ62DvP0GVfPX1PctWbZRZx3lYJYKq_rUY4Aokx68kekSGLzSe3AHoUQ27-w6mMLaggocVs47j02ww_hsEwmSoI6lTcVFssK_FcXGuZDYderXcplskyxIc7ZZBt64-Us"/>
+</div>
+<span class="absolute -bottom-1 -right-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary font-label-sm text-[10px] font-extrabold border border-background">NOVA</span>
+</div>
+<!-- Dialogue Bubble Content -->
+<div class="space-y-2 text-center sm:text-left flex-1">
+<div class="flex items-center justify-center sm:justify-start gap-2">
+<span class="text-label-md font-label-md bg-primary-container/20 text-primary-container px-3 py-0.5 rounded-full border border-primary-container/40">Commander Nova Transmission</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">• Incoming Astro-Data</span>
+</div>
+<p class="text-headline-sm md:text-headline-md font-headline-md text-on-surface leading-snug">
+            “Cadet, imagine preparing for a long journey on the Moon. Bringing everything from Earth would be difficult. What if future explorers could investigate useful resources already found on the Moon?”
+          </p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+            NASA calls this <strong class="text-primary-container underline decoration-primary-container/50">In-Situ Resource Utilization (ISRU)</strong>: learning how to “live off the lunar land” by harvesting soil, rocks, ice, and unblocked solar rays!
+          </p>
+</div>
+</div>
+</section>
+<!-- SECTION 1: 4 EDUCATIONAL SCIENCE MODULES (BENTO LAYOUT) -->
+<section class="space-y-4">
+<div class="flex items-center justify-between border-b-2 border-outline-variant pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container fill text-2xl">menu_book</span>
+<h2 class="text-headline-md font-headline-md text-on-surface font-extrabold">1. Core Science Modules</h2>
+</div>
+<span class="text-label-sm font-label-sm bg-surface-container px-3 py-1 rounded-full text-on-surface-variant border border-outline-variant">Interactive Briefings</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+<!-- Module A -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-primary-container transition-colors rounded-DEFAULT p-5 flex flex-col justify-between group shadow-sm">
+<div class="space-y-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-primary-container/20 border-2 border-primary-container text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">home_work</span>
+</div>
+<div class="text-label-sm font-label-sm text-primary-container uppercase font-extrabold">Module A • Fundamental Concept</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-extrabold">What is ISRU?</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              “Living off the land” in space by identifying and using lunar resources instead of flying every heavy kilogram from Earth’s deep gravity well.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex items-center justify-between text-label-sm text-primary">
+<span>Payload Mass Savings</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Module B -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-secondary-container transition-colors rounded-DEFAULT p-5 flex flex-col justify-between group shadow-sm">
+<div class="space-y-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-secondary-container/20 border-2 border-secondary-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">grain</span>
+</div>
+<div class="text-label-sm font-label-sm text-secondary uppercase font-extrabold">Module B • Soil &amp; Minerals</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-extrabold">Lunar Regolith</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Moon dirt contains oxygen bound tightly in mineral oxides, silicon for solar cells, and metals ideal for 3D-printing protective habitat bricks.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex items-center justify-between text-label-sm text-secondary">
+<span>40% Bound Oxygen</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Module C -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-tertiary-container transition-colors rounded-DEFAULT p-5 flex flex-col justify-between group shadow-sm">
+<div class="space-y-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-tertiary-container/20 border-2 border-tertiary-container text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl fill">ac_unit</span>
+</div>
+<div class="text-label-sm font-label-sm text-tertiary uppercase font-extrabold">Module C • South Pole Craters</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-extrabold">Water Ice Research</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Investigating permanently shadowed craters (PSRs) at the lunar South Pole where deep cold traps (-240°C) preserve billions of tons of ancient ice!
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex items-center justify-between text-label-sm text-tertiary">
+<span>Drinking &amp; ECLSS Life Support</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Module D -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-primary-container transition-colors rounded-DEFAULT p-5 flex flex-col justify-between group shadow-sm">
+<div class="space-y-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-primary-container/20 border-2 border-primary-container text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">rocket</span>
+</div>
+<div class="text-label-sm font-label-sm text-primary-container uppercase font-extrabold">Module D • Deep Space Hub</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-extrabold">Future Resource Uses</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Splitting lunar water (H₂O) into liquid hydrogen and oxygen to fuel returning rockets or launch historic crewed missions to Mars!
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex items-center justify-between text-label-sm text-primary">
+<span>Lunar Gas Station</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: INTERACTIVE ISRU SAMPLE IDENTIFICATION CHALLENGE -->
+<section class="bg-surface-container-low border-2 border-outline-variant rounded-lg p-6 space-y-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b-2 border-outline-variant pb-4">
+<div>
+<span class="text-label-sm font-label-sm text-secondary-container uppercase font-extrabold tracking-wider">Tactile Mini-Lab</span>
+<h2 class="text-headline-lg font-headline-lg text-primary flex items-center gap-2">
+            2. Lunar Sample Identification Challenge
+          </h2>
+<p class="text-body-sm text-on-surface-variant">
+            Tap samples to inspect, collect, and feed into the automated refinery pipeline!
+          </p>
+</div>
+<!-- Workflow Visual Tracker -->
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant self-start md:self-auto overflow-x-auto text-label-sm">
+<span class="text-primary-container font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">travel_explore</span> Explore
+          </span>
+<span class="text-outline">➔</span>
+<span class="text-secondary font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">handyman</span> Collect Samples
+          </span>
+<span class="text-outline">➔</span>
+<span class="text-tertiary font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">biotech</span> Analyze
+          </span>
+<span class="text-outline">➔</span>
+<span class="text-primary font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">factory</span> Process Useful Resources
+          </span>
+</div>
+</div>
+<!-- 4 Sample Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="sample-cards-grid">
+<!-- Card 1: Lunar Regolith -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-primary-container rounded-DEFAULT p-4 transition-all flex flex-col justify-between cursor-pointer group" onclick="selectSample(this, 'regolith')">
+<div class="space-y-3">
+<div class="h-32 rounded-DEFAULT bg-surface-container-high overflow-hidden border border-outline-variant relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Close up view of fine lunar regolith dust on the Moon surface with micro-craters, illuminated by harsh un-diffused solar rim lighting against pitch-black cosmic vacuum, tactile arcade game science texture style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWIvBHxXEG5rCk6wJs7cLOl9FCt_h_mP7l_SLjtW5_Ee8nWkijuG2Pg805t8f5VFaTHunRtpvQHhYTXjjInceK-awPJ0yKitGp01bC6-edbE0Z_ZPDDym9fE8aIx09avuKK6q9BXlJTW5e2FivCDgHfxz93pOB7qu6nZNdGwanFRU1YNfYMYr9aG4QjQzQTSYs6yIthLs2fHSWx0QVbpwT1RBTO2pV3sn8zGne9Xfc"/>
+<span class="absolute top-2 left-2 bg-surface-container-lowest/80 px-2 py-0.5 rounded text-label-sm text-primary font-bold border border-outline-variant">Sample #01</span>
+</div>
+<div class="flex items-center justify-between">
+<h4 class="text-headline-sm font-headline-sm text-on-surface">Lunar Regolith</h4>
+<span class="material-symbols-outlined text-primary-container">grain</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">
+              Fine grey basaltic dust covering the entire lunar surface.
+            </p>
+<div class="bg-surface-container-high p-2.5 rounded border border-outline-variant text-label-sm space-y-1">
+<span class="text-primary-container font-extrabold block">ISRU Yield:</span>
+<span class="text-on-surface">Extract oxygen gas &amp; microwave-sinter into landing pad blast bricks.</span>
+</div>
+</div>
+<button class="w-full mt-4 arcade-btn-primary py-2 rounded-DEFAULT bg-primary-container text-on-primary-container text-label-md font-extrabold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">science</span> Analyze Sample
+          </button>
+</div>
+<!-- Card 2: Rock Fragments -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-secondary-container rounded-DEFAULT p-4 transition-all flex flex-col justify-between cursor-pointer group" onclick="selectSample(this, 'anorthosite')">
+<div class="space-y-3">
+<div class="h-32 rounded-DEFAULT bg-surface-container-high overflow-hidden border border-outline-variant relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Light colored crystalline lunar anorthosite rock fragments collected by robotic arm on the lunar highland ridge, high contrast lighting with deep shadows and neon analysis reticles overlay in futuristic space aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeMsKj4Dkc5rRQnscnWA-AalfhrQ5D9_AexXKdYtjm4NRxhn6kwFX8Q_D6ERlpF__XqnnTBO1bKlwEkVu-94wfLLarBGQE473znSd591kp6l11s2mWUxjAtL7tCsGqLSPGTREsLsfFF53931YD5XpmcA7U2h1J6i-2lFO1xuMddGzT_wCnykPhggk2ynRtaMgWctHjOnS_oz53UX1HYqzL7VOND_xGhNksGKTH0a53"/>
+<span class="absolute top-2 left-2 bg-surface-container-lowest/80 px-2 py-0.5 rounded text-label-sm text-secondary font-bold border border-outline-variant">Sample #02</span>
+</div>
+<div class="flex items-center justify-between">
+<h4 class="text-headline-sm font-headline-sm text-on-surface">Rock Fragments</h4>
+<span class="material-symbols-outlined text-secondary">terrain</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">
+              Anorthosite and ilmenite chunks rich in calcium and titanium.
+            </p>
+<div class="bg-surface-container-high p-2.5 rounded border border-outline-variant text-label-sm space-y-1">
+<span class="text-secondary font-extrabold block">ISRU Yield:</span>
+<span class="text-on-surface">Structural building frames, solar panel silicon, &amp; thermal heat storage.</span>
+</div>
+</div>
+<button class="w-full mt-4 arcade-btn-secondary py-2 rounded-DEFAULT bg-secondary-container text-on-secondary-container text-label-md font-extrabold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">science</span> Analyze Sample
+          </button>
+</div>
+<!-- Card 3: Water Ice Deposits -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-tertiary-container rounded-DEFAULT p-4 transition-all flex flex-col justify-between cursor-pointer group" onclick="selectSample(this, 'water_ice')">
+<div class="space-y-3">
+<div class="h-32 rounded-DEFAULT bg-surface-container-high overflow-hidden border border-outline-variant relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Glistening frozen water ice crystals mixed with frozen dark lunar soil inside a deep shadowed crater at the lunar South pole, illuminated by cyan robotic rover headlights, cinematic science game art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZL3ky-J-4pVIbN0rldG74BMnMquE_6W8n_ospZbJp_XDhgyucaYVG-JN-ES7Aj-pJ0klFb7Qd7Q0NKzchpYe_bWRp_xG9JXxSmlKgITIU-scfo8sUNIt2FpY2QBnC4FgTqoeBXVZ4HHEzvcj7zQsYnmz4Al-YA-4jq7IQAB3tiV0ICLsi6ToLC2s5OTYimXSo3YFdH3pjgfh2qeFCfzpTTi6NNtqHPqRfXIuOdXv7"/>
+<span class="absolute top-2 left-2 bg-surface-container-lowest/80 px-2 py-0.5 rounded text-label-sm text-tertiary font-bold border border-outline-variant">Sample #03</span>
+</div>
+<div class="flex items-center justify-between">
+<h4 class="text-headline-sm font-headline-sm text-on-surface">Water Ice Deposits</h4>
+<span class="material-symbols-outlined text-tertiary fill">ac_unit</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">
+              Deep frozen ice traps buried inside cryogenic South Pole craters.
+            </p>
+<div class="bg-surface-container-high p-2.5 rounded border border-outline-variant text-label-sm space-y-1">
+<span class="text-tertiary font-extrabold block">ISRU Yield:</span>
+<span class="text-on-surface">Drinking water, breathable O2 for habitats, &amp; liquid H2 rocket fuel!</span>
+</div>
+</div>
+<button class="w-full mt-4 arcade-btn-tertiary py-2 rounded-DEFAULT bg-tertiary-container text-on-tertiary-container text-label-md font-extrabold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">science</span> Analyze Sample
+          </button>
+</div>
+<!-- Card 4: Sunlight at Crater Rims -->
+<div class="bg-surface-container border-2 border-outline-variant hover:border-secondary-container rounded-DEFAULT p-4 transition-all flex flex-col justify-between cursor-pointer group" onclick="selectSample(this, 'sunlight')">
+<div class="space-y-3">
+<div class="h-32 rounded-DEFAULT bg-surface-container-high overflow-hidden border border-outline-variant relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Bright golden solar rays washing over elevated peak of eternal light crater rim with towering vertical solar towers basking in 24/7 unblocked solar energy against black cosmic void, futuristic arcade graphics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABvjvFlb2IGdujNW-B8ja_I9b3-N6j353Q3x9M7_B0uT_nqUsEiKy0TYbBGm7Xq70ishRwI2XlEEbfzCgNTvGsGk4RZbJUfLjX2vcm9rD2iKsuArcV9Agm-j2oweG4ohzg2x-G3hoiXvFnLFaAp_T3zye6AZpWgpbJX3ZQihTqQBS_4RmeO88NMNVcfB2T4_ZBJT6NEVCf0Homrw-yDuM_UeZP1uGlKkneK08kowW7"/>
+<span class="absolute top-2 left-2 bg-surface-container-lowest/80 px-2 py-0.5 rounded text-label-sm text-secondary font-bold border border-outline-variant">Sample #04</span>
+</div>
+<div class="flex items-center justify-between">
+<h4 class="text-headline-sm font-headline-sm text-on-surface">Sunlight at Rims</h4>
+<span class="material-symbols-outlined text-secondary-container fill">sunny</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">
+              High peaks that bathe in nearly continuous solar exposure all year.
+            </p>
+<div class="bg-surface-container-high p-2.5 rounded border border-outline-variant text-label-sm space-y-1">
+<span class="text-secondary font-extrabold block">ISRU Yield:</span>
+<span class="text-on-surface">24/7 solar electricity to continuously power thermal furnaces and ice rovers.</span>
+</div>
+</div>
+<button class="w-full mt-4 arcade-btn-secondary py-2 rounded-DEFAULT bg-secondary-container text-on-secondary-container text-label-md font-extrabold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">science</span> Analyze Sample
+          </button>
+</div>
+</div>
+<!-- Live Refinery Terminal Output Feed -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant rounded-DEFAULT p-4 font-mono text-label-sm text-on-surface-variant flex items-center justify-between" id="refinery-log">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container animate-spin">cyclone</span>
+<span><strong class="text-primary-container">ISRU PROCESSOR ONLINE:</strong> Select any sample above to initiate automated chemical separation sequence...</span>
+</div>
+<span class="text-tertiary font-bold tracking-wider">[CHAMBER IDLE]</span>
+</div>
+</section>
+<!-- SECTION 3: KNOWLEDGE CHALLENGE (INTERACTIVE QUIZ) -->
+<section class="bg-surface-container border-2 border-outline-variant rounded-lg p-6 space-y-5">
+<div class="flex items-center justify-between border-b-2 border-outline-variant pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-3xl">quiz</span>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">3. Cadet Knowledge Challenge</h2>
+</div>
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-secondary border border-outline-variant text-label-sm font-bold">100 XP REWARD</span>
+</div>
+<div class="space-y-3">
+<p class="text-headline-sm font-headline-sm text-primary">
+          Question: “What does In-Situ Resource Utilization (ISRU) mean in space exploration?”
+        </p>
+<p class="text-body-sm text-on-surface-variant">Choose the best scientific definition to prove your lunar mission readiness:</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="quiz-options">
+<!-- Option A (Correct) -->
+<button class="quiz-btn text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-primary-container transition-all flex items-start gap-4 arcade-btn-neutral" onclick="handleQuizAnswer(this, true)">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border-2 border-outline flex items-center justify-center font-extrabold text-primary text-label-md shrink-0">A</div>
+<div>
+<div class="text-body-md font-bold text-on-surface">Using local materials available where astronauts are working</div>
+<div class="text-body-sm text-on-surface-variant mt-0.5">Harvesting natural Moon rocks, regolith, and water ice on site.</div>
+</div>
+</button>
+<!-- Option B (Incorrect) -->
+<button class="quiz-btn text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-error transition-all flex items-start gap-4 arcade-btn-neutral" onclick="handleQuizAnswer(this, false)">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border-2 border-outline flex items-center justify-center font-extrabold text-on-surface-variant text-label-md shrink-0">B</div>
+<div>
+<div class="text-body-md font-bold text-on-surface">Shipping all water from Earth forever</div>
+<div class="text-body-sm text-on-surface-variant mt-0.5">Relying 100% on rocket cargo launches for every drop of water.</div>
+</div>
+</button>
+<!-- Option C (Incorrect) -->
+<button class="quiz-btn text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-error transition-all flex items-start gap-4 arcade-btn-neutral" onclick="handleQuizAnswer(this, false)">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border-2 border-outline flex items-center justify-center font-extrabold text-on-surface-variant text-label-md shrink-0">C</div>
+<div>
+<div class="text-body-md font-bold text-on-surface">Leaving trash behind on the Moon</div>
+<div class="text-body-sm text-on-surface-variant mt-0.5">Abandoning expired spacecraft materials across pristine craters.</div>
+</div>
+</button>
+<!-- Option D (Incorrect) -->
+<button class="quiz-btn text-left p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant hover:border-error transition-all flex items-start gap-4 arcade-btn-neutral" onclick="handleQuizAnswer(this, false)">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border-2 border-outline flex items-center justify-center font-extrabold text-on-surface-variant text-label-md shrink-0">D</div>
+<div>
+<div class="text-body-md font-bold text-on-surface">Ignoring natural resources entirely</div>
+<div class="text-body-sm text-on-surface-variant mt-0.5">Pretending there are no valuable elements on the lunar crust.</div>
+</div>
+</button>
+</div>
+<!-- Feedback container -->
+<div class="hidden p-4 rounded-DEFAULT border-2 text-body-sm transition-all flex items-center gap-3" id="quiz-feedback">
+<span class="material-symbols-outlined text-2xl" id="quiz-feedback-icon"></span>
+<span class="font-bold" id="quiz-feedback-text"></span>
+</div>
+</section>
+<!-- SECTION 4 & 5: SCIENCE FACT & REWARD BADGE CARDS (TWO COLUMNS) -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Section 4: Science Fact & Accuracy Card -->
+<div class="bg-surface-container-low border-2 border-tertiary-container/50 rounded-lg p-6 flex flex-col justify-between space-y-4 shadow-[0_0_20px_rgba(34,239,126,0.15)]">
+<div class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-2xl fill">verified</span>
+<span class="text-label-sm font-label-sm text-tertiary uppercase font-extrabold">NASA Science Fact &amp; Accuracy</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Extracting Breathable Oxygen on the Moon</h3>
+<p class="text-body-lg font-body-lg text-on-surface-variant">
+            “Scientists are researching methods to extract oxygen directly from lunar regolith and confirm water ice in shadowed craters. Making fuel on the Moon will transform future space voyages!”
+          </p>
+<div class="p-3 bg-surface-container rounded-DEFAULT border border-outline-variant flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-2xl">science</span>
+<p class="text-body-sm text-on-surface">
+              Did you know? Moon regolith is roughly <strong>40% to 45% oxygen by weight</strong> trapped inside silicate rocks!
+            </p>
+</div>
+</div>
+<div class="flex items-center justify-between text-label-sm text-outline pt-2 border-t border-outline-variant">
+<span>Source: NASA Space Technology Mission Directorate</span>
+<span class="text-tertiary font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span> Verified Science
+          </span>
+</div>
+</div>
+<!-- Section 5: Reward & Badge Card -->
+<div class="bg-surface-container-low border-2 border-secondary-container/60 rounded-lg p-6 flex flex-col justify-between space-y-4 glow-gold">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-2xl fill">workspace_premium</span>
+<span class="text-label-sm font-label-sm text-secondary uppercase font-extrabold">Collectible Quest Badge #5</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container/20 border border-secondary text-secondary text-label-sm font-extrabold">UNLOCKED</span>
+</div>
+<div class="flex items-center gap-4 bg-surface-container p-4 rounded-DEFAULT border border-outline-variant">
+<!-- Badge Icon Graphic -->
+<div class="w-20 h-20 rounded-full bg-gradient-to-tr from-surface-container-high via-secondary-container/30 to-primary-container/40 border-3 border-secondary flex items-center justify-center shadow-[0_0_16px_rgba(254,179,0,0.4)] shrink-0">
+<span class="material-symbols-outlined text-4xl text-secondary fill">science</span>
+</div>
+<div>
+<div class="text-headline-sm font-headline-sm text-secondary font-extrabold uppercase tracking-wide">
+                MOON RESOURCE SCIENTIST
+              </div>
+<p class="text-body-sm text-on-surface-variant mt-1">
+                Lunar ice crystal &amp; regolith beaker emblem awarded for mastering In-Situ Resource Utilization concepts!
+              </p>
+</div>
+</div>
+</div>
+<!-- Official NASA Link Button -->
+<a class="arcade-btn-secondary w-full py-3 rounded-DEFAULT bg-secondary-container text-on-secondary font-headline-sm font-extrabold flex items-center justify-center gap-2 text-center decoration-0" href="https://www.nasa.gov/overview-in-situ-resource-utilization/" rel="noopener noreferrer" target="_blank">
+<span>Official NASA ISRU Overview</span>
+<span class="material-symbols-outlined text-xl">open_in_new</span>
+</a>
+</div>
+</section>
+<!-- SECTION 6: COMPLETION CELEBRATION BANNER (GRAND FINALE) -->
+<section class="relative bg-gradient-to-b from-surface-container to-surface-container-low border-3 border-secondary rounded-xl p-6 md:p-8 overflow-hidden shadow-[0_0_36px_rgba(254,179,0,0.35)]">
+<!-- Glow ambient background circles -->
+<div class="absolute -top-12 -left-12 w-60 h-60 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-12 -right-12 w-60 h-60 rounded-full bg-secondary-container/15 blur-3xl pointer-events-none"></div>
+<div class="space-y-6 relative z-10 text-center">
+<!-- Banner Headline -->
+<div class="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary font-label-lg uppercase tracking-wider font-extrabold mb-1">
+          Mission Accomplished • Grand Honor
+        </div>
+<h2 class="text-display-hero-mobile md:text-display-hero font-display-hero text-secondary tracking-tight">
+          🎉 ALL 5 NASA SCIENCE QUESTS COMPLETE! ASTROPATH SCIENCE MASTER UNLOCKED! 🏆
+        </h2>
+<!-- Commander Nova Congratulatory Note -->
+<div class="max-w-3xl mx-auto bg-surface-container-high/90 border-2 border-outline-variant p-4 md:p-5 rounded-DEFAULT flex flex-col sm:flex-row items-center gap-4 text-left">
+<div class="w-14 h-14 rounded-full border-2 border-secondary overflow-hidden shrink-0 shadow-md">
+<img class="w-full h-full object-cover" data-alt="Portrait badge of cartoon guide Commander Nova celebrating with fireworks and miniature lunar lander pins, vibrant space colors and confident warm astronaut smile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqxER5IIx8y7GvBk3yqU7T1GqDLmNPGorY5C9P1yavCEKTp_vgu6aR7UkXY64L3DNTExxkMyOscFYeipXvGtQuisyFFrM7DRY94crm4y2U51FvO63iOQMvlbTXOVuBMTaKgbQR0T9G-FpP-YNdFG9SvDnma3AftyUTzYxl9Kl_9Tnnqswx4wmkqMfLrAmtVKv4z7oHdDjUbA6Hw6DpQ1UMuAuCVs4KcEEzC27vCcF3"/>
+</div>
+<div>
+<div class="text-label-md font-label-md text-secondary uppercase font-extrabold">Commander Nova Commendation:</div>
+<p class="text-body-md font-body-md text-on-surface italic mt-0.5">
+              “Outstanding work, Cadet! You've explored five important areas of space science. Your curiosity is helping prepare you for the future of lunar exploration!”
+            </p>
+</div>
+</div>
+<!-- 5 Collectible Badges Gallery Display -->
+<div class="space-y-3 pt-2">
+<div class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest font-extrabold">
+            Your Earned Science Cadet Badges (5 / 5)
+          </div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+<!-- Badge 1 -->
+<div class="bg-surface-container-high border-2 border-tertiary-container rounded-DEFAULT p-3 flex flex-col items-center text-center space-y-2">
+<div class="w-14 h-14 rounded-full bg-tertiary-container/20 border-2 border-tertiary-container text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl fill">air</span>
+</div>
+<div class="text-label-sm font-label-sm text-tertiary font-extrabold">Breathing Systems Expert</div>
+<span class="text-[10px] text-on-surface-variant">Quest 1 • Oxygen ECLSS</span>
+</div>
+<!-- Badge 2 -->
+<div class="bg-surface-container-high border-2 border-primary-container rounded-DEFAULT p-3 flex flex-col items-center text-center space-y-2">
+<div class="w-14 h-14 rounded-full bg-primary-container/20 border-2 border-primary-container text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl fill">shield</span>
+</div>
+<div class="text-label-sm font-label-sm text-primary font-extrabold">Space Weather Detective</div>
+<span class="text-[10px] text-on-surface-variant">Quest 2 • Solar Radiation</span>
+</div>
+<!-- Badge 3 -->
+<div class="bg-surface-container-high border-2 border-secondary-container rounded-DEFAULT p-3 flex flex-col items-center text-center space-y-2">
+<div class="w-14 h-14 rounded-full bg-secondary-container/20 border-2 border-secondary-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl fill">bolt</span>
+</div>
+<div class="text-label-sm font-label-sm text-secondary font-extrabold">Lunar Power Engineer</div>
+<span class="text-[10px] text-on-surface-variant">Quest 3 • Solar &amp; Fission</span>
+</div>
+<!-- Badge 4 -->
+<div class="bg-surface-container-high border-2 border-tertiary-container rounded-DEFAULT p-3 flex flex-col items-center text-center space-y-2">
+<div class="w-14 h-14 rounded-full bg-tertiary-container/20 border-2 border-tertiary-container text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl fill">potted_plant</span>
+</div>
+<div class="text-label-sm font-label-sm text-tertiary font-extrabold">Space Greenhouse Gardener</div>
+<span class="text-[10px] text-on-surface-variant">Quest 4 • Hydroponics</span>
+</div>
+<!-- Badge 5 (Current) -->
+<div class="bg-surface-container-high border-2 border-secondary rounded-DEFAULT p-3 flex flex-col items-center text-center space-y-2 glow-gold col-span-2 sm:col-span-1">
+<div class="w-14 h-14 rounded-full bg-secondary/20 border-2 border-secondary text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl fill">science</span>
+</div>
+<div class="text-label-sm font-label-sm text-secondary font-extrabold">Moon Resource Scientist</div>
+<span class="text-[10px] text-on-surface-variant">Quest 5 • ISRU Mastery</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 7: NAVIGATION ACTION BUTTONS CLUSTER -->
+<section class="pt-4 pb-12">
+<div class="bg-surface-container-low border-2 border-outline-variant rounded-lg p-5 flex flex-wrap items-center justify-center gap-4">
+<!-- Action 1: Replay -->
+<button class="arcade-btn-neutral px-6 py-3.5 rounded-DEFAULT bg-surface-container-high border border-outline-variant hover:border-primary-container text-on-surface text-label-lg font-label-lg font-extrabold flex items-center gap-2" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<span class="material-symbols-outlined text-xl">replay</span>
+<span>REPLAY SCIENCE QUEST</span>
+</button>
+<!-- Action 2: Return to Quest Hub -->
+<button class="arcade-btn-neutral px-6 py-3.5 rounded-DEFAULT bg-surface-container-high border border-outline-variant hover:border-secondary text-secondary text-label-lg font-label-lg font-extrabold flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">explore</span>
+<span>RETURN TO SCIENCE QUEST HUB</span>
+</button>
+<!-- Action 3: Return to Main Menu -->
+<button class="arcade-btn-neutral px-6 py-3.5 rounded-DEFAULT bg-surface-container-high border border-outline-variant hover:border-outline text-on-surface-variant text-label-lg font-label-lg font-extrabold flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">home</span>
+<span>RETURN TO MAIN MENU</span>
+</button>
+<!-- Action 4: Continue Exploring the Moon (Primary CTA) -->
+<button class="arcade-btn-primary px-8 py-3.5 rounded-DEFAULT bg-primary-container text-on-primary-container text-label-lg font-label-lg font-extrabold flex items-center gap-2 glow-cyan">
+<span class="material-symbols-outlined text-xl">rocket_launch</span>
+<span>CONTINUE EXPLORING THE MOON</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Shared Component: BottomNavBar with exact JSON attributes and active item: Research) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md rounded-t-xl border-t-2 border-outline-variant shadow-[0_-4px_20px_rgba(0,229,255,0.25)]">
+<!-- Item 1: Explore -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">explore</span>
+<span class="text-label-md font-label-md mt-0.5">Explore</span>
+</button>
+<!-- Item 2: Base HQ -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">apartment</span>
+<span class="text-label-md font-label-md mt-0.5">Base HQ</span>
+</button>
+<!-- Item 3: Rover -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">electric_bolt</span>
+<span class="text-label-md font-label-md mt-0.5">Rover</span>
+</button>
+<!-- Item 4: Research (ACTIVE MATCH for ISRU / Science Quest Screen) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0]">
+<span class="material-symbols-outlined text-2xl fill">science</span>
+<span class="text-label-md font-label-md font-extrabold mt-0.5">Research</span>
+</button>
+<!-- Item 5: Comms -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+<span class="text-label-md font-label-md mt-0.5">Comms</span>
+</button>
+</nav>
+<!-- INTERACTION LOGIC (Vanilla JS for child-friendly arcade micro-interactions) -->
+<script>
+    function selectSample(cardEl, sampleType) {
+      const log = document.getElementById('refinery-log');
+      const messages = {
+        'regolith': '<strong class="text-primary-container">PROCESSING LUNAR REGOLITH:</strong> Heating to 900°C in carbothermal reactor... Liberated 42% O2 gas! Sintered residue molded into habitat building block!',
+        'anorthosite': '<strong class="text-secondary">PROCESSING ANORTHOSITE ROCKS:</strong> Crushed with high-impact sonic pulverizer. Titanium extracted for rover chassis; silicon wafers synthesized!',
+        'water_ice': '<strong class="text-tertiary">PROCESSING WATER ICE CORES:</strong> Thermal sublimation chamber engaged! Pure H2O filtered for drinking; Electrolysis separating liquid H2 and LOX rocket propellants!',
+        'sunlight': '<strong class="text-secondary-container">HARVESTING CRATER RIM SOLAR RAYS:</strong> Photovoltaic array tracking continuous 360° solar incidence at 285 W/m²! Power reserves refreshed to 100%!'
+      };
+
+      // Reset card highlights
+      document.querySelectorAll('#sample-cards-grid > div').forEach(c => {
+        c.classList.remove('ring-4', 'ring-primary-container', 'glow-cyan');
+      });
+
+      cardEl.classList.add('ring-4', 'ring-primary-container', 'glow-cyan');
+      log.innerHTML = `
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-secondary-container animate-pulse">check_circle</span>
+          <span>${messages[sampleType]}</span>
+        </div>
+        <span class="text-tertiary-container font-extrabold tracking-wider">[PROCESSED +50 LBS]</span>
+      `;
+    }
+
+    function handleQuizAnswer(buttonEl, isCorrect) {
+      const feedback = document.getElementById('quiz-feedback');
+      const feedbackIcon = document.getElementById('quiz-feedback-icon');
+      const feedbackText = document.getElementById('quiz-feedback-text');
+      const allButtons = document.querySelectorAll('.quiz-btn');
+
+      allButtons.forEach(btn => {
+        btn.disabled = true;
+        btn.classList.add('opacity-60', 'cursor-not-allowed');
+      });
+
+      feedback.classList.remove('hidden');
+
+      if (isCorrect) {
+        buttonEl.classList.remove('opacity-60');
+        buttonEl.classList.add('border-tertiary-container', 'bg-tertiary-container/10');
+        feedback.className = 'p-4 rounded-DEFAULT border-2 border-tertiary-container bg-tertiary-container/15 text-tertiary flex items-center gap-3 mt-4';
+        feedbackIcon.innerText = 'stars';
+        feedbackText.innerText = 'Correct! ISRU stands for In-Situ Resource Utilization — discovering, harvesting, and transforming natural lunar materials into life-saving oxygen, clean water, and deep-space rocket fuel!';
+      } else {
+        buttonEl.classList.remove('opacity-60');
+        buttonEl.classList.add('border-error', 'bg-error-container/20');
+        feedback.className = 'p-4 rounded-DEFAULT border-2 border-error bg-error-container/20 text-error flex items-center gap-3 mt-4';
+        feedbackIcon.innerText = 'error';
+        feedbackText.innerText = 'Not quite! Remember: Option A is correct. ISRU means "living off the land" by utilizing in-place local lunar minerals, rocks, and ice deposits!';
+      }
+    }
+  </script>
+</body></html>

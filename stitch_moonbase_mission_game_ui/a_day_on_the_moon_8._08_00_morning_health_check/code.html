@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon - 08:00 Morning Health Check</title>
+<!-- Google Fonts: Outfit -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with CDN Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config verbatum -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#e1e1f5",
+            "on-secondary-fixed": "#281900",
+            "inverse-on-surface": "#2e2f3f",
+            "tertiary-fixed-dim": "#00e475",
+            "primary-fixed": "#9cf0ff",
+            "on-error": "#690005",
+            "on-secondary-container": "#6a4800",
+            "primary-fixed-dim": "#00daf3",
+            "on-surface": "#e1e1f5",
+            "tertiary-fixed": "#62ff96",
+            "surface-container-low": "#191b29",
+            "surface-variant": "#323443",
+            "surface-tint": "#00daf3",
+            "on-tertiary-fixed-variant": "#005226",
+            "secondary-container": "#feb300",
+            "outline": "#849396",
+            "surface-container-lowest": "#0b0d1b",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#004f58",
+            "outline-variant": "#3b494c",
+            "on-primary-fixed": "#001f24",
+            "error-container": "#93000a",
+            "on-tertiary": "#003918",
+            "background": "#101221",
+            "tertiary": "#b1ffbf",
+            "surface-container-highest": "#323443",
+            "surface-bright": "#363848",
+            "on-surface-variant": "#bac9cc",
+            "secondary-fixed-dim": "#ffba38",
+            "surface-dim": "#101221",
+            "on-tertiary-fixed": "#00210b",
+            "error": "#ffb4ab",
+            "primary-container": "#00e5ff",
+            "primary": "#c3f5ff",
+            "surface": "#101221",
+            "on-primary-container": "#00626e",
+            "secondary": "#ffd799",
+            "on-secondary": "#432c00",
+            "inverse-primary": "#006875",
+            "surface-container-high": "#272938",
+            "on-background": "#e1e1f5",
+            "surface-container": "#1d1f2d",
+            "on-primary": "#00363d",
+            "secondary-fixed": "#ffdeac",
+            "on-secondary-fixed-variant": "#604100",
+            "on-tertiary-container": "#006731",
+            "tertiary-container": "#22ef7e"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-tablet": "1.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-2xl": "3rem",
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "gutter-tablet": "1.25rem",
+            "space-xl": "2rem",
+            "margin-desktop": "2rem"
+          },
+          "fontFamily": {
+            "label-md": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "body-md": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "body-lg": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-md": ["Outfit"]
+          },
+          "fontSize": {
+            "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "800"}],
+            "label-lg": ["16px", {"lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "800"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+            "display-hero-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "800"}],
+            "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "500"}],
+            "display-hero": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "900"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Pulse glow effects */
+    @keyframes cyanGlow {
+      0%, 100% { box-shadow: 0 0 14px rgba(0, 229, 255, 0.4), inset 0 0 10px rgba(0, 229, 255, 0.2); }
+      50% { box-shadow: 0 0 24px rgba(0, 229, 255, 0.7), inset 0 0 16px rgba(0, 229, 255, 0.4); }
+    }
+    .neon-pulse-cyan {
+      animation: cyanGlow 2.5s infinite ease-in-out;
+    }
+    @keyframes alertGlow {
+      0%, 100% { box-shadow: 0 0 12px rgba(254, 179, 0, 0.4); }
+      50% { box-shadow: 0 0 22px rgba(254, 179, 0, 0.7); }
+    }
+    .neon-pulse-gold {
+      animation: alertGlow 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- ==================== SHARED TOP BAR HUD ==================== -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<!-- Brand & Subtitle -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 border-2 border-primary-container flex items-center justify-center text-primary-container shadow-[0_0_12px_rgba(0,229,255,0.4)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<div class="text-headline-sm font-headline-sm font-extrabold text-primary-container tracking-wider flex items-center gap-2">
+<span>A Day on the Moon</span>
+<span class="hidden sm:inline-block px-2 py-0.5 text-label-sm font-label-sm rounded-full bg-secondary-container/20 text-secondary-container border border-secondary-container/50">EXPEDITION 2026</span>
+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant tracking-wider hidden md:block">
+          NASA Space Apps Challenge • Team AstroPath
+        </div>
+</div>
+</div>
+<!-- Telemetry Chips (Desktop / Tablet) -->
+<div class="hidden lg:flex items-center gap-2">
+<!-- Sol -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border-2 border-outline-variant text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-secondary-container">schedule</span>
+<span>Sol 04 • 10:30</span>
+</div>
+<!-- O2 -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border-2 border-tertiary-container/60 text-tertiary font-label-md text-label-md">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">air</span>
+<span>O2: 98%</span>
+</div>
+<!-- Power -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border-2 border-secondary-container/60 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span>Power: 85%</span>
+</div>
+<!-- Water -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border-2 border-primary-container/60 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span>Water: 92%</span>
+</div>
+</div>
+<!-- Trailing Actions & Mascot -->
+<div class="flex items-center gap-2 sm:gap-3">
+<span class="hidden xl:inline-block px-3 py-1 rounded-full bg-error-container/40 border border-error/50 text-error font-label-sm text-label-sm font-extrabold uppercase tracking-widest">
+        SIMULATED MISSION
+      </span>
+<button class="px-3 py-1.5 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant hover:border-primary-container text-on-surface font-label-md text-label-md shadow-[0_3px_0_#3b494c] active:translate-y-1 transition-transform">
+        Pause
+      </button>
+<button class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined">volume_up</span>
+</button>
+<button class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden bg-surface-container flex items-center justify-center shadow-[0_0_8px_rgba(0,229,255,0.4)]">
+<img class="w-full h-full object-cover" data-alt="Cartoon portrait of an adorable young astronaut cadet mascot wearing a rounded bubble helmet with a golden visor reflection, friendly smile, and pressurized high-tech space suit with turquoise mission badges on a deep cosmic space background with glowing stars." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJWCLUfEJx_2JTV94Oj2grZBnk1djb7WHN_oF6axuH1U_Af8f0FG5J5Dc-Ru0i0tou7WjuM0I0z93vyYRjjJf_ZnGUpTcckhxI8GogwYHeOxblP1aFwsxIefQTZSjb-3hbRFwH1W7mVadLZAG30lcYmx3gRBx4ZpWiafmc25fwh6oFE1dMMjGdXTrrQilTqFTpXfnfLPWjgnBEWfDWn91vdWuzb6XwtS2XW4O7AmPm"/>
+</div>
+</div>
+</header>
+<!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+<main class="flex-1 pt-20 pb-28 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full">
+<!-- Mission Breadcrumb & Educational Quest Context Bar -->
+<section class="mt-4 mb-6 flex flex-wrap items-center justify-between gap-3 bg-surface-container-low/80 p-3 sm:p-4 rounded-DEFAULT border-2 border-outline-variant">
+<div class="flex items-center gap-3">
+<a class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border-2 border-outline hover:border-primary-container text-on-surface hover:text-primary-container transition-colors font-label-md text-label-md active:translate-y-0.5" href="#base-hq">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span>Artemis Base Alpha</span>
+</a>
+<div class="h-4 w-px bg-outline-variant hidden sm:block"></div>
+<div class="flex items-center gap-2 text-primary font-headline-sm text-headline-sm font-extrabold">
+<span class="material-symbols-outlined text-primary-container">health_and_safety</span>
+<span>Screen 8: 08:00 Morning Health Check</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-container/20 border-2 border-secondary-container text-secondary font-label-md text-label-md">
+          Daily Task 1 of 7
+        </span>
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+          Location: Living Quarters Hab 01
+        </span>
+</div>
+</section>
+<!-- Commander Mascot Dialogue Bubble Banner -->
+<div class="relative bg-surface-container-low border-2 border-primary-container/80 rounded-DEFAULT p-4 sm:p-5 mb-8 neon-pulse-cyan">
+<!-- Mascot Avatar Medallion breaking border -->
+<div class="absolute -top-6 left-6 flex items-center gap-3">
+<div class="w-12 h-12 rounded-full border-3 border-primary-container bg-surface-container-lowest p-0.5 shadow-[0_0_12px_rgba(0,229,255,0.6)]">
+<img class="w-full h-full object-cover rounded-full" data-alt="Playful 2D isometric style badge illustration of Commander Nova, a robotic cat astronaut guide wearing a sleek miniature space helmet with glowing antenna and electric cyan visor detailing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALVCUgusCE_7p4L5tLUec5KMBdXoeAC9uBN3qzGPPS3iKfzp5-E-9zx3ZI2pVC_2aEsUzv3yvy1rcfhpBUhoikXNDr55zczKAil1HF73bmhvm1iyHDN1Bjp-jOmLjJ_hWpIexOy2gjqJYWqUNft6exCfqBtQmf8ROZTP58C8N_wTglpYyR-EmtNZDdbfyHq3xhFYMXaoJZ23eQBdUEe-XyTqO_wNZvHp2ihehLftJO"/>
+</div>
+<span class="px-3 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider shadow-[0_2px_0_#009bb0]">
+          Commander Nova • Life Support AI
+        </span>
+</div>
+<div class="mt-4 sm:mt-2 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<p class="text-body-lg font-body-lg text-on-surface font-medium">
+          “Rise and shine, Cadet! Before starting our lunar day, we must calibrate our biometric telemetry and verify base habitat life support. Tap each diagnostic unit below to ensure crew safety!”
+        </p>
+<div class="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-DEFAULT bg-surface-container-high border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary-container animate-pulse" style="font-variation-settings: 'FILL' 1;">sensors</span>
+<span class="text-label-md font-label-md text-tertiary tracking-wide" id="diagnostic-counter">5 / 5 Systems Active</span>
+</div>
+</div>
+</div>
+<!-- ==================== CORE INTERACTIVE GRID ==================== -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- LEFT: 5 Interactive Diagnostic Instruments (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="flex items-center justify-between pb-1">
+<h2 class="text-headline-sm font-headline-sm text-primary-container flex items-center gap-2 font-extrabold tracking-wide">
+<span class="material-symbols-outlined">vital_signs</span>
+            Interactive Diagnostic Console
+          </h2>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-bold">TOUCH TO INSPECT</span>
+</div>
+<!-- 1. Biometric Heart Rate & Vitals Monitor -->
+<div class="cursor-pointer group relative p-4 rounded-DEFAULT bg-surface-container border-2 border-tertiary-container shadow-[0_4px_0_#005226] active:translate-y-1 transition-all" id="card-vitals" onclick="selectDiagnostic('vitals')">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-tertiary-container/20 border-2 border-tertiary-container flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div>
+<div class="text-label-lg font-label-lg text-tertiary flex items-center gap-2">
+<span>Biometric Heart Rate &amp; Vitals</span>
+<span class="text-label-sm px-2 py-0.5 rounded-full bg-tertiary-container/30 text-tertiary border border-tertiary">100% NORMAL</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Cadet Pulse: 72 BPM • Oxygen Saturation: 99% SpO2</div>
+</div>
+</div>
+<div class="text-right">
+<span class="material-symbols-outlined text-tertiary-container text-2xl">verified</span>
+</div>
+</div>
+<!-- Live Animated Bar -->
+<div class="mt-3 w-full bg-surface-container-lowest h-3 rounded-full overflow-hidden p-0.5 border border-outline-variant">
+<div class="bg-tertiary-container h-full rounded-full transition-all duration-500 w-[99%]"></div>
+</div>
+</div>
+<!-- 2. Habitat Oxygen & Pressure Gauge -->
+<div class="cursor-pointer group relative p-4 rounded-DEFAULT bg-surface-container border-2 border-primary-container shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-all" id="card-pressure" onclick="selectDiagnostic('pressure')">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-primary-container/20 border-2 border-primary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">airwave</span>
+</div>
+<div>
+<div class="text-label-lg font-label-lg text-primary flex items-center gap-2">
+<span>Habitat Oxygen &amp; Pressure Gauge</span>
+<span class="text-label-sm px-2 py-0.5 rounded-full bg-primary-container/30 text-primary-container border border-primary-container">OPTIMAL</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Internal Pressure: 101.3 kPa • O2 Circulation Nominal</div>
+</div>
+</div>
+<div class="text-right">
+<span class="material-symbols-outlined text-primary-container text-2xl">verified</span>
+</div>
+</div>
+<div class="mt-3 w-full bg-surface-container-lowest h-3 rounded-full overflow-hidden p-0.5 border border-outline-variant">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500 w-[98%]"></div>
+</div>
+</div>
+<!-- 3. Internal Hab Temperature Sensor -->
+<div class="cursor-pointer group relative p-4 rounded-DEFAULT bg-surface-container border-2 border-outline-variant hover:border-primary-container shadow-[0_4px_0_#3b494c] active:translate-y-1 transition-all" id="card-temp" onclick="selectDiagnostic('temp')">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">thermostat</span>
+</div>
+<div>
+<div class="text-label-lg font-label-lg text-on-surface flex items-center gap-2">
+<span>Internal Hab Temperature Sensor</span>
+<span class="text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-primary border border-primary/50">LOCKED</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Living Pod Cabin: 21.5°C • Comfort Zone Locked (20° - 23°C)</div>
+</div>
+</div>
+<div class="text-right">
+<span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
+</div>
+</div>
+<div class="mt-3 w-full bg-surface-container-lowest h-3 rounded-full overflow-hidden p-0.5 border border-outline-variant">
+<div class="bg-primary-fixed-dim h-full rounded-full transition-all duration-500 w-[92%]"></div>
+</div>
+</div>
+<!-- 4. HEPA Air Filtration Status -->
+<div class="cursor-pointer group relative p-4 rounded-DEFAULT bg-surface-container border-2 border-outline-variant hover:border-tertiary-container shadow-[0_4px_0_#3b494c] active:translate-y-1 transition-all" id="card-hepa" onclick="selectDiagnostic('hepa')">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">filter_alt</span>
+</div>
+<div>
+<div class="text-label-lg font-label-lg text-on-surface flex items-center gap-2">
+<span>HEPA Air Filtration &amp; Dust Scrubbers</span>
+<span class="text-label-sm px-2 py-0.5 rounded-full bg-tertiary/20 text-tertiary border border-tertiary/40">98.4% CLEAN</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Lunar Regolith Scrubbers Active • Zero Electrostatic Particulates</div>
+</div>
+</div>
+<div class="text-right">
+<span class="material-symbols-outlined text-tertiary text-2xl">check_circle</span>
+</div>
+</div>
+<div class="mt-3 w-full bg-surface-container-lowest h-3 rounded-full overflow-hidden p-0.5 border border-outline-variant">
+<div class="bg-tertiary h-full rounded-full transition-all duration-500 w-[98%]"></div>
+</div>
+</div>
+<!-- 5. Warning Diagnostic: Minor pressure drift in Hab Sector 2 -->
+<div class="cursor-pointer group relative p-4 rounded-DEFAULT bg-surface-container border-2 border-secondary-container shadow-[0_4px_0_#6a4800] active:translate-y-1 transition-all neon-pulse-gold" id="card-drift" onclick="selectDiagnostic('drift')">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-secondary-container/20 border-2 border-secondary-container flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined text-2xl animate-bounce" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<div class="text-label-lg font-label-lg text-secondary flex items-center gap-2">
+<span>Hab Sector 2: Airflow Recalibration</span>
+<span class="text-label-sm px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-black" id="drift-badge">ACTION NEEDED</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant" id="drift-subtext">Minor pressure drift detected (+1.4%). Recalibrate valve servo to clear alert.</div>
+</div>
+</div>
+<div class="text-right">
+<button class="px-3 py-1.5 rounded-DEFAULT bg-secondary-container hover:bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md shadow-[0_3px_0_#6a4800] active:translate-y-1 transition-all" id="quick-recal-btn" onclick="event.stopPropagation(); calibrateDrift();">
+                Recalibrate
+              </button>
+</div>
+</div>
+<div class="mt-3 w-full bg-surface-container-lowest h-3 rounded-full overflow-hidden p-0.5 border border-outline-variant">
+<div class="bg-secondary-container h-full rounded-full transition-all duration-700 w-[84%]" id="drift-bar"></div>
+</div>
+</div>
+</div>
+<!-- RIGHT: Inspection Feedback, Results Panel & STEM Box (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-5">
+<!-- Inspection Feedback & Diagnostic Stage Detail Panel -->
+<div class="bg-surface-container-low border-2 border-primary-container rounded-DEFAULT p-5 shadow-[0_4px_20px_rgba(0,229,255,0.15)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b-2 border-outline-variant pb-3 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-2xl">troubleshoot</span>
+<span class="text-headline-sm font-headline-sm text-on-surface font-extrabold" id="detail-title">Biometrics Telemetry</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary-container/20 text-primary-container border border-primary-container text-label-sm font-label-sm uppercase" id="detail-status">
+                Nominal
+              </span>
+</div>
+<!-- Visual Graphic / Monitor readout -->
+<div class="relative h-36 bg-surface-container-lowest rounded-DEFAULT border-2 border-outline-variant overflow-hidden p-3 flex flex-col justify-between mb-4">
+<div class="flex justify-between items-center text-label-sm font-label-sm text-outline">
+<span id="detail-channel">SENSOR CH-01 // CREW SUIT VITALS</span>
+<span class="text-tertiary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-ping"></span>
+                  LIVE STREAM
+                </span>
+</div>
+<!-- Sine wave / Telemetry Visual Mock -->
+<div class="w-full flex items-center justify-center my-auto">
+<div class="flex items-end gap-1.5 h-16 w-full px-2" id="telemetry-waveform">
+<div class="w-2 bg-primary-container h-6 rounded-t-full"></div>
+<div class="w-2 bg-primary-container h-10 rounded-t-full"></div>
+<div class="w-2 bg-primary-container h-16 rounded-t-full"></div>
+<div class="w-2 bg-primary-container h-8 rounded-t-full"></div>
+<div class="w-2 bg-primary-container h-12 rounded-t-full"></div>
+<div class="w-2 bg-tertiary-container h-14 rounded-t-full"></div>
+<div class="w-2 bg-tertiary-container h-16 rounded-t-full"></div>
+<div class="w-2 bg-primary-container h-7 rounded-t-full"></div>
+<div class="w-2 bg-primary-container h-11 rounded-t-full"></div>
+<div class="w-2 bg-primary-container h-15 rounded-t-full"></div>
+<div class="w-2 bg-primary-container h-9 rounded-t-full"></div>
+<div class="w-2 bg-primary-container h-5 rounded-t-full"></div>
+<div class="w-2 bg-primary-container h-13 rounded-t-full"></div>
+<div class="w-2 bg-tertiary-container h-16 rounded-t-full"></div>
+<div class="w-2 bg-primary-container h-8 rounded-t-full"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-label-sm font-label-sm font-bold text-on-surface-variant">
+<span id="detail-reading-a">Cadet Heart Rate: 72 BPM</span>
+<span id="detail-reading-b">Blood O2: 99% SpO2</span>
+</div>
+</div>
+<!-- Explanation text -->
+<p class="text-body-md font-body-md text-on-surface-variant mb-4" id="detail-explanation">
+              Cadet biometrics confirm full readiness for EVA exploration. Oxygen uptake and cardio-pulmonary pressure align perfectly with 1/6th gravity simulation models.
+            </p>
+</div>
+<!-- Verify / Calibrate Trigger Button -->
+<div class="pt-2">
+<button class="w-full py-3.5 px-4 rounded-DEFAULT bg-primary-container text-on-primary-container font-label-lg text-label-lg shadow-[0_5px_0_#009bb0] hover:brightness-110 active:translate-y-1 transition-all flex items-center justify-center gap-2 font-black tracking-wide" id="calibrate-action-btn" onclick="triggerVerification()">
+<span class="material-symbols-outlined">check_circle</span>
+<span id="detail-btn-text">VERIFY BIOMETRICS READINGS</span>
+</button>
+</div>
+</div>
+<!-- Educational STEM Science Box -->
+<div class="bg-surface-container rounded-DEFAULT border-2 border-secondary-container/70 p-5 shadow-[0_4px_16px_rgba(254,179,0,0.15)] relative overflow-hidden">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 border border-secondary-container flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-secondary font-extrabold tracking-wide">
+              STEM Lunar Science Fact
+            </h3>
+</div>
+<div class="text-label-md font-label-md text-secondary-fixed mb-1 uppercase tracking-wider">
+            Why Astronauts Do Daily Health Checks
+          </div>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+            In the extreme vacuum of space, astronauts rely entirely on artificial life support. Catching tiny air filtration variances, dust intrusion, or vital changes early keeps the entire crew safe and healthy inside Artemis Base!
+          </p>
+</div>
+<!-- Mission Progress Status Card -->
+<div class="p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-3xl">task_alt</span>
+<div>
+<div class="text-label-lg font-label-lg text-on-surface">Diagnostics Verification</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Morning Health Routine Status</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-headline-md font-headline-md text-tertiary-container font-extrabold" id="progress-text">5 / 5 Done</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant font-bold">100% COMPLETE</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ==================== LUNAR HAB LIVING QUARTERS PREVIEW ==================== -->
+<div class="mt-8 bg-surface-container rounded-DEFAULT border-2 border-outline-variant p-4 sm:p-6">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">door_sliding</span>
+            Living Quarters Hab Module 01 • Life Support Core
+          </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+            Telemetry feeds synced directly with Environmental Control and Life Support Systems (ECLSS).
+          </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-block w-3 h-3 rounded-full bg-tertiary-container"></span>
+<span class="text-label-sm font-label-sm text-tertiary font-extrabold uppercase">Atmospheric Seals Sealed</span>
+</div>
+</div>
+<!-- Habitat Image Slot -->
+<div class="relative w-full h-56 sm:h-72 rounded-DEFAULT overflow-hidden border-2 border-primary-container/40">
+<img class="w-full h-full object-cover" data-alt="Vibrant 2D isometric video game interior of a futuristic lunar living quarters with pressurized dome windows showing Earth in the starry dark sky, clean sleeping pods, hydroponic green plant containers, digital holographic consoles, and playful kid-friendly astronaut equipment in bright neon electric cyan and deep space navy colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXoNJT2zRbsfFPdtdK6BbnmEGDFiwAen2BadvJKWX7i2dq-Ac9jCAtKjQ4u0iJ6aIXmKeC3RlIyiMW1IJSSM2UET2RoD4ggk51vkO3RDZIwuUZJKRjtdHZrQtaCm3If5w0EViLWqlyMX_wfU3-7voF3gPXlq_TLWYe8pld6fdWW4liOdpwXKh1WAXndmjLbojTL_B6TvFrv0O9zx0Jk8dzriGSJn_KhlDHs2tFrG17"/>
+<div class="absolute bottom-3 left-3 bg-surface-container-lowest/80 backdrop-blur-md px-3 py-1.5 rounded-DEFAULT border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-sm">visibility</span>
+<span class="text-label-sm font-label-sm text-on-surface">Hab 01 Life Support Bay Cam</span>
+</div>
+</div>
+</div>
+<!-- ==================== SCREEN ACTION NAVIGATION BUTTONS ==================== -->
+<div class="mt-8 pt-6 border-t-2 border-outline-variant flex flex-col sm:flex-row items-center justify-between gap-4">
+<button class="w-full sm:w-auto px-6 py-4 rounded-DEFAULT bg-surface-container-high border-2 border-outline-variant hover:border-primary-container text-on-surface font-label-lg text-label-lg shadow-[0_5px_0_#3b494c] active:translate-y-1 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">arrow_back</span>
+<span>RETURN TO BASE HQ</span>
+</button>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-8 py-4 rounded-DEFAULT bg-primary-container text-on-primary-container font-label-lg text-label-lg shadow-[0_6px_0_#009bb0] hover:brightness-110 active:translate-y-1 transition-all flex items-center justify-center gap-3 font-black text-center uppercase tracking-wider neon-pulse-cyan" onclick="celebrateSuccess()">
+<span>COMPLETE 08:00 HEALTH CHECK</span>
+<span class="material-symbols-outlined text-2xl">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- NASA Challenge Disclaimer Footnote -->
+<div class="mt-6 text-center text-label-sm font-label-sm text-outline uppercase tracking-widest">
+      SIMULATED GAMEPLAY VALUES — NOT REAL NASA MEASUREMENTS • NASA SPACE APPS CHALLENGE 2026
+    </div>
+</main>
+<!-- ==================== SHARED BOTTOM NAVIGATION BAR ==================== -->
+<!-- Contextual Active: Base HQ (as living quarters resides in Base HQ) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md border-t-2 border-outline-variant shadow-[0_-4px_20px_rgba(0,229,255,0.25)] rounded-t-xl">
+<!-- 1. Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container transition-colors active:translate-y-1" href="#explore">
+<span class="material-symbols-outlined text-2xl">explore</span>
+<span class="text-label-md font-label-md mt-0.5">Explore</span>
+</a>
+<!-- 2. Base HQ (ACTIVE TAB) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1" href="#base-hq">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">apartment</span>
+<span class="text-label-md font-label-md mt-0.5 font-extrabold">Base HQ</span>
+</a>
+<!-- 3. Rover -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container transition-colors active:translate-y-1" href="#rover">
+<span class="material-symbols-outlined text-2xl">electric_bolt</span>
+<span class="text-label-md font-label-md mt-0.5">Rover</span>
+</a>
+<!-- 4. Research -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container transition-colors active:translate-y-1" href="#research">
+<span class="material-symbols-outlined text-2xl">science</span>
+<span class="text-label-md font-label-md mt-0.5">Research</span>
+</a>
+<!-- 5. Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container transition-colors active:translate-y-1" href="#comms">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
+<span class="text-label-md font-label-md mt-0.5">Comms</span>
+</a>
+</nav>
+<!-- Interactive Logic for Inspection & Calibration -->
+<script>
+    const diagnosticData = {
+      vitals: {
+        title: "Biometrics Telemetry",
+        status: "Nominal",
+        channel: "SENSOR CH-01 // CADET BIOMETRICS",
+        readA: "Cadet Heart Rate: 72 BPM",
+        readB: "Blood O2: 99% SpO2",
+        explanation: "Cadet biometrics confirm full readiness for EVA exploration. Oxygen uptake and cardio-pulmonary pressure align perfectly with 1/6th gravity simulation models.",
+        btnText: "VERIFY BIOMETRICS READINGS",
+        colorClass: "text-tertiary-container"
+      },
+      pressure: {
+        title: "Hab Pressure & Oxygen",
+        status: "Optimal",
+        channel: "SENSOR CH-02 // DOME O2 BAROMETRY",
+        readA: "Barometric: 101.3 kPa",
+        readB: "O2 Partial: 21.2 kPa",
+        explanation: "Atmospheric equilibrium verified. Nitrogen-to-oxygen ratio is well within normal earth sea-level baseline pressure, ensuring no decompression sickness risks.",
+        btnText: "VERIFY HAB PRESSURE",
+        colorClass: "text-primary-container"
+      },
+      temp: {
+        title: "Hab Cabin Climate",
+        status: "Locked",
+        channel: "SENSOR CH-03 // THERMAL RADIATORS",
+        readA: "Living Pod: 21.5°C",
+        readB: "Radiator Flow: 4.2 L/min",
+        explanation: "Despite the extreme -130°C lunar surface cold outside during night transition, vacuum multilayer insulation keeps crew quarters snug and warm.",
+        btnText: "VERIFY CABIN TEMPERATURE",
+        colorClass: "text-primary-fixed"
+      },
+      hepa: {
+        title: "HEPA Filtration & Dust",
+        status: "98.4% Clean",
+        channel: "SENSOR CH-04 // LUNAR DUST SCRUBBERS",
+        readA: "Filter Status: Nominal",
+        readB: "Particulate Count: 0.02 ppm",
+        explanation: "Sharp lunar regolith dust is completely trapped by the electrostatic precipitation filters. Cabin air is crisp, pure, and safe to breathe!",
+        btnText: "VERIFY AIR PURIFICATION",
+        colorClass: "text-tertiary"
+      },
+      drift: {
+        title: "Sector 2 Recalibration",
+        status: "Action Needed",
+        channel: "SENSOR CH-05 // AUXILIARY DUCT 2B",
+        readA: "Pressure Drift: +1.4%",
+        readB: "Valve Position: 68% Open",
+        explanation: "A small air density fluctuation occurred near Airlock 2. Pressing Recalibrate aligns the digital valve servo back to 100% baseline balance.",
+        btnText: "CALIBRATE AIRFLOW SERVO",
+        colorClass: "text-secondary-container"
+      }
+    };
+
+    function selectDiagnostic(key) {
+      const data = diagnosticData[key];
+      if (!data) return;
+
+      document.getElementById('detail-title').innerText = data.title;
+      document.getElementById('detail-status').innerText = data.status;
+      document.getElementById('detail-channel').innerText = data.channel;
+      document.getElementById('detail-reading-a').innerText = data.readA;
+      document.getElementById('detail-reading-b').innerText = data.readB;
+      document.getElementById('detail-explanation').innerText = data.explanation;
+      document.getElementById('detail-btn-text').innerText = data.btnText;
+    }
+
+    function calibrateDrift() {
+      const card = document.getElementById('card-drift');
+      const badge = document.getElementById('drift-badge');
+      const subtext = document.getElementById('drift-subtext');
+      const bar = document.getElementById('drift-bar');
+      const recalBtn = document.getElementById('quick-recal-btn');
+
+      card.classList.remove('border-secondary-container', 'neon-pulse-gold');
+      card.classList.add('border-tertiary-container');
+      
+      badge.className = "text-label-sm px-2 py-0.5 rounded-full bg-tertiary-container/30 text-tertiary border border-tertiary";
+      badge.innerText = "CALIBRATED 100%";
+
+      subtext.innerText = "Sector 2 airflow servo synchronized. All airlocks balanced.";
+      bar.className = "bg-tertiary-container h-full rounded-full transition-all duration-700 w-full";
+      
+      recalBtn.innerText = "Verified";
+      recalBtn.className = "px-3 py-1.5 rounded-DEFAULT bg-tertiary-container text-on-tertiary-container font-label-md text-label-md font-bold";
+      
+      selectDiagnostic('drift');
+      document.getElementById('detail-status').innerText = "Calibrated";
+      document.getElementById('detail-btn-text').innerText = "SYSTEM VERIFIED";
+    }
+
+    function triggerVerification() {
+      const btn = document.getElementById('calibrate-action-btn');
+      btn.classList.add('brightness-125');
+      setTimeout(() => {
+        btn.classList.remove('brightness-125');
+        alert("Telemetry verified! Habitat parameters logged into Sol 04 Mission Flight Recorder.");
+      }, 200);
+    }
+
+    function celebrateSuccess() {
+      alert("08:00 Morning Health Check Complete! Great job Cadet! Moving forward to 08:30 Crew Breakfast in the Galley.");
+    }
+  </script>
+</body></html>

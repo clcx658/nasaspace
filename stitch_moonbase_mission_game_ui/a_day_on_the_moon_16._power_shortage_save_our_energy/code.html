@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Day on the Moon — 16. Power Shortage — Save Our Energy!</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "inverse-surface": "#e1e1f5",
+            "surface-container-low": "#191b29",
+            "surface-container": "#1d1f2d",
+            "surface-dim": "#101221",
+            "error": "#ffb4ab",
+            "secondary-container": "#feb300",
+            "on-tertiary-container": "#006731",
+            "on-error": "#690005",
+            "tertiary": "#b1ffbf",
+            "outline-variant": "#3b494c",
+            "on-tertiary": "#003918",
+            "surface-variant": "#323443",
+            "on-primary-fixed-variant": "#004f58",
+            "on-secondary": "#432c00",
+            "background": "#101221",
+            "secondary-fixed-dim": "#ffba38",
+            "on-secondary-container": "#6a4800",
+            "on-primary-container": "#00626e",
+            "on-background": "#e1e1f5",
+            "tertiary-fixed": "#62ff96",
+            "on-error-container": "#ffdad6",
+            "primary-fixed": "#9cf0ff",
+            "primary-fixed-dim": "#00daf3",
+            "on-tertiary-fixed": "#00210b",
+            "surface-bright": "#363848",
+            "inverse-on-surface": "#2e2f3f",
+            "surface": "#101221",
+            "on-primary": "#00363d",
+            "surface-container-highest": "#323443",
+            "inverse-primary": "#006875",
+            "surface-tint": "#00daf3",
+            "primary-container": "#00e5ff",
+            "surface-container-high": "#272938",
+            "tertiary-fixed-dim": "#00e475",
+            "secondary": "#ffd799",
+            "on-surface-variant": "#bac9cc",
+            "on-secondary-fixed": "#281900",
+            "on-primary-fixed": "#001f24",
+            "on-tertiary-fixed-variant": "#005226",
+            "on-secondary-fixed-variant": "#604100",
+            "error-container": "#93000a",
+            "primary": "#c3f5ff",
+            "secondary-fixed": "#ffdeac",
+            "outline": "#849396",
+            "surface-container-lowest": "#0b0d1b"
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            "label-md": ["Outfit"],
+            "headline-lg-mobile": ["Outfit"],
+            "headline-md": ["Outfit"],
+            "label-sm": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "label-lg": ["Outfit"],
+            "display-hero": ["Outfit"],
+            "display-hero-mobile": ["Outfit"],
+            "body-sm": ["Outfit"],
+            "body-md": ["Outfit"],
+            "headline-lg": ["Outfit"],
+            "body-lg": ["Outfit"]
+          },
+          fontSize: {
+            "label-md": ["13px", { lineHeight: "16px", letterSpacing: "0.06em", fontWeight: "800" }],
+            "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "800" }],
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.08em", fontWeight: "800" }],
+            "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "700" }],
+            "label-lg": ["16px", { lineHeight: "20px", letterSpacing: "0.04em", fontWeight: "800" }],
+            "display-hero": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "900" }],
+            "display-hero-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "900" }],
+            "body-sm": ["14px", { lineHeight: "20px", fontWeight: "600" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "500" }],
+            "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "800" }],
+            "body-lg": ["18px", { lineHeight: "26px", fontWeight: "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .neon-amber-glow {
+      box-shadow: 0 0 16px rgba(254, 179, 0, 0.45);
+    }
+    .neon-cyan-glow {
+      box-shadow: 0 0 16px rgba(0, 229, 255, 0.35);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen pb-24 selection:bg-primary-container selection:text-on-primary-container">
+<!-- TOP APP BAR / PERSISTENT GAME HUD (from Shared Components JSON) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-2 bg-surface-container-low/90 backdrop-blur-md border-b-2 border-outline-variant shadow-[0_4px_16px_rgba(0,229,255,0.2)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 border-2 border-primary-container flex items-center justify-center text-primary-container font-headline-sm font-extrabold shadow-[0_0_10px_rgba(0,229,255,0.3)]">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<span class="text-headline-sm font-headline-sm font-extrabold text-primary-container tracking-wider">A Day on the Moon</span>
+<span class="hidden md:inline-block ml-3 px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant text-label-sm font-label-sm border border-outline-variant">
+          SIMULATED GAMEPLAY VALUES — NOT REAL NASA MEASUREMENTS
+        </span>
+</div>
+</div>
+<!-- HUD Telemetry telemetry monitors -->
+<div class="hidden lg:flex items-center gap-3">
+<div class="px-3 py-1 rounded-full bg-surface-container-highest border border-tertiary-container/60 text-tertiary font-label-md text-label-md flex items-center gap-1.5 shadow-[0_0_8px_rgba(34,239,126,0.2)]">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">air</span>
+<span>O2: 98%</span>
+</div>
+<div class="px-3 py-1 rounded-full bg-surface-container-highest border-2 border-secondary-container text-secondary font-label-md text-label-md flex items-center gap-1.5 neon-amber-glow animate-pulse">
+<span class="material-symbols-outlined text-secondary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span>Power: 58% (Warning)</span>
+</div>
+<div class="px-3 py-1 rounded-full bg-surface-container-highest border border-primary-container/60 text-primary font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span>Water: 88%</span>
+</div>
+<div class="px-3 py-1 rounded-full bg-surface-container-highest border border-primary-fixed/40 text-primary font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-fixed text-[18px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span>Rad Shield: 95%</span>
+</div>
+<div class="text-on-surface-variant font-label-md text-label-md ml-1 pl-2 border-l border-outline-variant">
+        Sol 04 • 14:15
+      </div>
+</div>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-2">
+<span class="hidden sm:inline-block px-3 py-1 bg-surface-container text-secondary text-label-md font-label-md rounded-full border border-secondary-container/40">
+        SIMULATED MISSION
+      </span>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high border-2 border-outline-variant hover:border-primary-container active:translate-y-1 transition-all text-on-surface font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">pause</span>
+<span>Pause</span>
+</button>
+<button class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors border border-outline-variant">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+<button class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors border border-outline-variant">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+</header>
+<!-- MAIN VIEWPORT CONTAINER (16:9 Aspect Frame Feel) -->
+<main class="pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+<!-- BREADCRUMB & STAGE HEADER -->
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex items-center gap-2 text-label-md font-label-md text-on-surface-variant">
+<a class="hover:text-primary-container transition-colors flex items-center gap-1" href="#base">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Base HQ</span>
+</a>
+<span class="text-outline">/</span>
+<span class="text-secondary-fixed">Branching Event</span>
+<span class="text-outline">/</span>
+<span class="text-secondary font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">electric_bolt</span>
+<span>⚡ Power Shortage — Save Our Energy!</span>
+</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-error-container/40 border border-error text-error text-label-sm font-label-sm rounded-full flex items-center gap-1.5 animate-pulse">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+          ACTIVE HAZARD EVENT
+        </span>
+</div>
+</div>
+<!-- POWER ALERT BANNER -->
+<section class="bg-gradient-to-r from-surface-container-low via-surface-container to-surface-container-low border-2 border-secondary-container rounded-DEFAULT p-4 mb-6 shadow-[0_0_20px_rgba(254,179,0,0.25)] flex items-center justify-between flex-wrap gap-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-secondary-container flex items-center justify-center text-on-secondary-container shadow-[0_4px_0_#c68400]">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-secondary-container uppercase tracking-wider">Mission Incident #04-PWR</div>
+<h1 class="text-headline-sm font-headline-sm text-on-surface">POWER ALERT — DUST COVERAGE DETECTED • ENERGY LEVELS LOW</h1>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-surface-dim border border-secondary-container/50 text-secondary font-label-md text-label-md rounded-full">
+          Deficit Rate: -2.4 kW
+        </span>
+</div>
+</section>
+<!-- 2-COLUMN MAIN PLAY AREA: Left (Storyline & Isometric Vista), Right (Telemetry & Decisions) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- LEFT COLUMN (Isometric Lunar Viewport & Dialogue) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- LUNAR VIEWPORT CARD (Inspired by the 2D Isometric Art) -->
+<div class="bg-surface-container-low border-2 border-primary-container/40 rounded-DEFAULT overflow-hidden shadow-[0_4px_20px_rgba(0,229,255,0.15)] relative">
+<!-- Live Telemetry Tag -->
+<div class="absolute top-3 left-3 z-10 px-3 py-1 bg-surface-dim/80 backdrop-blur-md border border-primary-container text-primary font-label-sm text-label-sm rounded-full flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+            SECTOR 3 • SOLAR ARRAY APRON
+          </div>
+<!-- Isometric Lunar Scene Graphic Frame -->
+<div class="relative w-full h-64 sm:h-72 bg-gradient-to-b from-[#0b0d1b] to-[#191b29] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 opacity-40 bg-[radial-gradient(#00e5ff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<!-- Isometric Base Elements Art Simulation -->
+<div class="relative z-10 w-full h-full flex items-center justify-center scale-90 sm:scale-100">
+<!-- Central Dome -->
+<div class="absolute w-36 h-28 bg-surface-bright rounded-t-full border-4 border-outline-variant flex flex-col items-center justify-end pb-2 shadow-2xl">
+<div class="w-16 h-12 bg-secondary-container/40 rounded-t-full border-2 border-secondary-container neon-amber-glow animate-pulse"></div>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-1">BASE HQ</span>
+</div>
+<!-- Solar Array Alpha (Dusty) -->
+<div class="absolute top-6 left-6 flex flex-col items-center">
+<div class="grid grid-cols-2 gap-1 p-1 bg-surface-container-high border-2 border-secondary-container/70 rounded shadow-md">
+<div class="w-7 h-7 bg-amber-900/60 border border-secondary-container/40 rounded-sm"></div>
+<div class="w-7 h-7 bg-amber-900/60 border border-secondary-container/40 rounded-sm"></div>
+<div class="w-7 h-7 bg-amber-900/40 border border-secondary-container/40 rounded-sm"></div>
+<div class="w-7 h-7 bg-amber-900/60 border border-secondary-container/40 rounded-sm"></div>
+</div>
+<span class="text-[10px] font-label-sm text-error bg-surface-dim px-1.5 py-0.5 rounded border border-error mt-1">ALPHA: 35%</span>
+</div>
+<!-- Solar Array Beta -->
+<div class="absolute top-6 right-6 flex flex-col items-center">
+<div class="grid grid-cols-2 gap-1 p-1 bg-surface-container-high border-2 border-primary-container/70 rounded shadow-md">
+<div class="w-7 h-7 bg-cyan-950/60 border border-primary-container/40 rounded-sm"></div>
+<div class="w-7 h-7 bg-cyan-950/60 border border-primary-container/40 rounded-sm"></div>
+<div class="w-7 h-7 bg-amber-900/40 border border-secondary-container/40 rounded-sm"></div>
+<div class="w-7 h-7 bg-cyan-950/60 border border-primary-container/40 rounded-sm"></div>
+</div>
+<span class="text-[10px] font-label-sm text-secondary bg-surface-dim px-1.5 py-0.5 rounded border border-secondary-container mt-1">BETA: 62%</span>
+</div>
+<!-- Rover-01 & Cadet Icons on Lunar Surface -->
+<div class="absolute bottom-4 left-10 flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-bright border-2 border-primary-container flex items-center justify-center text-primary-container shadow-md">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<span class="text-[10px] font-label-sm text-on-surface bg-surface-dim/80 px-2 py-0.5 rounded-full border border-outline">ROVER-01</span>
+</div>
+<div class="absolute bottom-4 right-12 flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-bright border-2 border-tertiary-container flex items-center justify-center text-tertiary-container shadow-md">
+<span class="material-symbols-outlined text-[20px]">accessibility_new</span>
+</div>
+<span class="text-[10px] font-label-sm text-on-surface bg-surface-dim/80 px-2 py-0.5 rounded-full border border-outline">NOVA</span>
+</div>
+</div>
+<!-- Dust Overlay Warning Graphic -->
+<div class="absolute bottom-2 right-2 px-2.5 py-1 bg-error-container/80 text-on-error-container text-label-sm font-label-sm rounded border border-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">grain</span>
+              ELECTROSTATIC REGOLITH DUST ACCUMULATION
+            </div>
+</div>
+</div>
+<!-- COMMANDER NOVA & ROVER-01 DIALOGUE CARD -->
+<div class="bg-surface-container-low border-2 border-primary-container rounded-DEFAULT p-5 relative shadow-[0_0_16px_rgba(0,229,255,0.2)]">
+<!-- Character Medallions Overhanging Header -->
+<div class="flex items-center gap-3 -mt-9 mb-2">
+<div class="w-14 h-14 rounded-full bg-surface-container-high border-3 border-primary-container flex items-center justify-center text-primary-container shadow-lg">
+<span class="material-symbols-outlined text-[32px]">face_6</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high border-2 border-secondary-container flex items-center justify-center text-secondary shadow-lg -ml-4">
+<span class="material-symbols-outlined text-[26px]">smart_toy</span>
+</div>
+<div>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container/20 border border-primary-container text-primary-container text-label-sm font-label-sm">
+                COMMAND TEAM COMMS
+              </span>
+<div class="font-headline-sm text-headline-sm text-on-surface">Commander Nova &amp; Rover-01</div>
+</div>
+</div>
+<!-- Dialogue Speech Bubble Body -->
+<div class="bg-surface-container-high/70 border border-outline-variant rounded-DEFAULT p-4 mt-2">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+<strong class="text-primary-container">“Cadet, we have a power shortage warning!</strong> Fine lunar dust has coated our solar arrays, reducing power generation below our habitat's daily consumption rate. We need to act quickly, but remember: <span class="text-tertiary underline decoration-tertiary-container">never power down our life support systems!</span>”
+            </p>
+</div>
+<!-- Rover Diagnostic Bubble -->
+<div class="flex items-center gap-3 mt-3 pt-3 border-t border-outline-variant/60">
+<span class="px-2 py-0.5 bg-secondary-container/20 border border-secondary-container text-secondary text-label-sm font-label-sm rounded">ROVER-01 STATUS</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary-container text-[16px]">battery_alert</span>
+              Internal battery: 84% • Electrostatic brush arm ready for deployment
+            </span>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Telemetry HUD & Decision Challenge Cards -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- INTERACTIVE SOLAR ARRAY & BATTERY TELEMETRY DASHBOARD -->
+<div class="bg-surface-container-low border-2 border-outline-variant rounded-DEFAULT p-5">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-[24px]" style="font-variation-settings: 'FILL' 1;">solar_power</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Base Power Grid Status</h2>
+</div>
+<span class="text-label-md font-label-md text-secondary-container bg-secondary-container/10 border border-secondary-container/30 px-3 py-1 rounded-full">
+              TOTAL SOLAR OUTPUT: 25.4 kW
+            </span>
+</div>
+<!-- 3 Solar Arrays Progress Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
+<!-- Array Alpha -->
+<div class="bg-surface-container rounded-DEFAULT p-3 border-2 border-error/50">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-md text-label-md text-on-surface">Array Alpha</span>
+<span class="text-label-sm font-label-sm text-error font-bold">35% (Dusty)</span>
+</div>
+<div class="w-full bg-surface-dim h-3.5 rounded-full overflow-hidden border border-outline-variant/50 mb-2">
+<div class="bg-error h-full rounded-full transition-all duration-500" style="width: 35%"></div>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>Output:</span>
+<strong class="text-error">4.8 kW</strong>
+</div>
+</div>
+<!-- Array Beta -->
+<div class="bg-surface-container rounded-DEFAULT p-3 border-2 border-secondary-container/50">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-md text-label-md text-on-surface">Array Beta</span>
+<span class="text-label-sm font-label-sm text-secondary font-bold">62% (Partial)</span>
+</div>
+<div class="w-full bg-surface-dim h-3.5 rounded-full overflow-hidden border border-outline-variant/50 mb-2">
+<div class="bg-secondary-container h-full rounded-full transition-all duration-500" style="width: 62%"></div>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>Output:</span>
+<strong class="text-secondary">8.5 kW</strong>
+</div>
+</div>
+<!-- Array Gamma -->
+<div class="bg-surface-container rounded-DEFAULT p-3 border-2 border-tertiary/50">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-md text-label-md text-on-surface">Array Gamma</span>
+<span class="text-label-sm font-label-sm text-tertiary font-bold">88% (Clean)</span>
+</div>
+<div class="w-full bg-surface-dim h-3.5 rounded-full overflow-hidden border border-outline-variant/50 mb-2">
+<div class="bg-tertiary-container h-full rounded-full transition-all duration-500" style="width: 88%"></div>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>Output:</span>
+<strong class="text-tertiary">12.1 kW</strong>
+</div>
+</div>
+</div>
+<!-- Base Battery Bank Status Bar -->
+<div class="bg-surface-container-high rounded-DEFAULT p-4 border border-outline-variant">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-lg text-label-lg text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">battery_charging_full</span>
+                Lunar Habitat Main Battery Bank
+              </span>
+<span class="font-headline-sm text-headline-sm text-secondary-container font-extrabold">58% RESERVE</span>
+</div>
+<div class="w-full bg-surface-dim h-5 rounded-full overflow-hidden border-2 border-outline-variant p-0.5">
+<div class="bg-gradient-to-r from-error via-secondary-container to-tertiary-container h-full rounded-full transition-all duration-700 shadow-inner" style="width: 58%"></div>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm text-on-surface-variant mt-2">
+<span>Base Load: 27.8 kW required</span>
+<span class="text-error font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+                Deficit: -2.4 kW drawing from batteries
+              </span>
+</div>
+</div>
+<!-- Mandatory Life Support Non-Negotiable Rule Callout -->
+<div class="mt-4 bg-tertiary-container/10 border-2 border-tertiary-container/80 rounded-DEFAULT p-3.5 flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-container text-[26px] mt-0.5" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div>
+<div class="text-label-sm font-label-sm text-tertiary font-extrabold uppercase">Hard-Locked Safety Rule</div>
+<p class="text-body-sm font-body-sm text-on-surface">
+<strong>IMPORTANT GAME RULE:</strong> Essential ECLSS life-support, cabin oxygen recycling, and pressurized habitat thermal control are <strong>HARD-LOCKED</strong> and can never be disabled during power adjustments.
+              </p>
+</div>
+</div>
+</div>
+<!-- INTERACTIVE DECISION CHALLENGE (3 CARDS) -->
+<div>
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">psychology</span>
+              Select Your Power Management Plan:
+            </h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Step 1 of 1 • Immediate Result</span>
+</div>
+<div class="space-y-3.5" id="decisionGroup">
+<!-- CHOICE A (RECOMMENDED / ACTIVE INTERACTION) -->
+<label class="block cursor-pointer relative">
+<input checked="" class="peer sr-only" name="powerChoice" type="radio" value="clean"/>
+<div class="p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant peer-checked:border-primary-container peer-checked:bg-surface-container peer-checked:shadow-[0_0_20px_rgba(0,229,255,0.25)] transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 border-2 border-primary-container flex items-center justify-center text-primary-container flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">cleaning_services</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-[18px] text-on-surface font-extrabold">Choice A: Deploy Rover Electrostatic Wipers</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm border border-tertiary-container">Recommended</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+                        Send Rover-01 to clean dusty solar panels using pulsed electrostatic repellers and soft regolith brushes.
+                      </p>
+<!-- Benefit Tag -->
+<div class="flex flex-wrap items-center gap-2 mt-3">
+<span class="px-2.5 py-1 bg-surface-dim rounded-full text-label-sm font-label-sm text-tertiary border border-tertiary-container/40 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                          Restores arrays to 94% efficiency
+                        </span>
+<span class="px-2.5 py-1 bg-surface-dim rounded-full text-label-sm font-label-sm text-primary-container border border-primary-container/40 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+                          +10.5 kW generation
+                        </span>
+<span class="px-2.5 py-1 bg-surface-dim rounded-full text-label-sm font-label-sm text-secondary border border-secondary-container/40">
+                          +10 Resource Mgmt Points
+                        </span>
+</div>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-primary-container flex items-center justify-center bg-primary-container text-on-primary-container shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[16px] font-extrabold">check</span>
+</div>
+</div>
+</div>
+</label>
+<!-- CHOICE B (LOAD SHEDDING) -->
+<label class="block cursor-pointer relative">
+<input class="peer sr-only" name="powerChoice" type="radio" value="shed"/>
+<div class="p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant peer-checked:border-secondary-container peer-checked:bg-surface-container peer-checked:shadow-[0_0_20px_rgba(254,179,0,0.25)] transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 border-2 border-secondary-container flex items-center justify-center text-secondary flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">toggle_off</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-[18px] text-on-surface font-extrabold">Choice B: Shed Non-Essential Electrical Loads</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+                        Turn off decorative exterior floodlights and pause secondary mining rock drills. All life-support and communications remain fully powered.
+                      </p>
+<div class="flex flex-wrap items-center gap-2 mt-3">
+<span class="px-2.5 py-1 bg-surface-dim rounded-full text-label-sm font-label-sm text-secondary border border-secondary-container/40 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">energy_savings_leaf</span>
+                          Reduces base drain by 3.2 kW
+                        </span>
+<span class="px-2.5 py-1 bg-surface-dim rounded-full text-label-sm font-label-sm text-on-surface-variant border border-outline">
+                          Stabilizes battery reserve
+                        </span>
+</div>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center flex-shrink-0"></div>
+</div>
+</div>
+</label>
+<!-- CHOICE C (UNSAFE CHOICE / EDUCATIONAL BOUNCE) -->
+<label class="block cursor-pointer relative">
+<input class="peer sr-only" name="powerChoice" type="radio" value="ignore"/>
+<div class="p-4 rounded-DEFAULT bg-surface-container-low border-2 border-outline-variant peer-checked:border-error peer-checked:bg-surface-container transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-error-container/20 border-2 border-error flex items-center justify-center text-error flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">error_outline</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-[18px] text-on-surface font-extrabold">Choice C: Ignore Warning &amp; Run Full Power Lab Tests</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container/40 text-error font-label-sm text-label-sm border border-error">Risky</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+                        Keep all high-energy science lasers and habitat gym entertainment screens running at maximum wattage.
+                      </p>
+<div class="mt-2 text-body-sm font-body-sm text-error bg-surface-dim/60 p-2 rounded border border-error/40 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Friendly NASA Notice: This will quickly empty our batteries. The game will guide you to retry without penalty!</span>
+</div>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center flex-shrink-0"></div>
+</div>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- STEM SCIENCE CLASSROOM INSIGHT PANEL -->
+<section class="mt-8 bg-surface-container-low border-2 border-secondary-container/60 rounded-DEFAULT p-6 shadow-[0_4px_16px_rgba(254,179,0,0.15)] relative overflow-hidden">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-DEFAULT bg-secondary-container flex items-center justify-center text-on-secondary-container shadow-[0_3px_0_#c68400]">
+<span class="material-symbols-outlined text-[24px]">school</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-secondary-container uppercase tracking-wider">STEM Curricular Module</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">NASA Science Classroom — Lunar Dust &amp; Solar Energy</h3>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-4">
+            Solar panels convert sunlight into clean electricity using photovoltaic cells. On Earth, wind and rain wash dust away. But on the Moon, there is no weather! 
+            <strong>Lunar regolith dust</strong> is jagged, razor-sharp, and holds an <em>electrostatic charge</em> from direct solar radiation, causing it to cling tightly to glass solar panels.
+          </p>
+<div class="flex flex-wrap gap-4 pt-2 border-t border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">lightbulb</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant"><strong>What Happened?</strong> Regolith dust settled on Arrays Alpha &amp; Beta.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-[20px]">thumb_up</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant"><strong>Why Does It Matter?</strong> Keeping panels clean produces the kilowatt power needed for crew science and experiments.</span>
+</div>
+</div>
+</div>
+<!-- Science Badge Illustration Box -->
+<div class="bg-surface-container rounded-DEFAULT p-4 border border-outline-variant flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 rounded-full bg-secondary-container/20 border-2 border-secondary-container flex items-center justify-center text-secondary mb-2 neon-amber-glow">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+</div>
+<span class="font-headline-sm text-[16px] text-on-surface font-extrabold">Lunar Dust Shielding Tech</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            NASA researchers design electrodynamic dust shields (EDS) that use invisible electric waves to push dust right off solar glass!
+          </p>
+</div>
+</div>
+</section>
+<!-- BOTTOM ACTION AREA & CONFIRMATION ROW -->
+<div class="mt-8 mb-12 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-DEFAULT bg-surface-container-low border border-outline-variant">
+<button class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-surface-container-high border-2 border-outline hover:border-primary-container text-on-surface font-label-lg text-label-lg transition-transform active:translate-y-1 flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+<span>RETURN TO BASE HQ OVERVIEW</span>
+</button>
+<button class="w-full sm:w-auto px-8 py-4 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm text-[18px] font-extrabold uppercase tracking-wider transition-all transform active:translate-y-1 shadow-[0_6px_0_#c68400] hover:shadow-[0_4px_0_#c68400] neon-amber-glow flex items-center justify-center gap-3" id="restoreBtn">
+<span>RESTORE BASE STATUS &amp; CONTINUE</span>
+<span class="material-symbols-outlined text-[24px]">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- PERSISTENT BOTTOM NAVIGATION BAR (from Shared Components JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-low/95 backdrop-blur-md border-t-2 border-outline-variant shadow-[0_-4px_20px_rgba(0,229,255,0.25)] rounded-t-xl">
+<!-- Explore -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#explore">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+<span class="text-label-md font-label-md mt-0.5">Explore</span>
+</a>
+<!-- Base HQ (ACTIVE for this Screen as established in Breadcrumb) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-DEFAULT px-4 py-2 shadow-[0_4px_0_#009bb0] active:translate-y-1 transition-transform" href="#base">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">apartment</span>
+<span class="text-label-md font-label-md mt-0.5 font-extrabold">Base HQ</span>
+</a>
+<!-- Rover -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#rover">
+<span class="material-symbols-outlined text-[24px]">electric_bolt</span>
+<span class="text-label-md font-label-md mt-0.5">Rover</span>
+</a>
+<!-- Research -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#research">
+<span class="material-symbols-outlined text-[24px]">science</span>
+<span class="text-label-md font-label-md mt-0.5">Research</span>
+</a>
+<!-- Comms -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 font-bold hover:bg-surface-container active:translate-y-1 transition-transform" href="#comms">
+<span class="material-symbols-outlined text-[24px]">support_agent</span>
+<span class="text-label-md font-label-md mt-0.5">Comms</span>
+</a>
+</nav>
+<!-- LIGHTWEIGHT INTERACTIVITY FOR SELECTION AND CONFIRMATION -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const radioInputs = document.querySelectorAll('input[name="powerChoice"]');
+      const restoreBtn = document.getElementById('restoreBtn');
+
+      radioInputs.forEach(input => {
+        input.addEventListener('change', (e) => {
+          if (e.target.value === 'ignore') {
+            alert('Mission Control Alert: Ignoring the dust storm causes batteries to drop below 30%! Commander Nova recommends Choice A or Choice B to safely restore power.');
+          }
+        });
+      });
+
+      restoreBtn.addEventListener('click', () => {
+        const selected = document.querySelector('input[name="powerChoice"]:checked').value;
+        if (selected === 'clean') {
+          restoreBtn.innerHTML = '<span>CLEANING COMPLETE! POWER RESTORED 100%</span> <span class="material-symbols-outlined">done_all</span>';
+          restoreBtn.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+          restoreBtn.classList.add('bg-tertiary-container', 'text-on-tertiary-container', 'shadow-[0_6px_0_#009bb0]');
+          setTimeout(() => {
+            alert('Mission Accomplished! Solar arrays wiped clean. +10 Resource Management XP added to your Astronaut Logbook!');
+          }, 400);
+        } else if (selected === 'shed') {
+          restoreBtn.innerHTML = '<span>NON-ESSENTIAL LOADS SHED • GRID BALANCED</span> <span class="material-symbols-outlined">check</span>';
+          setTimeout(() => {
+            alert('Power usage reduced! Battery level is now holding steady at 58%. Good tactical choice!');
+          }, 400);
+        } else {
+          alert('Please choose Choice A or Choice B before leaving this alert screen.');
+        }
+      });
+    });
+  </script>
+</body></html>
