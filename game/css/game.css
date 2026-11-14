@@ -1,0 +1,45 @@
+/* Game-layer styles that sit on top of the Stitch design (modals, toasts, tactile buttons). Uses the Stitch palette. */
+html{scroll-behavior:smooth}
+body{background:#0b0d1b;color:#e1e1f5;font-family:Outfit,system-ui,sans-serif;margin:0}
+#app{min-height:100vh}
+#bgstars{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;background-image:radial-gradient(1.5px 1.5px at 20% 30%,#fff,transparent),radial-gradient(1px 1px at 70% 20%,#c8d3f5,transparent),radial-gradient(1.5px 1.5px at 40% 80%,#fff,transparent),radial-gradient(1px 1px at 85% 65%,#c8d3f5,transparent),radial-gradient(1px 1px at 10% 70%,#fff,transparent);background-size:340px 340px}
+#app{position:relative;z-index:1}
+
+/* tactile arcade buttons (DESIGN.md: solid bottom lip, press travel) */
+.gbtn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:52px;padding:.7rem 1.6rem;border-radius:9999px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:.95rem;border:0;cursor:pointer;transition:transform .1s,box-shadow .1s;color:#0b0d1b}
+.gbtn:active{transform:translateY(4px);box-shadow:0 0 0 transparent!important}
+.gbtn.cyan{background:#00e5ff;box-shadow:0 5px 0 #009bb0,0 0 16px rgba(0,229,255,.3)}
+.gbtn.gold{background:#ffb300;box-shadow:0 5px 0 #c68400,0 0 16px rgba(255,179,0,.3)}
+.gbtn.coral{background:#ff3d00;color:#fff;box-shadow:0 5px 0 #b32a00}
+.gbtn.dim{background:#1d2138;color:#fff;border:2px solid #282d4d;box-shadow:0 5px 0 #101221}
+.gbtn[disabled]{opacity:.45;cursor:default}
+
+/* modal + toast */
+#modal-root{position:fixed;inset:0;z-index:100;pointer-events:none}
+.gmodal-scrim{position:fixed;inset:0;background:rgba(7,9,22,.82);backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:center;padding:4.5rem 1rem 1rem;overflow-y:auto;pointer-events:auto;animation:gfade .2s}
+.gmodal{width:100%;max-width:44rem;background:rgba(16,18,33,.96);border:3px solid #00e5ff;border-radius:1.75rem;padding:1.25rem 1.25rem 1.5rem;box-shadow:0 0 28px rgba(0,229,255,.25);animation:grise .25s}
+.gmodal.wide{max-width:60rem}
+.gmodal.warn{border-color:#ff3d00;box-shadow:0 0 28px rgba(255,61,0,.3)}
+.gmodal.gold{border-color:#ffb300;box-shadow:0 0 28px rgba(255,179,0,.25)}
+.gmodal h2{font-size:1.5rem;font-weight:800;margin:.25rem 0 .5rem}
+.gmodal p{margin:.4rem 0;line-height:1.45}
+.gmodal .gkicker{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#00e5ff}
+.gmodal .gactions{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:1.1rem}
+.gchip{display:inline-block;border-radius:9999px;padding:.15rem .7rem;font-size:.8rem;font-weight:800;margin:.15rem .2rem .15rem 0}
+.gchip.up{background:rgba(0,230,118,.15);border:1.5px solid #00e676;color:#62f0a0}
+.gchip.down{background:rgba(255,61,0,.15);border:1.5px solid #ff3d00;color:#ff9a7a}
+.gchip.neutral{background:rgba(0,229,255,.12);border:1.5px solid #00e5ff;color:#9cf0ff}
+.gfact{display:flex;gap:.75rem;align-items:center;background:#0b0d1b;border:2px solid #00e5ff;border-radius:1rem;padding:.6rem .9rem;margin-top:.8rem;font-size:.95rem}
+.gwarn{background:rgba(255,154,77,.14);border-left:6px solid #ff9a4d;padding:.4rem .75rem;border-radius:.6rem;margin:.5rem 0;font-weight:700;font-size:.92rem}
+.gopts{display:grid;gap:.75rem;margin-top:.9rem}
+.gopts.three{grid-template-columns:repeat(auto-fit,minmax(12rem,1fr))}
+.gopt{text-align:left;border-radius:1.1rem;padding:.8rem 1rem;border:3px solid #3a4fc0;background:linear-gradient(180deg,#1f2b6b,#161f55);box-shadow:0 5px 0 #0b1040;color:#e1e1f5;cursor:pointer}
+.gopt:hover{border-color:#ffb300}
+.gopt .t{font-weight:800;font-size:1.02rem}
+.gopt .d{font-size:.85rem;color:#bac9cc;font-weight:600;margin-top:.15rem}
+#toast-root{position:fixed;left:0;right:0;bottom:5.5rem;z-index:120;display:flex;flex-direction:column;align-items:center;gap:.5rem;pointer-events:none;padding:0 1rem}
+.gtoast{max-width:36rem;background:#1d2138;border:2px solid #00e5ff;color:#fff;border-radius:1rem;padding:.6rem 1rem;font-weight:700;font-size:.92rem;box-shadow:0 8px 24px rgba(0,0,0,.5);animation:grise .25s}
+@keyframes gfade{from{opacity:0}}
+@keyframes grise{from{opacity:0;transform:translateY(12px)}}
+.hdr-food{display:flex}
+@media print{body *{visibility:hidden}#cert-print,#cert-print *{visibility:visible}#cert-print{position:fixed;inset:0;background:#fff;color:#000;padding:2rem}}
