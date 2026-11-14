@@ -229,6 +229,44 @@
     return c;
   };
 
+
+  /* ---------------- "What to do now" helper ---------------- */
+  var coachBox = null, glow = [];
+  function clearGlow(){ glow.forEach(function(e){ e.classList.remove('guide-pulse'); }); glow = []; }
+  function findTarget(t){
+    if(!t) return null;
+    if(t.nodeType === 1) return t;
+    if(typeof t === 'string') return document.querySelector('#app ' + t);
+    var all = document.querySelectorAll('#app button, #app a, #app input');
+    for(var i=0;i<all.length;i++){
+      var el = all[i];
+      if(el.offsetParent === null) continue;
+      if(t.test((el.textContent || '').replace(/\s+/g, ' ').trim()) || (el.id && t.test(el.id))) return el;
+    }
+    return null;
+  }
+  /* text: one short instruction. target: regex (button text), css selector or element to make glow. */
+  J.coachSet = function(text, target, opts){
+    opts = opts || {};
+    clearGlow();
+    if(!coachBox){
+      coachBox = document.createElement('div'); coachBox.id = 'coach';
+      document.body.appendChild(coachBox);
+    }
+    document.body.classList.toggle('has-coach', !!text);
+    if(!text){ coachBox.style.display = 'none'; return; }
+    var el = findTarget(target);
+    coachBox.style.display = 'flex';
+    coachBox.innerHTML = '<span class="coach-ico" aria-hidden="true">🧑‍🚀</span><div class="coach-text"><b>What to do now</b><span>'+text+'</span></div>'+
+      (el ? '<button class="coach-show" type="button">SHOW ME</button>' : '')+'<button class="coach-x" type="button" aria-label="Hide tip">✕</button>';
+    if(el){
+      el.classList.add('guide-pulse'); glow.push(el);
+      coachBox.querySelector('.coach-show').onclick = function(){ J.sfx.tap(); el.scrollIntoView({behavior:'smooth', block:'center'}); };
+      if(opts.scroll) el.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    coachBox.querySelector('.coach-x').onclick = function(){ coachBox.style.display = 'none'; clearGlow(); document.body.classList.remove('has-coach'); };
+  };
+
   var current = null;
   function runScreenScript(js){
     var orig = document.addEventListener, queued = [];
@@ -250,20 +288,39 @@
         b.addEventListener('click', function(){ J.pauseMenu(); });
       }
     });
-    // bottom dock links
-    Array.prototype.forEach.call(root.querySelectorAll('a[href^="#"]'), function(a){
-      var h = a.getAttribute('href');
-      a.addEventListener('click', function(e){
-        if(a.__handled) return;
-        e.preventDefault(); J.sfx.tap();
-        if(h === '#base-hq' || h === '#base' || h === '#base-hub'){ J.G ? J.go('hub') : J.toast('Start the mission first!'); }
-        else if(h === '#research' || h === '#quests'){ J.go('questHub'); }
-        else if(h === '#training'){ J.go('trainingHub'); }
-        else if(h === '#explore' || h === '#rover' || h === '#comms'){ J.G ? J.go('hub') : J.toast('Follow the mission routine at Base HQ.'); }
+    // never let a placeholder link (href="#") jump the page or the router
+    if(!root.__hashGuard){
+      root.__hashGuard = true;
+      root.addEventListener('click', function(e){
+        var a = e.target.closest && e.target.closest('a[href^="#"]');
+        if(a && !/^#\//.test(a.getAttribute('href') || '')) e.preventDefault();
       });
+    }
+    // bottom bar: three clear items (Mission, Base HQ, Quests); the others had nothing behind them, so they are hidden
+    Array.prototype.forEach.call(root.querySelectorAll('nav a, nav button'), function(el){
+      var t = (el.textContent || '').replace(/\s+/g, ' ').trim();
+      function relabel(from, to){
+        var tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n;
+        while((n = tw.nextNode())){ if(n.nodeValue.trim() === from) n.nodeValue = to; }
+      }
+      if(/Rover|Comms/.test(t)){ el.style.display = 'none'; return; }
+      if(/Explore/.test(t)){ relabel('Explore', 'Mission'); el.addEventListener('click', function(e){ e.preventDefault(); J.sfx.tap(); J.G ? J.go(J.nextScreen ? J.nextScreen() : 'hub') : J.toast('Press START ADVENTURE on the menu first.'); }); }
+      else if(/Base HQ/.test(t)){ el.addEventListener('click', function(e){ e.preventDefault(); J.sfx.tap(); J.G ? J.go('hub') : J.go('menu'); }); }
+      else if(/Research/.test(t)){ relabel('Research', 'Quests'); el.addEventListener('click', function(e){ e.preventDefault(); J.sfx.tap(); J.go('questHub'); }); }
+    });
+    // the logo button used to reload the whole page: send it to the menu instead
+    var brand = Array.prototype.find.call(root.querySelectorAll('header button, header a'), function(el){ return /A Day on the Moon/.test(el.textContent) && !/ENTER|START/.test(el.textContent); });
+    if(brand){ brand.removeAttribute('onclick'); brand.addEventListener('click', function(e){ e.preventDefault(); J.sfx.tap(); J.go('menu'); }); }
+    // decorations that did nothing: fake radio player, counselor audio, map zoom buttons
+    Array.prototype.forEach.call(root.querySelectorAll('div'), function(d){
+      if(/rounded-full/.test(d.className) && /Lunar Base Radio/i.test(d.textContent) && d.textContent.length < 160) d.style.display = 'none';
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('button'), function(b){
+      var t = (b.textContent || '').replace(/\s+/g, ' ').trim();
+      if(/CAMP COUNSELOR DISPATCH/i.test(t) || /^(zoom_in|zoom_out|filter_center_focus|add|remove|layers)$/.test(t)) b.style.display = 'none';
     });
     // Stitch navigation buttons that exist on most screens
-    J.bindText(root, /(RETURN TO BASE HQ|Base HQ|BASE HUB)\s*(OVERVIEW)?$/i, function(){ J.G ? J.go('hub') : J.go('menu'); }, 'button');
+    J.bindText(root, /^(arrow_back\s*)?(←\s*)?(RETURN TO BASE HQ|Base HQ|BASE HUB)\s*(OVERVIEW)?$/i, function(){ J.G ? J.go('hub') : J.go('menu'); }, 'main button, main a, section button, section a');
     J.bindText(root, /RETURN TO MAIN MENU|Main Menu|RETURN TO MENU/i, function(){ J.go('menu'); });
   }
   J.settings = function(){
@@ -296,6 +353,8 @@
     fixImages(app);
     bindCommon(app, name);
     if(def.bind){ try{ def.bind(app); }catch(e){ console.error('bind error in '+name+':', e); } }
+    var tip = J.coachFor && J.coachFor[name];
+    J.coachSet(tip ? tip[0] : '', tip ? tip[1] : null);
     window.scrollTo(0, 0);
     document.title = (scr.title || 'A Day on the Moon').replace(/\s+/g,' ');
     J.currentScreen = name;

@@ -15,6 +15,37 @@
   J.TASKS = TASKS;
   var ENDING_SCREEN = {S:'endS', A:'endA', B:'endB', C:'endC'};
 
+  /* One short instruction per screen (shown in the "What to do now" helper, with the main button glowing). */
+  var CERT = /CERTIFICATE/i;
+  J.coachFor = {
+    menu:['Press <b>START ADVENTURE</b> to begin.', /START ADVENTURE/i],
+    invitation:['Type your <b>name</b>, then press <b>ACCEPT INVITATION</b>.', '#playerName'],
+    trainingHub:['Press <b>START TRAINING</b>.', /START TRAINING/i],
+    training:['Pick a station, answer the question, and collect all <b>5 badges</b>.', null],
+    rocket:['Press <b>COMMENCE LIFTOFF</b> three times to launch.', /COMMENCE LIFTOFF|NEXT STAGE/i],
+    landing:['You landed on the Moon! Press <b>ENTER AIRLOCK</b>.', /ENTER AIRLOCK/i],
+    hub:['Press the glowing button to start your next task.', /BEGIN \d\d:00 ROUTINE|CONTINUE \d\d:00 ROUTINE|SEE MISSION EVALUATION/i],
+    t1:['Find the card marked <b>Action Needed</b> and press <b>Recalibrate</b>.', '#quick-recal-btn'],
+    t2:['Press <b>EAT BREAKFAST</b>.', /EAT BREAKFAST/i],
+    t3:['Tap each of the <b>5 suit parts</b> in the list to inspect it (0 of 5).', null],
+    t4:['Tap a <b>place on the map</b>, then press <b>CONFIRM RESEARCH SITE</b>.', '.loc-pin'],
+    t5:['Press <b>AUTO-WIPE ALL</b> to clean the dusty panels.', /AUTO-WIPE ALL/i],
+    t6:['Choose a report with its <b>Select</b> button, then press <b>TRANSMIT REPORT</b>.', /Select Full Report/i],
+    t7:['Tap <b>every card</b> in the checklist to inspect it.', null],
+    wA:['Tap <b>one action card</b>, then press <b>CONTINUE MISSION</b>.', null],
+    wB:['Choose <b>A</b> or <b>B</b>, then press the big button.', null],
+    wC:['Read the 3 options and tap the <b>safest</b> one.', null],
+    eval:['Press <b>REVEAL MY MISSION ENDING</b>.', /REVEAL MY MISSION ENDING/i],
+    endS:['Your certificate is ready! Press <b>VIEW CERTIFICATE</b>.', CERT],
+    endA:['Your certificate is ready! Press <b>VIEW CERTIFICATE</b>.', CERT],
+    endB:['Your certificate is ready! Press <b>VIEW CERTIFICATE</b>.', CERT],
+    endC:['Your certificate is ready! Press <b>VIEW CERTIFICATE</b>.', CERT],
+    questHub:['Pick a Science Quest. They are optional extras!', null],
+    q1:['Read, try the activity, then answer the question.', null], q2:['Read, try the activity, then answer the question.', null],
+    q3:['Read, try the activity, then answer the question.', null], q4:['Read, try the activity, then answer the question.', null],
+    q5:['Read, try the activity, then answer the question.', null]
+  };
+
   function G(){ return J.G; }
   function ensureGame(){ if(!J.G) J.newGame(); return J.G; }
 
@@ -100,6 +131,7 @@
     }
     var v = await J.modal({cls:o.cls || '', kicker:TASKS[i] ? (TASKS[i].time+' · '+TASKS[i].name) : 'Mission update', title:o.tag || 'Done!',
       html:'<p style="font-weight:700;font-size:1.05rem">'+o.story+'</p><div>'+chips+ptsChip+'</div>'+(o.extra||'')+J.lowWarning()+
+        (TASKS[i] ? '<div class="gdots" aria-label="Task '+(i+1)+' of 7 complete">'+TASKS.map(function(t,k){ return '<i class="'+(k<=i?'done':k===i+1?'now':'')+'"></i>'; }).join('')+'</div><div style="font-size:.8rem;color:#bac9cc">Task '+(i+1)+' of 7 complete</div>' : '')+
         (o.learn ? '<div class="gfact" style="border-color:#00e676"><span style="font-size:1.6rem">🌟</span><div><div class="gkicker" style="color:#62f0a0">YOU LEARNED</div>'+o.learn+'</div></div>' : '')+
         (o.fact ? '<div class="gfact"><span style="font-size:1.6rem">🔭</span><div><div class="gkicker">DID YOU KNOW?</div>'+o.fact+'</div></div>' : ''),
       actions:[{label:(o.nextLabel || 'NEXT ➜'), cls:'gold', value:'next'},{label:'BASE HQ', cls:'dim', value:'hub'}]});
@@ -139,11 +171,32 @@
 
   /* ================= 2. INVITATION ================= */
   J.screen('invitation', 2, function(root){
-    J.bindText(root, /ACCEPT INVITATION/i, function(){ ensureGame().accepted = true; J.save(); J.go('trainingHub'); });
+    var acc = Array.prototype.find.call(root.querySelectorAll('a,button'), function(e){ return /ACCEPT INVITATION/i.test(e.textContent); });
+    var inp = null;
+    if(acc && acc.parentElement && acc.parentElement.parentElement){
+      var box = document.createElement('div');
+      box.className = 'rounded-3xl border-2 border-secondary-container bg-surface-container-low p-4 my-4 mx-auto max-w-xl';
+      box.innerHTML = '<label for="playerName" class="block text-label-md font-label-md font-extrabold text-secondary-container uppercase tracking-wider mb-2">Your name (for your ticket and certificate)</label>'+
+        '<input id="playerName" type="text" maxlength="20" autocomplete="off" placeholder="Type your name here" class="w-full rounded-full bg-surface-container-lowest border-2 border-outline-variant px-5 py-3 text-headline-sm font-headline-sm text-on-surface focus:border-primary-container" />'+
+        '<p class="text-body-sm font-body-sm text-on-surface-variant mt-2">Only used to make your ticket and certificate. It stays on your own device.</p>';
+      // put the name box near the top, right under the heading, so nobody has to scroll to find it
+      var intro = Array.prototype.find.call(root.querySelectorAll('p'), function(p){ return /Holographic Invitation Letter/i.test(p.textContent); });
+      if(intro && intro.parentElement) intro.parentElement.insertBefore(box, intro.nextSibling);
+      else acc.parentElement.parentElement.insertBefore(box, acc.parentElement);
+      inp = box.querySelector('input'); inp.value = J.getName();
+      inp.addEventListener('input', function(){ if(inp.value.trim()) J.coachSet('Press <b>ACCEPT INVITATION</b> to get your ticket.', /ACCEPT INVITATION/i); });
+    }
+    J.bindText(root, /ACCEPT INVITATION/i, async function(){
+      var name = J.cleanName(inp ? inp.value : '');
+      if(!name){ J.sfx.miss(); J.toast('Please type your name first. It goes on your ticket!'); if(inp){ inp.focus(); inp.classList.add('guide-pulse'); } return; }
+      var g = ensureGame(); J.setName(name); g.accepted = true; J.save();
+      await J.showTicket(name);
+      J.go('trainingHub');
+    });
     J.bindText(root, /DECLINE INVITATION/i, function(){
       J.modal({kicker:'Stand by', title:'No problem!', html:'<p>The Moon will wait for you. Accept whenever you are ready.</p>',
         actions:[{label:'I CHANGED MY MIND! 🚀', cls:'gold', value:'yes'},{label:'MAIN MENU', cls:'dim', value:'menu'}]}).then(function(v){
-          if(v === 'yes'){ ensureGame().accepted = true; J.save(); J.go('trainingHub'); } else J.go('menu');
+          if(v === 'yes' && inp){ inp.focus(); } else if(v === 'menu') J.go('menu');
         });
     });
   });
@@ -199,6 +252,12 @@
       }
       if(/^\s*0\s*\/\s*7\s*$/.test(n.nodeValue) || /^0 \/ 7/.test(n.nodeValue.trim())) n.nodeValue = n.nodeValue.replace(/0\s*\/\s*7/, g.task+' / 7');
     }
+    var ib = root.querySelector('#inspect-btn');
+    if(ib) ib.addEventListener('click', function(){
+      J.sfx.tap();
+      function tx(id){ var e = root.querySelector('#'+id); return e ? e.textContent.trim() : ''; }
+      J.modal({kicker:tx('inspect-category'), title:tx('inspect-title'), html:'<p>'+tx('inspect-desc')+'</p><p style="font-weight:800">'+tx('inspect-stat-1')+' &nbsp;·&nbsp; '+tx('inspect-stat-2')+'</p><p style="font-size:.85rem;color:#bac9cc">Your mission tasks happen on the schedule on the left. Press the glowing button to continue.</p>', actions:[{label:'OK', cls:'cyan', value:true}]});
+    });
     var firstMsg = g.task === 0 ? '<p>'+g.condText+'</p>' : '';
     J.bindText(root, /BEGIN \d\d:00 ROUTINE/i, function(){ J.go(nextScreen()); }, 'button');
     var btn = Array.prototype.find.call(root.querySelectorAll('button'), function(b){ return /BEGIN \d\d:00 ROUTINE/i.test(b.textContent); });
@@ -219,7 +278,7 @@
     var g = ensureGame(); g.time = '08:00'; J.refreshHeader(false);
     var calibrated = false;
     var origCal = window.calibrateDrift;
-    window.calibrateDrift = function(){ calibrated = true; origCal.apply(this, arguments); J.sfx.good(); J.toast('Sector 2 recalibrated!'); };
+    window.calibrateDrift = function(){ calibrated = true; origCal.apply(this, arguments); J.sfx.good(); J.toast('Sector 2 recalibrated!'); J.coachSet('✅ Fixed! Now press <b>COMPLETE 08:00 HEALTH CHECK</b>.', /COMPLETE 08:00 HEALTH CHECK/i, {scroll:true}); };
     J.bindText(root, /COMPLETE 08:00 HEALTH CHECK/i, async function(){
       if(!calibrated){
         var a = failCount(0);
@@ -235,6 +294,7 @@
       finishTask(0, v);
     });
     J.bindText(root, /RETURN TO BASE HQ/i, function(){ J.go('hub'); });
+    J.bindText(root, /^arrow_back\s*Artemis Base Alpha$/i, function(){ J.go('hub'); });
   });
 
   /* ================= 9. TASK 2: BREAKFAST ================= */
@@ -258,6 +318,13 @@
         fact:'Astronauts often eat food in sticky sauces or pouches so crumbs do not float into machines.'});
       busy = false; finishTask(1, v);
     });
+    var swap = Array.prototype.find.call(root.querySelectorAll('button'), function(b){ return /^Swap$/.test(b.textContent.trim()); });
+    if(swap) swap.addEventListener('click', function(){
+      var card = swap.parentElement, h5 = card.querySelector('h5'), badge = h5 && h5.nextElementSibling, p = card.querySelector('p');
+      if(h5) h5.textContent = 'Tortilla Wrap'; if(badge) badge.textContent = 'Safe'; if(p) p.textContent = 'No floating crumbs. Safe for the air filters!';
+      swap.textContent = 'Swapped ✔'; swap.disabled = true; J.sfx.good(); J.toast('Great swap! Crumbs float into machines, so tortillas are safer.');
+    });
+    J.bindText(root, /RESET TRAY/i, function(){ J.render('t2'); });
     J.bindText(root, /BASE HUB|Base HQ/i, function(){ J.go('hub'); });
   });
 
@@ -278,14 +345,26 @@
       if(sp[0]) sp[0].textContent = on ? 'check_circle' : 'radio_button_unchecked';
       if(sp[1]) sp[1].textContent = on ? 'INSPECTED' : 'TAP TO INSPECT';
     }
-    function refreshTag(){ if(tag) tag.textContent = inspected + ' / ' + rows.length + ' INSPECTED'; }
-    function reset(){ inspected = 0; rows.forEach(function(r){ r.done = false; setBadge(r, false); }); refreshTag(); }
+    var mods = Array.prototype.find.call(root.querySelectorAll('span,div'), function(e){ return !e.children.length && /MODULES CHECKED/.test(e.textContent); });
+    function refreshTag(){
+      if(tag) tag.textContent = inspected + ' / ' + rows.length + ' INSPECTED';
+      if(mods) mods.textContent = inspected + '/' + rows.length + ' MODULES CHECKED';
+    }
+    function reset(){ inspected = 0; rows.forEach(function(r){ r.done = false; setBadge(r, false); }); refreshTag(); if(typeof updateCoach === 'function') updateCoach(); }
     rows.forEach(function(r){
       r.row.style.cursor = 'pointer';
       r.row.addEventListener('click', function(){
         if(r.done) return; r.done = true; inspected++; setBadge(r, true); refreshTag(); J.sfx.tap();
-        J.toast('Checked: '+r.title+'. '+r.desc, 4200);
+        J.toast('Checked: '+r.title+'. '+r.desc, 4200); updateCoach();
       });
+    });
+    function updateCoach(){
+      if(inspected < rows.length) J.coachSet('Tap each part to inspect it ('+inspected+' of '+rows.length+' done).');
+      else J.coachSet('✅ All inspected! Now press <b>PRESSURIZE SUIT &amp; OPEN AIRLOCK</b>.', /PRESSURIZE SUIT/i, {scroll:true});
+    }
+    Array.prototype.forEach.call(root.querySelectorAll('button'), function(b){
+      var m = /^([1-5])$/.exec(b.textContent.trim());
+      if(m && rows[+m[1]-1]) b.addEventListener('click', function(){ rows[+m[1]-1].row.click(); });
     });
     reset();
     J.bindText(root, /PRESSURIZE SUIT/i, async function(){
@@ -322,7 +401,7 @@
     var g = ensureGame(); g.time = '11:00'; J.refreshHeader(false);
     var site = 'rim', busy = false;
     var origSel = window.selectLocation;
-    window.selectLocation = function(k){ site = k; origSel.apply(this, arguments); };
+    window.selectLocation = function(k){ site = k; origSel.apply(this, arguments); J.coachSet('Good choice! Now press <b>CONFIRM RESEARCH SITE &amp; DEPLOY ROVER</b>.', /CONFIRM RESEARCH SITE/i, {scroll:true}); };
     window.confirmMission = async function(){
       if(busy) return; busy = true;
       var S = SITES[site];
@@ -356,6 +435,14 @@
   J.screen('t5', 12, function(root){
     var g = ensureGame(); g.time = '13:00'; J.refreshHeader(false);
     var busy = false;
+    root.addEventListener('click', function(){
+      setTimeout(function(){
+        var cells = root.querySelectorAll('.hex-cell'), n = 0;
+        cells.forEach(function(c){ if(c.innerText.trim() === '✓') n++; });
+        if(cells.length && n >= cells.length) J.coachSet('✅ Panels are clean! Press <b>CONFIRM POWER MAINTENANCE</b>.', /CONFIRM POWER MAINTENANCE/i, {scroll:true});
+        else if(n > 0) J.coachSet('Keep wiping: '+n+' of '+cells.length+' cells clean. Or press <b>AUTO-WIPE ALL</b>.', /AUTO-WIPE ALL/i);
+      }, 90);
+    });
     window.boostPower = async function(){
       if(busy) return;
       var cells = root.querySelectorAll('.hex-cell'), clean = 0;
@@ -391,10 +478,10 @@
     });
     function mark(){ Object.keys(cards).forEach(function(k){ if(cards[k]) cards[k].style.outline = (k === sel) ? '4px solid #00e5ff' : 'none'; }); }
     mark();
-    J.bindText(root, /Select Full Report/i, function(){ sel = 'A'; mark(); J.toast('Full report selected (-12% Power).'); }, 'button');
-    J.bindText(root, /Select Science Only/i, function(){ sel = 'C'; mark(); J.toast('Science report selected (-16% Power).'); }, 'button');
+    J.bindText(root, /Select Full Report/i, function(){ sel = 'A'; mark(); J.toast('Full report selected (-12% Power).'); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }, 'button');
+    J.bindText(root, /Select Science Only/i, function(){ sel = 'C'; mark(); J.toast('Science report selected (-16% Power).'); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }, 'button');
     Array.prototype.forEach.call(root.querySelectorAll('h4'), function(h){
-      if(/Safety Priority/i.test(h.textContent)){ h.style.cursor = 'pointer'; h.addEventListener('click', function(){ sel = 'B'; mark(); J.toast('Safety report selected (-4% Power).'); }); }
+      if(/Safety Priority/i.test(h.textContent)){ h.style.cursor = 'pointer'; h.addEventListener('click', function(){ sel = 'B'; mark(); J.toast('Safety report selected (-4% Power).'); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }); }
     });
     J.bindText(root, /TRANSMIT REPORT/i, async function(){
       if(busy) return; busy = true;
@@ -430,10 +517,17 @@
       var icon = card.querySelector('.material-symbols-outlined');
       if(icon && icon.textContent.trim() === 'check_circle') card.click();
     });
+    function say7(){
+      var c = checkedCount();
+      if(c < items.length) J.coachSet('Tap every card to inspect it ('+c+' of '+items.length+' done).');
+      else J.coachSet('✅ All checked! Press <b>CONCLUDE SOL 04 &amp; VIEW MISSION DEBRIEF</b>.', /CONCLUDE SOL 04/i, {scroll:true});
+    }
     function checkedCount(){
       var c = 0; Array.prototype.forEach.call(items, function(card){ var ic = card.querySelector('.material-symbols-outlined'); if(ic && ic.textContent.trim() === 'check_circle') c++; });
       return c;
     }
+    Array.prototype.forEach.call(items, function(card){ card.addEventListener('click', function(){ setTimeout(say7, 30); }); });
+    say7();
     var busy = false;
     J.bindText(root, /CONCLUDE SOL 04/i, async function(){
       if(busy) return;
@@ -457,7 +551,8 @@
     var g = ensureGame(); g.time = '14:30'; J.refreshHeader(false);
     J.setText(root, /Projected Outcome:.*$/, 'Projected Outcome:');
     var choice = null, origSel = window.selectChoice;
-    window.selectChoice = function(el, k){ choice = k; origSel.apply(this, arguments); };
+    window.selectChoice = function(el, k){ choice = k; origSel.apply(this, arguments); J.coachSet('Nice! Now press <b>CONTINUE MISSION</b>.', /CONTINUE MISSION/i, {scroll:true}); };
+    J.bindText(root, /Inspect Sector/i, function(){ J.toast('Sector scan complete: all systems normal.'); });
     J.bindText(root, /CONTINUE MISSION/i, async function(){
       if(!choice){ J.toast('Pick one action first!'); return; }
       var o = {A:{pts:2, fx:{}, story:'You completed the scheduled inspections. Routine checks help find problems early.', tag:'Inspections complete'},
@@ -476,6 +571,7 @@
     var g = ensureGame(); g.time = '12:30'; J.refreshHeader(false);
     J.setText(root, /\+?10 Resource Mgmt Points/, '+10 Power');
     if(!g.wbAnnounced){ g.wbAnnounced = true; J.apply({p:-15}); J.sfx.alarm(); J.toast('Power dropped by 15%!'); }
+    Array.prototype.forEach.call(root.querySelectorAll('input[name="powerChoice"]'), function(r){ r.addEventListener('change', function(){ J.coachSet('Choice picked. Now press the big <b>RESTORE</b> button.', '#restoreBtn', {scroll:true}); }); });
     var busy = false;
     var btn = root.querySelector('#restoreBtn');
     if(btn){
@@ -520,8 +616,8 @@
     var solved = false, busy = false, origHandle = window.handleChoice;
     window.handleChoice = function(type){
       origHandle.apply(this, arguments);
-      if(type === 'correct'){ solved = true; J.sfx.good(); }
-      else { failCount(8); J.sfx.miss(); }
+      if(type === 'correct'){ solved = true; J.sfx.good(); J.coachSet('✅ Correct, shelter is the safest! Press the button to continue.', '#primaryCta', {scroll:true}); }
+      else { failCount(8); J.sfx.miss(); J.coachSet('That one is not safe. Read the three options again and pick another.'); }
     };
     var cta = root.querySelector('#primaryCta');
     if(cta){
@@ -605,21 +701,6 @@
     B:{title:'Junior Moon Explorer', n:21},
     C:{title:'Future Astronaut', n:22}
   };
-  function certificate(sc, key){
-    var info = END_INFO[key];
-    J.openModal({cls:'wide gold', html:
-      '<div id="cert-print" style="background:#fffaf0;color:#2a2250;border:6px double #b8860b;border-radius:1rem;padding:1.5rem;text-align:center;font-family:Georgia,serif">'+
-      '<div style="font-size:.8rem;letter-spacing:.15em">SIMULATED EDUCATIONAL CERTIFICATE</div>'+
-      '<h2 style="font-size:2rem;margin:.4rem 0;color:#2a2250">A Day on the Moon</h2><div>Junior Astronaut Mission Trainer</div>'+
-      '<p style="margin:1rem 0 .3rem">This is proudly presented to</p><div style="font-size:1.6rem;font-weight:700;border-bottom:2px solid #2a2250;display:inline-block;padding:0 2rem">Cadet Explorer</div>'+
-      '<p style="margin:1rem 0 .2rem">for completing one day at Artemis Base Alpha</p><div style="font-size:1.5rem;font-weight:700;color:#b8860b">'+info.title+'</div>'+
-      '<p>Final score: <b>'+sc.total+' / 50</b></p>'+
-      '<p style="font-size:.8rem">NASA Space Apps Challenge 2026 · Team AstroPath<br>This is a fictional learning experience. Values are simulated and not real NASA measurements.</p></div>'+
-      '<div class="gactions"><button class="gbtn gold" id="certPrint">PRINT / SAVE AS PDF</button><button class="gbtn dim" id="certClose">CLOSE</button></div>'});
-    var box = document.querySelector('#modal-root .gmodal');
-    box.querySelector('#certPrint').onclick = function(){ window.print(); };
-    box.querySelector('#certClose').onclick = function(){ document.querySelector('#modal-root .gmodal-scrim').remove(); $('modal-root').style.pointerEvents = 'none'; };
-  }
   function bindEnding(key){
     return function(root){
       var g = ensureGame();
@@ -639,6 +720,7 @@
         v = v.replace(/\bO2\s+\d+%/, 'O2 '+g.res.o+'%').replace(/\bPower\s+\d+%/, 'Power '+g.res.p+'%').replace(/\bWater\s+\d+%/, 'Water '+g.res.w+'%').replace(/\bFood\s+\d+%/, 'Food '+g.res.f+'%');
         v = v.replace(/SOLAR EFFICIENCY/, 'POWER LEFT').replace(/O2 LOOP INTEGRITY/, 'OXYGEN LEFT').replace(/LUNAR LAB SAMPLES/, 'RESEARCH POINTS');
         v = v.replace(/TOP 1% CADETS/, 'MISSION COMPLETE');
+        v = v.replace(/Cadet Explorer Nova-Lead/g, J.displayName()).replace(/Nova-Lead/g, J.displayName());
         if(/^\s*12\s*\/\s*14\s*$/.test(v)) v = '7 / 7';
         if(/^\s*91\.4%\s*$/.test(v)) v = accPct+'%';
         n.nodeValue = v;
@@ -655,7 +737,10 @@
         else if(/^[\d.]+%$/.test(t) && /OXYGEN LEFT/.test(prev)) el.textContent = g.res.o + '%';
         else if(/^\d+\s*\/\s*15$/.test(t) && /RESEARCH/.test(prev)) el.textContent = g.research + ' pts';
       });
-      J.bindText(root, /CERTIFICATE|Download PNG|Scan QR/i, function(){ certificate(sc, key); });
+      var openCert = function(){ return J.showCertificate({name:J.displayName(), title:END_INFO[key].title, total:sc.total, res:g.res, research:g.research}); };
+      J.bindText(root, /CERTIFICATE|Download PNG|Scan QR/i, function(){ openCert(); });
+      // the certificate opens by itself the first time, so nobody has to hunt for it
+      if(!g.certShown){ g.certShown = true; J.save(); J.T(function(){ if(J.currentScreen === ENDING_SCREEN[key]) openCert(); }, 1400); }
       J.bindText(root, /NASA SCIENCE QUESTS|EXPLORE NASA SCIENCE QUESTS/i, function(){ J.go('questHub'); });
       J.bindText(root, /REPLAY MISSION|TRAIN AGAIN/i, function(){ J.newGame(); J.go('invitation'); });
       J.bindText(root, /RETURN TO MAIN MENU/i, function(){ J.go('menu'); });
