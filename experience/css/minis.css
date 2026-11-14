@@ -116,4 +116,6 @@
 #mg .tray{grid-template-columns:repeat(3,1fr)}
 #mg .igrid{grid-template-columns:repeat(2,1fr)}
 #mg .panels{gap:6px}}
-#mg .item .why{display:block;font-weight:600;font-size:.72rem;opacity:.85;margin-top:3px}
+#mg .e svg{width:100%;height:100%;display:block}
+#mg .slot .e:has(> svg){width:46px;height:46px;margin:0 auto 2px}
+#mg .item .e:has(> svg){width:64px;height:64px;margin:0 auto 4px}
