@@ -366,7 +366,7 @@
         {ico:'🍎', t:'Light breakfast', d:'Fruit pouch and crackers', fx:{f:-6,w:-5}},
         {ico:'🍫', t:'Quick snack', d:'Energy bar and a drink', fx:{f:-4,w:-9}}
       ];
-      var mi = await J.choose({kicker:'09:00 · Breakfast Time', title:'What will you eat?', text:'Every meal uses food and water. Which one fits a busy Moon day?', options:meals});
+      var mi = (J.tray && J.tray.done) ? 0 : await J.choose({kicker:'09:00 · Breakfast Time', title:'What will you eat?', text:'Every meal uses food and water. Which one fits a busy Moon day?', options:meals});
       var act = await offerActivity({kicker:'09:00 · Breakfast Time', title:'Zero-gravity meal challenge',
         intro:'There is no gravity here, so loose food floats away! Tap each item to catch it before it drifts off.',
         runner:function(host){ return M.breakfast(host).then(function(r){ if(!r.ok) r.fx = {f:-2*r.lost}; return r; }); }});

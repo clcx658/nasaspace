@@ -47,6 +47,7 @@
     }
     var re = GO[screenName()];
     if(!box || !re || box.style.display === 'none') return;
+    if(screenName() === 't2' && J.tray && !J.tray.done){ var gb = box.querySelector('.coach-go'); if(gb) gb.remove(); return; }      // wait until the tray is full
     var real = currentReal(), btn = box.querySelector('.coach-go');
     if(!real){ if(btn) btn.remove(); return; }
     if(!btn){
