@@ -52,12 +52,7 @@
     r = document.createElement('div'); r.className = 'focus-more'; r.setAttribute('data-nosimple', '1');
     r.innerHTML = '<span class="fm-title">More to explore:</span>';
     var host = root.querySelector('main') || root;
-    // put the row just above the last row of buttons, so the way forward stays at the bottom
-    var kids = Array.prototype.slice.call(host.children), at = null;
-    for(var i = kids.length - 1; i >= 0; i--){
-      if(/RETURN TO BASE HQ|BASE HQ|FINISH THE DAY|SEE MY RESULTS|CONTINUE/i.test(kids[i].textContent) && kids[i].querySelector('button,a')){ at = kids[i]; break; }
-    }
-    if(at) host.insertBefore(r, at); else host.appendChild(r);
+    host.appendChild(r);
     return r;
   }
   function chip(root, label, icon, onClick){
@@ -77,9 +72,24 @@
     J.modal({kicker:'More to explore', title:label, html:'<div class="focus-pop">'+c.outerHTML+'</div>', cls:'wide'});
   }
 
+  /* Commander Nova's long speech box at the top of a task: tucked into one button (the short instruction lives in the task bar) */
+  var NOVA = {t1:1,t2:1,t3:1,t4:1,t7:1,wA:1,wB:1};
+  function novaCard(root){
+    var main = root.querySelector('main'); if(!main) return null;
+    var kids = Array.prototype.slice.call(main.children, 0, 5);
+    for(var i = 0; i < kids.length; i++){
+      var k = kids[i], r = k.getBoundingClientRect();
+      if(/Commander Nova/i.test(k.textContent) && r.height >= 60 && r.height <= 230 && !k.querySelector('button,input,a')) return k;
+    }
+    return null;
+  }
   function apply(name, root){
     var items = FOLD[name]; if(!items || !document.body.contains(root)) return;
     var folded = [];
+    if(NOVA[name]){
+      var nc = novaCard(root);
+      if(nc){ nc.setAttribute('data-folded', '1'); nc.style.display = 'none'; folded.push({el:nc, it:{label:'Message from Commander Nova', icon:'💬'}}); }
+    }
     items.forEach(function(it){
       var el = it.sel ? root.querySelector(it.sel) : blockFromText(root, it.re, it.small);
       if(!el || el.getAttribute('data-folded')) return;

@@ -283,6 +283,32 @@
     requestAnimationFrame(function(){ simplePending = false; runSimple(); });
   }
   J.simplify = runSimple;
+
+  /* If a button is pressed and NOTHING visible happens, say so kindly and point to what to do. */
+  (function(){
+    var busy = false;
+    document.addEventListener('click', function(ev){
+      if(busy) return;
+      var t = ev.target && ev.target.closest ? ev.target.closest('#app button, #app a, #app [role="button"], #app .cursor-pointer') : null;
+      if(!t || t.closest('#coach,#modal-root,#toast-root,header')) return;
+      if(t.tagName === 'INPUT' || t.closest('label')) return;
+      var muts = 0, big = false, h0 = location.hash;
+      var mo = new MutationObserver(function(list){
+        list.forEach(function(m){
+          muts++;
+          Array.prototype.forEach.call(m.addedNodes || [], function(n){ if(n.nodeType === 1 && n.closest && n.closest('#modal-root,#toast-root')) big = true; });
+        });
+      });
+      mo.observe(document.body, {subtree:true, childList:true, attributes:true, characterData:true});
+      busy = true;
+      setTimeout(function(){
+        mo.disconnect(); busy = false;
+        if(big || muts >= 3 || location.hash !== h0 || !document.body.contains(t)) return;
+        var tip = J.coachText ? ' ' + J.coachText : ' Use the big glowing button.';
+        J.toast('Nothing to do here.' + tip);
+      }, 550);
+    }, true);
+  })();
   simpleObs = new MutationObserver(scheduleSimple);
 
   J.screens = {};
@@ -329,6 +355,7 @@
       coachBox = document.createElement('div'); coachBox.id = 'coach';
       document.body.appendChild(coachBox);
     }
+    J.coachText = String(text || '').replace(/<[^>]*>/g, '');
     document.body.classList.toggle('has-coach', !!text);
     if(!text){ coachBox.style.display = 'none'; return; }
     var el = findTarget(target);
