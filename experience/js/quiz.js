@@ -161,7 +161,7 @@
         if(!name){ J.sfx.miss(); J.toast('Please type your name first. It goes on your ticket!'); inp.focus(); return; }
         J.setName(name);
         if(J.G){ J.G.trained = true; J.G.accepted = true; J.save(); }
-        J.showTicket(name).then(function(){ J.go('rocket'); });
+        J.showTicket(name).then(function(){ J.go('preflight'); });
       }
       card.querySelector('#qzTicket').onclick = function(){ J.sfx.tap(); go(); };
       inp.addEventListener('keydown', function(e){ if(e.key === 'Enter') go(); });
