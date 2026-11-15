@@ -93,6 +93,9 @@
     items.forEach(function(it){
       var el = it.sel ? root.querySelector(it.sel) : blockFromText(root, it.re, it.small);
       if(!el || el.getAttribute('data-folded')) return;
+      // never hide a block that holds a button the child needs to go on
+      var hasCta = Array.prototype.some.call(el.querySelectorAll('button, a'), function(x){ return /FINISH|CONFIRM|BOOST|CONTINUE|TRANSMIT|SEAL SUIT|EAT BREAKFAST|COMPLETE|RESTORE|CHOOSE THIS|AUTO-WIPE|RETURN TO BASE|BASE HQ|NEXT|START|SELECT/i.test(x.textContent || ''); });
+      if(hasCta) return;
       // never hide something that holds a control the child needs
       if(el.querySelector('#restoreBtn,#primaryContinueBtn,#choiceGrid,#checklist-container,#decisionGroup,.loc-pin,#quick-recal-btn,#card-drift,.quiz-btn,#inspect-btn')) return;
       el.setAttribute('data-folded', '1'); el.style.display = 'none';

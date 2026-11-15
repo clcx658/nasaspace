@@ -261,16 +261,12 @@
       if(v !== o) n.nodeValue = v;
     });
   }
-  /* If an icon name is missing from our icon font it would show as a long word. Swap it for a similar icon. */
+  /* An icon name that is missing from our icon font would show as a long word: swap those few for a similar icon. */
   var ICON_FIX = {telescope:'visibility'};
   function fixIcons(root){
     Array.prototype.forEach.call(root.querySelectorAll('.material-symbols-outlined'), function(ic){
       var t = (ic.textContent || '').trim();
-      if(ICON_FIX[t]){ ic.textContent = ICON_FIX[t]; return; }
-      if(t.length > 3 && /^[a-z0-9_]+$/.test(t)){
-        var fs = parseFloat(getComputedStyle(ic).fontSize) || 16;
-        if(ic.getBoundingClientRect().width > fs * 1.8) ic.textContent = 'star';
-      }
+      if(ICON_FIX[t]) ic.textContent = ICON_FIX[t];
     });
   }
   function runSimple(){
@@ -359,6 +355,7 @@
     document.body.classList.toggle('has-coach', !!text);
     if(!text){ coachBox.style.display = 'none'; return; }
     var el = findTarget(target);
+    J.coachEl = el;
     coachBox.style.display = 'flex';
     coachBox.innerHTML = '<span class="coach-ico" aria-hidden="true">🧑‍🚀</span><div class="coach-text"><b>Commander Nova says</b><span>'+text+'</span></div>'+
       (el ? '<button class="coach-show" type="button">TAKE ME THERE</button>' : '')+'<button class="coach-x" type="button" aria-label="Hide tip">✕</button>';

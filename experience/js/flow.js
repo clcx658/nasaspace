@@ -146,7 +146,7 @@
 
   /* ================= 1. MAIN MENU ================= */
   J.screen('menu', 1, function(root){
-    function startNew(){ J.newGame(); J.go('invitation'); }
+    function startNew(){ J.newGame(); J.go('quiz'); }
     J.bindText(root, /START ADVENTURE/i, async function(){
       var s = J.loadSave();
       if(s && s.screen && s.screen !== 'menu' && (s.accepted || s.task > 0)){
@@ -156,6 +156,18 @@
         else startNew();
       } else startNew();
     });
+    // the menu keeps only what a child needs: start, quests and two small help buttons (no meters, no bottom bar)
+    Array.prototype.forEach.call(root.querySelectorAll('main button, main a'), function(b){
+      var t = (b.textContent || '').replace(/\s+/g, ' ').trim();
+      if(/(^|\s)(THE INVITATION|TRAINING HUB)(\s|$)/i.test(t) && !/QUESTS/i.test(t)) b.style.display = 'none';
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('header *'), function(e){
+      if(e.children.length) return;
+      var t = (e.textContent || '').replace(/\s+/g, ' ').trim();
+      if(/^(Day \d|Sol \d|O2:|Power:|Water:|Food:|Pause)/i.test(t)){ var c = e.closest('div.rounded-full, button, span.rounded-full') || e; c.style.display = 'none'; }
+    });
+    var nv = root.querySelector('nav.fixed'); if(nv) nv.style.display = 'none';
+    Array.prototype.forEach.call(root.querySelectorAll('main button, main a'), function(b){ if(/NASA QUESTS/i.test(b.textContent) && !/START|HOW|STORY/i.test(b.textContent)) b.style.gridColumn = '1 / -1'; });
     J.bindText(root, /THE INVITATION/i, function(){ J.go('invitation'); });
     J.bindText(root, /TRAINING HUB/i, function(){ J.go('trainingHub'); });
     J.bindText(root, /NASA QUESTS/i, function(){ J.go('questHub'); });
@@ -850,7 +862,7 @@
       // the certificate opens by itself the first time, so nobody has to hunt for it
       if(!g.certShown){ g.certShown = true; J.save(); J.T(function(){ if(J.currentScreen === ENDING_SCREEN[key]) openCert(); }, 1400); }
       J.bindText(root, /NASA SCIENCE QUESTS|EXPLORE NASA SCIENCE QUESTS/i, function(){ J.go('questHub'); });
-      J.bindText(root, /REPLAY MISSION|TRAIN AGAIN/i, function(){ J.newGame(); J.go('invitation'); });
+      J.bindText(root, /REPLAY MISSION|TRAIN AGAIN/i, function(){ J.newGame(); J.go('quiz'); });
       J.bindText(root, /RETURN TO MAIN MENU/i, function(){ J.go('menu'); });
       if(J.sfx && !g.endPlayed){ g.endPlayed = true; (key === 'S' || key === 'A') ? J.sfx.win() : J.sfx.good(); }
     };
