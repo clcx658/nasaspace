@@ -29,8 +29,8 @@
     t2:['Press <b>EAT BREAKFAST</b>.', /EAT BREAKFAST/i],
     t3:['Tap each of the <b>5 suit parts</b> in the list to inspect it (0 of 5).', null],
     t4:['Tap a <b>place on the map</b>, then press <b>CHOOSE THIS PLACE</b>.', '.loc-pin'],
-    t5:['Press <b>AUTO-WIPE ALL</b> to clean the dusty panels.', /AUTO-WIPE ALL/i],
-    t6:['Choose a report with its <b>Select</b> button, then press <b>TRANSMIT REPORT</b> to send it.', /Select Full Report/i],
+    t5:['Rub each dusty panel with your finger to clean it.', null],
+    t6:['Tap <b>one report</b>, then press <b>SEND REPORT</b>.', null],
     t7:['Tap <b>every card</b> in the checklist to inspect it.', null],
     wA:['Tap <b>one action card</b>, then press <b>CONTINUE THE MISSION</b>.', null],
     wB:['Choose <b>A</b> or <b>B</b>, then press the big button.', null],
@@ -498,7 +498,6 @@
         var cells = root.querySelectorAll('.hex-cell'), n = 0;
         cells.forEach(function(c){ if(c.innerText.trim() === '✓') n++; });
         if(cells.length && n >= cells.length) J.coachSet('✅ Panels are clean! Press <b>FINISH CLEANING &amp; BOOST POWER</b>.', /FINISH CLEANING|CONFIRM POWER MAINTENANCE/i, {scroll:true});
-        else if(n > 0) J.coachSet('Keep wiping: '+n+' of '+cells.length+' cells clean. Or press <b>AUTO-WIPE ALL</b>.', /AUTO-WIPE ALL/i);
       }, 90);
     });
     window.boostPower = async function(){
@@ -506,7 +505,7 @@
       var cells = root.querySelectorAll('.hex-cell'), clean = 0;
       cells.forEach(function(c){ if(c.innerText.trim() === '✓') clean++; });
       if(cells.length && clean < cells.length){
-        await hintModal('Some solar cells are still covered in dust. Tap each dusty cell to wipe it, or press <b>AUTO-WIPE ALL</b>, then press <b>FINISH CLEANING</b>. You have cleaned <b>'+clean+' of '+cells.length+'</b>.', '', 1);
+        await hintModal('Some solar cells are still covered in dust. Rub all three panels with your finger until they shine, then press <b>FINISH CLEANING</b>. You have cleaned <b>'+clean+' of '+cells.length+'</b>.', '', 1);
         return;
       }
       busy = true;
@@ -526,7 +525,7 @@
   /* ================= 13. TASK 6: REPORT TO EARTH ================= */
   J.screen('t6', 13, function(root){
     var g = ensureGame(); g.time = '15:00'; J.refreshHeader(false);
-    var sel = 'B', busy = false;
+    var sel = null, busy = false;
     var COST = {A:{p:-12}, B:{p:-4}, C:{p:-16}};
     var cards = {};
     Array.prototype.forEach.call(root.querySelectorAll('h4'), function(h){
@@ -579,10 +578,11 @@
     }
     function choose(k, quiet){
       sel = k; mark();
-      if(!quiet){ J.toast(INFO[k].msg); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }
+      if(!quiet){ J.toast(INFO[k].msg); J.coachSet('Report chosen! Now press <b>SEND REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }
     }
     mark();
     J.bindText(root, /TRANSMIT REPORT/i, async function(){
+      if(!sel){ J.sfx.miss(); J.toast('Pick a report first. Tap one of the three!'); return; }
       if(busy) return; busy = true;
       var fx = {p:COST[sel].p}, extraHtml = '';
       if(g.emergency && sel !== 'B'){

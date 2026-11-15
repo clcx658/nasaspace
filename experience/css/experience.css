@@ -151,3 +151,8 @@ input.guide-pulse,div.guide-pulse{border-radius:1rem}
 
 .sp-say.on,#coach .coach-say.on{background:#00e5ff!important;color:#0b0d1b;border-color:#00e5ff;animation:spon .6s ease-in-out infinite}
 @keyframes spon{50%{transform:scale(1.15)}}
+
+/* no bottom bar while a task is running */
+body.no-nav nav.fixed{display:none!important}
+body.no-nav #coach{bottom:1rem}
+body.no-nav.has-coach #app{padding-bottom:6.5rem}

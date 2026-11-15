@@ -35,7 +35,7 @@
     var re = GO[screenName()];
     return re ? findReal(re) : null;
   }
-  function nice(s){ s = s.toLowerCase(); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function nice(s){ s = s.replace(/[›»]+\s*$/, '').trim().toLowerCase(); return s.charAt(0).toUpperCase() + s.slice(1); }
 
   function attach(){
     var box = document.getElementById('coach');
