@@ -173,6 +173,33 @@
     J.coachFor.rocket = ['', null];
   })();
 
+
+  /* ---------- PRE-FLIGHT: dress the astronaut before blast off ---------- */
+  var PF_STYLE =
+    '#pf{position:relative;min-height:100vh;color:#fff;font-family:Outfit,system-ui,sans-serif}'+
+    '#pf .pf-wrap{position:relative;z-index:2;max-width:56rem;margin:0 auto;padding:1rem 1rem 5rem}'+
+    '#pf .pf-top{display:flex;align-items:center;justify-content:space-between;padding:.2rem 0 .6rem}'+
+    '#pf .pf-title{font-size:2rem;font-weight:900;text-shadow:0 0 18px rgba(0,229,255,.45)}'+
+    '#pf .pf-sub{font-weight:700;color:#d8def5;margin:0 0 .8rem;font-size:1.1rem}'+
+    '#pf #mg{background:rgba(14,16,42,.8);border:3px solid rgba(0,229,255,.55);border-radius:1.8rem;padding:.8rem;box-shadow:0 0 34px rgba(0,229,255,.25);color:#fff}'+
+    '#pf .pf-go{margin-top:1rem;border:0;border-radius:9999px;padding:1.1rem 2.4rem;font-weight:900;font-size:1.25rem;text-transform:uppercase;color:#0b0d1b;background:#00e5ff;box-shadow:0 6px 0 #009bb0;cursor:pointer;font-family:inherit}'+
+    '@media (max-width:640px){#pf .pf-title{font-size:1.4rem}}';
+  J.customScreen('preflight', {html:'<div id="pf"><div class="pf-wrap"><div class="pf-top"><div class="pf-title">Get ready for blast off! 🧑‍🚀</div><button class="sp-menu" id="pfBack" type="button">Menu</button></div>'+
+    '<p class="pf-sub">Check your gear. Pick the right piece for each part of the space suit.</p><div id="mg"></div></div></div>', style:PF_STYLE, bodyClass:'', title:'Pre-flight check'}, function(root){
+    spaceBg(root, false);
+    root.querySelector('#pfBack').onclick = function(){ J.sfx.tap(); J.go('menu'); };
+    var host = root.querySelector('#mg');
+    J.mini.dressUp(host, {set:'journey', title:'🧑‍🚀 Dress for the Moon: choose the right gear'}).then(function(){
+      host.innerHTML = '<div style="text-align:center;padding:1.4rem .6rem"><div style="font-size:3.4rem">✅🚀</div><h2 style="font-size:1.9rem;font-weight:900;margin:.3rem 0">All set! You are ready to fly.</h2>'+
+        '<button type="button" class="pf-go" id="pfGo">Go to the rocket ›</button></div>';
+      J.sfx.good();
+      var g = host.querySelector('#pfGo'); g.onclick = function(){ J.sfx.tap(); J.go('rocket'); };
+      J.coachSet('Press <b>Go to the rocket</b>.', null);
+    });
+    J.coachSet('Tap the gear that fits the astronaut, then press the check button.', null);
+  });
+  J.coachFor.preflight = ['Pick the right gear for each part of the suit.', null];
+
   /* ---------- 3. LANDING: one picture, three things to tap, one button ---------- */
   var LANDING_IMG = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAOTTiCo322rFPsFv1MFFcGaNI_-s4D6jOURLOGrGUKYN0bYORGeVpKvdJ2IoLMYjwYZsX1zsHapIcLfM3mmodPTiw34KJH7uvbJQfuMtXS7gFELKQN65zOkKogdyl0avQpgQv8oITy1hOSWvibBWzXmK6KdIMwerQGBEgdE6GvCaW0PUnTkf0fH0934mLYgFIWKR4y4BxSCnKoclDLmfQMIovO0-rBJYZZCUJGw6b5';
   var LANDING_STYLE =
