@@ -88,6 +88,6 @@
     var old = d.bind;
     d.bind = function(root){ var r = old ? old.apply(this, arguments) : undefined; try{ fn(root); }catch(e){ console.warn('nasa strip:', e.message); } return r; };
   }
-  wrap('menu', function(root){ J.nasaDaily(root); });
+  // the menu stays clean (only Commander Nova and START ADVENTURE); J.nasaDaily(root) is available if it is wanted again
   Object.keys(TOPIC).forEach(function(id){ wrap(id, function(root){ J.nasaTaskPhoto(root, TOPIC[id]); }); });
 })();
