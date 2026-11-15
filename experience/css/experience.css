@@ -125,3 +125,29 @@ input.guide-pulse,div.guide-pulse{border-radius:1rem}
 @keyframes gopulse{50%{box-shadow:0 4px 0 #009bb0,0 0 20px 5px rgba(0,229,255,.55)}}
 @media (max-width:700px){#coach{flex-wrap:wrap;justify-content:center}#coach .coach-go{width:100%;order:5;font-size:.85rem}}
 @media (prefers-reduced-motion:reduce){#coach .coach-go{animation:none}}
+
+/* shared starry sky for picture scenes */
+.sp-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:
+ radial-gradient(ellipse 60% 50% at 18% 8%,rgba(98,64,214,.55),transparent 65%),
+ radial-gradient(ellipse 50% 45% at 88% 30%,rgba(0,168,214,.35),transparent 65%),
+ radial-gradient(ellipse 70% 40% at 50% 105%,rgba(166,70,200,.45),transparent 70%),
+ linear-gradient(180deg,#04051a 0%,#0a0c2e 55%,#150f38 100%)}
+.sp-stars{position:absolute;inset:0}.sp-stars i{position:absolute;left:0;top:0;border-radius:50%;background:#fff;animation:sptw 4s ease-in-out infinite}
+@keyframes sptw{50%{opacity:.25}}
+.sp-earth{position:absolute;left:5%;top:14%;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#8fdcff 0%,#3b8be0 38%,#1a4aa6 72%,#0a2260 100%);box-shadow:0 0 46px rgba(90,180,255,.55),inset -16px -12px 26px rgba(0,0,40,.65);animation:spfl 9s ease-in-out infinite}
+.sp-earth::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse 22% 16% at 32% 40%,rgba(94,200,120,.9),transparent 70%),radial-gradient(ellipse 20% 26% at 58% 62%,rgba(94,200,120,.85),transparent 70%),radial-gradient(ellipse 30% 10% at 55% 22%,rgba(255,255,255,.55),transparent 70%)}
+@keyframes spfl{50%{transform:translateY(-10px)}}
+.sp-moon{position:absolute;left:50%;bottom:-640px;width:1500px;height:960px;margin-left:-750px;border-radius:50%;background:radial-gradient(circle at 50% 8%,#e4e1f2 0%,#a8a3c4 35%,#625d82 75%,#3a3556 100%);box-shadow:0 -24px 90px rgba(190,180,255,.4)}
+.sp-moon::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse 60px 22px at 28% 14%,rgba(60,55,90,.55),transparent 72%),radial-gradient(ellipse 90px 30px at 62% 10%,rgba(60,55,90,.5),transparent 72%),radial-gradient(ellipse 40px 14px at 45% 20%,rgba(60,55,90,.5),transparent 72%),radial-gradient(ellipse 70px 24px at 80% 22%,rgba(60,55,90,.45),transparent 72%)}
+.sp-shoot{position:absolute;top:18%;left:-12%;width:140px;height:2px;background:linear-gradient(90deg,transparent,#fff);transform:rotate(18deg);opacity:0;animation:spsh 9s linear infinite 2s}
+.sp-shoot.b{top:34%;animation-delay:6s;animation-duration:11s}
+@keyframes spsh{0%{opacity:0;transform:translate(0,0) rotate(18deg)}4%{opacity:1}14%{opacity:0;transform:translate(130vw,40vw) rotate(18deg)}100%{opacity:0}}
+.sp-say{border:2px solid rgba(255,255,255,.35);background:rgba(16,18,40,.65);color:#fff;border-radius:9999px;width:2.6rem;height:2.6rem;font-size:1.2rem;cursor:pointer;font-family:inherit;vertical-align:middle}
+.sp-say.ml{margin-left:.6rem}
+.sp-menu{border:2px solid rgba(255,255,255,.3);background:rgba(16,18,40,.65);color:#e1e1f7;border-radius:9999px;padding:.35rem 1rem;font-weight:800;font-size:.9rem;cursor:pointer;font-family:inherit}
+#coach .coach-say{background:#1d2138;color:#fff;width:2.2rem;height:2.2rem;flex:none;font-size:1rem}
+@media (max-width:640px){.sp-earth{width:64px;height:64px}}
+@media (prefers-reduced-motion:reduce){.sp-stars i,.sp-earth,.sp-shoot{animation:none}}
+
+.sp-say.on,#coach .coach-say.on{background:#00e5ff!important;color:#0b0d1b;border-color:#00e5ff;animation:spon .6s ease-in-out infinite}
+@keyframes spon{50%{transform:scale(1.15)}}

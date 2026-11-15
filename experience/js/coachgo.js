@@ -40,6 +40,11 @@
   function attach(){
     var box = document.getElementById('coach');
     if(box){ var sh = box.querySelector('.coach-show'); if(sh) sh.remove(); }      // the glow and the big button are enough
+    if(box && box.style.display !== 'none' && !box.querySelector('.coach-say')){
+      var sy = document.createElement('button'); sy.type = 'button'; sy.className = 'coach-say'; sy.innerHTML = '🔊'; sy.setAttribute('aria-label', 'Read this to me');
+      sy.addEventListener('click', function(){ sy.classList.add('on'); setTimeout(function(){ sy.classList.remove('on'); }, 1800); if(J.say) J.say(J.coachText || ''); });
+      box.insertBefore(sy, box.querySelector('.coach-x'));
+    }
     var re = GO[screenName()];
     if(!box || !re || box.style.display === 'none') return;
     var real = currentReal(), btn = box.querySelector('.coach-go');
