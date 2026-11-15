@@ -261,16 +261,12 @@
       if(v !== o) n.nodeValue = v;
     });
   }
-  /* If an icon name is missing from our icon font it would show as a long word. Swap it for a similar icon. */
+  /* An icon name that is missing from our icon font would show as a long word: swap those few for a similar icon. */
   var ICON_FIX = {telescope:'visibility'};
   function fixIcons(root){
     Array.prototype.forEach.call(root.querySelectorAll('.material-symbols-outlined'), function(ic){
       var t = (ic.textContent || '').trim();
-      if(ICON_FIX[t]){ ic.textContent = ICON_FIX[t]; return; }
-      if(t.length > 3 && /^[a-z0-9_]+$/.test(t)){
-        var fs = parseFloat(getComputedStyle(ic).fontSize) || 16;
-        if(ic.getBoundingClientRect().width > fs * 1.8) ic.textContent = 'star';
-      }
+      if(ICON_FIX[t]) ic.textContent = ICON_FIX[t];
     });
   }
   function runSimple(){
@@ -283,6 +279,32 @@
     requestAnimationFrame(function(){ simplePending = false; runSimple(); });
   }
   J.simplify = runSimple;
+
+  /* If a button is pressed and NOTHING visible happens, say so kindly and point to what to do. */
+  (function(){
+    var busy = false;
+    document.addEventListener('click', function(ev){
+      if(busy) return;
+      var t = ev.target && ev.target.closest ? ev.target.closest('#app button, #app a, #app [role="button"], #app .cursor-pointer') : null;
+      if(!t || t.closest('#coach,#modal-root,#toast-root,header')) return;
+      if(t.tagName === 'INPUT' || t.closest('label')) return;
+      var muts = 0, big = false, h0 = location.hash;
+      var mo = new MutationObserver(function(list){
+        list.forEach(function(m){
+          muts++;
+          Array.prototype.forEach.call(m.addedNodes || [], function(n){ if(n.nodeType === 1 && n.closest && n.closest('#modal-root,#toast-root')) big = true; });
+        });
+      });
+      mo.observe(document.body, {subtree:true, childList:true, attributes:true, characterData:true});
+      busy = true;
+      setTimeout(function(){
+        mo.disconnect(); busy = false;
+        if(big || muts >= 3 || location.hash !== h0 || !document.body.contains(t)) return;
+        var tip = J.coachText ? ' ' + J.coachText : ' Use the big glowing button.';
+        J.toast('Nothing to do here.' + tip);
+      }, 550);
+    }, true);
+  })();
   simpleObs = new MutationObserver(scheduleSimple);
 
   J.screens = {};
@@ -329,9 +351,11 @@
       coachBox = document.createElement('div'); coachBox.id = 'coach';
       document.body.appendChild(coachBox);
     }
+    J.coachText = String(text || '').replace(/<[^>]*>/g, '');
     document.body.classList.toggle('has-coach', !!text);
     if(!text){ coachBox.style.display = 'none'; return; }
     var el = findTarget(target);
+    J.coachEl = el;
     coachBox.style.display = 'flex';
     coachBox.innerHTML = '<span class="coach-ico" aria-hidden="true">🧑‍🚀</span><div class="coach-text"><b>Commander Nova says</b><span>'+text+'</span></div>'+
       (el ? '<button class="coach-show" type="button">TAKE ME THERE</button>' : '')+'<button class="coach-x" type="button" aria-label="Hide tip">✕</button>';

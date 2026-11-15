@@ -70,7 +70,16 @@
     });
   }
 
-  J.nasaTaskPhoto = function(root, topic){ strip(root, '/api/nasa?kind=photo&topic='+encodeURIComponent(topic), 'REAL NASA PHOTO', 'See the real thing!', 'random'); };
+  /* on the task screens the photo is one small button in the "More to explore" row instead of a big strip */
+  J.nasaTaskPhoto = function(root, topic){
+    if(!J.addMoreChip){ strip(root, '/api/nasa?kind=photo&topic='+encodeURIComponent(topic), 'REAL NASA PHOTO', 'See the real thing!', 'random'); return; }
+    get('/api/nasa?kind=photo&topic='+encodeURIComponent(topic)).then(function(d){
+      var list = d && d.photos ? d.photos : [];
+      if(!list.length || !document.body.contains(root)) return;          // NASA not reachable: no button
+      var start = Math.floor(Math.random() * list.length);
+      J.addMoreChip(root, 'Real NASA photo', '🚀', function(){ openPhoto(list, start, 'Real NASA photo'); });
+    });
+  };
   J.nasaDaily = function(root){ strip(root, '/api/nasa?kind=apod', 'TODAY FROM NASA', 'Space picture of the day', 'first'); };
 
   /* add the strips to the screens without touching their own code */

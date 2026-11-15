@@ -29,8 +29,8 @@
     t2:['Press <b>EAT BREAKFAST</b>.', /EAT BREAKFAST/i],
     t3:['Tap each of the <b>5 suit parts</b> in the list to inspect it (0 of 5).', null],
     t4:['Tap a <b>place on the map</b>, then press <b>CHOOSE THIS PLACE</b>.', '.loc-pin'],
-    t5:['Press <b>AUTO-WIPE ALL</b> to clean the dusty panels.', /AUTO-WIPE ALL/i],
-    t6:['Choose a report with its <b>Select</b> button, then press <b>TRANSMIT REPORT</b> to send it.', /Select Full Report/i],
+    t5:['Rub each dusty panel with your finger to clean it.', null],
+    t6:['Tap <b>one report</b>, then press <b>SEND REPORT</b>.', null],
     t7:['Tap <b>every card</b> in the checklist to inspect it.', null],
     wA:['Tap <b>one action card</b>, then press <b>CONTINUE THE MISSION</b>.', null],
     wB:['Choose <b>A</b> or <b>B</b>, then press the big button.', null],
@@ -146,7 +146,7 @@
 
   /* ================= 1. MAIN MENU ================= */
   J.screen('menu', 1, function(root){
-    function startNew(){ J.newGame(); J.go('invitation'); }
+    function startNew(){ J.newGame(); J.go('quiz'); }
     J.bindText(root, /START ADVENTURE/i, async function(){
       var s = J.loadSave();
       if(s && s.screen && s.screen !== 'menu' && (s.accepted || s.task > 0)){
@@ -156,6 +156,18 @@
         else startNew();
       } else startNew();
     });
+    // the menu keeps only what a child needs: start, quests and two small help buttons (no meters, no bottom bar)
+    Array.prototype.forEach.call(root.querySelectorAll('main button, main a'), function(b){
+      var t = (b.textContent || '').replace(/\s+/g, ' ').trim();
+      if(/(^|\s)(THE INVITATION|TRAINING HUB)(\s|$)/i.test(t) && !/QUESTS/i.test(t)) b.style.display = 'none';
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('header *'), function(e){
+      if(e.children.length) return;
+      var t = (e.textContent || '').replace(/\s+/g, ' ').trim();
+      if(/^(Day \d|Sol \d|O2:|Power:|Water:|Food:|Pause)/i.test(t)){ var c = e.closest('div.rounded-full, button, span.rounded-full') || e; c.style.display = 'none'; }
+    });
+    var nv = root.querySelector('nav.fixed'); if(nv) nv.style.display = 'none';
+    Array.prototype.forEach.call(root.querySelectorAll('main button, main a'), function(b){ if(/NASA QUESTS/i.test(b.textContent) && !/START|HOW|STORY/i.test(b.textContent)) b.style.gridColumn = '1 / -1'; });
     J.bindText(root, /THE INVITATION/i, function(){ J.go('invitation'); });
     J.bindText(root, /TRAINING HUB/i, function(){ J.go('trainingHub'); });
     J.bindText(root, /NASA QUESTS/i, function(){ J.go('questHub'); });
@@ -354,7 +366,7 @@
         {ico:'🍎', t:'Light breakfast', d:'Fruit pouch and crackers', fx:{f:-6,w:-5}},
         {ico:'🍫', t:'Quick snack', d:'Energy bar and a drink', fx:{f:-4,w:-9}}
       ];
-      var mi = await J.choose({kicker:'09:00 · Breakfast Time', title:'What will you eat?', text:'Every meal uses food and water. Which one fits a busy Moon day?', options:meals});
+      var mi = (J.tray && J.tray.done) ? 0 : await J.choose({kicker:'09:00 · Breakfast Time', title:'What will you eat?', text:'Every meal uses food and water. Which one fits a busy Moon day?', options:meals});
       var act = await offerActivity({kicker:'09:00 · Breakfast Time', title:'Zero-gravity meal challenge',
         intro:'There is no gravity here, so loose food floats away! Tap each item to catch it before it drifts off.',
         runner:function(host){ return M.breakfast(host).then(function(r){ if(!r.ok) r.fx = {f:-2*r.lost}; return r; }); }});
@@ -486,7 +498,6 @@
         var cells = root.querySelectorAll('.hex-cell'), n = 0;
         cells.forEach(function(c){ if(c.innerText.trim() === '✓') n++; });
         if(cells.length && n >= cells.length) J.coachSet('✅ Panels are clean! Press <b>FINISH CLEANING &amp; BOOST POWER</b>.', /FINISH CLEANING|CONFIRM POWER MAINTENANCE/i, {scroll:true});
-        else if(n > 0) J.coachSet('Keep wiping: '+n+' of '+cells.length+' cells clean. Or press <b>AUTO-WIPE ALL</b>.', /AUTO-WIPE ALL/i);
       }, 90);
     });
     window.boostPower = async function(){
@@ -494,7 +505,7 @@
       var cells = root.querySelectorAll('.hex-cell'), clean = 0;
       cells.forEach(function(c){ if(c.innerText.trim() === '✓') clean++; });
       if(cells.length && clean < cells.length){
-        await hintModal('Some solar cells are still covered in dust. Tap each dusty cell to wipe it, or press <b>AUTO-WIPE ALL</b>, then press <b>FINISH CLEANING</b>. You have cleaned <b>'+clean+' of '+cells.length+'</b>.', '', 1);
+        await hintModal('Some solar cells are still covered in dust. Rub all three panels with your finger until they shine, then press <b>FINISH CLEANING</b>. You have cleaned <b>'+clean+' of '+cells.length+'</b>.', '', 1);
         return;
       }
       busy = true;
@@ -514,7 +525,7 @@
   /* ================= 13. TASK 6: REPORT TO EARTH ================= */
   J.screen('t6', 13, function(root){
     var g = ensureGame(); g.time = '15:00'; J.refreshHeader(false);
-    var sel = 'B', busy = false;
+    var sel = null, busy = false;
     var COST = {A:{p:-12}, B:{p:-4}, C:{p:-16}};
     var cards = {};
     Array.prototype.forEach.call(root.querySelectorAll('h4'), function(h){
@@ -567,10 +578,11 @@
     }
     function choose(k, quiet){
       sel = k; mark();
-      if(!quiet){ J.toast(INFO[k].msg); J.coachSet('Report chosen! Now press <b>TRANSMIT REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }
+      if(!quiet){ J.toast(INFO[k].msg); J.coachSet('Report chosen! Now press <b>SEND REPORT</b>.', /TRANSMIT REPORT/i, {scroll:true}); }
     }
     mark();
     J.bindText(root, /TRANSMIT REPORT/i, async function(){
+      if(!sel){ J.sfx.miss(); J.toast('Pick a report first. Tap one of the three!'); return; }
       if(busy) return; busy = true;
       var fx = {p:COST[sel].p}, extraHtml = '';
       if(g.emergency && sel !== 'B'){
@@ -850,7 +862,7 @@
       // the certificate opens by itself the first time, so nobody has to hunt for it
       if(!g.certShown){ g.certShown = true; J.save(); J.T(function(){ if(J.currentScreen === ENDING_SCREEN[key]) openCert(); }, 1400); }
       J.bindText(root, /NASA SCIENCE QUESTS|EXPLORE NASA SCIENCE QUESTS/i, function(){ J.go('questHub'); });
-      J.bindText(root, /REPLAY MISSION|TRAIN AGAIN/i, function(){ J.newGame(); J.go('invitation'); });
+      J.bindText(root, /REPLAY MISSION|TRAIN AGAIN/i, function(){ J.newGame(); J.go('quiz'); });
       J.bindText(root, /RETURN TO MAIN MENU/i, function(){ J.go('menu'); });
       if(J.sfx && !g.endPlayed){ g.endPlayed = true; (key === 'S' || key === 'A') ? J.sfx.win() : J.sfx.good(); }
     };
