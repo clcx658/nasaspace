@@ -107,3 +107,13 @@ input.guide-pulse,div.guide-pulse{border-radius:1rem}
   #coach .coach-text > b{display:none}
   #coach .coach-text span{font-size:.8rem}
 }
+
+/* focus mode: the "More to explore" row */
+.focus-more{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;max-width:64rem;margin:1.2rem auto .4rem;padding:.6rem .8rem;border:2px dashed #3b494c;border-radius:1.2rem;background:rgba(25,26,42,.6)}
+.focus-more .fm-title{font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#bac9cc;margin-right:.3rem}
+.fm-chip{border:2px solid #3b494c;background:#1d2138;color:#e1e1f7;border-radius:9999px;padding:.35rem .8rem;font-weight:800;font-size:.85rem;cursor:pointer;font-family:inherit;box-shadow:0 3px 0 #101221}
+.fm-chip:hover{border-color:#00e5ff}
+.fm-chip:active{transform:translateY(2px);box-shadow:none}
+.gmodal.wide{max-width:min(46rem,94vw)}
+.focus-pop{max-height:62vh;overflow:auto;text-align:left}
+.focus-pop > *{max-width:100%}
